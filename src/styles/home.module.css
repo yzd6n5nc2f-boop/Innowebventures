@@ -1,0 +1,6 @@
+.page{min-height:100vh}
+.hero{
+  height:100vh;
+  background:url('/branding/innoweb-hero-bg-desktop.webp') center/cover no-repeat;
+}
+.overlay{position:absolute;inset:0;background:rgba(0,0,0,.6)}
