@@ -8,13 +8,22 @@ export default function Home() {
           <div className={styles.logoMark} />
           <span>InnoWeb Ventures Ltd</span>
         </div>
+        <div className={styles.navBadge}>AI-first systems partner</div>
       </header>
 
       <main className={styles.hero}>
         <div className={styles.overlay} />
         <div className={styles.content}>
-          <h1>Engineering digital systems for the next industrial era.</h1>
-          <p>AI-assisted. Cost-aware. Human-centred.</p>
+          <div className={styles.kicker}>High-tech engineering collective</div>
+          <h1>
+            Engineering digital systems for the next industrial era. <span>Secure. Scalable. Visionary.</span>
+          </h1>
+          <p className={styles.subtitle}>AI-assisted. Cost-aware. Human-centred.</p>
+          <div className={styles.highlights}>
+            <div className={styles.highlightItem}>Neural networks & automation</div>
+            <div className={styles.highlightItem}>Cloud-native delivery</div>
+            <div className={styles.highlightItem}>Design-first experience</div>
+          </div>
         </div>
       </main>
 
