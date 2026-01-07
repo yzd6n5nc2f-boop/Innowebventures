@@ -24,22 +24,56 @@ const methodColumns = [
   },
 ];
 
-const workItems = [
+const capabilities = [
+  {
+    title: "Neutral networks",
+    description: "AI plus network intelligence that adapts without the noise.",
+    highlight: true,
+  },
+  {
+    title: "Automation",
+    description: "Workflow-first systems that remove manual drag and error.",
+  },
+  {
+    title: "Cloud-native delivery",
+    description: "Cost-aware architecture designed to scale responsibly.",
+  },
+  {
+    title: "Design-first experience",
+    description: "Calm, usable interfaces that keep humans in control.",
+  },
+];
+
+const liveWorkItems = [
+  {
+    title: "TAD",
+    subtitle: "Trading clarity without noise",
+    badge: "LIVE",
+    badgeTone: "live",
+    url: "https://lively-bush-0409b5010.1.azurestaticapps.net",
+  },
   {
     title: "Concordia",
     subtitle: "Contract intelligence for infrastructure",
     badge: "LIVE",
     badgeTone: "live",
+    url: "https://white-mushroom-039e8e310.6.azurestaticapps.net",
   },
   {
-    title: "TAD",
-    subtitle: "Trading clarity without noise",
+    title: "Luxpulse-AI",
+    subtitle: "AI-powered product experience",
+    badge: "LIVE",
+    badgeTone: "live",
+    url: "https://orange-bush-0d6e2d310.1.azurestaticapps.net",
   },
+];
+
+const secondaryWorkItems = [
   {
     title: "Workflow Engine",
     subtitle: "Designing operations before they break",
-    badge: "LIVE",
-    badgeTone: "live",
+    badge: "PROTOTYPE",
+    badgeTone: "concept",
   },
   {
     title: "Compliance Lens",
@@ -65,22 +99,31 @@ export default function Home() {
       </header>
 
       <main>
-        <section className={styles.hero}>
+        <section className={`${styles.hero} ${styles.sectionAnchor}`}>
           <div className={styles.overlay} />
           <div className={styles.content}>
-            <div className={styles.kicker}>High-tech engineering collective</div>
+            <div className={styles.kicker}>High-tech engineering collect</div>
             <h1>
               Engineering digital systems for the next industrial era. <span>Secure. Scalable. Visionary.</span>
             </h1>
             <p className={styles.subtitle}>AI-assisted. Cost-aware. Human-centred.</p>
-            <div className={styles.highlights}>
-              <div className={styles.highlightItem}>Neural networks & automation</div>
-              <div className={styles.highlightItem}>Cloud-native delivery</div>
-              <div className={styles.highlightItem}>Design-first experience</div>
+            <div className={styles.featureButtons}>
+              <a className={styles.featureButton} href="#capabilities">
+                Neutral networks
+              </a>
+              <a className={styles.featureButton} href="#capabilities">
+                Automation
+              </a>
+              <a className={styles.featureButton} href="#capabilities">
+                Cloud-native delivery
+              </a>
+              <a className={styles.featureButton} href="#capabilities">
+                Design-first experience
+              </a>
             </div>
             <div className={styles.heroActions}>
               <a className={styles.primaryButton} href="#work">
-                Explore the work
+                Explore the network
               </a>
               <a className={styles.secondaryButton} href="#method">
                 How we build
@@ -89,10 +132,30 @@ export default function Home() {
           </div>
         </section>
 
-        <section className={styles.methodSection} id="method">
+        <section className={`${styles.capabilitiesSection} ${styles.sectionAnchor}`} id="capabilities">
+          <div className={styles.sectionHeader}>
+            <div className={styles.sectionKicker}>Capabilities</div>
+            <h2>Four focused ways we deliver calm, cost-aware engineering.</h2>
+          </div>
+          <div className={styles.capabilityGrid}>
+            {capabilities.map((capability) => (
+              <div
+                key={capability.title}
+                className={`${styles.capabilityCard} ${
+                  capability.highlight ? styles.capabilityHighlight : ""
+                }`}
+              >
+                <div className={styles.capabilityTitle}>{capability.title}</div>
+                <p>{capability.description}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className={`${styles.methodSection} ${styles.sectionAnchor}`} id="method">
           <div className={styles.sectionHeader}>
             <div className={styles.sectionKicker}>Method</div>
-            <h2>Built for clarity, accountability and cost control.</h2>
+            <h2>Built with intent, not excess.</h2>
           </div>
           <div className={styles.methodGrid}>
             {methodColumns.map((column) => (
@@ -112,27 +175,47 @@ export default function Home() {
           </div>
         </section>
 
-        <section className={styles.workSection} id="work">
+        <section className={`${styles.workSection} ${styles.sectionAnchor}`} id="work">
           <div className={styles.sectionHeader}>
             <div className={styles.sectionKicker}>Our Work in Action</div>
             <h2>Programmes delivered with pace, rigor and measurable value.</h2>
           </div>
           <div className={styles.workGrid}>
-            {workItems.map((item) => (
-              <article key={item.title} className={styles.workCard}>
+            {liveWorkItems.map((item) => (
+              <a
+                key={item.title}
+                className={`${styles.workCard} ${styles.workCardLink}`}
+                href={item.url}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span className={styles.externalIndicator} aria-hidden>
+                  ↗
+                </span>
+                <div className={styles.cardHeader}>
+                  <div className={styles.cardTitleGroup}>
+                    <h3>{item.title}</h3>
+                    <p>{item.subtitle}</p>
+                  </div>
+                  <span className={`${styles.statusBadge} ${styles.badgeLive}`}>{item.badge}</span>
+                </div>
+                <div className={styles.cardThumbnail} aria-hidden />
+                <p className={styles.deliveredWith}>
+                  Delivered with: <span>Pace • Rigor • Measurable</span>
+                </p>
+              </a>
+            ))}
+          </div>
+          <div className={styles.secondaryWorkGrid}>
+            {secondaryWorkItems.map((item) => (
+              <article key={item.title} className={`${styles.workCard} ${styles.secondaryCard}`}>
                 <div className={styles.cardHeader}>
                   <div className={styles.cardTitleGroup}>
                     <h3>{item.title}</h3>
                     <p>{item.subtitle}</p>
                   </div>
                   {item.badge && (
-                    <span
-                      className={`${styles.statusBadge} ${
-                        item.badgeTone === "concept" ? styles.badgeConcept : styles.badgeLive
-                      }`}
-                    >
-                      {item.badge}
-                    </span>
+                    <span className={`${styles.statusBadge} ${styles.badgeConcept}`}>{item.badge}</span>
                   )}
                 </div>
                 <div className={styles.cardThumbnail} aria-hidden />
