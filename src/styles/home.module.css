@@ -444,6 +444,93 @@
     radial-gradient(circle at 80% 70%, rgba(14, 165, 233, 0.28), transparent 30%);
 }
 
+.previewWindow {
+  position: relative;
+  border-radius: 14px;
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  overflow: hidden;
+  min-height: clamp(220px, 24vw, 250px);
+  background: rgba(7, 12, 22, 0.9);
+}
+
+.previewIframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+  pointer-events: none;
+}
+
+.previewFallback {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 16px;
+  color: #e2e8f0;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  background: linear-gradient(145deg, rgba(15, 23, 42, 0.92), rgba(2, 6, 23, 0.98));
+}
+
+.previewFallback::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.5;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(59, 130, 246, 0.35), transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(14, 165, 233, 0.3), transparent 42%),
+    repeating-linear-gradient(
+      120deg,
+      rgba(148, 163, 184, 0.25) 0,
+      rgba(148, 163, 184, 0.25) 1px,
+      transparent 1px,
+      transparent 18px
+    );
+}
+
+.previewFallback span {
+  position: relative;
+  z-index: 1;
+}
+
+.previewGradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 60%, rgba(3, 7, 18, 0.72) 100%);
+  pointer-events: none;
+}
+
+.previewCta {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #0ea5e9;
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid rgba(14, 165, 233, 0.5);
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.previewClickShield {
+  position: absolute;
+  inset: 0;
+}
+
+.workCardLink:hover .previewCta,
+.workCardLink:focus-visible .previewCta {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .deliveredWith {
   margin: 0;
   font-size: 0.85rem;
@@ -488,6 +575,11 @@
 
   .statusBadge {
     align-self: flex-start;
+  }
+
+  .previewCta {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
