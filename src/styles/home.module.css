@@ -1,7 +1,9 @@
 .page {
   position: relative;
   min-height: 100vh;
-  background: #05070b;
+  background: radial-gradient(circle at 20% 20%, rgba(99, 102, 241, 0.08), transparent 32%),
+    radial-gradient(circle at 80% 0%, rgba(14, 165, 233, 0.1), transparent 28%),
+    #05070b;
   color: #e5e7eb;
   font-family: "Inter", system-ui, -apple-system, sans-serif;
   overflow: hidden;
@@ -9,13 +11,14 @@
 
 .topNav {
   position: absolute;
-  inset: 0 auto auto 0;
-  width: 100%;
-  padding: 24px clamp(20px, 5vw, 48px);
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 20px clamp(18px, 5vw, 48px);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  z-index: 2;
+  z-index: 3;
 }
 
 .brand {
@@ -36,16 +39,31 @@
   box-shadow: 0 10px 40px rgba(99, 102, 241, 0.35);
 }
 
-.navBadge {
-  padding: 10px 14px;
+.menuButton {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  background: rgba(11, 16, 28, 0.65);
+  display: grid;
+  place-items: center;
+  gap: 6px;
+  padding: 10px;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.menuButton span {
+  width: 100%;
+  height: 2px;
   border-radius: 999px;
-  border: 1px solid rgba(100, 149, 237, 0.4);
-  color: #c7d2fe;
-  background: rgba(4, 12, 34, 0.5);
-  backdrop-filter: blur(12px);
-  font-size: 0.85rem;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
+  background: linear-gradient(90deg, #7dd3fc, #6366f1);
+  display: block;
+}
+
+.menuButton:hover {
+  border-color: rgba(99, 102, 241, 0.6);
+  background: rgba(12, 18, 34, 0.85);
 }
 
 .hero {
@@ -54,7 +72,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: clamp(18px, 5vw, 42px) clamp(20px, 6vw, 72px);
+  padding: clamp(28px, 6vw, 64px) clamp(20px, 6vw, 72px);
   background: url("/branding/innoweb-hero-bg-desktop.webp") center/cover no-repeat;
   isolation: isolate;
 }
@@ -62,7 +80,8 @@
 .overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(130deg, rgba(2, 6, 23, 0.94) 18%, rgba(5, 10, 28, 0.88) 55%, rgba(9, 16, 40, 0.82) 100%);
+  background: linear-gradient(130deg, rgba(2, 6, 23, 0.94) 16%, rgba(5, 10, 28, 0.9) 55%, rgba(9, 16, 40, 0.82) 100%),
+    linear-gradient(180deg, rgba(5, 7, 11, 0.65) 0%, transparent 55%);
   mix-blend-mode: multiply;
   z-index: 0;
 }
@@ -70,13 +89,14 @@
 .content {
   position: relative;
   z-index: 1;
-  max-width: 980px;
+  max-width: 1040px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 18px;
-  padding: clamp(22px, 4vw, 42px);
-  border-radius: 28px;
-  background: rgba(8, 12, 26, 0.55);
+  padding: clamp(26px, 4vw, 46px);
+  border-radius: 30px;
+  background: rgba(8, 12, 26, 0.62);
   backdrop-filter: blur(14px);
   box-shadow: 0 18px 72px rgba(0, 0, 0, 0.45);
 }
@@ -106,8 +126,8 @@
 }
 
 .content h1 {
-  font-size: clamp(2rem, 4vw + 1rem, 3.9rem);
-  line-height: 1.1;
+  font-size: clamp(2.1rem, 4vw + 1rem, 4rem);
+  line-height: 1.08;
   margin: 0;
   color: #f8fafc;
 }
@@ -117,10 +137,10 @@
 }
 
 .subtitle {
-  font-size: clamp(1rem, 1vw + 0.6rem, 1.3rem);
+  font-size: clamp(1rem, 1vw + 0.6rem, 1.35rem);
   color: #cbd5e1;
   margin: 0;
-  max-width: 720px;
+  max-width: 760px;
 }
 
 .highlights {
@@ -141,16 +161,213 @@
   letter-spacing: 0.01em;
 }
 
+.heroActions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 6px;
+}
+
+.primaryButton,
+.secondaryButton {
+  padding: 12px 18px;
+  border-radius: 14px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  transition: transform 0.15s ease, box-shadow 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+}
+
+.primaryButton {
+  background: linear-gradient(120deg, #0ea5e9, #6366f1);
+  color: #0b1222;
+  border: 1px solid rgba(125, 211, 252, 0.5);
+  box-shadow: 0 10px 40px rgba(14, 165, 233, 0.35);
+}
+
+.primaryButton:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 45px rgba(99, 102, 241, 0.35);
+}
+
+.secondaryButton {
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  color: #e5e7eb;
+  background: rgba(12, 18, 34, 0.7);
+}
+
+.secondaryButton:hover {
+  border-color: rgba(125, 211, 252, 0.4);
+  background: rgba(12, 18, 34, 0.9);
+}
+
+.sectionHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 22px;
+}
+
+.sectionHeader h2 {
+  margin: 0;
+  font-size: clamp(1.6rem, 2vw + 1rem, 2.4rem);
+  color: #e5e7eb;
+}
+
+.sectionKicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #7dd3fc;
+  letter-spacing: 0.06em;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+}
+
+.sectionKicker::before {
+  content: "";
+  width: 14px;
+  height: 2px;
+  background: linear-gradient(90deg, #0ea5e9, #6366f1);
+  border-radius: 999px;
+}
+
+.methodSection,
+.workSection {
+  position: relative;
+  z-index: 1;
+  padding: clamp(32px, 8vw, 80px) clamp(18px, 6vw, 72px);
+}
+
+.methodSection {
+  background: radial-gradient(circle at 10% 10%, rgba(14, 165, 233, 0.06), transparent 45%),
+    linear-gradient(180deg, rgba(8, 12, 26, 0.7), rgba(5, 7, 11, 0.95));
+  margin-top: -32px;
+  border-radius: 28px 28px 0 0;
+  box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.methodGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 18px;
+}
+
+.methodCard {
+  padding: 18px 18px 14px;
+  border-radius: 18px;
+  border: 1px solid rgba(148, 163, 184, 0.28);
+  background: rgba(10, 14, 24, 0.8);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
+}
+
+.methodTitle {
+  font-weight: 700;
+  color: #f8fafc;
+  margin-bottom: 12px;
+  letter-spacing: 0.01em;
+}
+
+.methodCard ul {
+  margin: 0;
+  padding-left: 16px;
+  display: grid;
+  gap: 8px;
+  color: #cbd5e1;
+}
+
+.methodCard li {
+  line-height: 1.5;
+}
+
+.locations {
+  margin: 0;
+  color: #cbd5e1;
+  letter-spacing: 0.02em;
+}
+
+.workSection {
+  background: radial-gradient(circle at 85% 0%, rgba(99, 102, 241, 0.08), transparent 35%), #05070b;
+}
+
+.workGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 18px;
+}
+
+.workCard {
+  padding: 18px;
+  border-radius: 18px;
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  background: linear-gradient(180deg, rgba(12, 18, 34, 0.8), rgba(7, 10, 18, 0.92));
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 220px;
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.35);
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.cardTitleGroup h3 {
+  margin: 0;
+  color: #f8fafc;
+  font-size: 1.15rem;
+}
+
+.cardTitleGroup p {
+  margin: 6px 0 0;
+  color: #cbd5e1;
+  font-size: 0.98rem;
+}
+
+.statusBadge {
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+  text-transform: uppercase;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+}
+
+.badgeLive {
+  color: #0ea5e9;
+  background: rgba(14, 165, 233, 0.12);
+  border-color: rgba(14, 165, 233, 0.45);
+}
+
+.badgeConcept {
+  color: #cbd5e1;
+  background: rgba(148, 163, 184, 0.12);
+}
+
+.cardThumbnail {
+  border-radius: 14px;
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  min-height: 120px;
+  background: linear-gradient(145deg, rgba(14, 165, 233, 0.08), rgba(99, 102, 241, 0.1)),
+    repeating-linear-gradient(90deg, rgba(148, 163, 184, 0.25) 0, rgba(148, 163, 184, 0.25) 1px, transparent 1px, transparent 16px),
+    radial-gradient(circle at 20% 30%, rgba(99, 102, 241, 0.35), transparent 32%),
+    radial-gradient(circle at 80% 70%, rgba(14, 165, 233, 0.28), transparent 30%);
+}
+
 .footer {
-  position: absolute;
-  bottom: 20px;
-  left: 0;
-  right: 0;
-  text-align: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 8px;
+  align-items: center;
+  padding: 28px clamp(18px, 6vw, 72px) 40px;
   color: #94a3b8;
   font-size: 0.95rem;
   letter-spacing: 0.01em;
-  z-index: 2;
+  border-top: 1px solid rgba(148, 163, 184, 0.2);
 }
 
 @media (max-width: 900px) {
@@ -165,21 +382,25 @@
   }
 
   .topNav {
-    justify-content: center;
+    justify-content: space-between;
+  }
+
+  .cardHeader {
+    flex-direction: column;
+  }
+
+  .statusBadge {
+    align-self: flex-start;
   }
 }
 
 @media (max-width: 700px) {
   .hero {
     background: url("/branding/innoweb-hero-bg-mobile.webp") center/cover no-repeat;
-    padding-top: 90px;
+    padding-top: 110px;
   }
 
   .brand {
     font-size: 0.95rem;
-  }
-
-  .navBadge {
-    display: none;
   }
 }
