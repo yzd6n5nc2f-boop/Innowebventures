@@ -4,8 +4,8 @@
   background-color: #05070b;
   background-image: radial-gradient(circle at 20% 20%, rgba(99, 102, 241, 0.08), transparent 32%),
     radial-gradient(circle at 80% 0%, rgba(14, 165, 233, 0.1), transparent 28%), var(--page-bg);
-  background-position: 20% 20%, 80% 0, center;
-  background-size: auto, auto, cover;
+  background-position: 20% 20%, 80% 0, center 35%;
+  background-size: auto, auto, 115%;
   background-repeat: no-repeat;
   color: #e5e7eb;
   font-family: "Inter", system-ui, -apple-system, sans-serif;
@@ -83,9 +83,10 @@
 .overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(130deg, rgba(2, 6, 23, 0.94) 16%, rgba(5, 10, 28, 0.9) 55%, rgba(9, 16, 40, 0.82) 100%),
-    linear-gradient(180deg, rgba(5, 7, 11, 0.65) 0%, transparent 55%);
-  mix-blend-mode: multiply;
+  background: linear-gradient(130deg, rgba(2, 6, 23, 0.78) 16%, rgba(5, 10, 28, 0.7) 55%, rgba(9, 16, 40, 0.6) 100%),
+    linear-gradient(180deg, rgba(5, 7, 11, 0.45) 0%, transparent 55%);
+  mix-blend-mode: normal;
+  opacity: 0.75;
   z-index: 0;
 }
 
@@ -606,6 +607,8 @@
   .page {
     background-image: radial-gradient(circle at 20% 20%, rgba(99, 102, 241, 0.08), transparent 32%),
       radial-gradient(circle at 80% 0%, rgba(14, 165, 233, 0.1), transparent 28%), var(--page-bg-mobile);
+    background-position: 20% 20%, 80% 0, center 35%;
+    background-size: auto, auto, 115%;
   }
 }
 
