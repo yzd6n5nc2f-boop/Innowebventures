@@ -203,7 +203,13 @@ export default function Home() {
       </header>
 
       <main>
-        <section className={`${styles.hero} ${styles.sectionAnchor}`}>
+        <section
+          className={`${styles.hero} ${styles.sectionAnchor}`}
+          style={{
+            ["--hero-bg" as any]: `url(${import.meta.env.BASE_URL}branding/innoweb-hero-bg-desktop.jpeg)`,
+            ["--hero-bg-mobile" as any]: `url(${import.meta.env.BASE_URL}branding/innoweb-hero-bg-mobile.jpeg)`,
+          }}
+        >
           <div className={styles.overlay} />
           <div className={styles.content}>
             <div className={styles.kicker}>High-tech engineering collect</div>
