@@ -189,7 +189,14 @@ const secondaryWorkItems = [
 
 export default function Home() {
   return (
-    <div className={styles.page} id="top">
+    <div
+      className={styles.page}
+      id="top"
+      style={{
+        ["--page-bg" as any]: `url(${import.meta.env.BASE_URL}branding/innoweb-hero-bg-desktop.jpeg)`,
+        ["--page-bg-mobile" as any]: `url(${import.meta.env.BASE_URL}branding/innoweb-hero-bg-mobile.jpeg)`,
+      }}
+    >
       <header className={styles.topNav}>
         <div className={styles.brand}>
           <div className={styles.logoMark} />
@@ -203,13 +210,7 @@ export default function Home() {
       </header>
 
       <main>
-        <section
-          className={`${styles.hero} ${styles.sectionAnchor}`}
-          style={{
-            ["--hero-bg" as any]: `url(${import.meta.env.BASE_URL}branding/innoweb-hero-bg-desktop.jpeg)`,
-            ["--hero-bg-mobile" as any]: `url(${import.meta.env.BASE_URL}branding/innoweb-hero-bg-mobile.jpeg)`,
-          }}
-        >
+        <section className={`${styles.hero} ${styles.sectionAnchor}`}>
           <div className={styles.overlay} />
           <div className={styles.content}>
             <div className={styles.kicker}>High-tech engineering collect</div>
