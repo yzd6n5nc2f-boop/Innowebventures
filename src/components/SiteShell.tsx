@@ -14,6 +14,7 @@ export default function SiteShell({ children }: SiteShellProps) {
     ["--hero-bg-mobile" as any]: `url(${import.meta.env.BASE_URL}branding/innoweb-hero-bg-mobile.jpeg)`,
   };
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [logoFailed, setLogoFailed] = useState(false);
   const menuRef = useRef<HTMLDivElement | null>(null);
   const location = useLocation();
   useEffect(() => {
@@ -50,11 +51,17 @@ export default function SiteShell({ children }: SiteShellProps) {
     <div className={styles.page} style={heroStyles}>
       <header className={styles.topNav}>
         <Link className={styles.brand} to="/">
-          <img
-            className={styles.brandLogo}
-            src={`${import.meta.env.BASE_URL}branding/logo/innoweb-logo.svg`}
-            alt="InnoWeb Ventures Ltd"
-          />
+          {!logoFailed ? (
+            <img
+              className={styles.brandLogo}
+              src={`${import.meta.env.BASE_URL}branding/logo/innoweb-logo.png`}
+              alt="InnoWeb Ventures logo"
+              loading="eager"
+              onError={() => setLogoFailed(true)}
+            />
+          ) : (
+            <div className={styles.logoMark} aria-hidden="true" />
+          )}
           <span>InnoWeb Ventures Ltd</span>
         </Link>
         <div className={styles.menuWrapper} ref={menuRef}>
