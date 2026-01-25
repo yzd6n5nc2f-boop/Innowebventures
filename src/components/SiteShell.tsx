@@ -1,19 +1,52 @@
 import type { ReactNode } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { useEffect, useRef, useState } from "react";
+import { Link, NavLink, useLocation } from "react-router-dom";
+import { menuLinks } from "../content/siteContent";
 import styles from "../styles/home.module.css";
 
 type SiteShellProps = {
   children: ReactNode;
-  heroBackground?: boolean;
 };
 
-export default function SiteShell({ children, heroBackground = false }: SiteShellProps) {
-  const heroStyles = heroBackground
-    ? {
-        ["--hero-bg" as any]: `url(${import.meta.env.BASE_URL}branding/innoweb-hero-bg-desktop.jpeg)`,
-        ["--hero-bg-mobile" as any]: `url(${import.meta.env.BASE_URL}branding/innoweb-hero-bg-mobile.jpeg)`,
+export default function SiteShell({ children }: SiteShellProps) {
+  const heroStyles = {
+    ["--hero-bg" as any]: `url(${import.meta.env.BASE_URL}branding/innoweb-hero-bg-desktop.jpeg)`,
+    ["--hero-bg-mobile" as any]: `url(${import.meta.env.BASE_URL}branding/innoweb-hero-bg-mobile.jpeg)`,
+  };
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement | null>(null);
+  const location = useLocation();
+  const internalLinks = menuLinks.filter((link) => !link.external);
+
+  useEffect(() => {
+    setIsMenuOpen(false);
+  }, [location.pathname]);
+
+  useEffect(() => {
+    if (!isMenuOpen) {
+      return;
+    }
+
+    const handleClickOutside = (event: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        setIsMenuOpen(false);
       }
-    : undefined;
+    };
+
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setIsMenuOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("keydown", handleEscape);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("keydown", handleEscape);
+    };
+  }, [isMenuOpen]);
 
   return (
     <div className={styles.page} style={heroStyles}>
@@ -23,33 +56,62 @@ export default function SiteShell({ children, heroBackground = false }: SiteShel
           <span>InnoWeb Ventures Ltd</span>
         </Link>
         <nav className={styles.navLinks} aria-label="Primary">
-          <NavLink
-            className={({ isActive }) => `${styles.navLink} ${isActive ? styles.navLinkActive : ""}`}
-            to="/"
-          >
-            Home
-          </NavLink>
-          <NavLink
-            className={({ isActive }) => `${styles.navLink} ${isActive ? styles.navLinkActive : ""}`}
-            to="/capabilities"
-          >
-            Capabilities
-          </NavLink>
-          <NavLink
-            className={({ isActive }) => `${styles.navLink} ${isActive ? styles.navLinkActive : ""}`}
-            to="/work"
-          >
-            Work
-          </NavLink>
+          {internalLinks.map((link) => (
+            <NavLink
+              key={link.label}
+              className={({ isActive }) => `${styles.navLink} ${isActive ? styles.navLinkActive : ""}`}
+              to={link.to ?? "/"}
+            >
+              {link.label}
+            </NavLink>
+          ))}
         </nav>
-        <button className={styles.menuButton} aria-label="Open navigation">
-          <span />
-          <span />
-          <span />
-        </button>
+        <div className={styles.menuWrapper} ref={menuRef}>
+          <button
+            className={styles.menuButton}
+            aria-label="Open navigation"
+            aria-expanded={isMenuOpen}
+            aria-controls="site-menu"
+            onClick={() => setIsMenuOpen((open) => !open)}
+          >
+            <span />
+            <span />
+            <span />
+          </button>
+          {isMenuOpen && (
+            <div className={styles.dropdown} id="site-menu" role="menu">
+              {menuLinks.map((link) =>
+                link.external ? (
+                  <a
+                    key={link.label}
+                    className={styles.dropdownItem}
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    role="menuitem"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {link.label}
+                    <span aria-hidden>↗</span>
+                  </a>
+                ) : (
+                  <Link
+                    key={link.label}
+                    className={styles.dropdownItem}
+                    to={link.to ?? "/"}
+                    role="menuitem"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {link.label}
+                  </Link>
+                )
+              )}
+            </div>
+          )}
+        </div>
       </header>
 
-      <main className={heroBackground ? undefined : styles.mainContent}>{children}</main>
+      <main className={styles.mainContent}>{children}</main>
 
       <footer className={styles.footer}>
         <div>InnoWeb Ventures Ltd</div>

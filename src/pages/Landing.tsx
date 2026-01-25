@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom";
 import SiteShell from "../components/SiteShell";
+import { heroHighlights } from "../content/siteContent";
 import styles from "../styles/home.module.css";
 
 export default function Landing() {
   return (
-    <SiteShell heroBackground>
+    <SiteShell>
       <section className={`${styles.hero} ${styles.sectionAnchor}`}>
         <div className={styles.overlay} />
         <div className={styles.content}>
@@ -14,18 +15,11 @@ export default function Landing() {
           </h1>
           <p className={styles.subtitle}>AI-assisted. Cost-aware. Human-centred.</p>
           <div className={styles.featureButtons}>
-            <Link className={styles.featureButton} to="/capabilities">
-              Neutral networks
-            </Link>
-            <Link className={styles.featureButton} to="/capabilities">
-              Automation
-            </Link>
-            <Link className={styles.featureButton} to="/capabilities">
-              Cloud-native delivery
-            </Link>
-            <Link className={styles.featureButton} to="/capabilities">
-              Design-first experience
-            </Link>
+            {heroHighlights.map((highlight) => (
+              <Link key={highlight.label} className={styles.featureButton} to={highlight.to}>
+                {highlight.label}
+              </Link>
+            ))}
           </div>
           <div className={styles.heroActions}>
             <Link className={styles.primaryButton} to="/work">
