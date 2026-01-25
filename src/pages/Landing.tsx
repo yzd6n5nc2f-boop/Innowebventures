@@ -6,7 +6,7 @@ import styles from "../styles/home.module.css";
 export default function Landing() {
   return (
     <SiteShell>
-      <section className={`${styles.hero} ${styles.sectionAnchor}`}>
+      <section className={`${styles.hero} ${styles.sectionAnchor} ${styles.heroLanding}`}>
         <div className={styles.overlay} />
         <div className={styles.content}>
           <div className={styles.kicker}>High-tech engineering collect</div>

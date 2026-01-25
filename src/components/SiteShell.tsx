@@ -17,6 +17,7 @@ export default function SiteShell({ children }: SiteShellProps) {
   const [logoFailed, setLogoFailed] = useState(false);
   const menuRef = useRef<HTMLDivElement | null>(null);
   const location = useLocation();
+  const isLanding = location.pathname === "/";
   useEffect(() => {
     setIsMenuOpen(false);
   }, [location.pathname]);
@@ -48,7 +49,7 @@ export default function SiteShell({ children }: SiteShellProps) {
   }, [isMenuOpen]);
 
   return (
-    <div className={styles.page} style={heroStyles}>
+    <div className={`${styles.page} ${isLanding ? styles.landingPage : ""}`} style={heroStyles}>
       <header className={styles.topNav}>
         <Link className={styles.brand} to="/">
           {!logoFailed ? (
@@ -109,12 +110,10 @@ export default function SiteShell({ children }: SiteShellProps) {
         </div>
       </header>
 
-      <main className={styles.mainContent}>{children}</main>
+      <main className={`${styles.mainContent} ${isLanding ? styles.landingMain : ""}`}>{children}</main>
 
       <footer className={styles.footer}>
-        <div>InnoWeb Ventures Ltd</div>
-        <div>UK-registered</div>
-        <div>© 2026</div>
+        <div>NO Web Ventures Limited</div>
       </footer>
     </div>
   );
