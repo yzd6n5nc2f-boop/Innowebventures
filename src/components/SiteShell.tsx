@@ -66,8 +66,16 @@ export default function SiteShell({ children }: SiteShellProps) {
           <span>InnoWeb Ventures Ltd</span>
         </Link>
         <div className={styles.menuWrapper} ref={menuRef}>
+          <Link className={styles.iconButton} to="/login" aria-label="Login">
+            <svg viewBox="0 0 24 24" aria-hidden="true" role="presentation" focusable="false">
+              <path
+                d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4Zm0 2c-3.31 0-6 1.79-6 4v1h12v-1c0-2.21-2.69-4-6-4Z"
+                fill="currentColor"
+              />
+            </svg>
+          </Link>
           <button
-            className={styles.menuButton}
+            className={`${styles.iconButton} ${styles.menuButton}`}
             aria-label="Open navigation"
             aria-expanded={isMenuOpen}
             aria-controls="site-menu"
