@@ -1,5 +1,7 @@
 .page {
   position: relative;
+  --footer-height: 56px;
+  --header-offset: 110px;
   min-height: 100vh;
   background-color: #05070b;
   background-image: var(--hero-bg);
@@ -14,7 +16,8 @@
 }
 
 .mainContent {
-  padding-top: 110px;
+  padding-top: var(--header-offset);
+  padding-bottom: var(--footer-height);
   position: relative;
   z-index: 2;
 }
@@ -194,6 +197,25 @@
   padding: clamp(28px, 6vw, 64px) clamp(20px, 6vw, 72px);
   background: transparent;
   isolation: isolate;
+}
+
+.landingPage {
+  height: 100vh;
+  overflow: hidden;
+}
+
+.landingMain {
+  padding-bottom: var(--footer-height);
+}
+
+.heroLanding {
+  min-height: calc(100vh - var(--footer-height) - var(--header-offset));
+  padding-top: clamp(18px, 4vw, 40px);
+  padding-bottom: clamp(26px, 4vw, 48px);
+}
+
+.heroLanding .content {
+  transform: translateY(-12px);
 }
 
 .hero::before {
@@ -675,19 +697,24 @@
 
 .footer {
   display: flex;
-  flex-direction: column;
-  gap: 6px;
   align-items: center;
   justify-content: center;
-  padding: 28px clamp(18px, 6vw, 72px) 40px;
+  height: var(--footer-height);
+  padding: 0 clamp(18px, 6vw, 72px);
   color: #94a3b8;
   font-size: 0.95rem;
   letter-spacing: 0.01em;
   text-align: center;
   border-top: 1px solid rgba(148, 163, 184, 0.2);
   text-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
-  position: relative;
-  z-index: 2;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 4;
+  backdrop-filter: blur(6px);
+  background: rgba(5, 7, 11, 0.65);
+  white-space: nowrap;
 }
 
 .backBar {
