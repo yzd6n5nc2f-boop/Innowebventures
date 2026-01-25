@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import { useEffect, useRef, useState } from "react";
-import { Link, NavLink, useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { menuLinks } from "../content/siteContent";
 import styles from "../styles/home.module.css";
 
@@ -16,8 +16,6 @@ export default function SiteShell({ children }: SiteShellProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement | null>(null);
   const location = useLocation();
-  const internalLinks = menuLinks.filter((link) => !link.external);
-
   useEffect(() => {
     setIsMenuOpen(false);
   }, [location.pathname]);
@@ -52,20 +50,13 @@ export default function SiteShell({ children }: SiteShellProps) {
     <div className={styles.page} style={heroStyles}>
       <header className={styles.topNav}>
         <Link className={styles.brand} to="/">
-          <div className={styles.logoMark} />
+          <img
+            className={styles.brandLogo}
+            src={`${import.meta.env.BASE_URL}branding/logo/innoweb-logo.svg`}
+            alt="InnoWeb Ventures Ltd"
+          />
           <span>InnoWeb Ventures Ltd</span>
         </Link>
-        <nav className={styles.navLinks} aria-label="Primary">
-          {internalLinks.map((link) => (
-            <NavLink
-              key={link.label}
-              className={({ isActive }) => `${styles.navLink} ${isActive ? styles.navLinkActive : ""}`}
-              to={link.to ?? "/"}
-            >
-              {link.label}
-            </NavLink>
-          ))}
-        </nav>
         <div className={styles.menuWrapper} ref={menuRef}>
           <button
             className={styles.menuButton}
