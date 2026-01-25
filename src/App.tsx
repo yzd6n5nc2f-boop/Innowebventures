@@ -1,4 +1,15 @@
-import Home from "./pages/Home";
+import { Route, Routes } from "react-router-dom";
+import Capabilities from "./pages/Capabilities";
+import Landing from "./pages/Landing";
+import Work from "./pages/Work";
+
 export default function App() {
-  return <Home />;
+  return (
+    <Routes>
+      <Route path="/" element={<Landing />} />
+      <Route path="/capabilities" element={<Capabilities />} />
+      <Route path="/work" element={<Work />} />
+      <Route path="*" element={<Landing />} />
+    </Routes>
+  );
 }
