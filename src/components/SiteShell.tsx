@@ -113,7 +113,7 @@ export default function SiteShell({ children }: SiteShellProps) {
       <main className={`${styles.mainContent} ${isLanding ? styles.landingMain : ""}`}>{children}</main>
 
       <footer className={styles.footer}>
-        <div>NO Web Ventures Limited</div>
+        <div>InnoWeb Ventures Limited</div>
       </footer>
     </div>
   );
