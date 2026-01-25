@@ -1,53 +1,16 @@
+import { Link } from "react-router-dom";
 import SiteShell from "../components/SiteShell";
+import { capabilities, methodColumns } from "../content/siteContent";
 import styles from "../styles/home.module.css";
-
-const methodColumns = [
-  {
-    title: "Built with intent, not excess",
-    items: [
-      "Workflows before features.",
-      "AI where it creates leverage.",
-      "Cloud costs driven down.",
-      "Humans in control.",
-    ],
-  },
-  {
-    title: "Intelligence, engineered",
-    items: [
-      "Event-driven AI.",
-      "Batch processing over always-on.",
-      "Clear cost ceilings by design.",
-    ],
-  },
-  {
-    title: "Globally connected, UK-led",
-    locations: "London | Dublin | South Africa | APAC",
-  },
-];
-
-const capabilities = [
-  {
-    title: "Neutral networks",
-    description: "AI plus network intelligence that adapts without the noise.",
-    highlight: true,
-  },
-  {
-    title: "Automation",
-    description: "Workflow-first systems that remove manual drag and error.",
-  },
-  {
-    title: "Cloud-native delivery",
-    description: "Cost-aware architecture designed to scale responsibly.",
-  },
-  {
-    title: "Design-first experience",
-    description: "Calm, usable interfaces that keep humans in control.",
-  },
-];
 
 export default function Capabilities() {
   return (
     <SiteShell>
+      <div className={styles.backBar}>
+        <Link className={styles.backButton} to="/">
+          ← Back to home
+        </Link>
+      </div>
       <section className={`${styles.capabilitiesSection} ${styles.sectionAnchor}`} id="capabilities">
         <div className={styles.sectionHeader}>
           <div className={styles.sectionKicker}>Capabilities</div>
