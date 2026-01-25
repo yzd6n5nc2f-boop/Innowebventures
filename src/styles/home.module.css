@@ -1,6 +1,7 @@
 .page {
   position: relative;
   --footer-height: 56px;
+  --footer-offset: calc(var(--footer-height) + env(safe-area-inset-bottom));
   --header-offset: 110px;
   min-height: 100vh;
   background-color: #05070b;
@@ -17,7 +18,7 @@
 
 .mainContent {
   padding-top: var(--header-offset);
-  padding-bottom: var(--footer-height);
+  padding-bottom: var(--footer-offset);
   position: relative;
   z-index: 2;
 }
@@ -80,8 +81,8 @@
 }
 
 .brandLogo {
-  width: 42px;
-  height: 42px;
+  width: calc(42px * 1.2);
+  height: calc(42px * 1.2);
   border-radius: 12px;
   object-fit: contain;
   display: block;
@@ -89,8 +90,8 @@
 }
 
 .logoMark {
-  width: 42px;
-  height: 42px;
+  width: calc(42px * 1.2);
+  height: calc(42px * 1.2);
   border-radius: 14px;
   background: linear-gradient(145deg, #0ea5e9, #6366f1);
   box-shadow: 0 10px 40px rgba(99, 102, 241, 0.35);
@@ -205,11 +206,11 @@
 }
 
 .landingMain {
-  padding-bottom: var(--footer-height);
+  padding-bottom: var(--footer-offset);
 }
 
 .heroLanding {
-  min-height: calc(100vh - var(--footer-height) - var(--header-offset));
+  min-height: calc(100vh - var(--footer-offset) - var(--header-offset));
   padding-top: clamp(18px, 4vw, 40px);
   padding-bottom: clamp(26px, 4vw, 48px);
 }
@@ -699,7 +700,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: var(--footer-height);
+  height: var(--footer-offset);
   padding: 0 clamp(18px, 6vw, 72px);
   color: #94a3b8;
   font-size: 0.95rem;
