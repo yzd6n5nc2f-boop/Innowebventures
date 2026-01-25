@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import SiteShell from "../components/SiteShell";
 import { capabilities, methodColumns } from "../content/siteContent";
 import styles from "../styles/home.module.css";
@@ -6,11 +5,6 @@ import styles from "../styles/home.module.css";
 export default function Capabilities() {
   return (
     <SiteShell>
-      <div className={styles.backBar}>
-        <Link className={styles.backButton} to="/">
-          ← Back to home
-        </Link>
-      </div>
       <section className={`${styles.capabilitiesSection} ${styles.sectionAnchor}`} id="capabilities">
         <div className={styles.sectionHeader}>
           <div className={styles.sectionKicker}>Capabilities</div>
