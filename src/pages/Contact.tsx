@@ -1,9 +1,36 @@
+import type { FormEvent } from "react";
 import { Link } from "react-router-dom";
 import NextSteps from "../components/NextSteps";
 import SiteShell from "../components/SiteShell";
 import styles from "../styles/home.module.css";
 
+const CONTACT_EMAIL = "mauricio.jardim1@gmail.com";
+
 export default function Contact() {
+  const handleQuickFormSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const formData = new FormData(event.currentTarget);
+    const name = String(formData.get("name") ?? "").trim();
+    const email = String(formData.get("email") ?? "").trim();
+    const company = String(formData.get("company") ?? "").trim();
+    const challenge = String(formData.get("challenge") ?? "").trim();
+
+    const subject = `20-min Build Review Enquiry${company ? ` - ${company}` : ""}`;
+    const body = [
+      "New enquiry from the website quick form:",
+      "",
+      `Name: ${name || "-"}`,
+      `Email: ${email || "-"}`,
+      `Company: ${company || "-"}`,
+      "",
+      "Challenge:",
+      challenge || "-",
+    ].join("\n");
+
+    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  };
+
   return (
     <SiteShell>
       <section className={styles.pageSection}>
@@ -16,10 +43,7 @@ export default function Contact() {
         <article className={styles.summaryCard}>
           <h2>Booking</h2>
           <p>Use this quick option to schedule the review directly with our team.</p>
-          <a
-            className={styles.primaryButton}
-            href="mailto:hello@innowebventures.com?subject=20-min%20Build%20Review"
-          >
+          <a className={styles.primaryButton} href={`mailto:${CONTACT_EMAIL}?subject=20-min%20Build%20Review`}>
             Book now via email
           </a>
         </article>
@@ -27,7 +51,7 @@ export default function Contact() {
         <div className={styles.detailGrid}>
           <article className={styles.infoCard}>
             <h2>Quick form</h2>
-            <form className={styles.formGrid}>
+            <form className={styles.formGrid} onSubmit={handleQuickFormSubmit}>
               <label className={styles.formField}>
                 Name
                 <input className={styles.formInput} type="text" name="name" autoComplete="name" required />
