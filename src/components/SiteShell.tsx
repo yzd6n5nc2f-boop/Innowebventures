@@ -52,8 +52,13 @@ export default function SiteShell({ children }: SiteShellProps) {
     <div className={styles.page} style={heroStyles}>
       <header className={styles.topNav}>
         <Link className={styles.brand} to="/">
-          <div className={styles.logoMark} aria-hidden="true" />
-          <span>InnoWeb Ventures Ltd</span>
+          <img
+            className={styles.brandLogo}
+            src={`${import.meta.env.BASE_URL}branding/logo/innoweb-logo.png`}
+            alt="InnoWeb Ventures logo"
+            loading="eager"
+          />
+          <span className={styles.brandText}>InnoWeb Ventures Ltd</span>
         </Link>
 
         <nav className={styles.navLinks} aria-label="Primary">
