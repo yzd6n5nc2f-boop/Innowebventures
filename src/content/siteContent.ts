@@ -1,106 +1,379 @@
-export type MenuLink = {
+export type NavItem = {
   label: string;
-  to?: string;
-  href?: string;
-  external?: boolean;
+  to: string;
 };
 
-export const menuLinks: MenuLink[] = [
-  { label: "Home", to: "/" },
-  { label: "Capabilities", to: "/capabilities" },
+export type SummaryPath = {
+  title: string;
+  description: string;
+  to: string;
+  cta: string;
+};
+
+export type Product = {
+  slug: string;
+  name: string;
+  audience: string;
+  summary: string;
+  inputsOutputs: string;
+  outcomes: string[];
+  howItWorks: string[];
+  relatedProductSlugs: string[];
+};
+
+export type Service = {
+  slug: string;
+  name: string;
+  duration: string;
+  summary: string;
+  whatYouGet: string[];
+  timeline: string;
+  clientNeeds: string;
+  guardrails: string[];
+};
+
+export type CaseStudy = {
+  slug: string;
+  name: string;
+  problem: string;
+  build: string;
+  result: string;
+  context: string;
+  whatWasBuilt: string[];
+  measurableValue: string[];
+  screenshots: { title: string; imagePath: string }[];
+};
+
+export type NextStep = {
+  label: string;
+  to: string;
+  description: string;
+};
+
+export const headerNav: NavItem[] = [
+  { label: "Products", to: "/products" },
+  { label: "Services", to: "/services" },
   { label: "Work", to: "/work" },
-  // Add external links here when needed, e.g. { label: "LinkedIn", href: "https://...", external: true }
+  { label: "How We Build", to: "/how-we-build" },
+  { label: "About", to: "/about" },
+  { label: "Contact", to: "/contact" },
 ];
 
-export const heroHighlights = [
-  { label: "Neutral networks", to: "/capabilities" },
-  { label: "Automation", to: "/capabilities" },
-  { label: "Cloud-native delivery", to: "/capabilities" },
-  { label: "Design-first experience", to: "/capabilities" },
+export const homeTrustChips = [
+  "Prototype in 10 days",
+  "Human-in-control by design",
+  "Cost ceilings built-in",
 ];
 
-export const capabilities = [
+export const homeSummary =
+  "InnoWeb Ventures builds workflow-first products and delivery systems that reduce manual drag, keep humans in control, and protect budgets from day one.";
+
+export const homePaths: SummaryPath[] = [
   {
-    title: "Neutral networks",
-    description: "AI plus network intelligence that adapts without the noise.",
-    highlight: true,
+    title: "Products",
+    description: "Explore deployable apps with clear inputs, outputs, and outcomes.",
+    to: "/products",
+    cta: "See products",
   },
   {
-    title: "Automation",
-    description: "Workflow-first systems that remove manual drag and error.",
+    title: "Services",
+    description: "Start low-risk with an audit or sprint, then scale into build and support.",
+    to: "/services",
+    cta: "See services",
   },
   {
-    title: "Cloud-native delivery",
-    description: "Cost-aware architecture designed to scale responsibly.",
-  },
-  {
-    title: "Design-first experience",
-    description: "Calm, usable interfaces that keep humans in control.",
+    title: "Work",
+    description: "Review case studies that show problem, build approach, and measurable value.",
+    to: "/work",
+    cta: "See case studies",
   },
 ];
 
-export const methodColumns = [
+export const products: Product[] = [
   {
-    title: "Built with intent, not excess",
-    items: [
-      "Workflows before features.",
-      "AI where it creates leverage.",
-      "Cloud costs driven down.",
-      "Humans in control.",
+    slug: "concordia",
+    name: "Concordia",
+    audience: "Infrastructure and delivery leaders handling high-volume contracts",
+    summary:
+      "Concordia extracts obligations, milestones, and risk signals from contract packs so teams can decide faster.",
+    inputsOutputs:
+      "Inputs: contract PDFs, annexes, procurement notes. Outputs: obligation register, risk summary, action checklist.",
+    outcomes: [
+      "Reduces contract review time across fragmented documents.",
+      "Surfaces hidden obligations before project kickoff.",
+      "Creates a traceable decision log for governance.",
+    ],
+    howItWorks: [
+      "Upload contract pack and define project context.",
+      "Concordia maps clauses to obligations and risk levels.",
+      "Team reviews flagged actions and exports work-ready outputs.",
+    ],
+    relatedProductSlugs: ["tad", "catalog-cruncher"],
+  },
+  {
+    slug: "catalog-cruncher",
+    name: "Catalog Cruncher",
+    audience: "Operations teams managing supplier catalogs and internal part lists",
+    summary:
+      "Catalog Cruncher normalizes inconsistent catalog records and recommends clean mappings for downstream systems.",
+    inputsOutputs:
+      "Inputs: CSV/Excel catalogs, ERP extracts. Outputs: normalized catalogue, match confidence report, exception queue.",
+    outcomes: [
+      "Removes duplicate and conflicting item records.",
+      "Improves procurement search and pricing consistency.",
+      "Cuts manual reconciliation effort each cycle.",
+    ],
+    howItWorks: [
+      "Ingest catalogue data and define target schema.",
+      "Model clusters duplicates and suggests canonical entries.",
+      "Ops approves exceptions and publishes a clean catalogue.",
+    ],
+    relatedProductSlugs: ["concordia", "luxpulse-ai"],
+  },
+  {
+    slug: "tad",
+    name: "TAD",
+    audience: "Trading and decision teams needing signal clarity",
+    summary:
+      "TAD reduces noise in high-frequency information streams and highlights decision-ready signals with context.",
+    inputsOutputs:
+      "Inputs: market/event feeds, analyst notes. Outputs: prioritized signal board, trigger alerts, audit trail.",
+    outcomes: [
+      "Improves decision speed without sacrificing control.",
+      "Creates a consistent signal triage process.",
+      "Provides traceability for post-event review.",
+    ],
+    howItWorks: [
+      "Connect event feeds and define relevance rules.",
+      "TAD ranks signals against risk and confidence thresholds.",
+      "Team validates alerts and acts with full context.",
+    ],
+    relatedProductSlugs: ["concordia", "luxpulse-ai"],
+  },
+  {
+    slug: "luxpulse-ai",
+    name: "Luxpulse-AI",
+    audience: "Product and customer teams improving digital experience",
+    summary:
+      "Luxpulse-AI identifies drop-off patterns and suggests workflow-level improvements for faster user outcomes.",
+    inputsOutputs:
+      "Inputs: product events, funnel metrics, support signals. Outputs: friction map, prioritized improvements, impact tracker.",
+    outcomes: [
+      "Highlights the journeys causing avoidable friction.",
+      "Aligns teams on the highest-impact improvements first.",
+      "Tracks intervention impact against baseline metrics.",
+    ],
+    howItWorks: [
+      "Connect usage and support data sources.",
+      "Luxpulse-AI maps friction points by segment and flow.",
+      "Teams ship targeted fixes and monitor outcome shifts.",
+    ],
+    relatedProductSlugs: ["catalog-cruncher", "tad"],
+  },
+];
+
+export const services: Service[] = [
+  {
+    slug: "automation-audit",
+    name: "Automation Audit",
+    duration: "1 week",
+    summary:
+      "A rapid diagnostic to identify automation opportunities, risk points, and the fastest path to measurable wins.",
+    whatYouGet: [
+      "Current-state workflow map",
+      "Opportunity and risk register",
+      "Prioritized 30-day action plan",
+    ],
+    timeline: "5 working days from kickoff to readout.",
+    clientNeeds:
+      "Access to key process owners, sample workflow data, and one decision-maker for readouts.",
+    guardrails: [
+      "Cost ceiling agreed before analysis starts.",
+      "Human sign-off gates on all recommended automations.",
+      "No production changes during audit week.",
     ],
   },
   {
-    title: "Intelligence, engineered",
-    items: [
-      "Event-driven AI.",
-      "Batch processing over always-on.",
-      "Clear cost ceilings by design.",
+    slug: "prototype-sprint",
+    name: "Prototype Sprint",
+    duration: "10 days",
+    summary:
+      "A focused sprint to prove a workflow with a working prototype and a clear go/no-go decision.",
+    whatYouGet: [
+      "Working prototype for one priority workflow",
+      "Validation session with stakeholders",
+      "Delivery plan for production build",
+    ],
+    timeline: "10 working days, including demo and decision checkpoint.",
+    clientNeeds:
+      "Single workflow owner, access to representative data, and 2-3 feedback touchpoints across the sprint.",
+    guardrails: [
+      "Scope locked to one workflow to keep risk low.",
+      "Human-in-control review before demo release.",
+      "Explicit budget cap for prototype phase.",
     ],
   },
   {
-    title: "Globally connected, UK-led",
-    locations: "London | Dublin | South Africa | APAC",
+    slug: "build-integrate",
+    name: "Build & Integrate",
+    duration: "4-8 weeks",
+    summary:
+      "Production delivery for validated workflows with integration into your existing tools, controls, and reporting.",
+    whatYouGet: [
+      "Production-grade workflow system",
+      "Integration with existing stack",
+      "Operational handover and enablement",
+    ],
+    timeline: "Typically 4-8 weeks based on integration complexity.",
+    clientNeeds:
+      "Access to target systems, technical counterpart, and weekly steering decisions.",
+    guardrails: [
+      "Milestone-based releases with rollback paths.",
+      "Usage and cost telemetry from day one.",
+      "Approval checkpoints for governance and security.",
+    ],
+  },
+  {
+    slug: "support-optimisation",
+    name: "Support & Optimisation",
+    duration: "Retainer",
+    summary:
+      "Ongoing support to improve performance, cost efficiency, and operational reliability as your workflows evolve.",
+    whatYouGet: [
+      "Monthly optimisation backlog",
+      "Performance and cost review cadence",
+      "Issue response and incremental enhancements",
+    ],
+    timeline: "Rolling monthly cycles with agreed service windows.",
+    clientNeeds:
+      "Named owner for priorities, shared KPI targets, and a monthly review session.",
+    guardrails: [
+      "Cost thresholds monitored continuously.",
+      "Operational changes reviewed with human checkpointing.",
+      "Security and governance controls revalidated each cycle.",
+    ],
   },
 ];
 
-export const liveWorkItems = [
+export const caseStudies: CaseStudy[] = [
   {
-    title: "TAD",
-    subtitle: "Trading clarity without noise",
-    badge: "LIVE",
-    badgeTone: "live",
-    url: "https://lively-bush-0409b5010.1.azurestaticapps.net",
-    previewTitle: "TAD live preview",
+    slug: "concordia-infrastructure",
+    name: "Concordia for Infrastructure Delivery",
+    problem: "Contract obligations were scattered across large document packs.",
+    build: "Obligation extraction and risk flagging workflow with review checkpoints.",
+    result: "Faster readiness reviews with a single action register.",
+    context:
+      "A delivery team needed to reduce late surprises in contract-heavy programmes while preserving governance control.",
+    whatWasBuilt: [
+      "Clause classification pipeline for obligation mapping",
+      "Risk scoring model with human review queue",
+      "Export-ready checklist for delivery teams",
+    ],
+    measurableValue: [
+      "Placeholder: 25-35% reduction in initial contract review cycle time",
+      "Placeholder: improved obligation traceability across programme teams",
+      "Placeholder: faster escalation on high-risk clauses",
+    ],
+    screenshots: [
+      { title: "Obligation dashboard", imagePath: "branding/innoweb-hero-bg-desktop.jpeg" },
+      { title: "Risk review queue", imagePath: "branding/innoweb-hero-bg-mobile.jpeg" },
+    ],
   },
   {
-    title: "Concordia",
-    subtitle: "Contract intelligence for infrastructure",
-    badge: "LIVE",
-    badgeTone: "live",
-    url: "https://white-mushroom-039e8e310.6.azurestaticapps.net",
-    previewTitle: "Concordia live preview",
+    slug: "tad-signal-ops",
+    name: "TAD Signal Operations",
+    problem: "Decision teams were overwhelmed by high-noise event streams.",
+    build: "Signal ranking pipeline with confidence and risk thresholds.",
+    result: "Cleaner triage and more consistent actioning.",
+    context:
+      "A fast-moving operations function needed a repeatable way to separate high-value signals from routine noise.",
+    whatWasBuilt: [
+      "Ingestion from event and note feeds",
+      "Priority scoring tuned to operational thresholds",
+      "Action board with full audit trail",
+    ],
+    measurableValue: [
+      "Placeholder: 30% faster triage during peak periods",
+      "Placeholder: improved consistency in signal handling decisions",
+      "Placeholder: reduced manual escalation churn",
+    ],
+    screenshots: [
+      { title: "Signal board", imagePath: "branding/innoweb-hero-bg-desktop.jpeg" },
+      { title: "Event detail", imagePath: "branding/innoweb-hero-bg-mobile.jpeg" },
+    ],
   },
   {
-    title: "Luxpulse-AI",
-    subtitle: "AI-powered product experience",
-    badge: "LIVE",
-    badgeTone: "live",
-    url: "https://orange-bush-0d6e2d310.1.azurestaticapps.net",
-    previewTitle: "Luxpulse-AI live preview",
+    slug: "luxpulse-experience-loop",
+    name: "Luxpulse-AI Experience Loop",
+    problem: "Product teams lacked a shared view of friction across key journeys.",
+    build: "Friction mapping and recommendation flow linked to outcome tracking.",
+    result: "Prioritized improvements tied to measurable shifts.",
+    context:
+      "A growth-stage product team wanted to target interventions where customer friction had the highest impact.",
+    whatWasBuilt: [
+      "Journey-level friction detection",
+      "Recommendation scoring based on impact potential",
+      "Outcome tracker for shipped improvements",
+    ],
+    measurableValue: [
+      "Placeholder: 15-20% improvement in target funnel completion",
+      "Placeholder: faster prioritisation of UX improvements",
+      "Placeholder: clearer alignment across product and ops teams",
+    ],
+    screenshots: [
+      { title: "Friction map", imagePath: "branding/innoweb-hero-bg-desktop.jpeg" },
+      { title: "Impact tracker", imagePath: "branding/innoweb-hero-bg-mobile.jpeg" },
+    ],
   },
 ];
 
-export const secondaryWorkItems = [
+export const howWeBuildPillars = [
   {
-    title: "Workflow Engine",
-    subtitle: "Designing operations before they break",
-    badge: "PROTOTYPE",
-    badgeTone: "concept",
+    title: "Workflow-first",
+    description: "We map decisions and handoffs first, then choose tooling.",
   },
   {
-    title: "Compliance Lens",
-    subtitle: "Seeing risk before it’s cost",
-    badge: "CONCEPT",
-    badgeTone: "concept",
+    title: "Human-in-control loop",
+    description: "Critical actions always include review and override controls.",
+  },
+  {
+    title: "Cost ceilings built-in",
+    description: "Budgets are treated as product constraints, not afterthoughts.",
+  },
+  {
+    title: "Security & governance",
+    description: "Controls and traceability are part of the architecture from day one.",
   },
 ];
+
+export const deliveryPhases = ["Discover", "Prototype", "Build", "Support"];
+
+export const footerNextSteps: NextStep[] = [
+  {
+    label: "Explore Products",
+    to: "/products",
+    description: "See app capabilities and choose a fit for your workflow.",
+  },
+  {
+    label: "Review Services",
+    to: "/services",
+    description: "Choose a low-risk engagement path to get started.",
+  },
+  {
+    label: "Book a Build Review",
+    to: "/contact",
+    description: "Book a 20-minute session to scope next steps.",
+  },
+];
+
+export function getProductBySlug(slug?: string) {
+  return products.find((item) => item.slug === slug);
+}
+
+export function getServiceBySlug(slug?: string) {
+  return services.find((item) => item.slug === slug);
+}
+
+export function getCaseStudyBySlug(slug?: string) {
+  return caseStudies.find((item) => item.slug === slug);
+}

@@ -1,7 +1,7 @@
-import type { ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 import { useEffect, useRef, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
-import { menuLinks } from "../content/siteContent";
+import { Link, NavLink, useLocation } from "react-router-dom";
+import { headerNav } from "../content/siteContent";
 import styles from "../styles/home.module.css";
 
 type SiteShellProps = {
@@ -10,14 +10,14 @@ type SiteShellProps = {
 
 export default function SiteShell({ children }: SiteShellProps) {
   const heroStyles = {
-    ["--hero-bg" as any]: `url(${import.meta.env.BASE_URL}branding/innoweb-hero-bg-desktop.jpeg)`,
-    ["--hero-bg-mobile" as any]: `url(${import.meta.env.BASE_URL}branding/innoweb-hero-bg-mobile.jpeg)`,
-  };
+    ["--hero-bg" as const]: `url(${import.meta.env.BASE_URL}branding/innoweb-hero-bg-desktop.jpeg)`,
+    ["--hero-bg-mobile" as const]: `url(${import.meta.env.BASE_URL}branding/innoweb-hero-bg-mobile.jpeg)`,
+  } as CSSProperties;
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [logoFailed, setLogoFailed] = useState(false);
   const menuRef = useRef<HTMLDivElement | null>(null);
   const location = useLocation();
-  const isLanding = location.pathname === "/";
+
   useEffect(() => {
     setIsMenuOpen(false);
   }, [location.pathname]);
@@ -49,79 +49,64 @@ export default function SiteShell({ children }: SiteShellProps) {
   }, [isMenuOpen]);
 
   return (
-    <div className={`${styles.page} ${isLanding ? styles.landingPage : ""}`} style={heroStyles}>
+    <div className={styles.page} style={heroStyles}>
       <header className={styles.topNav}>
         <Link className={styles.brand} to="/">
-          {!logoFailed ? (
-            <img
-              className={styles.brandLogo}
-              src={`${import.meta.env.BASE_URL}branding/logo/innoweb-logo.png`}
-              alt="InnoWeb Ventures logo"
-              loading="eager"
-              onError={() => setLogoFailed(true)}
-            />
-          ) : (
-            <div className={styles.logoMark} aria-hidden="true" />
-          )}
+          <div className={styles.logoMark} aria-hidden="true" />
           <span>InnoWeb Ventures Ltd</span>
         </Link>
-        <div className={styles.menuWrapper} ref={menuRef}>
-          <Link className={styles.iconButton} to="/login" aria-label="Login">
-            <svg viewBox="0 0 24 24" aria-hidden="true" role="presentation" focusable="false">
-              <path
-                d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4Zm0 2c-3.31 0-6 1.79-6 4v1h12v-1c0-2.21-2.69-4-6-4Z"
-                fill="currentColor"
-              />
-            </svg>
+
+        <nav className={styles.navLinks} aria-label="Primary">
+          {headerNav.map((link) => (
+            <NavLink
+              key={link.label}
+              className={({ isActive }) => `${styles.navLink} ${isActive ? styles.navLinkActive : ""}`}
+              to={link.to}
+            >
+              {link.label}
+            </NavLink>
+          ))}
+        </nav>
+
+        <div className={styles.headerActions}>
+          <Link className={styles.headerCta} to="/contact">
+            Book a 20-min Build Review
           </Link>
-          <button
-            className={`${styles.iconButton} ${styles.menuButton}`}
-            aria-label="Open navigation"
-            aria-expanded={isMenuOpen}
-            aria-controls="site-menu"
-            onClick={() => setIsMenuOpen((open) => !open)}
-          >
-            <span />
-            <span />
-            <span />
-          </button>
-          {isMenuOpen && (
-            <div className={styles.dropdown} id="site-menu" role="menu">
-              {menuLinks.map((link) =>
-                link.external ? (
-                  <a
-                    key={link.label}
-                    className={styles.dropdownItem}
-                    href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    role="menuitem"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    {link.label}
-                    <span aria-hidden>↗</span>
-                  </a>
-                ) : (
-                  <Link
-                    key={link.label}
-                    className={styles.dropdownItem}
-                    to={link.to ?? "/"}
-                    role="menuitem"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
+
+          <div className={styles.menuWrapper} ref={menuRef}>
+            <button
+              className={styles.menuButton}
+              aria-label="Open navigation"
+              aria-expanded={isMenuOpen}
+              aria-controls="site-menu"
+              onClick={() => setIsMenuOpen((open) => !open)}
+            >
+              <span />
+              <span />
+              <span />
+            </button>
+
+            {isMenuOpen && (
+              <div className={styles.dropdown} id="site-menu" role="menu">
+                <Link className={`${styles.dropdownItem} ${styles.mobileCta}`} role="menuitem" to="/contact">
+                  Book a 20-min Build Review
+                </Link>
+                {headerNav.map((link) => (
+                  <Link key={link.label} className={styles.dropdownItem} role="menuitem" to={link.to}>
                     {link.label}
                   </Link>
-                )
-              )}
-            </div>
-          )}
+                ))}
+              </div>
+            )}
+          </div>
         </div>
       </header>
 
-      <main className={`${styles.mainContent} ${isLanding ? styles.landingMain : ""}`}>{children}</main>
+      <main className={styles.mainContent}>{children}</main>
 
       <footer className={styles.footer}>
         <div>InnoWeb Ventures Limited</div>
+        <div>Workflow-first delivery. Human-controlled automation.</div>
       </footer>
     </div>
   );

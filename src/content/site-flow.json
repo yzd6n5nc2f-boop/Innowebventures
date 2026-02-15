@@ -1,0 +1,64 @@
+{
+  "routes": [
+    {
+      "path": "/",
+      "name": "Home",
+      "purpose": "Positioning + primary conversion",
+      "next": ["/products", "/services", "/work"]
+    },
+    {
+      "path": "/products",
+      "name": "Products",
+      "purpose": "App catalogue",
+      "next": ["/products/:slug", "/services", "/contact"]
+    },
+    {
+      "path": "/products/:slug",
+      "name": "Product detail",
+      "purpose": "Outcome and workflow fit",
+      "next": ["/services", "/work", "/contact"]
+    },
+    {
+      "path": "/services",
+      "name": "Services",
+      "purpose": "Delivery options",
+      "next": ["/services/:slug", "/products", "/contact"]
+    },
+    {
+      "path": "/services/:slug",
+      "name": "Service detail",
+      "purpose": "Scope, guardrails, and checkpoints",
+      "next": ["/products", "/work", "/contact"]
+    },
+    {
+      "path": "/work",
+      "name": "Case studies",
+      "purpose": "Proof",
+      "next": ["/work/:slug", "/products", "/contact"]
+    },
+    {
+      "path": "/work/:slug",
+      "name": "Case study detail",
+      "purpose": "Context, build, measurable value",
+      "next": ["/products", "/services", "/contact"]
+    },
+    {
+      "path": "/how-we-build",
+      "name": "How We Build",
+      "purpose": "Delivery philosophy",
+      "next": ["/services", "/work", "/contact"]
+    },
+    {
+      "path": "/about",
+      "name": "About",
+      "purpose": "Trust and principles",
+      "next": ["/products", "/services", "/contact"]
+    },
+    {
+      "path": "/contact",
+      "name": "Contact",
+      "purpose": "Conversion",
+      "next": ["/products", "/services", "/work"]
+    }
+  ]
+}
