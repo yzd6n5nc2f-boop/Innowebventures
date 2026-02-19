@@ -4,7 +4,7 @@ import NextSteps from "../components/NextSteps";
 import SiteShell from "../components/SiteShell";
 import styles from "../styles/home.module.css";
 
-const CONTACT_EMAIL = "mauricio.jardim1@gmail.com";
+const CONTACT_EMAIL = "info@innowebventures.com";
 const CONTACT_ENDPOINT = `https://formsubmit.co/ajax/${CONTACT_EMAIL}`;
 
 export default function Contact() {
