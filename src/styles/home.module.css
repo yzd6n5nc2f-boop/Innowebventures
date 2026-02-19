@@ -611,6 +611,24 @@
   font: inherit;
 }
 
+.formActions {
+  display: grid;
+  gap: 8px;
+}
+
+.formStatus {
+  margin: 0;
+  font-size: 0.88rem;
+}
+
+.formStatusSuccess {
+  color: #8ee8c7;
+}
+
+.formStatusError {
+  color: #ffb2b2;
+}
+
 .footer {
   position: relative;
   z-index: 2;

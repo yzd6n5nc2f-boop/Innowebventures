@@ -1,13 +1,17 @@
-import type { FormEvent } from "react";
+import { useState, type FormEvent } from "react";
 import { Link } from "react-router-dom";
 import NextSteps from "../components/NextSteps";
 import SiteShell from "../components/SiteShell";
 import styles from "../styles/home.module.css";
 
 const CONTACT_EMAIL = "mauricio.jardim1@gmail.com";
+const CONTACT_ENDPOINT = `https://formsubmit.co/ajax/${CONTACT_EMAIL}`;
 
 export default function Contact() {
-  const handleQuickFormSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [statusMessage, setStatusMessage] = useState<{ type: "success" | "error"; text: string } | null>(null);
+
+  const handleQuickFormSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     const formData = new FormData(event.currentTarget);
@@ -17,18 +21,43 @@ export default function Contact() {
     const challenge = String(formData.get("challenge") ?? "").trim();
 
     const subject = `20-min Build Review Enquiry${company ? ` - ${company}` : ""}`;
-    const body = [
-      "New enquiry from the website quick form:",
-      "",
-      `Name: ${name || "-"}`,
-      `Email: ${email || "-"}`,
-      `Company: ${company || "-"}`,
-      "",
-      "Challenge:",
-      challenge || "-",
-    ].join("\n");
+    setIsSubmitting(true);
+    setStatusMessage(null);
 
-    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    try {
+      const response = await fetch(CONTACT_ENDPOINT, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          name,
+          email,
+          company,
+          challenge,
+          _subject: subject,
+          _captcha: "false",
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`Failed to submit enquiry: ${response.status}`);
+      }
+
+      event.currentTarget.reset();
+      setStatusMessage({
+        type: "success",
+        text: "Thanks. Your enquiry was sent successfully and we will reply soon.",
+      });
+    } catch {
+      setStatusMessage({
+        type: "error",
+        text: "We could not send your enquiry right now. Please try again in a moment.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -42,16 +71,16 @@ export default function Contact() {
 
         <article className={styles.summaryCard}>
           <h2>Booking</h2>
-          <p>Use this quick option to schedule the review directly with our team.</p>
-          <a className={styles.primaryButton} href={`mailto:${CONTACT_EMAIL}?subject=20-min%20Build%20Review`}>
-            Book now via email
+          <p>Use the quick form below to schedule the review directly with our team.</p>
+          <a className={styles.primaryButton} href="#quick-form">
+            Start quick form
           </a>
         </article>
 
         <div className={styles.detailGrid}>
           <article className={styles.infoCard}>
             <h2>Quick form</h2>
-            <form className={styles.formGrid} onSubmit={handleQuickFormSubmit}>
+            <form className={styles.formGrid} id="quick-form" onSubmit={handleQuickFormSubmit}>
               <label className={styles.formField}>
                 Name
                 <input className={styles.formInput} type="text" name="name" autoComplete="name" required />
@@ -68,9 +97,22 @@ export default function Contact() {
                 What are you trying to improve?
                 <textarea className={styles.formInput} name="challenge" rows={4} />
               </label>
-              <button className={styles.secondaryButton} type="submit">
-                Send enquiry
-              </button>
+              <div className={styles.formActions}>
+                <button className={styles.secondaryButton} type="submit" disabled={isSubmitting}>
+                  {isSubmitting ? "Sending..." : "Send enquiry"}
+                </button>
+                {statusMessage ? (
+                  <p
+                    className={`${styles.formStatus} ${
+                      statusMessage.type === "success" ? styles.formStatusSuccess : styles.formStatusError
+                    }`}
+                    role="status"
+                    aria-live="polite"
+                  >
+                    {statusMessage.text}
+                  </p>
+                ) : null}
+              </div>
             </form>
           </article>
 
