@@ -4,7 +4,7 @@ import NextSteps from "../components/NextSteps";
 import SiteShell from "../components/SiteShell";
 import styles from "../styles/home.module.css";
 
-const CONTACT_EMAIL = "info@innowebventures.com";
+const CONTACT_EMAIL = "mauricio.jardim1@gmail.com";
 const CONTACT_ENDPOINT = `https://formsubmit.co/ajax/${CONTACT_EMAIL}`;
 
 export default function Contact() {
@@ -41,8 +41,17 @@ export default function Contact() {
         }),
       });
 
-      if (!response.ok) {
-        throw new Error(`Failed to submit enquiry: ${response.status}`);
+      const responsePayload: { success?: boolean | string; message?: string } | null = await response
+        .json()
+        .catch(() => null);
+
+      const failedByStatus = !response.ok;
+      const failedByPayload =
+        responsePayload?.success === false || String(responsePayload?.success ?? "").toLowerCase() === "false";
+
+      if (failedByStatus || failedByPayload) {
+        const providerMessage = responsePayload?.message?.trim();
+        throw new Error(providerMessage || `Failed to submit enquiry: ${response.status}`);
       }
 
       event.currentTarget.reset();
@@ -50,10 +59,13 @@ export default function Contact() {
         type: "success",
         text: "Thanks. Your enquiry was sent successfully and we will reply soon.",
       });
-    } catch {
+    } catch (error) {
+      const providerMessage = error instanceof Error ? error.message : "";
       setStatusMessage({
         type: "error",
-        text: "We could not send your enquiry right now. Please try again in a moment.",
+        text: providerMessage
+          ? `We could not send your enquiry right now: ${providerMessage}`
+          : "We could not send your enquiry right now. Please try again in a moment.",
       });
     } finally {
       setIsSubmitting(false);
