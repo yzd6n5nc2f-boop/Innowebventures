@@ -16,8 +16,9 @@ export default function About() {
           <div className={styles.sectionKicker}>About</div>
           <h1>InnoWeb Ventures Limited</h1>
           <p>
-            We are a UK-led engineering collective focused on practical AI and automation systems for real operational
-            workflows.
+            We are a UK-led delivery collective working with partners across a broad range of professional services,
+            from engineering and construction to commercial and go-to-market teams, to build practical AI-assisted
+            automation systems for real operational workflows.
           </p>
         </div>
 

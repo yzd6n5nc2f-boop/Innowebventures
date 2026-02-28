@@ -9,17 +9,17 @@ export default function Landing() {
     <SiteShell>
       <section className={`${styles.pageSection} ${styles.heroSection}`}>
         <div className={styles.heroPanel}>
-          <div className={styles.kicker}>High-tech engineering collect</div>
+          <div className={styles.kicker}>AI-first, logic-led</div>
           <h1>
-            Engineering digital systems for the next industrial era. <span>Secure. Scalable. Visionary.</span>
+            We build workflow systems where AI assists, and people stay in control.
           </h1>
-          <p className={styles.subtitle}>AI-assisted. Cost-aware. Human-centred.</p>
+          <p className={styles.subtitle}>Analog thinking. Digital execution. Human-in-the-loop by design.</p>
           <div className={styles.heroActions}>
             <Link className={styles.primaryButton} to="/contact">
               Book a 20-min Build Review
             </Link>
-            <Link className={styles.secondaryButton} to="/products">
-              See Products
+            <Link className={styles.secondaryButton} to="/services">
+              See what we do
             </Link>
           </div>
         </div>
@@ -55,19 +55,19 @@ export default function Landing() {
       <NextSteps
         steps={[
           {
-            label: "Browse Products",
-            to: "/products",
-            description: "Start with the app catalogue and pick your best-fit workflow.",
+            label: "Book a Build Review",
+            to: "/contact",
+            description: "Bring one workflow challenge. Leave with a practical next step.",
           },
           {
             label: "Compare Services",
             to: "/services",
-            description: "Choose a low-risk engagement from audit to build.",
+            description: "Choose a low-risk entry point from review to build.",
           },
           {
             label: "Review Case Studies",
             to: "/work",
-            description: "See proof of delivery and measurable outcomes.",
+            description: "See how similar workflows were delivered.",
           },
         ]}
       />

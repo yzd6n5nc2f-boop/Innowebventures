@@ -9,9 +9,12 @@ export default function Products() {
     <SiteShell>
       <section className={styles.pageSection}>
         <div className={styles.pageIntro}>
-          <div className={styles.sectionKicker}>Products</div>
-          <h1>App catalogue for workflow-first delivery.</h1>
-          <p>Choose a product, review fit, and move to a focused demo quickly.</p>
+          <div className={styles.sectionKicker}>Capabilities</div>
+          <h1>Logic-based applications for workflow automation.</h1>
+          <p>
+            We build and integrate tailored systems that connect people, processes, and data, using AI where it
+            helps and human oversight where it matters.
+          </p>
         </div>
 
         <div className={styles.cardGrid}>

@@ -60,32 +60,32 @@ export const headerNav: NavItem[] = [
 ];
 
 export const homeTrustChips = [
-  "Prototype in 10 days",
-  "Human-in-control by design",
-  "Cost ceilings built-in",
+  "Human-in-the-loop governance",
+  "Clear cost and scope ceilings",
+  "Built for real-world operations",
 ];
 
 export const homeSummary =
-  "InnoWeb Ventures builds workflow-first products and delivery systems that reduce manual drag, keep humans in control, and protect budgets from day one.";
+  "InnoWeb Ventures collaborates with partners across a broad range of professional services, including engineering, construction, civil delivery, commercial operations, and go-to-market functions, to build logic-based applications that automate workflow handoffs with AI assistance. We focus on practical systems that monitor, coordinate, and reduce manual workload while keeping critical decisions with humans.";
 
 export const homePaths: SummaryPath[] = [
   {
-    title: "Products",
-    description: "Explore deployable apps with clear inputs, outputs, and outcomes.",
-    to: "/products",
-    cta: "See products",
-  },
-  {
     title: "Services",
-    description: "Start low-risk with an audit or sprint, then scale into build and support.",
+    description: "Start with a low-risk review, then prototype and build in controlled milestones.",
     to: "/services",
     cta: "See services",
   },
   {
     title: "Work",
-    description: "Review case studies that show problem, build approach, and measurable value.",
+    description: "Browse delivery snapshots that show workflow challenge, build approach, and outcomes.",
     to: "/work",
     cta: "See case studies",
+  },
+  {
+    title: "How We Build",
+    description: "Understand our human-in-control method and cost guardrails.",
+    to: "/how-we-build",
+    cta: "See method",
   },
 ];
 
@@ -113,11 +113,11 @@ export const products: Product[] = [
   {
     slug: "catalog-cruncher",
     name: "Catalog Cruncher",
-    audience: "Operations teams managing supplier catalogs and internal part lists",
+    audience: "Operations teams managing supplier catalogues and internal part lists",
     summary:
-      "Catalog Cruncher normalizes inconsistent catalog records and recommends clean mappings for downstream systems.",
+      "Catalog Cruncher standardises inconsistent catalogue records and recommends clean mappings for downstream systems.",
     inputsOutputs:
-      "Inputs: CSV/Excel catalogs, ERP extracts. Outputs: normalized catalogue, match confidence report, exception queue.",
+      "Inputs: CSV/Excel catalogues, ERP extracts. Outputs: normalised catalogue, match confidence report, exception queue.",
     outcomes: [
       "Removes duplicate and conflicting item records.",
       "Improves procurement search and pricing consistency.",
@@ -137,7 +137,7 @@ export const products: Product[] = [
     summary:
       "TAD reduces noise in high-frequency information streams and highlights decision-ready signals with context.",
     inputsOutputs:
-      "Inputs: market/event feeds, analyst notes. Outputs: prioritized signal board, trigger alerts, audit trail.",
+      "Inputs: market/event feeds, analyst notes. Outputs: prioritised signal board, trigger alerts, audit trail.",
     outcomes: [
       "Improves decision speed without sacrificing control.",
       "Creates a consistent signal triage process.",
@@ -157,7 +157,7 @@ export const products: Product[] = [
     summary:
       "Luxpulse-AI identifies drop-off patterns and suggests workflow-level improvements for faster user outcomes.",
     inputsOutputs:
-      "Inputs: product events, funnel metrics, support signals. Outputs: friction map, prioritized improvements, impact tracker.",
+      "Inputs: product events, funnel metrics, support signals. Outputs: friction map, prioritised improvements, impact tracker.",
     outcomes: [
       "Highlights the journeys causing avoidable friction.",
       "Aligns teams on the highest-impact improvements first.",

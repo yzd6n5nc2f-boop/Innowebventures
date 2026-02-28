@@ -48,48 +48,48 @@ This document lists the exact user-facing text in the live routed pages defined 
 
 ### Hero
 
-- Kicker: `High-tech engineering collect`
-- H1: `Engineering digital systems for the next industrial era. Secure. Scalable. Visionary.`
-- Subtitle: `AI-assisted. Cost-aware. Human-centred.`
+- Kicker: `AI-first, logic-led`
+- H1: `We build workflow systems where AI assists, and people stay in control.`
+- Subtitle: `Analog thinking. Digital execution. Human-in-the-loop by design.`
 - CTA: `Book a 20-min Build Review` -> `/contact`
-- CTA: `See Products` -> `/products`
+- CTA: `See what we do` -> `/services`
 
 ### Trust Chips
 
-- `Prototype in 10 days`
-- `Human-in-control by design`
-- `Cost ceilings built-in`
+- `Human-in-the-loop governance`
+- `Clear cost and scope ceilings`
+- `Built for real-world operations`
 
 ### What We Do
 
 - Heading: `What we do`
-- Body: `InnoWeb Ventures builds workflow-first products and delivery systems that reduce manual drag, keep humans in control, and protect budgets from day one.`
+- Body: `InnoWeb Ventures collaborates with partners across a broad range of professional services, including engineering, construction, civil delivery, commercial operations, and go-to-market functions, to build logic-based applications that automate workflow handoffs with AI assistance. We focus on practical systems that monitor, coordinate, and reduce manual workload while keeping critical decisions with humans.`
 
 ### Path Cards
 
-- Title: `Products`
-- Description: `Explore deployable apps with clear inputs, outputs, and outcomes.`
-- CTA: `See products` -> `/products`
 - Title: `Services`
-- Description: `Start low-risk with an audit or sprint, then scale into build and support.`
+- Description: `Start with a low-risk review, then prototype and build in controlled milestones.`
 - CTA: `See services` -> `/services`
 - Title: `Work`
-- Description: `Review case studies that show problem, build approach, and measurable value.`
+- Description: `Browse delivery snapshots that show workflow challenge, build approach, and outcomes.`
 - CTA: `See case studies` -> `/work`
+- Title: `How We Build`
+- Description: `Understand our human-in-control method and cost guardrails.`
+- CTA: `See method` -> `/how-we-build`
 
 ### Next Step Cards
 
-- `Browse Products` -> `Start with the app catalogue and pick your best-fit workflow.` -> `/products`
-- `Compare Services` -> `Choose a low-risk engagement from audit to build.` -> `/services`
-- `Review Case Studies` -> `See proof of delivery and measurable outcomes.` -> `/work`
+- `Book a Build Review` -> `Bring one workflow challenge. Leave with a practical next step.` -> `/contact`
+- `Compare Services` -> `Choose a low-risk entry point from review to build.` -> `/services`
+- `Review Case Studies` -> `See how similar workflows were delivered.` -> `/work`
 
 ## Route: `/products`
 
 ### Intro
 
-- Kicker: `Products`
-- H1: `App catalogue for workflow-first delivery.`
-- Body: `Choose a product, review fit, and move to a focused demo quickly.`
+- Kicker: `Capabilities`
+- H1: `Logic-based applications for workflow automation.`
+- Body: `We build and integrate tailored systems that connect people, processes, and data, using AI where it helps and human oversight where it matters.`
 
 ### Product Card Labels
 
@@ -110,23 +110,23 @@ This document lists the exact user-facing text in the live routed pages defined 
 #### Catalog Cruncher (`/products/catalog-cruncher`)
 
 - Name: `Catalog Cruncher`
-- Who it is for: `Operations teams managing supplier catalogs and internal part lists`
-- What it does: `Catalog Cruncher normalizes inconsistent catalog records and recommends clean mappings for downstream systems.`
-- Inputs/Outputs: `Inputs: CSV/Excel catalogs, ERP extracts. Outputs: normalized catalogue, match confidence report, exception queue.`
+- Who it is for: `Operations teams managing supplier catalogues and internal part lists`
+- What it does: `Catalog Cruncher standardises inconsistent catalogue records and recommends clean mappings for downstream systems.`
+- Inputs/Outputs: `Inputs: CSV/Excel catalogues, ERP extracts. Outputs: normalised catalogue, match confidence report, exception queue.`
 
 #### TAD (`/products/tad`)
 
 - Name: `TAD`
 - Who it is for: `Trading and decision teams needing signal clarity`
 - What it does: `TAD reduces noise in high-frequency information streams and highlights decision-ready signals with context.`
-- Inputs/Outputs: `Inputs: market/event feeds, analyst notes. Outputs: prioritized signal board, trigger alerts, audit trail.`
+- Inputs/Outputs: `Inputs: market/event feeds, analyst notes. Outputs: prioritised signal board, trigger alerts, audit trail.`
 
 #### Luxpulse-AI (`/products/luxpulse-ai`)
 
 - Name: `Luxpulse-AI`
 - Who it is for: `Product and customer teams improving digital experience`
 - What it does: `Luxpulse-AI identifies drop-off patterns and suggests workflow-level improvements for faster user outcomes.`
-- Inputs/Outputs: `Inputs: product events, funnel metrics, support signals. Outputs: friction map, prioritized improvements, impact tracker.`
+- Inputs/Outputs: `Inputs: product events, funnel metrics, support signals. Outputs: friction map, prioritised improvements, impact tracker.`
 
 ### Next Step Cards
 
@@ -165,7 +165,7 @@ This document lists the exact user-facing text in the live routed pages defined 
 
 #### Catalog Cruncher
 
-- Summary: `Catalog Cruncher normalizes inconsistent catalog records and recommends clean mappings for downstream systems.`
+- Summary: `Catalog Cruncher standardises inconsistent catalogue records and recommends clean mappings for downstream systems.`
 - Key outcomes:
 - `Removes duplicate and conflicting item records.`
 - `Improves procurement search and pricing consistency.`
@@ -174,7 +174,7 @@ This document lists the exact user-facing text in the live routed pages defined 
 - `Ingest catalogue data and define target schema.`
 - `Model clusters duplicates and suggests canonical entries.`
 - `Ops approves exceptions and publishes a clean catalogue.`
-- Inputs and outputs: `Inputs: CSV/Excel catalogs, ERP extracts. Outputs: normalized catalogue, match confidence report, exception queue.`
+- Inputs and outputs: `Inputs: CSV/Excel catalogues, ERP extracts. Outputs: normalised catalogue, match confidence report, exception queue.`
 - Related products: `Concordia`, `Luxpulse-AI`
 
 #### TAD
@@ -188,7 +188,7 @@ This document lists the exact user-facing text in the live routed pages defined 
 - `Connect event feeds and define relevance rules.`
 - `TAD ranks signals against risk and confidence thresholds.`
 - `Team validates alerts and acts with full context.`
-- Inputs and outputs: `Inputs: market/event feeds, analyst notes. Outputs: prioritized signal board, trigger alerts, audit trail.`
+- Inputs and outputs: `Inputs: market/event feeds, analyst notes. Outputs: prioritised signal board, trigger alerts, audit trail.`
 - Related products: `Concordia`, `Luxpulse-AI`
 
 #### Luxpulse-AI
@@ -202,7 +202,7 @@ This document lists the exact user-facing text in the live routed pages defined 
 - `Connect usage and support data sources.`
 - `Luxpulse-AI maps friction points by segment and flow.`
 - `Teams ship targeted fixes and monitor outcome shifts.`
-- Inputs and outputs: `Inputs: product events, funnel metrics, support signals. Outputs: friction map, prioritized improvements, impact tracker.`
+- Inputs and outputs: `Inputs: product events, funnel metrics, support signals. Outputs: friction map, prioritised improvements, impact tracker.`
 - Related products: `Catalog Cruncher`, `TAD`
 
 ### If Product Not Found
@@ -500,7 +500,7 @@ This document lists the exact user-facing text in the live routed pages defined 
 
 - Kicker: `About`
 - H1: `InnoWeb Ventures Limited`
-- Body: `We are a UK-led engineering collective focused on practical AI and automation systems for real operational workflows.`
+- Body: `We are a UK-led delivery collective working with partners across a broad range of professional services, from engineering and construction to commercial and go-to-market teams, to build practical AI-assisted automation systems for real operational workflows.`
 
 ### Our Story
 
