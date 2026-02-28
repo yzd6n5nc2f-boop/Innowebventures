@@ -24,9 +24,7 @@ This document lists the exact user-facing text in the live routed pages defined 
 - Brand text: `InnoWeb Ventures Ltd`
 - Logo alt text: `InnoWeb Ventures logo`
 - Nav labels:
-- `Products`
 - `Services`
-- `Work`
 - `How We Build`
 - `About`
 - `Contact`

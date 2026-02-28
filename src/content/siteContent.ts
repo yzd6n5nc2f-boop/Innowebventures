@@ -51,9 +51,7 @@ export type NextStep = {
 };
 
 export const headerNav: NavItem[] = [
-  { label: "Products", to: "/products" },
   { label: "Services", to: "/services" },
-  { label: "Work", to: "/work" },
   { label: "How We Build", to: "/how-we-build" },
   { label: "About", to: "/about" },
   { label: "Contact", to: "/contact" },
