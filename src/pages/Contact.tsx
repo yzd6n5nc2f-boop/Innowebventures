@@ -5,7 +5,7 @@ import SiteShell from "../components/SiteShell";
 import styles from "../styles/home.module.css";
 
 const CONTACT_EMAIL = "mauricio.jardim1@gmail.com";
-const CONTACT_ENDPOINT = `https://formsubmit.co/ajax/${CONTACT_EMAIL}`;
+const CONTACT_ENDPOINT = "/api/contact";
 
 export default function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -19,8 +19,9 @@ export default function Contact() {
     const email = String(formData.get("email") ?? "").trim();
     const company = String(formData.get("company") ?? "").trim();
     const challenge = String(formData.get("challenge") ?? "").trim();
-
     const subject = `20-min Build Review Enquiry${company ? ` - ${company}` : ""}`;
+    const pageUrl = window.location.href;
+
     setIsSubmitting(true);
     setStatusMessage(null);
 
@@ -36,12 +37,12 @@ export default function Contact() {
           email,
           company,
           challenge,
-          _subject: subject,
-          _captcha: "false",
+          subject,
+          pageUrl,
         }),
       });
 
-      const responsePayload: { success?: boolean | string; message?: string } | null = await response
+      const responsePayload: { success?: boolean | string; message?: string; error?: string } | null = await response
         .json()
         .catch(() => null);
 
@@ -50,14 +51,14 @@ export default function Contact() {
         responsePayload?.success === false || String(responsePayload?.success ?? "").toLowerCase() === "false";
 
       if (failedByStatus || failedByPayload) {
-        const providerMessage = responsePayload?.message?.trim();
+        const providerMessage = responsePayload?.error?.trim() || responsePayload?.message?.trim();
         throw new Error(providerMessage || `Failed to submit enquiry: ${response.status}`);
       }
 
       event.currentTarget.reset();
       setStatusMessage({
         type: "success",
-        text: "Thanks. Your enquiry was sent successfully and we will reply soon.",
+        text: responsePayload?.message?.trim() || `Thanks. Your enquiry was sent to ${CONTACT_EMAIL} successfully and we will reply soon.`,
       });
     } catch (error) {
       const providerMessage = error instanceof Error ? error.message : "";
@@ -83,7 +84,7 @@ export default function Contact() {
 
         <article className={styles.summaryCard}>
           <h2>Booking</h2>
-          <p>Use the quick form below to schedule the review directly with our team.</p>
+          <p>Use the quick form below to send your enquiry through our secure server-side contact endpoint.</p>
           <a className={styles.primaryButton} href="#quick-form">
             Start quick form
           </a>
@@ -92,6 +93,10 @@ export default function Contact() {
         <div className={styles.detailGrid}>
           <article className={styles.infoCard}>
             <h2>Quick form</h2>
+            <p>
+              Submissions are delivered to <strong>{CONTACT_EMAIL}</strong>. The visitor&apos;s email is kept as the
+              reply-to address, so the message does not look like it was sent directly from their mailbox.
+            </p>
             <form className={styles.formGrid} id="quick-form" onSubmit={handleQuickFormSubmit}>
               <label className={styles.formField}>
                 Name
@@ -107,7 +112,7 @@ export default function Contact() {
               </label>
               <label className={styles.formField}>
                 What are you trying to improve?
-                <textarea className={styles.formInput} name="challenge" rows={4} />
+                <textarea className={styles.formInput} name="challenge" rows={4} required />
               </label>
               <div className={styles.formActions}>
                 <button className={styles.secondaryButton} type="submit" disabled={isSubmitting}>

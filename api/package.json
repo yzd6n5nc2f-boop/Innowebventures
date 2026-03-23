@@ -1,0 +1,9 @@
+{
+  "name": "innoweb-api",
+  "private": true,
+  "version": "0.1.0",
+  "main": "src/functions/*.js",
+  "dependencies": {
+    "@azure/functions": "^4.6.0"
+  }
+}
