@@ -84,7 +84,7 @@ export default function Contact() {
 
         <article className={styles.summaryCard}>
           <h2>Booking</h2>
-          <p>Use the quick form below to send your enquiry through our secure server-side contact endpoint.</p>
+          <p>Use the quick form below to send your enquiry through our secure server-side contact endpoint and save it in our linked Azure storage account.</p>
           <a className={styles.primaryButton} href="#quick-form">
             Start quick form
           </a>
@@ -94,7 +94,7 @@ export default function Contact() {
           <article className={styles.infoCard}>
             <h2>Quick form</h2>
             <p>
-              Submissions are delivered to <strong>{CONTACT_EMAIL}</strong>. The visitor&apos;s email is kept as the
+              Submissions are delivered to <strong>{CONTACT_EMAIL}</strong> and logged to Azure Table Storage for traceability. The visitor&apos;s email is kept as the
               reply-to address, so the message does not look like it was sent directly from their mailbox.
             </p>
             <form className={styles.formGrid} id="quick-form" onSubmit={handleQuickFormSubmit}>

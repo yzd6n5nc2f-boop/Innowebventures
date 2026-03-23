@@ -1,0 +1,12 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+    "FUNCTIONS_WORKER_RUNTIME": "node",
+    "CONTACT_TO_EMAIL": "your-inbox@example.com",
+    "CONTACT_STORAGE_CONNECTION_STRING": "UseDevelopmentStorage=true",
+    "CONTACT_SUBMISSIONS_TABLE": "ContactSubmissions",
+    "RESEND_API_KEY": "re_your_resend_api_key",
+    "CONTACT_FROM_EMAIL": "hello@yourdomain.com"
+  }
+}

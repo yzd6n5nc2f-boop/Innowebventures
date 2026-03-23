@@ -1,7 +1,10 @@
 const { app } = require("@azure/functions");
+const { TableClient } = require("@azure/data-tables");
+const crypto = require("node:crypto");
 
 const DEFAULT_TO_EMAIL = "mauricio.jardim1@gmail.com";
 const DEFAULT_RESEND_FROM_EMAIL = "onboarding@resend.dev";
+const DEFAULT_CONTACT_SUBMISSIONS_TABLE = "ContactSubmissions";
 
 function json(status, body) {
   return {
@@ -27,8 +30,13 @@ function escapeHtml(value) {
     .replace(/&/g, "&amp;")
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
+    .replace(/\"/g, "&quot;")
     .replace(/'/g, "&#39;");
+}
+
+function sanitizeKeySegment(value, fallback) {
+  const sanitized = sanitizeString(value).replace(/[^A-Za-z0-9_-]/g, "-").slice(0, 64);
+  return sanitized || fallback;
 }
 
 function getConfig() {
@@ -38,6 +46,11 @@ function getConfig() {
   const sendgridApiKey = sanitizeString(process.env.SENDGRID_API_KEY);
   const provider = resendApiKey ? "resend" : sendgridApiKey ? "sendgrid" : "formsubmit";
   const fromEmail = explicitFromEmail || (provider === "resend" ? DEFAULT_RESEND_FROM_EMAIL : "");
+  const storageConnectionString =
+    sanitizeString(process.env.CONTACT_STORAGE_CONNECTION_STRING) ||
+    sanitizeString(process.env.AzureWebJobsStorage);
+  const submissionsTableName =
+    sanitizeKeySegment(process.env.CONTACT_SUBMISSIONS_TABLE, DEFAULT_CONTACT_SUBMISSIONS_TABLE);
 
   return {
     toEmail,
@@ -46,6 +59,8 @@ function getConfig() {
     resendApiKey,
     sendgridApiKey,
     provider,
+    storageConnectionString,
+    submissionsTableName,
   };
 }
 
@@ -175,6 +190,78 @@ async function sendViaFormSubmit({ toEmail, name, email, company, challenge, pag
   }
 }
 
+async function getTableClient(config, context) {
+  if (!config.storageConnectionString) {
+    context.warn("Azure Table Storage logging skipped because no storage connection string is configured.");
+    return null;
+  }
+
+  try {
+    const client = TableClient.fromConnectionString(config.storageConnectionString, config.submissionsTableName);
+    await client.createTable();
+    return client;
+  } catch (error) {
+    context.error("Azure Table Storage logging unavailable", error);
+    return null;
+  }
+}
+
+function buildSubmissionEntity({ request, name, email, company, challenge, pageUrl, provider }) {
+  const submittedAt = new Date().toISOString();
+  const partitionKey = submittedAt.slice(0, 10);
+  const rowKey = `${Date.now()}-${crypto.randomUUID()}`;
+
+  return {
+    partitionKey,
+    rowKey,
+    name,
+    email,
+    company: company || "",
+    challenge,
+    pageUrl: pageUrl || "",
+    provider,
+    deliveryStatus: "pending",
+    submittedAt,
+    userAgent: sanitizeString(request.headers.get("user-agent")),
+    referer: sanitizeString(request.headers.get("referer")),
+    origin: sanitizeString(request.headers.get("origin")),
+    xForwardedFor: sanitizeString(request.headers.get("x-forwarded-for")),
+  };
+}
+
+async function createSubmissionLog(client, entity, context) {
+  if (!client) {
+    return false;
+  }
+
+  try {
+    await client.createEntity(entity);
+    return true;
+  } catch (error) {
+    context.error("Failed to create contact submission log entry", error);
+    return false;
+  }
+}
+
+async function updateSubmissionLog(client, entity, updates, context) {
+  if (!client) {
+    return;
+  }
+
+  try {
+    await client.updateEntity(
+      {
+        partitionKey: entity.partitionKey,
+        rowKey: entity.rowKey,
+        ...updates,
+      },
+      "Merge",
+    );
+  } catch (error) {
+    context.error("Failed to update contact submission log entry", error);
+  }
+}
+
 app.http("contactSubmit", {
   route: "contact",
   methods: ["POST"],
@@ -220,6 +307,18 @@ app.http("contactSubmit", {
       pageUrl,
     });
 
+    const tableClient = await getTableClient(config, context);
+    const submissionEntity = buildSubmissionEntity({
+      request,
+      name,
+      email,
+      company,
+      challenge,
+      pageUrl,
+      provider: config.provider,
+    });
+    const hasSubmissionLog = await createSubmissionLog(tableClient, submissionEntity, context);
+
     try {
       const payload = {
         apiKey: config.provider === "resend" ? config.resendApiKey : config.sendgridApiKey,
@@ -247,12 +346,34 @@ app.http("contactSubmit", {
         });
       }
 
+      await updateSubmissionLog(
+        tableClient,
+        submissionEntity,
+        {
+          deliveryStatus: "sent",
+          deliveredAt: new Date().toISOString(),
+        },
+        context,
+      );
+
       return json(200, {
         success: true,
-        message: `Thanks. Your enquiry was sent to ${config.toEmail} successfully and we will reply soon.`,
+        message: hasSubmissionLog
+          ? `Thanks. Your enquiry was sent to ${config.toEmail} successfully and saved to Azure Table Storage.`
+          : `Thanks. Your enquiry was sent to ${config.toEmail} successfully and we will reply soon.`,
       });
     } catch (error) {
       context.error("Contact submit failed", error);
+      await updateSubmissionLog(
+        tableClient,
+        submissionEntity,
+        {
+          deliveryStatus: "failed",
+          failedAt: new Date().toISOString(),
+          errorMessage: sanitizeString(error instanceof Error ? error.message : "Unknown error").slice(0, 1024),
+        },
+        context,
+      );
       return json(500, {
         error: "We could not send your enquiry right now. Please try again in a moment.",
       });
