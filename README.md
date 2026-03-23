@@ -25,6 +25,9 @@ Configure these application settings in Azure Static Web Apps:
 For local Azure Functions development, copy `api/local.settings.example.json` to
 `api/local.settings.json` and replace the placeholder values with your own.
 
+For local Azure Functions development, copy `api/local.settings.example.json` to
+`api/local.settings.json` and replace the placeholder values with your own.
+
 Notes:
 
 - If `CONTACT_STORAGE_CONNECTION_STRING` is not set, the API falls back to `AzureWebJobsStorage`, which works well when the Static Web App is already linked to an Azure storage account.
