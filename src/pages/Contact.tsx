@@ -19,8 +19,9 @@ export default function Contact() {
     const email = String(formData.get("email") ?? "").trim();
     const company = String(formData.get("company") ?? "").trim();
     const challenge = String(formData.get("challenge") ?? "").trim();
-
     const subject = `20-min Build Review Enquiry${company ? ` - ${company}` : ""}`;
+    const pageUrl = window.location.href;
+
     setIsSubmitting(true);
     setStatusMessage(null);
 
@@ -38,6 +39,9 @@ export default function Contact() {
           challenge,
           _subject: subject,
           _captcha: "false",
+          _template: "table",
+          _replyto: email,
+          _url: pageUrl,
         }),
       });
 
@@ -57,7 +61,7 @@ export default function Contact() {
       event.currentTarget.reset();
       setStatusMessage({
         type: "success",
-        text: "Thanks. Your enquiry was sent successfully and we will reply soon.",
+        text: `Thanks. Your enquiry was sent to ${CONTACT_EMAIL} successfully and we will reply soon.`,
       });
     } catch (error) {
       const providerMessage = error instanceof Error ? error.message : "";
@@ -92,6 +96,10 @@ export default function Contact() {
         <div className={styles.detailGrid}>
           <article className={styles.infoCard}>
             <h2>Quick form</h2>
+            <p>
+              Submissions are delivered to <strong>{CONTACT_EMAIL}</strong>. The visitor&apos;s email is kept as the
+              reply-to address, so the message does not look like it was sent directly from their mailbox.
+            </p>
             <form className={styles.formGrid} id="quick-form" onSubmit={handleQuickFormSubmit}>
               <label className={styles.formField}>
                 Name
