@@ -17,6 +17,9 @@ Configure these application settings in Azure Static Web Apps:
 3. Optional sender setting:
    - `CONTACT_FROM_EMAIL` (required for SendGrid, recommended for Resend)
 
+For local Azure Functions development, copy `api/local.settings.example.json` to
+`api/local.settings.json` and replace the placeholder values with your own.
+
 Notes:
 
 - If `RESEND_API_KEY` is set and `CONTACT_FROM_EMAIL` is missing, the API falls back to `onboarding@resend.dev`.
