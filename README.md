@@ -26,6 +26,12 @@ Notes:
 - If neither provider key is set, the API falls back to server-side FormSubmit delivery.
 - For SendGrid, `CONTACT_FROM_EMAIL` must be set to a verified sender.
 
+
+Important routing note:
+
+- `staticwebapp.config.json` excludes `/api/*` from SPA fallback rewrites so POST requests to `/api/contact` are sent to Azure Functions instead of being rewritten to `index.html` (which causes 405 for form submits).
+- The GitHub Actions deploy workflow must set `api_location: "api"` so the function app is deployed together with the front-end.
+
 ## Local development
 
 - Frontend only: `npm run dev`
