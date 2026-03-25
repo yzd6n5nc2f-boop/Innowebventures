@@ -4,6 +4,7 @@
   "version": "0.1.0",
   "main": "src/functions/*.js",
   "dependencies": {
+    "@azure/data-tables": "^13.3.2",
     "@azure/functions": "^4.6.0"
   }
 }
