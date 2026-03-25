@@ -1,7 +1,9 @@
 const { app } = require("@azure/functions");
+const { TableClient } = require("@azure/data-tables");
 
 const DEFAULT_TO_EMAIL = "mauricio.jardim1@gmail.com";
 const DEFAULT_RESEND_FROM_EMAIL = "onboarding@resend.dev";
+const DEFAULT_TABLE_NAME = "ContactEnquiries";
 
 function json(status, body) {
   return {
@@ -36,7 +38,10 @@ function getConfig() {
   const explicitFromEmail = sanitizeEmail(process.env.CONTACT_FROM_EMAIL);
   const resendApiKey = sanitizeString(process.env.RESEND_API_KEY);
   const sendgridApiKey = sanitizeString(process.env.SENDGRID_API_KEY);
-  const provider = resendApiKey ? "resend" : sendgridApiKey ? "sendgrid" : "formsubmit";
+  const storageConnectionString = sanitizeString(process.env.STORAGE_CONNECTION_STRING);
+  const tableName = sanitizeString(process.env.CONTACT_TABLE_NAME) || DEFAULT_TABLE_NAME;
+
+  const provider = resendApiKey ? "resend" : sendgridApiKey ? "sendgrid" : "none";
   const fromEmail = explicitFromEmail || (provider === "resend" ? DEFAULT_RESEND_FROM_EMAIL : "");
 
   return {
@@ -46,6 +51,8 @@ function getConfig() {
     resendApiKey,
     sendgridApiKey,
     provider,
+    storageConnectionString,
+    tableName,
   };
 }
 
@@ -138,41 +145,27 @@ async function sendViaSendGrid({ apiKey, fromEmail, toEmail, replyTo, subject, t
   }
 }
 
-async function sendViaFormSubmit({ toEmail, name, email, company, challenge, pageUrl, subject }) {
-  const response = await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(toEmail)}`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json",
-    },
-    body: JSON.stringify({
-      name,
-      email,
-      company,
-      challenge,
-      pageUrl,
-      _subject: subject,
-      _captcha: "false",
-      _replyto: email,
-      _template: "table",
-    }),
-  });
+function buildStorageEntity({ name, email, company, challenge, pageUrl }) {
+  const timestamp = new Date();
+  const partitionKey = timestamp.toISOString().slice(0, 7).replace("-", "");
+  const rowKey = `${Date.now()}-${Math.random().toString(36).slice(2, 10)}`;
 
-  const rawBody = await response.text();
-  let payload = null;
-  try {
-    payload = JSON.parse(rawBody);
-  } catch {
-    payload = null;
-  }
+  return {
+    partitionKey,
+    rowKey,
+    createdAtUtc: timestamp.toISOString(),
+    name,
+    email,
+    company: company || "",
+    challenge,
+    pageUrl: pageUrl || "",
+  };
+}
 
-  const payloadFailed =
-    payload && (payload.success === false || String(payload.success ?? "").toLowerCase() === "false");
-
-  if (!response.ok || payloadFailed) {
-    const providerMessage = sanitizeString(payload?.message) || rawBody;
-    throw new Error(`FormSubmit error ${response.status}: ${providerMessage || "Request rejected."}`);
-  }
+async function saveToAzureTable({ connectionString, tableName, submission }) {
+  const tableClient = TableClient.fromConnectionString(connectionString, tableName);
+  await tableClient.createTable();
+  await tableClient.createEntity(buildStorageEntity(submission));
 }
 
 app.http("contactSubmit", {
@@ -202,7 +195,17 @@ app.http("contactSubmit", {
     }
 
     const config = getConfig();
-    if (config.provider !== "formsubmit" && !config.fromEmail) {
+    const shouldStoreInAzure = Boolean(config.storageConnectionString);
+
+    if (!shouldStoreInAzure && config.provider === "none") {
+      context.error("Missing storage and email provider configuration.");
+      return json(500, {
+        error:
+          "Contact form backend is not configured. Set STORAGE_CONNECTION_STRING (Azure Table Storage) and/or RESEND_API_KEY or SENDGRID_API_KEY.",
+      });
+    }
+
+    if (config.provider !== "none" && !config.fromEmail) {
       context.error("Missing CONTACT_FROM_EMAIL configuration.");
       return json(500, {
         error: "Email delivery is missing CONTACT_FROM_EMAIL for the selected provider.",
@@ -212,44 +215,52 @@ app.http("contactSubmit", {
       context.warn(`CONTACT_FROM_EMAIL not set. Using default sender ${DEFAULT_RESEND_FROM_EMAIL}.`);
     }
 
-    const message = buildEmail({
+    const submission = {
       name,
       email,
       company,
       challenge,
       pageUrl,
-    });
+    };
+
+    const message = buildEmail(submission);
 
     try {
-      const payload = {
-        apiKey: config.provider === "resend" ? config.resendApiKey : config.sendgridApiKey,
-        fromEmail: config.fromEmail,
-        toEmail: config.toEmail,
-        replyTo: email,
-        subject: message.subject,
-        text: message.text,
-        html: message.html,
-      };
+      if (shouldStoreInAzure) {
+        await saveToAzureTable({
+          connectionString: config.storageConnectionString,
+          tableName: config.tableName,
+          submission,
+        });
+      }
 
       if (config.provider === "resend") {
-        await sendViaResend(payload);
-      } else if (config.provider === "sendgrid") {
-        await sendViaSendGrid(payload);
-      } else {
-        await sendViaFormSubmit({
+        await sendViaResend({
+          apiKey: config.resendApiKey,
+          fromEmail: config.fromEmail,
           toEmail: config.toEmail,
-          name,
-          email,
-          company,
-          challenge,
-          pageUrl,
+          replyTo: email,
           subject: message.subject,
+          text: message.text,
+          html: message.html,
+        });
+      } else if (config.provider === "sendgrid") {
+        await sendViaSendGrid({
+          apiKey: config.sendgridApiKey,
+          fromEmail: config.fromEmail,
+          toEmail: config.toEmail,
+          replyTo: email,
+          subject: message.subject,
+          text: message.text,
+          html: message.html,
         });
       }
 
       return json(200, {
         success: true,
-        message: `Thanks. Your enquiry was sent to ${config.toEmail} successfully and we will reply soon.`,
+        message: shouldStoreInAzure
+          ? "Thanks. Your enquiry was saved in Azure and we will reply soon."
+          : `Thanks. Your enquiry was sent to ${config.toEmail} successfully and we will reply soon.`,
       });
     } catch (error) {
       context.error("Contact submit failed", error);
