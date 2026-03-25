@@ -1,9 +1,11 @@
 const { app } = require("@azure/functions");
 const { TableClient } = require("@azure/data-tables");
 const crypto = require("node:crypto");
+const nodemailer = require("nodemailer");
 
-const DEFAULT_RESEND_FROM_EMAIL = "onboarding@resend.dev";
 const DEFAULT_CONTACT_SUBMISSIONS_TABLE = "ContactSubmissions";
+const DEFAULT_SMTP_PORT = 587;
+const SUPPORTED_DELIVERY_PROVIDERS = new Set(["smtp", "resend", "sendgrid"]);
 
 function json(status, body, extraHeaders = {}) {
   return {
@@ -34,6 +36,26 @@ function sanitizeEmail(value) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) ? email : "";
 }
 
+function sanitizeProvider(value) {
+  return sanitizeString(value).toLowerCase();
+}
+
+function parsePort(value, fallbackPort) {
+  const port = Number.parseInt(sanitizeString(value), 10);
+  return Number.isInteger(port) && port > 0 && port <= 65535 ? port : fallbackPort;
+}
+
+function parseBoolean(value, fallbackValue = false) {
+  const normalized = sanitizeString(value).toLowerCase();
+  if (["1", "true", "yes", "y", "on"].includes(normalized)) {
+    return true;
+  }
+  if (["0", "false", "no", "n", "off"].includes(normalized)) {
+    return false;
+  }
+  return fallbackValue;
+}
+
 function escapeHtml(value) {
   return String(value ?? "")
     .replace(/&/g, "&amp;")
@@ -49,12 +71,19 @@ function sanitizeKeySegment(value, fallback) {
 }
 
 function getConfig() {
+  const providerOverride = sanitizeProvider(process.env.CONTACT_EMAIL_PROVIDER);
   const toEmail = sanitizeEmail(process.env.CONTACT_TO_EMAIL);
   const explicitFromEmail = sanitizeEmail(process.env.CONTACT_FROM_EMAIL);
   const resendApiKey = sanitizeString(process.env.RESEND_API_KEY);
   const sendgridApiKey = sanitizeString(process.env.SENDGRID_API_KEY);
-  const provider = resendApiKey ? "resend" : sendgridApiKey ? "sendgrid" : "formsubmit";
-  const fromEmail = explicitFromEmail || (provider === "resend" ? DEFAULT_RESEND_FROM_EMAIL : "");
+  const smtpHost = sanitizeString(process.env.SMTP_HOST);
+  const smtpPort = parsePort(process.env.SMTP_PORT, DEFAULT_SMTP_PORT);
+  const smtpUser = sanitizeString(process.env.SMTP_USER);
+  const smtpPass = sanitizeString(process.env.SMTP_PASS);
+  const smtpSecure = parseBoolean(process.env.SMTP_SECURE, smtpPort === 465);
+  const hasSmtpCredentials = Boolean(smtpHost && smtpUser && smtpPass);
+  const provider = providerOverride || (hasSmtpCredentials ? "smtp" : resendApiKey ? "resend" : sendgridApiKey ? "sendgrid" : "");
+  const fromEmail = explicitFromEmail || (provider === "smtp" ? sanitizeEmail(smtpUser) : "");
   const storageConnectionString =
     sanitizeString(process.env.CONTACT_STORAGE_CONNECTION_STRING) ||
     sanitizeString(process.env.AzureWebJobsStorage);
@@ -64,13 +93,50 @@ function getConfig() {
   return {
     toEmail,
     fromEmail,
-    hasExplicitFromEmail: Boolean(explicitFromEmail),
+    providerOverride,
     resendApiKey,
     sendgridApiKey,
     provider,
+    smtpHost,
+    smtpPort,
+    smtpUser,
+    smtpPass,
+    smtpSecure,
     storageConnectionString,
     submissionsTableName,
   };
+}
+
+function getConfigError(config) {
+  if (!config.toEmail) {
+    return "Email delivery is missing CONTACT_TO_EMAIL. Set it in your Static Web App application settings.";
+  }
+
+  if (config.providerOverride && !SUPPORTED_DELIVERY_PROVIDERS.has(config.providerOverride)) {
+    return "CONTACT_EMAIL_PROVIDER must be one of: smtp, resend, sendgrid.";
+  }
+
+  if (!config.provider) {
+    return "No email provider is configured. Set CONTACT_EMAIL_PROVIDER and matching credentials (SMTP_* or RESEND_API_KEY or SENDGRID_API_KEY).";
+  }
+
+  if (!config.fromEmail) {
+    return "Email delivery is missing CONTACT_FROM_EMAIL (or set SMTP_USER to a valid sender email).";
+  }
+
+  if (config.provider === "smtp" && (!config.smtpHost || !config.smtpUser || !config.smtpPass)) {
+    return "SMTP delivery requires SMTP_HOST, SMTP_USER, and SMTP_PASS. SMTP_PORT defaults to 587.";
+  }
+
+  if (config.provider === "resend" && !config.resendApiKey) {
+    return "Resend delivery requires RESEND_API_KEY.";
+  }
+
+  if (config.provider === "sendgrid" && !config.sendgridApiKey) {
+    return "SendGrid delivery requires SENDGRID_API_KEY.";
+  }
+
+  return "";
 }
 
 function parseCsv(value) {
@@ -192,41 +258,25 @@ async function sendViaSendGrid({ apiKey, fromEmail, toEmail, replyTo, subject, t
   }
 }
 
-async function sendViaFormSubmit({ toEmail, name, email, company, challenge, pageUrl, subject }) {
-  const response = await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(toEmail)}`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json",
+async function sendViaSmtp({ host, port, secure, user, pass, fromEmail, toEmail, replyTo, subject, text, html }) {
+  const transporter = nodemailer.createTransport({
+    host,
+    port,
+    secure,
+    auth: {
+      user,
+      pass,
     },
-    body: JSON.stringify({
-      name,
-      email,
-      company,
-      challenge,
-      pageUrl,
-      _subject: subject,
-      _captcha: "false",
-      _replyto: email,
-      _template: "table",
-    }),
   });
 
-  const rawBody = await response.text();
-  let payload = null;
-  try {
-    payload = JSON.parse(rawBody);
-  } catch {
-    payload = null;
-  }
-
-  const payloadFailed =
-    payload && (payload.success === false || String(payload.success ?? "").toLowerCase() === "false");
-
-  if (!response.ok || payloadFailed) {
-    const providerMessage = sanitizeString(payload?.message) || rawBody;
-    throw new Error(`FormSubmit error ${response.status}: ${providerMessage || "Request rejected."}`);
-  }
+  await transporter.sendMail({
+    from: fromEmail,
+    to: toEmail,
+    subject,
+    text,
+    html,
+    ...(replyTo ? { replyTo } : {}),
+  });
 }
 
 async function getTableClient(config, context) {
@@ -334,20 +384,12 @@ app.http("contactSubmit", {
     }
 
     const config = getConfig();
-    if (!config.toEmail) {
-      context.error("Missing CONTACT_TO_EMAIL configuration.");
+    const configError = getConfigError(config);
+    if (configError) {
+      context.error(configError);
       return json(500, {
-        error: "Email delivery is missing CONTACT_TO_EMAIL. Set it in your Static Web App application settings.",
+        error: configError,
       }, corsHeaders);
-    }
-    if (config.provider !== "formsubmit" && !config.fromEmail) {
-      context.error("Missing CONTACT_FROM_EMAIL configuration.");
-      return json(500, {
-        error: "Email delivery is missing CONTACT_FROM_EMAIL for the selected provider.",
-      }, corsHeaders);
-    }
-    if (config.provider === "resend" && !config.hasExplicitFromEmail) {
-      context.warn(`CONTACT_FROM_EMAIL not set. Using default sender ${DEFAULT_RESEND_FROM_EMAIL}.`);
     }
 
     const message = buildEmail({
@@ -385,16 +427,22 @@ app.http("contactSubmit", {
         await sendViaResend(payload);
       } else if (config.provider === "sendgrid") {
         await sendViaSendGrid(payload);
-      } else {
-        await sendViaFormSubmit({
+      } else if (config.provider === "smtp") {
+        await sendViaSmtp({
+          host: config.smtpHost,
+          port: config.smtpPort,
+          secure: config.smtpSecure,
+          user: config.smtpUser,
+          pass: config.smtpPass,
+          fromEmail: config.fromEmail,
           toEmail: config.toEmail,
-          name,
-          email,
-          company,
-          challenge,
-          pageUrl,
+          replyTo: email,
           subject: message.subject,
+          text: message.text,
+          html: message.html,
         });
+      } else {
+        throw new Error(`Unsupported CONTACT_EMAIL_PROVIDER value: ${config.provider}`);
       }
 
       await updateSubmissionLog(
@@ -415,18 +463,21 @@ app.http("contactSubmit", {
       }, corsHeaders);
     } catch (error) {
       context.error("Contact submit failed", error);
+      const providerError = sanitizeString(error instanceof Error ? error.message : "Unknown email provider error").slice(0, 400);
       await updateSubmissionLog(
         tableClient,
         submissionEntity,
         {
           deliveryStatus: "failed",
           failedAt: new Date().toISOString(),
-          errorMessage: sanitizeString(error instanceof Error ? error.message : "Unknown error").slice(0, 1024),
+          errorMessage: providerError.slice(0, 1024),
         },
         context,
       );
       return json(500, {
-        error: "We could not send your enquiry right now. Please try again in a moment.",
+        error: providerError
+          ? `Email delivery failed: ${providerError}`
+          : "We could not send your enquiry right now. Please try again in a moment.",
       }, corsHeaders);
     }
   },

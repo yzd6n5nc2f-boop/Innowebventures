@@ -10,13 +10,28 @@ That function sends enquiries to your inbox and stores each submission in Azure 
 Configure these application settings in Azure Static Web Apps:
 
 1. `CONTACT_TO_EMAIL` (destination inbox; required)
-2. One provider API key:
-   - `RESEND_API_KEY`, or
-   - `SENDGRID_API_KEY`
-3. `CONTACT_FROM_EMAIL` (required for SendGrid, recommended for Resend)
-4. `CONTACT_STORAGE_CONNECTION_STRING` (optional; falls back to `AzureWebJobsStorage`)
-5. `CONTACT_SUBMISSIONS_TABLE` (optional; defaults to `ContactSubmissions`)
-6. `CONTACT_ALLOWED_ORIGINS` (optional CSV list for CORS, e.g. `https://innowebventures.com,https://www.innowebventures.com`; leave empty to allow all origins)
+2. `CONTACT_EMAIL_PROVIDER` (required: `smtp`, `resend`, or `sendgrid`)
+3. Provider credentials:
+   - SMTP:
+     - `SMTP_HOST`
+     - `SMTP_PORT` (for example `587` or `465`)
+     - `SMTP_USER`
+     - `SMTP_PASS`
+     - `SMTP_SECURE` (optional; `true`/`false`, defaults to `true` for port `465`)
+   - Resend:
+     - `RESEND_API_KEY`
+   - SendGrid:
+     - `SENDGRID_API_KEY`
+4. `CONTACT_FROM_EMAIL` (required sender address; for SMTP it defaults to `SMTP_USER` if that is a valid email)
+5. `CONTACT_STORAGE_CONNECTION_STRING` (optional; falls back to `AzureWebJobsStorage`)
+6. `CONTACT_SUBMISSIONS_TABLE` (optional; defaults to `ContactSubmissions`)
+7. `CONTACT_ALLOWED_ORIGINS` (optional CSV list for CORS, e.g. `https://innowebventures.com,https://www.innowebventures.com`; leave empty to allow all origins)
+
+If `CONTACT_EMAIL_PROVIDER` is not set, the backend will auto-select:
+
+- `smtp` when all `SMTP_*` credentials are present
+- otherwise `resend` if `RESEND_API_KEY` is present
+- otherwise `sendgrid` if `SENDGRID_API_KEY` is present
 
 For local Azure Functions development, copy `api/local.settings.example.json` to
 `api/local.settings.json` and replace the placeholder values with your own.
@@ -24,15 +39,15 @@ For local Azure Functions development, copy `api/local.settings.example.json` to
 Notes:
 
 - Each submission is recorded with request metadata and a delivery status (`pending`, `sent`, `failed`) in Azure Table Storage.
-- If `RESEND_API_KEY` is set and `CONTACT_FROM_EMAIL` is missing, the API falls back to `onboarding@resend.dev`.
-- If neither provider key is set, the API falls back to server-side FormSubmit delivery.
-- For SendGrid, `CONTACT_FROM_EMAIL` must be a verified sender.
+- This backend now uses only server-side providers (`smtp`, `resend`, `sendgrid`) for reliable API delivery from Azure Functions.
+- For SendGrid and Resend, `CONTACT_FROM_EMAIL` must be a verified sender/domain.
 
 
 Important routing note:
 
 - `staticwebapp.config.json` excludes `/api/*` from SPA fallback rewrites so POST requests to `/api/contact` are sent to Azure Functions instead of being rewritten to `index.html` (which causes 405 for form submits).
 - The GitHub Actions deploy workflow must set `api_location: "api"` so the function app is deployed together with the front-end.
+- Response errors now include provider-specific details to speed up configuration/debugging.
 
 ## Local development
 
