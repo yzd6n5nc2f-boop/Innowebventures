@@ -9,7 +9,7 @@ That function sends enquiries to your inbox and stores each submission in Azure 
 
 Configure these application settings in Azure Static Web Apps:
 
-1. `CONTACT_TO_EMAIL` (destination inbox, defaults to `mauricio.jardim1@gmail.com`)
+1. `CONTACT_TO_EMAIL` (destination inbox; required)
 2. One provider API key:
    - `RESEND_API_KEY`, or
    - `SENDGRID_API_KEY`

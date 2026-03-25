@@ -2,7 +2,6 @@ const { app } = require("@azure/functions");
 const { TableClient } = require("@azure/data-tables");
 const crypto = require("node:crypto");
 
-const DEFAULT_TO_EMAIL = "mauricio.jardim1@gmail.com";
 const DEFAULT_RESEND_FROM_EMAIL = "onboarding@resend.dev";
 const DEFAULT_CONTACT_SUBMISSIONS_TABLE = "ContactSubmissions";
 
@@ -50,7 +49,7 @@ function sanitizeKeySegment(value, fallback) {
 }
 
 function getConfig() {
-  const toEmail = sanitizeEmail(process.env.CONTACT_TO_EMAIL) || DEFAULT_TO_EMAIL;
+  const toEmail = sanitizeEmail(process.env.CONTACT_TO_EMAIL);
   const explicitFromEmail = sanitizeEmail(process.env.CONTACT_FROM_EMAIL);
   const resendApiKey = sanitizeString(process.env.RESEND_API_KEY);
   const sendgridApiKey = sanitizeString(process.env.SENDGRID_API_KEY);
@@ -335,6 +334,12 @@ app.http("contactSubmit", {
     }
 
     const config = getConfig();
+    if (!config.toEmail) {
+      context.error("Missing CONTACT_TO_EMAIL configuration.");
+      return json(500, {
+        error: "Email delivery is missing CONTACT_TO_EMAIL. Set it in your Static Web App application settings.",
+      }, corsHeaders);
+    }
     if (config.provider !== "formsubmit" && !config.fromEmail) {
       context.error("Missing CONTACT_FROM_EMAIL configuration.");
       return json(500, {
