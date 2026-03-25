@@ -1,14 +1,27 @@
 const { app } = require("@azure/functions");
+const { TableClient } = require("@azure/data-tables");
+const crypto = require("node:crypto");
 
 const DEFAULT_TO_EMAIL = "mauricio.jardim1@gmail.com";
 const DEFAULT_RESEND_FROM_EMAIL = "onboarding@resend.dev";
+const DEFAULT_CONTACT_SUBMISSIONS_TABLE = "ContactSubmissions";
 
-function json(status, body) {
+function json(status, body, extraHeaders = {}) {
   return {
     status,
     jsonBody: body,
     headers: {
       "Content-Type": "application/json",
+      ...extraHeaders,
+    },
+  };
+}
+
+function noContent(status, headers = {}) {
+  return {
+    status,
+    headers: {
+      ...headers,
     },
   };
 }
@@ -27,8 +40,13 @@ function escapeHtml(value) {
     .replace(/&/g, "&amp;")
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
+    .replace(/\"/g, "&quot;")
     .replace(/'/g, "&#39;");
+}
+
+function sanitizeKeySegment(value, fallback) {
+  const sanitized = sanitizeString(value).replace(/[^A-Za-z0-9_-]/g, "-").slice(0, 64);
+  return sanitized || fallback;
 }
 
 function getConfig() {
@@ -38,6 +56,11 @@ function getConfig() {
   const sendgridApiKey = sanitizeString(process.env.SENDGRID_API_KEY);
   const provider = resendApiKey ? "resend" : sendgridApiKey ? "sendgrid" : "formsubmit";
   const fromEmail = explicitFromEmail || (provider === "resend" ? DEFAULT_RESEND_FROM_EMAIL : "");
+  const storageConnectionString =
+    sanitizeString(process.env.CONTACT_STORAGE_CONNECTION_STRING) ||
+    sanitizeString(process.env.AzureWebJobsStorage);
+  const submissionsTableName =
+    sanitizeKeySegment(process.env.CONTACT_SUBMISSIONS_TABLE, DEFAULT_CONTACT_SUBMISSIONS_TABLE);
 
   return {
     toEmail,
@@ -46,7 +69,39 @@ function getConfig() {
     resendApiKey,
     sendgridApiKey,
     provider,
+    storageConnectionString,
+    submissionsTableName,
   };
+}
+
+function parseCsv(value) {
+  return sanitizeString(value)
+    .split(",")
+    .map((item) => item.trim())
+    .filter(Boolean);
+}
+
+function getCorsHeaders(request) {
+  const allowedOrigins = parseCsv(process.env.CONTACT_ALLOWED_ORIGINS);
+  const requestOrigin = sanitizeString(request.headers.get("origin"));
+  const hasOrigin = Boolean(requestOrigin);
+  const allowAllOrigins = allowedOrigins.length === 0 || allowedOrigins.includes("*");
+  const allowRequestOrigin = allowAllOrigins || allowedOrigins.includes(requestOrigin);
+  const accessControlOrigin = hasOrigin && allowRequestOrigin ? requestOrigin : allowAllOrigins ? "*" : "";
+  const headers = {
+    "Access-Control-Allow-Methods": "POST, OPTIONS",
+    "Access-Control-Allow-Headers": "Content-Type, Accept",
+    "Access-Control-Max-Age": "86400",
+  };
+
+  if (accessControlOrigin) {
+    headers["Access-Control-Allow-Origin"] = accessControlOrigin;
+  }
+  if (!allowAllOrigins && hasOrigin) {
+    headers.Vary = "Origin";
+  }
+
+  return headers;
 }
 
 async function parseBody(request) {
@@ -175,14 +230,92 @@ async function sendViaFormSubmit({ toEmail, name, email, company, challenge, pag
   }
 }
 
+async function getTableClient(config, context) {
+  if (!config.storageConnectionString) {
+    context.warn("Azure Table Storage logging skipped because no storage connection string is configured.");
+    return null;
+  }
+
+  try {
+    const client = TableClient.fromConnectionString(config.storageConnectionString, config.submissionsTableName);
+    await client.createTable();
+    return client;
+  } catch (error) {
+    context.error("Azure Table Storage logging unavailable", error);
+    return null;
+  }
+}
+
+function buildSubmissionEntity({ request, name, email, company, challenge, pageUrl, provider }) {
+  const submittedAt = new Date().toISOString();
+  const partitionKey = submittedAt.slice(0, 10);
+  const rowKey = `${Date.now()}-${crypto.randomUUID()}`;
+
+  return {
+    partitionKey,
+    rowKey,
+    name,
+    email,
+    company: company || "",
+    challenge,
+    pageUrl: pageUrl || "",
+    provider,
+    deliveryStatus: "pending",
+    submittedAt,
+    userAgent: sanitizeString(request.headers.get("user-agent")),
+    referer: sanitizeString(request.headers.get("referer")),
+    origin: sanitizeString(request.headers.get("origin")),
+    xForwardedFor: sanitizeString(request.headers.get("x-forwarded-for")),
+  };
+}
+
+async function createSubmissionLog(client, entity, context) {
+  if (!client) {
+    return false;
+  }
+
+  try {
+    await client.createEntity(entity);
+    return true;
+  } catch (error) {
+    context.error("Failed to create contact submission log entry", error);
+    return false;
+  }
+}
+
+async function updateSubmissionLog(client, entity, updates, context) {
+  if (!client) {
+    return;
+  }
+
+  try {
+    await client.updateEntity(
+      {
+        partitionKey: entity.partitionKey,
+        rowKey: entity.rowKey,
+        ...updates,
+      },
+      "Merge",
+    );
+  } catch (error) {
+    context.error("Failed to update contact submission log entry", error);
+  }
+}
+
 app.http("contactSubmit", {
   route: "contact",
-  methods: ["POST"],
+  methods: ["POST", "OPTIONS"],
   authLevel: "anonymous",
   handler: async (request, context) => {
+    const corsHeaders = getCorsHeaders(request);
+
+    if (request.method === "OPTIONS") {
+      return noContent(204, corsHeaders);
+    }
+
     const body = await parseBody(request);
     if (!body) {
-      return json(400, { error: "Invalid JSON body." });
+      return json(400, { error: "Invalid JSON body." }, corsHeaders);
     }
 
     const name = sanitizeString(body.name);
@@ -192,13 +325,13 @@ app.http("contactSubmit", {
     const pageUrl = sanitizeString(body.pageUrl);
 
     if (!name) {
-      return json(400, { error: "Name is required." });
+      return json(400, { error: "Name is required." }, corsHeaders);
     }
     if (!email) {
-      return json(400, { error: "A valid email is required." });
+      return json(400, { error: "A valid email is required." }, corsHeaders);
     }
     if (!challenge) {
-      return json(400, { error: "Please describe what you want to improve." });
+      return json(400, { error: "Please describe what you want to improve." }, corsHeaders);
     }
 
     const config = getConfig();
@@ -206,7 +339,7 @@ app.http("contactSubmit", {
       context.error("Missing CONTACT_FROM_EMAIL configuration.");
       return json(500, {
         error: "Email delivery is missing CONTACT_FROM_EMAIL for the selected provider.",
-      });
+      }, corsHeaders);
     }
     if (config.provider === "resend" && !config.hasExplicitFromEmail) {
       context.warn(`CONTACT_FROM_EMAIL not set. Using default sender ${DEFAULT_RESEND_FROM_EMAIL}.`);
@@ -219,6 +352,18 @@ app.http("contactSubmit", {
       challenge,
       pageUrl,
     });
+
+    const tableClient = await getTableClient(config, context);
+    const submissionEntity = buildSubmissionEntity({
+      request,
+      name,
+      email,
+      company,
+      challenge,
+      pageUrl,
+      provider: config.provider,
+    });
+    const hasSubmissionLog = await createSubmissionLog(tableClient, submissionEntity, context);
 
     try {
       const payload = {
@@ -247,15 +392,37 @@ app.http("contactSubmit", {
         });
       }
 
+      await updateSubmissionLog(
+        tableClient,
+        submissionEntity,
+        {
+          deliveryStatus: "sent",
+          deliveredAt: new Date().toISOString(),
+        },
+        context,
+      );
+
       return json(200, {
         success: true,
-        message: `Thanks. Your enquiry was sent to ${config.toEmail} successfully and we will reply soon.`,
-      });
+        message: hasSubmissionLog
+          ? "Thanks. Your enquiry was received and logged successfully."
+          : "Thanks. Your enquiry was received successfully and we will reply soon.",
+      }, corsHeaders);
     } catch (error) {
       context.error("Contact submit failed", error);
+      await updateSubmissionLog(
+        tableClient,
+        submissionEntity,
+        {
+          deliveryStatus: "failed",
+          failedAt: new Date().toISOString(),
+          errorMessage: sanitizeString(error instanceof Error ? error.message : "Unknown error").slice(0, 1024),
+        },
+        context,
+      );
       return json(500, {
         error: "We could not send your enquiry right now. Please try again in a moment.",
-      });
+      }, corsHeaders);
     }
   },
 });

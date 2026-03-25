@@ -4,7 +4,6 @@ import NextSteps from "../components/NextSteps";
 import SiteShell from "../components/SiteShell";
 import styles from "../styles/home.module.css";
 
-const CONTACT_EMAIL = "mauricio.jardim1@gmail.com";
 const CONTACT_ENDPOINT = "/api/contact";
 
 export default function Contact() {
@@ -58,7 +57,7 @@ export default function Contact() {
       event.currentTarget.reset();
       setStatusMessage({
         type: "success",
-        text: responsePayload?.message?.trim() || `Thanks. Your enquiry was sent to ${CONTACT_EMAIL} successfully and we will reply soon.`,
+        text: responsePayload?.message?.trim() || "Thanks. Your enquiry was sent successfully and we will reply soon.",
       });
     } catch (error) {
       const providerMessage = error instanceof Error ? error.message : "";
@@ -84,7 +83,7 @@ export default function Contact() {
 
         <article className={styles.summaryCard}>
           <h2>Booking</h2>
-          <p>Use the quick form below to send your enquiry through our secure server-side contact endpoint.</p>
+          <p>Use the quick form below to send your enquiry through our secure server-side contact endpoint and save it in our linked Azure storage account.</p>
           <a className={styles.primaryButton} href="#quick-form">
             Start quick form
           </a>
@@ -94,8 +93,7 @@ export default function Contact() {
           <article className={styles.infoCard}>
             <h2>Quick form</h2>
             <p>
-              Submissions are delivered to <strong>{CONTACT_EMAIL}</strong>. The visitor&apos;s email is kept as the
-              reply-to address, so the message does not look like it was sent directly from their mailbox.
+              Submissions are delivered to our team securely and logged to Azure Table Storage for traceability.
             </p>
             <form className={styles.formGrid} id="quick-form" onSubmit={handleQuickFormSubmit}>
               <label className={styles.formField}>
