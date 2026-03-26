@@ -27,6 +27,15 @@ Configure these application settings in Azure Static Web Apps:
 6. `CONTACT_SUBMISSIONS_TABLE` (optional; defaults to `ContactSubmissions`)
 7. `CONTACT_ALLOWED_ORIGINS` (optional CSV list for CORS, e.g. `https://innowebventures.com,https://www.innowebventures.com`; leave empty to allow all origins)
 
+Quick start (no Gmail password):
+
+- `CONTACT_EMAIL_PROVIDER=resend`
+- `RESEND_API_KEY=<your-resend-api-key>`
+- `CONTACT_TO_EMAIL=<your-gmail-address>`
+- `CONTACT_FROM_EMAIL=onboarding@resend.dev` (testing to your own Resend account email)
+
+For production, use a verified domain for `CONTACT_FROM_EMAIL` (for example `hello@yourdomain.com`).
+
 If `CONTACT_EMAIL_PROVIDER` is not set, the backend will auto-select:
 
 - `smtp` when all `SMTP_*` credentials are present
