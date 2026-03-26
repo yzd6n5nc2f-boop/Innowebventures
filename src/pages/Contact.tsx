@@ -12,8 +12,9 @@ export default function Contact() {
 
   const handleQuickFormSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    const form = event.currentTarget;
 
-    const formData = new FormData(event.currentTarget);
+    const formData = new FormData(form);
     const name = String(formData.get("name") ?? "").trim();
     const email = String(formData.get("email") ?? "").trim();
     const company = String(formData.get("company") ?? "").trim();
@@ -54,7 +55,7 @@ export default function Contact() {
         throw new Error(providerMessage || `Failed to submit enquiry: ${response.status}`);
       }
 
-      event.currentTarget.reset();
+      form.reset();
       setStatusMessage({
         type: "success",
         text: responsePayload?.message?.trim() || "Thanks. Your enquiry was sent successfully and we will reply soon.",
