@@ -2,7 +2,7 @@
 
 ## What I inspected
 
-- Workflow configuration in `.github/workflows/azure-static-web-apps-gray-bay-0d8f29410.yml`.
+- Workflow configuration in `.github/workflows/azure-static-web-apps-innowebventures.yml`.
 - Local production build via `npm run build`.
 
 ## Findings
@@ -12,7 +12,7 @@
    - This means check status depends on deployment action behavior, not just code health.
 
 2. **Deploy and PR-close jobs require a repository secret token.**
-   - Both jobs use `azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_GRAY_BAY_0D8F29410 }}`.
+   - Both jobs use `azure_static_web_apps_api_token` from `AZURE_STATIC_WEB_APPS_API_TOKEN_INNOWEBVENTURES` with fallback to `AZURE_STATIC_WEB_APPS_API_TOKEN_GRAY_BAY_0D8F29410`.
    - For pull requests from forks, GitHub does not expose repository secrets, so Azure deploy steps commonly fail even when code is valid.
 
 3. **Local build is healthy.**
@@ -40,7 +40,7 @@ The failing GitHub checks are likely caused by using a deployment-only workflow 
    - This prevents secret-dependent steps from running when secrets are unavailable.
 
 3. **Add explicit failure messaging for missing secret (optional but useful).**
-   - Add a preflight step that checks whether `AZURE_STATIC_WEB_APPS_API_TOKEN_GRAY_BAY_0D8F29410` is present and emits a clear skip/warning message when absent.
+   - Add a preflight step that checks whether `AZURE_STATIC_WEB_APPS_API_TOKEN_INNOWEBVENTURES` (fallback: `AZURE_STATIC_WEB_APPS_API_TOKEN_GRAY_BAY_0D8F29410`) is present and emits a clear skip/warning message when absent.
 
 4. **Validate workflow behavior before enforcing required checks.**
    - Open an internal PR and verify:
