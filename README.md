@@ -69,5 +69,23 @@ For local API settings, copy `api/local.settings.example.json` to `api/local.set
 Routing notes:
 
 - Vite proxies `/api/*` requests to `http://127.0.0.1:7071` by default during local development.
+
+## Custom domain troubleshooting (Azure Static Web Apps)
+
+If a newly linked domain still does not open the deployed app, this is usually DNS or hosting configuration, not a front-end code issue.
+
+Use this quick checklist:
+
+1. **Confirm DNS records point to the hosting provider**
+   - `www` should typically be a `CNAME` to your Azure Static Web App hostname (for example `your-app-name.azurestaticapps.net`).
+   - Apex/root domains (for example `innowebventures.com`) should use Azure-supported apex mapping (`ALIAS`/`ANAME`) instead of pointing to unrelated static `A` records.
+2. **Verify the exact same hostname in Azure**
+   - Ensure both `innowebventures.com` and `www.innowebventures.com` are added as custom domains if you want both to work.
+3. **Wait for propagation and SSL certificate issuance**
+   - DNS and certificate updates can take time after verification.
+4. **Check for 403/404 at the edge**
+   - A `403` response with no app content commonly indicates the host header is not recognized by the configured app or endpoint.
+5. **Re-check domain registrar forwarding**
+   - If domain forwarding is enabled at the registrar, it can override your intended DNS routing.
 - `staticwebapp.config.json` excludes `/api/*` from SPA fallback rewriting.
 - The production build copies `staticwebapp.config.json` into `dist/` so Azure Static Web Apps applies it after deployment.
