@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { LIVE_WORK_URLS } from "../content/runtimeConfig";
 import styles from "../styles/home.module.css";
 
 const methodColumns = [
@@ -51,7 +52,7 @@ const liveWorkItems = [
     subtitle: "Trading clarity without noise",
     badge: "LIVE",
     badgeTone: "live",
-    url: "https://lively-bush-0409b5010.1.azurestaticapps.net",
+    url: LIVE_WORK_URLS.tad,
     previewTitle: "TAD live preview",
   },
   {
@@ -59,7 +60,7 @@ const liveWorkItems = [
     subtitle: "Contract intelligence for infrastructure",
     badge: "LIVE",
     badgeTone: "live",
-    url: "https://white-mushroom-039e8e310.6.azurestaticapps.net",
+    url: LIVE_WORK_URLS.concordia,
     previewTitle: "Concordia live preview",
   },
   {
@@ -67,7 +68,7 @@ const liveWorkItems = [
     subtitle: "AI-powered product experience",
     badge: "LIVE",
     badgeTone: "live",
-    url: "https://orange-bush-0d6e2d310.1.azurestaticapps.net",
+    url: LIVE_WORK_URLS.luxpulseAi,
     previewTitle: "Luxpulse-AI live preview",
   },
 ];

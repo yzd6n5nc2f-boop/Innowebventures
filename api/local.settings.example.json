@@ -10,6 +10,6 @@
     "SENDGRID_API_KEY": "",
     "CONTACT_STORAGE_CONNECTION_STRING": "UseDevelopmentStorage=true",
     "CONTACT_SUBMISSIONS_TABLE": "ContactSubmissions",
-    "CONTACT_ALLOWED_ORIGINS": "http://localhost:5173"
+    "CONTACT_ALLOWED_ORIGINS": "http://localhost:5173,http://127.0.0.1:5173"
   }
 }

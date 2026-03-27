@@ -2,6 +2,7 @@ import type { CSSProperties, ReactNode } from "react";
 import { useEffect, useRef, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { headerNav } from "../content/siteContent";
+import { SITE_URL } from "../content/runtimeConfig";
 import styles from "../styles/home.module.css";
 
 type SiteShellProps = {
@@ -51,15 +52,27 @@ export default function SiteShell({ children }: SiteShellProps) {
   return (
     <div className={styles.page} style={heroStyles}>
       <header className={styles.topNav}>
-        <Link className={styles.brand} to="/">
-          <img
-            className={styles.brandLogo}
-            src={`${import.meta.env.BASE_URL}branding/logo/innoweb-logo.png`}
-            alt="InnoWeb Ventures logo"
-            loading="eager"
-          />
-          <span className={styles.brandText}>InnoWeb Ventures Ltd</span>
-        </Link>
+        {SITE_URL ? (
+          <a className={styles.brand} href={SITE_URL}>
+            <img
+              className={styles.brandLogo}
+              src={`${import.meta.env.BASE_URL}branding/logo/innoweb-logo.png`}
+              alt="InnoWeb Ventures logo"
+              loading="eager"
+            />
+            <span className={styles.brandText}>InnoWeb Ventures Ltd</span>
+          </a>
+        ) : (
+          <Link className={styles.brand} to="/">
+            <img
+              className={styles.brandLogo}
+              src={`${import.meta.env.BASE_URL}branding/logo/innoweb-logo.png`}
+              alt="InnoWeb Ventures logo"
+              loading="eager"
+            />
+            <span className={styles.brandText}>InnoWeb Ventures Ltd</span>
+          </Link>
+        )}
 
         <nav className={styles.navLinks} aria-label="Primary">
           {headerNav.map((link) => (

@@ -2,9 +2,8 @@ import { useState, type FormEvent } from "react";
 import { Link } from "react-router-dom";
 import NextSteps from "../components/NextSteps";
 import SiteShell from "../components/SiteShell";
+import { CONTACT_ENDPOINT } from "../content/runtimeConfig";
 import styles from "../styles/home.module.css";
-
-const CONTACT_ENDPOINT = "/api/contact";
 
 export default function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);

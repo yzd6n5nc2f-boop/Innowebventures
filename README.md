@@ -2,6 +2,8 @@
 
 Static landing site (Vite + React + TypeScript) deployed with Azure Static Web Apps.
 
+This repo does not use Cloudflare. The hosting path in the codebase is Azure Static Web Apps for the frontend and Azure Functions for the contact form API.
+
 ## Contact form delivery and storage audit trail
 
 The contact form posts to an Azure Function at `/api/contact`.
@@ -27,6 +29,8 @@ Configure these application settings in Azure Static Web Apps:
 6. `CONTACT_SUBMISSIONS_TABLE` (optional; defaults to `ContactSubmissions`)
 7. `CONTACT_ALLOWED_ORIGINS` (optional CSV list for CORS, e.g. `https://innowebventures.com,https://www.innowebventures.com`; leave empty to allow all origins)
 
+If your domain has changed, update `CONTACT_ALLOWED_ORIGINS` to include the new public domain(s). If the frontend and API are no longer served from the same origin, set `VITE_CONTACT_ENDPOINT` at build time to the full API URL and rebuild the frontend.
+
 Quick start (no Gmail password):
 
 - `CONTACT_EMAIL_PROVIDER=resend`
@@ -35,6 +39,16 @@ Quick start (no Gmail password):
 - `CONTACT_FROM_EMAIL=onboarding@resend.dev` (testing to your own Resend account email)
 
 For production, use a verified domain for `CONTACT_FROM_EMAIL` (for example `hello@yourdomain.com`).
+
+Frontend runtime overrides are optional and only needed if you want to move away from the built-in defaults:
+
+- `VITE_SITE_URL`
+- `VITE_CONTACT_ENDPOINT` (defaults to `/api/contact`)
+- `VITE_LIVE_WORK_TAD_URL`
+- `VITE_LIVE_WORK_CONCORDIA_URL`
+- `VITE_LIVE_WORK_LUXPULSE_URL`
+
+Those values are baked into the Vite build, so any change requires a rebuild and redeploy.
 
 If `CONTACT_EMAIL_PROVIDER` is not set, the backend will auto-select:
 
