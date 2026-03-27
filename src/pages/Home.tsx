@@ -74,10 +74,30 @@ const liveWorkItems = [
 
 type LiveWorkItem = (typeof liveWorkItems)[number];
 
+function normalizeExternalUrl(rawUrl: string): string | null {
+  const trimmedUrl = rawUrl.trim();
+  if (!trimmedUrl) {
+    return null;
+  }
+
+  const withProtocol = /^[a-zA-Z][a-zA-Z\d+\-.]*:/.test(trimmedUrl)
+    ? trimmedUrl
+    : `https://${trimmedUrl}`;
+
+  try {
+    const parsed = new URL(withProtocol);
+    return parsed.href;
+  } catch {
+    return null;
+  }
+}
+
 function LiveWorkCard({ item }: { item: LiveWorkItem }) {
   const cardRef = useRef<HTMLAnchorElement | null>(null);
   const [shouldRender, setShouldRender] = useState(false);
   const [iframeStatus, setIframeStatus] = useState<"idle" | "loading" | "loaded" | "failed">("idle");
+  const safeUrl = normalizeExternalUrl(item.url);
+  const isLinkEnabled = Boolean(safeUrl);
 
   useEffect(() => {
     if (!cardRef.current) {
@@ -120,18 +140,28 @@ function LiveWorkCard({ item }: { item: LiveWorkItem }) {
     };
   }, [iframeStatus, shouldRender]);
 
-  const showIframe = shouldRender && iframeStatus !== "failed";
+  const showIframe = shouldRender && iframeStatus !== "failed" && Boolean(safeUrl);
   const showFallback = iframeStatus !== "loaded";
   const fallbackLabel =
-    iframeStatus === "failed" ? "Preview unavailable — Open live app ↗" : "Loading live preview…";
+    !safeUrl
+      ? "Invalid app URL — update the link to open this preview."
+      : iframeStatus === "failed"
+        ? "Preview unavailable — Open live app ↗"
+        : "Loading live preview…";
 
   return (
     <a
       ref={cardRef}
       className={`${styles.workCard} ${styles.workCardLink}`}
-      href={item.url}
-      target="_blank"
-      rel="noopener noreferrer"
+      href={safeUrl ?? undefined}
+      target={isLinkEnabled ? "_blank" : undefined}
+      rel={isLinkEnabled ? "noopener noreferrer" : undefined}
+      aria-disabled={!isLinkEnabled}
+      onClick={(event) => {
+        if (!isLinkEnabled) {
+          event.preventDefault();
+        }
+      }}
     >
       <span className={styles.externalIndicator} aria-hidden>
         ↗
@@ -147,7 +177,7 @@ function LiveWorkCard({ item }: { item: LiveWorkItem }) {
         {showIframe && (
           <iframe
             className={styles.previewIframe}
-            src={item.url}
+            src={safeUrl ?? undefined}
             sandbox="allow-forms allow-scripts allow-same-origin allow-popups"
             loading="lazy"
             referrerPolicy="no-referrer"
