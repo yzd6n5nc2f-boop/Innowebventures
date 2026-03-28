@@ -12,7 +12,7 @@ That function sends enquiries to your inbox and stores each submission in Azure 
 Configure these application settings in Azure Static Web Apps:
 
 1. `CONTACT_TO_EMAIL` (destination inbox; required)
-2. `CONTACT_EMAIL_PROVIDER` (required: `smtp`, `resend`, or `sendgrid`)
+2. `CONTACT_EMAIL_PROVIDER` (required: `smtp`, `resend`, `brevo`, or `sendgrid`)
 3. Provider credentials:
    - SMTP:
      - `SMTP_HOST`
@@ -22,6 +22,8 @@ Configure these application settings in Azure Static Web Apps:
      - `SMTP_SECURE` (optional; `true`/`false`, defaults to `true` for port `465`)
    - Resend:
      - `RESEND_API_KEY`
+   - Brevo:
+     - `BREVO_API_KEY`
    - SendGrid:
      - `SENDGRID_API_KEY`
 4. `CONTACT_FROM_EMAIL` (required sender address; for SMTP it defaults to `SMTP_USER` if that is a valid email)
@@ -40,6 +42,13 @@ Quick start (no Gmail password):
 
 For production, use a verified domain for `CONTACT_FROM_EMAIL` (for example `hello@yourdomain.com`).
 
+Quick start (Brevo transactional email):
+
+- `CONTACT_EMAIL_PROVIDER=brevo`
+- `BREVO_API_KEY=<your-brevo-api-key>`
+- `CONTACT_TO_EMAIL=<your-inbox-address>`
+- `CONTACT_FROM_EMAIL=<a sender address you have verified in Brevo>`
+
 Frontend runtime overrides are optional and only needed if you want to move away from the built-in defaults:
 
 - `VITE_SITE_URL`
@@ -54,6 +63,7 @@ If `CONTACT_EMAIL_PROVIDER` is not set, the backend will auto-select:
 
 - `smtp` when all `SMTP_*` credentials are present
 - otherwise `resend` if `RESEND_API_KEY` is present
+- otherwise `brevo` if `BREVO_API_KEY` is present
 - otherwise `sendgrid` if `SENDGRID_API_KEY` is present
 
 For local Azure Functions development, copy `api/local.settings.example.json` to
@@ -62,8 +72,8 @@ For local Azure Functions development, copy `api/local.settings.example.json` to
 Notes:
 
 - Each submission is recorded with request metadata and a delivery status (`pending`, `sent`, `failed`) in Azure Table Storage.
-- This backend now uses only server-side providers (`smtp`, `resend`, `sendgrid`) for reliable API delivery from Azure Functions.
-- For SendGrid and Resend, `CONTACT_FROM_EMAIL` must be a verified sender/domain.
+- This backend now uses only server-side providers (`smtp`, `resend`, `brevo`, `sendgrid`) for reliable API delivery from Azure Functions.
+- For SendGrid, Resend, and Brevo, `CONTACT_FROM_EMAIL` must be a verified sender/domain.
 
 
 Important routing note:

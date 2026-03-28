@@ -16,6 +16,7 @@ export default function Contact() {
     const formData = new FormData(form);
     const name = String(formData.get("name") ?? "").trim();
     const email = String(formData.get("email") ?? "").trim();
+    const phone = String(formData.get("phone") ?? "").trim();
     const company = String(formData.get("company") ?? "").trim();
     const challenge = String(formData.get("challenge") ?? "").trim();
     const subject = `20-min Build Review Enquiry${company ? ` - ${company}` : ""}`;
@@ -34,6 +35,7 @@ export default function Contact() {
         body: JSON.stringify({
           name,
           email,
+          phone,
           company,
           challenge,
           subject,
@@ -103,6 +105,10 @@ export default function Contact() {
               <label className={styles.formField}>
                 Email
                 <input className={styles.formInput} type="email" name="email" autoComplete="email" required />
+              </label>
+              <label className={styles.formField}>
+                Telephone number
+                <input className={styles.formInput} type="tel" name="phone" autoComplete="tel" />
               </label>
               <label className={styles.formField}>
                 Company

@@ -5,7 +5,7 @@ const nodemailer = require("nodemailer");
 
 const DEFAULT_CONTACT_SUBMISSIONS_TABLE = "ContactSubmissions";
 const DEFAULT_SMTP_PORT = 587;
-const SUPPORTED_DELIVERY_PROVIDERS = new Set(["smtp", "resend", "sendgrid"]);
+const SUPPORTED_DELIVERY_PROVIDERS = new Set(["smtp", "resend", "sendgrid", "brevo"]);
 
 function json(status, body, extraHeaders = {}) {
   return {
@@ -76,13 +76,15 @@ function getConfig() {
   const explicitFromEmail = sanitizeEmail(process.env.CONTACT_FROM_EMAIL);
   const resendApiKey = sanitizeString(process.env.RESEND_API_KEY);
   const sendgridApiKey = sanitizeString(process.env.SENDGRID_API_KEY);
+  const brevoApiKey = sanitizeString(process.env.BREVO_API_KEY);
   const smtpHost = sanitizeString(process.env.SMTP_HOST);
   const smtpPort = parsePort(process.env.SMTP_PORT, DEFAULT_SMTP_PORT);
   const smtpUser = sanitizeString(process.env.SMTP_USER);
   const smtpPass = sanitizeString(process.env.SMTP_PASS);
   const smtpSecure = parseBoolean(process.env.SMTP_SECURE, smtpPort === 465);
   const hasSmtpCredentials = Boolean(smtpHost && smtpUser && smtpPass);
-  const provider = providerOverride || (hasSmtpCredentials ? "smtp" : resendApiKey ? "resend" : sendgridApiKey ? "sendgrid" : "");
+  const provider =
+    providerOverride || (hasSmtpCredentials ? "smtp" : resendApiKey ? "resend" : brevoApiKey ? "brevo" : sendgridApiKey ? "sendgrid" : "");
   const fromEmail = explicitFromEmail || (provider === "smtp" ? sanitizeEmail(smtpUser) : "");
   const storageConnectionString =
     sanitizeString(process.env.CONTACT_STORAGE_CONNECTION_STRING) ||
@@ -96,6 +98,7 @@ function getConfig() {
     providerOverride,
     resendApiKey,
     sendgridApiKey,
+    brevoApiKey,
     provider,
     smtpHost,
     smtpPort,
@@ -113,11 +116,11 @@ function getConfigError(config) {
   }
 
   if (config.providerOverride && !SUPPORTED_DELIVERY_PROVIDERS.has(config.providerOverride)) {
-    return "CONTACT_EMAIL_PROVIDER must be one of: smtp, resend, sendgrid.";
+    return "CONTACT_EMAIL_PROVIDER must be one of: smtp, resend, sendgrid, brevo.";
   }
 
   if (!config.provider) {
-    return "No email provider is configured. Set CONTACT_EMAIL_PROVIDER and matching credentials (SMTP_* or RESEND_API_KEY or SENDGRID_API_KEY).";
+    return "No email provider is configured. Set CONTACT_EMAIL_PROVIDER and matching credentials (SMTP_* or RESEND_API_KEY or SENDGRID_API_KEY or BREVO_API_KEY).";
   }
 
   if (!config.fromEmail) {
@@ -134,6 +137,10 @@ function getConfigError(config) {
 
   if (config.provider === "sendgrid" && !config.sendgridApiKey) {
     return "SendGrid delivery requires SENDGRID_API_KEY.";
+  }
+
+  if (config.provider === "brevo" && !config.brevoApiKey) {
+    return "Brevo delivery requires BREVO_API_KEY.";
   }
 
   return "";
@@ -177,7 +184,8 @@ async function parseBody(request) {
   }
 }
 
-function buildEmail({ name, email, company, challenge, pageUrl }) {
+function buildEmail({ name, email, phone, company, challenge, pageUrl }) {
+  const phoneLine = phone || "-";
   const companyLine = company || "-";
   const challengeLine = challenge || "-";
   const pageLine = pageUrl || "-";
@@ -189,6 +197,7 @@ function buildEmail({ name, email, company, challenge, pageUrl }) {
       "New website enquiry",
       `Name: ${name}`,
       `Email: ${email}`,
+      `Telephone: ${phoneLine}`,
       `Company: ${companyLine}`,
       `Challenge: ${challengeLine}`,
       `Page URL: ${pageLine}`,
@@ -199,6 +208,7 @@ function buildEmail({ name, email, company, challenge, pageUrl }) {
         <table style="border-collapse:collapse;width:100%;max-width:720px;">
           <tr><td style="padding:8px;border:1px solid #d1d5db;font-weight:600;">Name</td><td style="padding:8px;border:1px solid #d1d5db;">${escapeHtml(name)}</td></tr>
           <tr><td style="padding:8px;border:1px solid #d1d5db;font-weight:600;">Email</td><td style="padding:8px;border:1px solid #d1d5db;">${escapeHtml(email)}</td></tr>
+          <tr><td style="padding:8px;border:1px solid #d1d5db;font-weight:600;">Telephone</td><td style="padding:8px;border:1px solid #d1d5db;">${escapeHtml(phoneLine)}</td></tr>
           <tr><td style="padding:8px;border:1px solid #d1d5db;font-weight:600;">Company</td><td style="padding:8px;border:1px solid #d1d5db;">${escapeHtml(companyLine)}</td></tr>
           <tr><td style="padding:8px;border:1px solid #d1d5db;font-weight:600;">Challenge</td><td style="padding:8px;border:1px solid #d1d5db;">${escapeHtml(challengeLine)}</td></tr>
           <tr><td style="padding:8px;border:1px solid #d1d5db;font-weight:600;">Page URL</td><td style="padding:8px;border:1px solid #d1d5db;">${escapeHtml(pageLine)}</td></tr>
@@ -258,6 +268,35 @@ async function sendViaSendGrid({ apiKey, fromEmail, toEmail, replyTo, subject, t
   }
 }
 
+async function sendViaBrevo({ apiKey, fromEmail, toEmail, replyTo, subject, text, html }) {
+  const response = await fetch("https://api.brevo.com/v3/smtp/email", {
+    method: "POST",
+    headers: {
+      "api-key": apiKey,
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+    body: JSON.stringify({
+      sender: {
+        email: fromEmail,
+      },
+      to: [
+        {
+          email: toEmail,
+        },
+      ],
+      subject,
+      textContent: text,
+      htmlContent: html,
+      ...(replyTo ? { replyTo: { email: replyTo } } : {}),
+    }),
+  });
+
+  if (!response.ok) {
+    throw new Error(`Brevo error ${response.status}: ${await response.text()}`);
+  }
+}
+
 async function sendViaSmtp({ host, port, secure, user, pass, fromEmail, toEmail, replyTo, subject, text, html }) {
   const transporter = nodemailer.createTransport({
     host,
@@ -295,7 +334,7 @@ async function getTableClient(config, context) {
   }
 }
 
-function buildSubmissionEntity({ request, name, email, company, challenge, pageUrl, provider }) {
+function buildSubmissionEntity({ request, name, email, phone, company, challenge, pageUrl, provider }) {
   const submittedAt = new Date().toISOString();
   const partitionKey = submittedAt.slice(0, 10);
   const rowKey = `${Date.now()}-${crypto.randomUUID()}`;
@@ -305,6 +344,7 @@ function buildSubmissionEntity({ request, name, email, company, challenge, pageU
     rowKey,
     name,
     email,
+    phone: phone || "",
     company: company || "",
     challenge,
     pageUrl: pageUrl || "",
@@ -369,6 +409,7 @@ app.http("contactSubmit", {
 
     const name = sanitizeString(body.name);
     const email = sanitizeEmail(body.email);
+    const phone = sanitizeString(body.phone);
     const company = sanitizeString(body.company);
     const challenge = sanitizeString(body.challenge);
     const pageUrl = sanitizeString(body.pageUrl);
@@ -395,6 +436,7 @@ app.http("contactSubmit", {
     const message = buildEmail({
       name,
       email,
+      phone,
       company,
       challenge,
       pageUrl,
@@ -405,6 +447,7 @@ app.http("contactSubmit", {
       request,
       name,
       email,
+      phone,
       company,
       challenge,
       pageUrl,
@@ -414,7 +457,6 @@ app.http("contactSubmit", {
 
     try {
       const payload = {
-        apiKey: config.provider === "resend" ? config.resendApiKey : config.sendgridApiKey,
         fromEmail: config.fromEmail,
         toEmail: config.toEmail,
         replyTo: email,
@@ -424,9 +466,20 @@ app.http("contactSubmit", {
       };
 
       if (config.provider === "resend") {
-        await sendViaResend(payload);
+        await sendViaResend({
+          apiKey: config.resendApiKey,
+          ...payload,
+        });
+      } else if (config.provider === "brevo") {
+        await sendViaBrevo({
+          apiKey: config.brevoApiKey,
+          ...payload,
+        });
       } else if (config.provider === "sendgrid") {
-        await sendViaSendGrid(payload);
+        await sendViaSendGrid({
+          apiKey: config.sendgridApiKey,
+          ...payload,
+        });
       } else if (config.provider === "smtp") {
         await sendViaSmtp({
           host: config.smtpHost,
