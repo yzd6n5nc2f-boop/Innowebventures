@@ -13,12 +13,12 @@ export default function ServiceDetail() {
     return (
       <SiteShell>
         <section className={styles.pageSection}>
-          <Breadcrumbs items={[{ label: "Services", to: "/services" }, { label: "Not found" }]} />
+          <Breadcrumbs items={[{ label: "Deployment pathways", to: "/services" }, { label: "Not found" }]} />
           <article className={styles.summaryCard}>
-            <h1>Service not found</h1>
-            <p>The requested service page is not available.</p>
+            <h1>Pathway not found</h1>
+            <p>The requested deployment pathway is not available.</p>
             <Link className={styles.inlineCta} to="/services">
-              Back to services
+              Back to pathways
             </Link>
           </article>
         </section>
@@ -29,10 +29,10 @@ export default function ServiceDetail() {
   return (
     <SiteShell>
       <section className={styles.pageSection}>
-        <Breadcrumbs items={[{ label: "Services", to: "/services" }, { label: service.name }]} />
+        <Breadcrumbs items={[{ label: "Deployment pathways", to: "/services" }, { label: service.name }]} />
 
         <div className={styles.pageIntro}>
-          <div className={styles.sectionKicker}>Service detail</div>
+          <div className={styles.sectionKicker}>Deployment pathway</div>
           <h1>{service.name}</h1>
           <p>{service.summary}</p>
         </div>
@@ -63,7 +63,7 @@ export default function ServiceDetail() {
           </article>
 
           <article className={styles.infoCard}>
-            <h2>Cost guardrails and checkpoints</h2>
+            <h2>Control guardrails</h2>
             <ul className={styles.cleanList}>
               {service.guardrails.map((item) => (
                 <li key={item}>{item}</li>
@@ -73,10 +73,10 @@ export default function ServiceDetail() {
         </div>
 
         <article className={styles.summaryCard}>
-          <h2>Ready to scope this service?</h2>
-          <p>We will align the workflow, timeline, and control checkpoints in a short working session.</p>
-          <Link className={styles.primaryButton} to="/contact?intent=build-review">
-            Book a 20-min Build Review
+          <h2>Ready to map this pathway?</h2>
+          <p>We will align the right platform entry point, deployment sequence, and governance checkpoints.</p>
+          <Link className={styles.primaryButton} to="/contact?intent=free-assessment">
+            Contact us for a discussion
           </Link>
         </article>
       </section>
@@ -84,19 +84,19 @@ export default function ServiceDetail() {
       <NextSteps
         steps={[
           {
-            label: "Browse Products",
-            to: "/products",
-            description: "Pair this service with the right product capability.",
+            label: "Explore the Forge Suite",
+            to: "/forge-suite",
+            description: "Pair this pathway with the right internal platform layer.",
           },
           {
-            label: "See Case Studies",
-            to: "/work",
-            description: "Review delivery examples before you commit.",
+            label: "See the Platform",
+            to: "/platform",
+            description: "Review how we combine the stack into a tailored route.",
           },
           {
-            label: "Contact Team",
+            label: "Contact InnoWeb",
             to: "/contact",
-            description: "Start with a clear scope and next action plan.",
+            description: "Start with a conversation about your operation and what could be improved.",
           },
         ]}
       />

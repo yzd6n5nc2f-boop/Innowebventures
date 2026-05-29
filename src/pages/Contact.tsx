@@ -19,7 +19,7 @@ export default function Contact() {
     const phone = String(formData.get("phone") ?? "").trim();
     const company = String(formData.get("company") ?? "").trim();
     const challenge = String(formData.get("challenge") ?? "").trim();
-    const subject = `20-min Build Review Enquiry${company ? ` - ${company}` : ""}`;
+    const subject = `InnoWeb Assessment Enquiry${company ? ` - ${company}` : ""}`;
     const pageUrl = window.location.href;
 
     setIsSubmitting(true);
@@ -79,13 +79,20 @@ export default function Contact() {
       <section className={styles.pageSection}>
         <div className={styles.pageIntro}>
           <div className={styles.sectionKicker}>Contact</div>
-          <h1>Book a 20-min Build Review</h1>
-          <p>Bring one workflow challenge. We will map a practical low-risk next step.</p>
+          <h1>Contact us for a discussion</h1>
+          <p>
+            Bring one operational challenge and we will give you an initial assessment of where automation, software,
+            intelligence shaping, or systems engineering could improve the way your business runs.
+          </p>
         </div>
 
         <article className={styles.summaryCard}>
-          <h2>Booking</h2>
-          <p>Use the quick form below to send your enquiry through our secure server-side contact endpoint and save it in our linked Azure storage account.</p>
+          <h2>Free assessment</h2>
+          <p>
+            Use the quick form below to send your enquiry through our secure server-side contact endpoint and store it
+            in our linked Azure storage account for traceability. We will review the challenge, the current flow, and
+            where tailored improvements could add value.
+          </p>
           <a className={styles.primaryButton} href="#quick-form">
             Start quick form
           </a>
@@ -95,7 +102,8 @@ export default function Contact() {
           <article className={styles.infoCard}>
             <h2>Quick form</h2>
             <p>
-              Submissions are delivered to our team securely and logged to Azure Table Storage for traceability.
+              Submissions are delivered to our team securely and logged to Azure Table Storage for operational
+              traceability.
             </p>
             <form className={styles.formGrid} id="quick-form" onSubmit={handleQuickFormSubmit}>
               <label className={styles.formField}>
@@ -115,7 +123,7 @@ export default function Contact() {
                 <input className={styles.formInput} type="text" name="company" autoComplete="organization" />
               </label>
               <label className={styles.formField}>
-                What are you trying to improve?
+                What process, workflow, or system challenge are you trying to improve?
                 <textarea className={styles.formInput} name="challenge" rows={4} required />
               </label>
               <div className={styles.formActions}>
@@ -140,12 +148,12 @@ export default function Contact() {
           <article className={styles.infoCard}>
             <h2>What happens next</h2>
             <ul className={styles.cleanList}>
-              <li>We confirm goals and current constraints.</li>
-              <li>We suggest the most suitable entry service.</li>
-              <li>We define timeline, guardrails, and first milestone.</li>
+              <li>We clarify the operational challenge, current systems, and commercial constraints.</li>
+              <li>We assess where tailored automation, intelligence shaping, or systems redesign may help.</li>
+              <li>We outline a practical next step and how we could partner with you to engineer it.</li>
             </ul>
-            <Link className={styles.inlineCta} to="/how-we-build">
-              See how we build
+            <Link className={styles.inlineCta} to="/platform">
+              See the platform
             </Link>
           </article>
         </div>
@@ -154,19 +162,19 @@ export default function Contact() {
       <NextSteps
         steps={[
           {
-            label: "Browse Products",
-            to: "/products",
-            description: "Review product options before the call.",
+            label: "Explore the Forge Suite",
+            to: "/forge-suite",
+            description: "Review the internal stack we use before the conversation.",
           },
           {
-            label: "Review Services",
+            label: "See the Platform",
+            to: "/platform",
+            description: "Understand how we approach tailored operational deployment.",
+          },
+          {
+            label: "Review Pathways",
             to: "/services",
-            description: "Select the service track you want to discuss.",
-          },
-          {
-            label: "Read Case Studies",
-            to: "/work",
-            description: "See outcome examples relevant to your challenge.",
+            description: "See how organisations can engage with us and structure the work.",
           },
         ]}
       />

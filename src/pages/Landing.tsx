@@ -1,7 +1,9 @@
+import type { CSSProperties } from "react";
 import { Link } from "react-router-dom";
 import NextSteps from "../components/NextSteps";
+import ProductGlyph from "../components/ProductGlyph";
 import SiteShell from "../components/SiteShell";
-import { homePaths, homeSummary, homeTrustChips } from "../content/siteContent";
+import { homePaths, homeSummary, homeTrustChips, platformLayers, products } from "../content/siteContent";
 import styles from "../styles/home.module.css";
 
 export default function Landing() {
@@ -9,17 +11,18 @@ export default function Landing() {
     <SiteShell>
       <section className={`${styles.pageSection} ${styles.heroSection}`}>
         <div className={styles.heroPanel}>
-          <div className={styles.kicker}>AI-first, logic-led</div>
-          <h1>
-            We build workflow systems where AI assists, and people stay in control.
-          </h1>
-          <p className={styles.subtitle}>Analog thinking. Digital execution. Human-in-the-loop by design.</p>
+          <div className={styles.kicker}>AI infrastructure for the next generation</div>
+          <h1>InnoWeb Ventures builds the infrastructure for the next AI generation.</h1>
+          <p className={styles.subtitle}>
+            We help organisations engineer tailored automation, software, and AI systems using our own proprietary
+            platform stack, specialist sector knowledge, and a controlled delivery model built around real workflows.
+          </p>
           <div className={styles.heroActions}>
-            <Link className={styles.primaryButton} to="/contact">
-              Book a 20-min Build Review
+            <Link className={styles.primaryButton} to="/forge-suite">
+              Explore the Forge Suite
             </Link>
-            <Link className={styles.secondaryButton} to="/services">
-              See what we do
+            <Link className={styles.secondaryButton} to="/contact">
+              Request a free assessment
             </Link>
           </div>
         </div>
@@ -35,9 +38,41 @@ export default function Landing() {
         </div>
 
         <article className={styles.summaryCard}>
-          <h2>What we do</h2>
+          <h2>Forge Suite</h2>
           <p>{homeSummary}</p>
         </article>
+
+        <div className={styles.suiteGrid}>
+          {products.map((product) => (
+            <article
+              key={product.slug}
+              className={styles.productCard}
+              style={
+                {
+                  ["--product-accent" as const]: product.accent,
+                  ["--product-accent-soft" as const]: product.accentSoft,
+                  ["--product-secondary" as const]: product.secondaryAccent,
+                } as CSSProperties
+              }
+            >
+              <div className={styles.productCardHeader}>
+                <div className={styles.productGlyph}>
+                  <ProductGlyph slug={product.slug} className={styles.productGlyphSvg} />
+                </div>
+                <div>
+                  <div className={styles.productBrandLine}>{product.brandLine}</div>
+                  <h3>{product.name}</h3>
+                </div>
+              </div>
+              <p className={styles.productTagline}>{product.tagline}</p>
+              <p className={styles.productRole}>{product.role}</p>
+              <p>{product.summary}</p>
+              <Link className={styles.inlineCta} to={`/forge-suite/${product.slug}`}>
+                View product architecture
+              </Link>
+            </article>
+          ))}
+        </div>
 
         <div className={styles.pathGrid}>
           {homePaths.map((path) => (
@@ -50,24 +85,54 @@ export default function Landing() {
             </article>
           ))}
         </div>
+
+        <div className={styles.architectureGrid}>
+          {platformLayers.map((layer) => (
+            <article
+              key={layer.title}
+              className={styles.architectureCard}
+              style={
+                {
+                  ["--product-accent" as const]: layer.accent,
+                  ["--product-accent-soft" as const]: layer.accentSoft,
+                  ["--product-secondary" as const]: layer.accent,
+                } as CSSProperties
+              }
+            >
+              <div className={styles.sectionKicker}>{layer.title}</div>
+              <h3>{layer.summary}</h3>
+              <p>{layer.detail}</p>
+            </article>
+          ))}
+        </div>
+
+        <article className={styles.summaryCard}>
+          <h2>Why InnoWeb</h2>
+          <p>
+            We do not approach this as a generic software sale. We use our own stack, our own methods, and the right
+            mix of technical and sector understanding to shape a solution around each business. That can include
+            software, automation, intelligence shaping, hardware integration, and operational rollout, depending on
+            what the workflow actually needs.
+          </p>
+        </article>
       </section>
 
       <NextSteps
         steps={[
           {
-            label: "Book a Build Review",
+            label: "Explore the Forge Suite",
+            to: "/forge-suite",
+            description: "See the internal stack we use to shape intelligence, build systems, and run operations.",
+          },
+          {
+            label: "See the Platform",
+            to: "/platform",
+            description: "Review how we turn your workflows into tailored operational solutions.",
+          },
+          {
+            label: "Request a Free Assessment",
             to: "/contact",
-            description: "Bring one workflow challenge. Leave with a practical next step.",
-          },
-          {
-            label: "Compare Services",
-            to: "/services",
-            description: "Choose a low-risk entry point from review to build.",
-          },
-          {
-            label: "Review Case Studies",
-            to: "/work",
-            description: "See how similar workflows were delivered.",
+            description: "Discuss your processes and get an initial view of where we could improve flows and systems.",
           },
         ]}
       />

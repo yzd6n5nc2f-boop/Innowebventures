@@ -9,9 +9,12 @@ export default function Services() {
     <SiteShell>
       <section className={styles.pageSection}>
         <div className={styles.pageIntro}>
-          <div className={styles.sectionKicker}>Services</div>
-          <h1>Low-risk delivery options from audit to optimisation.</h1>
-          <p>Pick a service path based on certainty, speed, and integration scope.</p>
+          <div className={styles.sectionKicker}>Deployment pathways</div>
+          <h1>Structured ways to adopt the Forge Suite without losing control.</h1>
+          <p>
+            Services remain secondary to the platform. They exist to help organisations choose the right entry point,
+            deploy responsibly, and expand with operational discipline.
+          </p>
         </div>
 
         <div className={styles.cardGrid}>
@@ -23,7 +26,7 @@ export default function Services() {
               </p>
               <p>{service.summary}</p>
               <Link className={styles.inlineCta} to={`/services/${service.slug}`}>
-                View service
+                View pathway
               </Link>
             </article>
           ))}
@@ -33,19 +36,19 @@ export default function Services() {
       <NextSteps
         steps={[
           {
-            label: "Match with Products",
-            to: "/products",
-            description: "See which products fit your selected service path.",
+            label: "Explore the Forge Suite",
+            to: "/forge-suite",
+            description: "See the internal stack these delivery pathways are built around.",
           },
           {
-            label: "See Delivery Proof",
-            to: "/work",
-            description: "Review case studies before starting the engagement.",
+            label: "See the Platform",
+            to: "/platform",
+            description: "Review how we structure tailored deployment and control.",
           },
           {
-            label: "Book Build Review",
+            label: "Request a Free Assessment",
             to: "/contact",
-            description: "Validate scope and timeline in a short call.",
+            description: "Discuss your current setup and how we could evaluate improvements.",
           },
         ]}
       />

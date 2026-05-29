@@ -15,9 +15,19 @@ export type Product = {
   name: string;
   audience: string;
   summary: string;
-  inputsOutputs: string;
+  positioning: string;
+  tagline: string;
+  brandLine: string;
+  role: string;
+  glyph: string;
+  accent: string;
+  accentSoft: string;
+  secondaryAccent: string;
+  whatItDoes: string[];
+  whyItMatters: string[];
+  roleInSuite: string;
+  usedFor: string[];
   outcomes: string[];
-  howItWorks: string[];
   relatedProductSlugs: string[];
 };
 
@@ -50,317 +60,394 @@ export type NextStep = {
   description: string;
 };
 
+export type PlatformLayer = {
+  title: string;
+  summary: string;
+  detail: string;
+  accent: string;
+  accentSoft: string;
+};
+
 export const headerNav: NavItem[] = [
-  { label: "Services", to: "/services" },
-  { label: "How We Build", to: "/how-we-build" },
+  { label: "Forge Suite", to: "/forge-suite" },
+  { label: "Platform", to: "/platform" },
+  { label: "How It Works", to: "/how-it-works" },
   { label: "About", to: "/about" },
   { label: "Contact", to: "/contact" },
 ];
 
 export const homeTrustChips = [
-  "Human-in-the-loop governance",
-  "Clear cost and scope ceilings",
-  "Built for real-world operations",
+  "Free operational assessment available",
+  "Human-controlled AI systems",
+  "Operational governance built in",
+  "Tailored for real industry adoption",
 ];
 
 export const homeSummary =
-  "InnoWeb Ventures collaborates with partners across a broad range of professional services, including engineering, construction, civil delivery, commercial operations, and go-to-market functions, to build logic-based applications that automate workflow handoffs with AI assistance. We focus on practical systems that monitor, coordinate, and reduce manual workload while keeping critical decisions with humans.";
+  "InnoWeb Ventures Limited is the main company. We design and deploy tailored automation, software, and AI systems for real businesses using our own internal platform stack. NeuralForge shapes the bespoke intelligence, Forge Coder builds the system and interface layer, and ForgeOps runs, governs, and helps deploy the operational layer. The Forge Suite is not something we are trying to sell on its own. It is the proprietary stack we use, alongside specialist sector knowledge, to engineer solutions around the workflows, budgets, and operating reality of each client.";
 
 export const homePaths: SummaryPath[] = [
   {
-    title: "Services",
-    description: "Start with a low-risk review, then prototype and build in controlled milestones.",
-    to: "/services",
-    cta: "See services",
+    title: "Forge Suite",
+    description: "See the proprietary platform stack we use to shape intelligence, build systems, and govern operations.",
+    to: "/forge-suite",
+    cta: "Explore the Forge Suite",
   },
   {
-    title: "Work",
-    description: "Browse delivery snapshots that show workflow challenge, build approach, and outcomes.",
-    to: "/work",
-    cta: "See case studies",
+    title: "Platform",
+    description: "Understand how we combine intelligence, software, hardware, and deployment into tailored operational solutions.",
+    to: "/platform",
+    cta: "See the platform",
   },
   {
-    title: "How We Build",
-    description: "Understand our human-in-control method and cost guardrails.",
-    to: "/how-we-build",
-    cta: "See method",
+    title: "How It Works",
+    description: "Review how we assess workflows, shape the right stack, and keep deployment measurable and human-led.",
+    to: "/how-it-works",
+    cta: "Learn how it works",
   },
 ];
 
 export const products: Product[] = [
   {
-    slug: "concordia",
-    name: "Concordia",
-    audience: "Infrastructure and delivery leaders handling high-volume contracts",
+    slug: "neuralforge",
+    name: "NeuralForge",
+    audience: "Businesses needing sector-specific intelligence shaped around their own workflow context",
     summary:
-      "Concordia extracts obligations, milestones, and risk signals from contract packs so teams can decide faster.",
-    inputsOutputs:
-      "Inputs: contract PDFs, annexes, procurement notes. Outputs: obligation register, risk summary, action checklist.",
+      "NeuralForge is the bespoke intelligence layer we use to shape, fine-tune, and configure AI capability for the specific operational environment we are solving for.",
+    positioning:
+      "The bespoke brain layer used to shape intelligence around sector-specific workflows, language, and operational context.",
+    tagline: "Shape the intelligence layer.",
+    brandLine: "by InnoWeb",
+    role: "Intelligence layer",
+    glyph: "NF",
+    accent: "#7A5CFF",
+    accentSoft: "rgba(122, 92, 255, 0.16)",
+    secondaryAccent: "#B14DFF",
+    whatItDoes: [
+      "Shapes AI behaviour around sector language, workflow logic, and real operational needs.",
+      "Supports fine-tuning, configuration, and specialist knowledge adaptation for bespoke use cases.",
+      "Provides the intelligence foundation for tailored systems rather than generic off-the-shelf outputs.",
+    ],
+    whyItMatters: [
+      "Useful automation starts with intelligence that fits the business, not just the model.",
+      "Sector-specific shaping improves relevance, control, and practical output quality.",
+      "It lets us engineer the solution around the client instead of forcing the client around a generic tool.",
+    ],
+    roleInSuite:
+      "NeuralForge is the intelligence layer we often start with when a solution needs a bespoke brain. It shapes how the wider system understands context, responds to domain-specific inputs, and supports operational decisions.",
+    usedFor: [
+      "Fine-tuning and intelligence shaping",
+      "Sector-specific AI capability",
+      "Domain adaptation",
+      "Specialist knowledge workflows",
+    ],
     outcomes: [
-      "Reduces contract review time across fragmented documents.",
-      "Surfaces hidden obligations before project kickoff.",
-      "Creates a traceable decision log for governance.",
+      "More relevant intelligence for the client's real workflow environment.",
+      "A stronger foundation for tailored automation and software design.",
+      "Greater control over how AI behaves inside the final solution.",
     ],
-    howItWorks: [
-      "Upload contract pack and define project context.",
-      "Concordia maps clauses to obligations and risk levels.",
-      "Team reviews flagged actions and exports work-ready outputs.",
-    ],
-    relatedProductSlugs: ["tad", "catalog-cruncher"],
+    relatedProductSlugs: ["forge-coder", "forgeops"],
   },
   {
-    slug: "catalog-cruncher",
-    name: "Catalog Cruncher",
-    audience: "Operations teams managing supplier catalogues and internal part lists",
+    slug: "forge-coder",
+    name: "Forge Coder",
+    audience: "Businesses needing tailored system build, interface design, and workflow software around the shaped intelligence layer",
     summary:
-      "Catalog Cruncher standardises inconsistent catalogue records and recommends clean mappings for downstream systems.",
-    inputsOutputs:
-      "Inputs: CSV/Excel catalogues, ERP extracts. Outputs: normalised catalogue, match confidence report, exception queue.",
+      "Forge Coder is the build layer we use to turn the intelligence and workflow design into software, interfaces, user journeys, and operational tooling.",
+    positioning:
+      "The systems and interface layer used to build the front end, workflow experience, and application structure around the bespoke intelligence.",
+    tagline: "Build the systems layer.",
+    brandLine: "by InnoWeb",
+    role: "Build layer",
+    glyph: "FC",
+    accent: "#00D8FF",
+    accentSoft: "rgba(0, 216, 255, 0.16)",
+    secondaryAccent: "#2F6BFF",
+    whatItDoes: [
+      "Builds the front end, workflow system, and supporting software around the tailored intelligence layer.",
+      "Provides a structured layer for assembling modular tools, interfaces, and system logic.",
+      "Supports rapid build without exposing the full internal architecture externally.",
+    ],
+    whyItMatters: [
+      "It turns strategy and workflow design into something usable by the client team.",
+      "It lets us tailor interfaces and system behaviour to the operating reality of the business.",
+      "It connects the bespoke intelligence layer to a working software experience.",
+    ],
+    roleInSuite:
+      "Forge Coder is the systems layer inside the Forge Suite. It builds the client-facing and workflow-facing parts of the solution around the intelligence we have shaped and the operational model we have designed.",
+    usedFor: [
+      "Front-end and interface build",
+      "Workflow assembly",
+      "AI-powered internal tooling",
+      "Structured application delivery",
+    ],
     outcomes: [
-      "Removes duplicate and conflicting item records.",
-      "Improves procurement search and pricing consistency.",
-      "Cuts manual reconciliation effort each cycle.",
+      "A tailored system layer that reflects how the business actually operates.",
+      "Cleaner user journeys and workflow handling around the bespoke AI capability.",
+      "A stronger bridge from intelligence shaping into deployment and live use.",
     ],
-    howItWorks: [
-      "Ingest catalogue data and define target schema.",
-      "Model clusters duplicates and suggests canonical entries.",
-      "Ops approves exceptions and publishes a clean catalogue.",
-    ],
-    relatedProductSlugs: ["concordia", "luxpulse-ai"],
+    relatedProductSlugs: ["neuralforge", "forgeops"],
   },
   {
-    slug: "tad",
-    name: "TAD",
-    audience: "Trading and decision teams needing signal clarity",
+    slug: "forgeops",
+    name: "ForgeOps",
+    audience: "Operations leaders, directors, COOs, and teams needing oversight, rollout, and control of deployed systems",
     summary:
-      "TAD reduces noise in high-frequency information streams and highlights decision-ready signals with context.",
-    inputsOutputs:
-      "Inputs: market/event feeds, analyst notes. Outputs: prioritised signal board, trigger alerts, audit trail.",
+      "ForgeOps is the operational layer we use to run, monitor, govern, and help deploy the finished system in a controlled way.",
+    positioning:
+      "The operational command layer that runs, monitors, governs, and helps deploy the built system and its intelligence safely in live use.",
+    tagline: "Govern the operational layer.",
+    brandLine: "by InnoWeb",
+    role: "Operations and governance layer",
+    glyph: "FO",
+    accent: "#00CFA3",
+    accentSoft: "rgba(0, 207, 163, 0.16)",
+    secondaryAccent: "#7EF0D2",
+    whatItDoes: [
+      "Runs live workflows with checkpoints, approvals, and human review where needed.",
+      "Provides visibility into deployment, runtime behaviour, and operational state.",
+      "Supports governance, monitoring, and controlled rollout of agents, interfaces, and system logic.",
+    ],
+    whyItMatters: [
+      "A tailored solution only works if it can be managed properly in real operation.",
+      "Clients need monitoring, oversight, and confidence once systems are live.",
+      "It keeps the deployed solution measurable, governed, and commercially credible.",
+    ],
+    roleInSuite:
+      "ForgeOps is the operational layer inside the Forge Suite. It brings together deployment, monitoring, approvals, and runtime control so the finished solution can function safely and effectively in the client's environment.",
+    usedFor: [
+      "Workflow orchestration",
+      "Deployment support",
+      "Runtime monitoring",
+      "Governance and oversight",
+    ],
     outcomes: [
-      "Improves decision speed without sacrificing control.",
-      "Creates a consistent signal triage process.",
-      "Provides traceability for post-event review.",
+      "More controlled deployment of bespoke systems into live business use.",
+      "Better operational visibility and accountability once the solution is running.",
+      "A clearer route from custom build into stable day-to-day operation.",
     ],
-    howItWorks: [
-      "Connect event feeds and define relevance rules.",
-      "TAD ranks signals against risk and confidence thresholds.",
-      "Team validates alerts and acts with full context.",
-    ],
-    relatedProductSlugs: ["concordia", "luxpulse-ai"],
-  },
-  {
-    slug: "luxpulse-ai",
-    name: "Luxpulse-AI",
-    audience: "Product and customer teams improving digital experience",
-    summary:
-      "Luxpulse-AI identifies drop-off patterns and suggests workflow-level improvements for faster user outcomes.",
-    inputsOutputs:
-      "Inputs: product events, funnel metrics, support signals. Outputs: friction map, prioritised improvements, impact tracker.",
-    outcomes: [
-      "Highlights the journeys causing avoidable friction.",
-      "Aligns teams on the highest-impact improvements first.",
-      "Tracks intervention impact against baseline metrics.",
-    ],
-    howItWorks: [
-      "Connect usage and support data sources.",
-      "Luxpulse-AI maps friction points by segment and flow.",
-      "Teams ship targeted fixes and monitor outcome shifts.",
-    ],
-    relatedProductSlugs: ["catalog-cruncher", "tad"],
+    relatedProductSlugs: ["neuralforge", "forge-coder"],
   },
 ];
 
 export const services: Service[] = [
   {
-    slug: "automation-audit",
-    name: "Automation Audit",
+    slug: "platform-discovery",
+    name: "Platform Discovery",
     duration: "1 week",
     summary:
-      "A rapid diagnostic to identify automation opportunities, risk points, and the fastest path to measurable wins.",
+      "A short discovery engagement to identify the right Forge Suite entry point, operational constraints, and governance priorities.",
     whatYouGet: [
-      "Current-state workflow map",
-      "Opportunity and risk register",
-      "Prioritized 30-day action plan",
+      "Current workflow and systems map",
+      "Forge Suite entry recommendation",
+      "Deployment pathway and control plan",
     ],
-    timeline: "5 working days from kickoff to readout.",
+    timeline: "5 working days from kickoff to architecture readout.",
     clientNeeds:
-      "Access to key process owners, sample workflow data, and one decision-maker for readouts.",
+      "Access to operational stakeholders, representative workflow context, and one decision-maker for alignment.",
     guardrails: [
-      "Cost ceiling agreed before analysis starts.",
-      "Human sign-off gates on all recommended automations.",
-      "No production changes during audit week.",
+      "Scope and decision questions agreed before work begins.",
+      "Human review points built into all recommendations.",
+      "No production changes during discovery.",
     ],
   },
   {
-    slug: "prototype-sprint",
-    name: "Prototype Sprint",
+    slug: "deployment-sprint",
+    name: "Deployment Sprint",
     duration: "10 days",
     summary:
-      "A focused sprint to prove a workflow with a working prototype and a clear go/no-go decision.",
+      "A focused sprint to stand up one controlled Forge Suite deployment pathway and validate the operating model quickly.",
     whatYouGet: [
-      "Working prototype for one priority workflow",
-      "Validation session with stakeholders",
-      "Delivery plan for production build",
+      "Live deployment plan for one priority workflow",
+      "Validation checkpoint with stakeholders",
+      "Operational recommendation for next rollout stage",
     ],
-    timeline: "10 working days, including demo and decision checkpoint.",
+    timeline: "10 working days, including review and deployment checkpoint.",
     clientNeeds:
-      "Single workflow owner, access to representative data, and 2-3 feedback touchpoints across the sprint.",
+      "A named workflow owner, access to representative data, and timely feedback during the sprint.",
     guardrails: [
-      "Scope locked to one workflow to keep risk low.",
-      "Human-in-control review before demo release.",
-      "Explicit budget cap for prototype phase.",
+      "Scope locked to one deployment path.",
+      "Human-in-control approvals before live progression.",
+      "Budget boundaries agreed at the outset.",
     ],
   },
   {
-    slug: "build-integrate",
-    name: "Build & Integrate",
+    slug: "integration-rollout",
+    name: "Integration & Rollout",
     duration: "4-8 weeks",
     summary:
-      "Production delivery for validated workflows with integration into your existing tools, controls, and reporting.",
+      "Structured rollout of Forge Suite capabilities into existing systems, operational workflows, and reporting layers.",
     whatYouGet: [
-      "Production-grade workflow system",
-      "Integration with existing stack",
-      "Operational handover and enablement",
+      "Integrated platform deployment",
+      "Workflow and systems rollout plan",
+      "Operational enablement and handover",
     ],
-    timeline: "Typically 4-8 weeks based on integration complexity.",
+    timeline: "Typically 4-8 weeks depending on systems and governance complexity.",
     clientNeeds:
-      "Access to target systems, technical counterpart, and weekly steering decisions.",
+      "Access to target systems, technical counterparts, and a weekly steering decision cadence.",
     guardrails: [
-      "Milestone-based releases with rollback paths.",
-      "Usage and cost telemetry from day one.",
-      "Approval checkpoints for governance and security.",
+      "Milestone releases with rollback paths.",
+      "Usage, cost, and runtime telemetry from day one.",
+      "Governance checkpoints before expansion.",
     ],
   },
   {
-    slug: "support-optimisation",
-    name: "Support & Optimisation",
+    slug: "optimisation-governance-support",
+    name: "Optimisation & Governance Support",
     duration: "Retainer",
     summary:
-      "Ongoing support to improve performance, cost efficiency, and operational reliability as your workflows evolve.",
+      "Ongoing support to tune platform performance, reinforce governance, and improve operational outcomes over time.",
     whatYouGet: [
-      "Monthly optimisation backlog",
-      "Performance and cost review cadence",
-      "Issue response and incremental enhancements",
+      "Monthly optimisation and governance backlog",
+      "Runtime and cost review cadence",
+      "Incremental platform and workflow refinements",
     ],
-    timeline: "Rolling monthly cycles with agreed service windows.",
+    timeline: "Rolling monthly cycles with agreed response and review windows.",
     clientNeeds:
-      "Named owner for priorities, shared KPI targets, and a monthly review session.",
+      "A named operating owner, KPI alignment, and a recurring review forum.",
     guardrails: [
       "Cost thresholds monitored continuously.",
       "Operational changes reviewed with human checkpointing.",
-      "Security and governance controls revalidated each cycle.",
+      "Security and governance controls revisited each cycle.",
     ],
   },
 ];
 
 export const caseStudies: CaseStudy[] = [
   {
-    slug: "concordia-infrastructure",
-    name: "Concordia for Infrastructure Delivery",
-    problem: "Contract obligations were scattered across large document packs.",
-    build: "Obligation extraction and risk flagging workflow with review checkpoints.",
-    result: "Faster readiness reviews with a single action register.",
+    slug: "operational-build-layer",
+    name: "Operational Build Layer",
+    problem: "Legacy workflows slowed down software delivery for operational teams.",
+    build: "Structured build layer for AI-enabled workflow software and internal tools.",
+    result: "Faster movement from workflow concept to controlled system delivery.",
     context:
-      "A delivery team needed to reduce late surprises in contract-heavy programmes while preserving governance control.",
+      "Representative platform pattern showing how the Forge Suite build layer can support serious internal software creation.",
     whatWasBuilt: [
-      "Clause classification pipeline for obligation mapping",
-      "Risk scoring model with human review queue",
-      "Export-ready checklist for delivery teams",
+      "Structured workflow assembly layer",
+      "Reusable software components for operational tooling",
+      "Controlled handoff into governed deployment",
     ],
     measurableValue: [
-      "Placeholder: 25-35% reduction in initial contract review cycle time",
-      "Placeholder: improved obligation traceability across programme teams",
-      "Placeholder: faster escalation on high-risk clauses",
+      "Pattern example: faster movement from workflow mapping to working system",
+      "Pattern example: reduced fragmentation across internal tool development",
+      "Pattern example: stronger architectural consistency at deployment time",
     ],
     screenshots: [
-      { title: "Obligation dashboard", imagePath: "branding/innoweb-hero-bg-desktop.jpeg" },
-      { title: "Risk review queue", imagePath: "branding/innoweb-hero-bg-mobile.jpeg" },
+      { title: "Build layer overview", imagePath: "branding/innoweb-hero-bg-desktop.jpeg" },
+      { title: "Workflow assembly view", imagePath: "branding/innoweb-hero-bg-mobile.jpeg" },
     ],
   },
   {
-    slug: "tad-signal-ops",
-    name: "TAD Signal Operations",
-    problem: "Decision teams were overwhelmed by high-noise event streams.",
-    build: "Signal ranking pipeline with confidence and risk thresholds.",
-    result: "Cleaner triage and more consistent actioning.",
+    slug: "governed-runtime-operations",
+    name: "Governed Runtime Operations",
+    problem: "AI workflows needed approval, oversight, and auditability in live environments.",
+    build: "Operational governance layer with runtime visibility and human checkpointing.",
+    result: "Clearer control over how deployed AI workflows behave in production.",
     context:
-      "A fast-moving operations function needed a repeatable way to separate high-value signals from routine noise.",
+      "Representative platform pattern showing how operational oversight becomes part of live AI infrastructure.",
     whatWasBuilt: [
-      "Ingestion from event and note feeds",
-      "Priority scoring tuned to operational thresholds",
-      "Action board with full audit trail",
+      "Runtime command surface",
+      "Approval and escalation pathway design",
+      "Audit and oversight structure",
     ],
     measurableValue: [
-      "Placeholder: 30% faster triage during peak periods",
-      "Placeholder: improved consistency in signal handling decisions",
-      "Placeholder: reduced manual escalation churn",
+      "Pattern example: stronger runtime visibility for operational owners",
+      "Pattern example: clearer approval handling in live workflows",
+      "Pattern example: better governance posture for production AI usage",
     ],
     screenshots: [
-      { title: "Signal board", imagePath: "branding/innoweb-hero-bg-desktop.jpeg" },
-      { title: "Event detail", imagePath: "branding/innoweb-hero-bg-mobile.jpeg" },
+      { title: "Operations board", imagePath: "branding/innoweb-hero-bg-desktop.jpeg" },
+      { title: "Approval view", imagePath: "branding/innoweb-hero-bg-mobile.jpeg" },
     ],
   },
   {
-    slug: "luxpulse-experience-loop",
-    name: "Luxpulse-AI Experience Loop",
-    problem: "Product teams lacked a shared view of friction across key journeys.",
-    build: "Friction mapping and recommendation flow linked to outcome tracking.",
-    result: "Prioritized improvements tied to measurable shifts.",
+    slug: "specialised-intelligence-layer",
+    name: "Specialised Intelligence Layer",
+    problem: "Generic model behaviour lacked domain fit for specialist operational use.",
+    build: "Intelligence shaping layer for domain adaptation and specialist knowledge behaviour.",
+    result: "Higher relevance and stronger operational fit for AI-assisted outputs.",
     context:
-      "A growth-stage product team wanted to target interventions where customer friction had the highest impact.",
+      "Representative platform pattern showing how specialised intelligence can sit inside a governed AI stack.",
     whatWasBuilt: [
-      "Journey-level friction detection",
-      "Recommendation scoring based on impact potential",
-      "Outcome tracker for shipped improvements",
+      "Domain adaptation flow",
+      "Specialised intelligence configuration layer",
+      "Outcome monitoring against operational context",
     ],
     measurableValue: [
-      "Placeholder: 15-20% improvement in target funnel completion",
-      "Placeholder: faster prioritisation of UX improvements",
-      "Placeholder: clearer alignment across product and ops teams",
+      "Pattern example: stronger domain relevance in system outputs",
+      "Pattern example: clearer intelligence specialization by workflow",
+      "Pattern example: improved operational fit for AI-enabled systems",
     ],
     screenshots: [
-      { title: "Friction map", imagePath: "branding/innoweb-hero-bg-desktop.jpeg" },
-      { title: "Impact tracker", imagePath: "branding/innoweb-hero-bg-mobile.jpeg" },
+      { title: "Intelligence map", imagePath: "branding/innoweb-hero-bg-desktop.jpeg" },
+      { title: "Specialisation view", imagePath: "branding/innoweb-hero-bg-mobile.jpeg" },
     ],
+  },
+];
+
+export const platformLayers: PlatformLayer[] = [
+  {
+    title: "Intelligence layer",
+    summary: "NeuralForge shapes the bespoke brain around sector-specific context and workflow reality.",
+    detail:
+      "This layer fine-tunes and configures intelligence so the final solution responds to the actual language, logic, and operational needs of the business.",
+    accent: "#7A5CFF",
+    accentSoft: "rgba(122, 92, 255, 0.16)",
+  },
+  {
+    title: "Build layer",
+    summary: "Forge Coder builds the software, interface, and workflow layer around that bespoke intelligence.",
+    detail:
+      "This layer turns the shaped intelligence and workflow design into usable software, interface flows, and system structure for the client environment.",
+    accent: "#00D8FF",
+    accentSoft: "rgba(0, 216, 255, 0.16)",
+  },
+  {
+    title: "Governance layer",
+    summary: "ForgeOps runs, monitors, and governs the live operational layer once the tailored solution is deployed.",
+    detail:
+      "This layer handles rollout, orchestration, oversight, approvals, and ongoing control so the finished system performs safely in day-to-day operation.",
+    accent: "#00CFA3",
+    accentSoft: "rgba(0, 207, 163, 0.16)",
   },
 ];
 
 export const howWeBuildPillars = [
   {
-    title: "Workflow-first",
-    description: "We map decisions and handoffs first, then choose tooling.",
+    title: "Workflow-first architecture",
+    description: "Operational decisions and handoffs are mapped before system logic is deployed.",
   },
   {
-    title: "Human-in-control loop",
-    description: "Critical actions always include review and override controls.",
+    title: "Human-in-control runtime",
+    description: "Critical actions stay reviewable, overrideable, and visible in live operation.",
   },
   {
-    title: "Cost ceilings built-in",
-    description: "Budgets are treated as product constraints, not afterthoughts.",
+    title: "Measured cost control",
+    description: "Usage ceilings, telemetry, and cost awareness are built into deployment from the start.",
   },
   {
-    title: "Security & governance",
-    description: "Controls and traceability are part of the architecture from day one.",
+    title: "Security and governance by default",
+    description: "Controls, traceability, and accountability sit inside the platform architecture itself.",
   },
 ];
 
-export const deliveryPhases = ["Discover", "Prototype", "Build", "Support"];
+export const deliveryPhases = ["Discover", "Deploy", "Operate", "Refine"];
 
 export const footerNextSteps: NextStep[] = [
   {
-    label: "Explore Products",
-    to: "/products",
-    description: "See app capabilities and choose a fit for your workflow.",
+    label: "Understand Our Stack",
+    to: "/forge-suite",
+    description: "See how NeuralForge, Forge Coder, and ForgeOps work together behind tailored solutions.",
   },
   {
-    label: "Review Services",
-    to: "/services",
-    description: "Choose a low-risk engagement path to get started.",
+    label: "See the Platform",
+    to: "/platform",
+    description: "Review how we combine intelligence, software, and operations into controlled deployments.",
   },
   {
-    label: "Book a Build Review",
+    label: "Request a Free Assessment",
     to: "/contact",
-    description: "Book a 20-minute session to scope next steps.",
+    description: "Discuss your processes and see where automation could improve your operation.",
   },
 ];
 

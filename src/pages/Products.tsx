@@ -1,7 +1,9 @@
+import type { CSSProperties } from "react";
 import { Link } from "react-router-dom";
 import NextSteps from "../components/NextSteps";
+import ProductGlyph from "../components/ProductGlyph";
 import SiteShell from "../components/SiteShell";
-import { products } from "../content/siteContent";
+import { platformLayers, products } from "../content/siteContent";
 import styles from "../styles/home.module.css";
 
 export default function Products() {
@@ -9,51 +11,100 @@ export default function Products() {
     <SiteShell>
       <section className={styles.pageSection}>
         <div className={styles.pageIntro}>
-          <div className={styles.sectionKicker}>Capabilities</div>
-          <h1>Logic-based applications for workflow automation.</h1>
+          <div className={styles.sectionKicker}>Forge Suite</div>
+          <h1>The proprietary platform stack behind how we build tailored AI and automation solutions.</h1>
           <p>
-            We build and integrate tailored systems that connect people, processes, and data, using AI where it
-            helps and human oversight where it matters.
+            The Forge Suite sits behind the way InnoWeb Ventures works. It brings together the intelligence layer,
+            the systems layer, and the operational layer we use to engineer bespoke solutions around a client's own
+            workflow, budget, and operating environment.
           </p>
         </div>
 
-        <div className={styles.cardGrid}>
+        <div className={styles.architectureGrid}>
+          {platformLayers.map((layer) => (
+            <article
+              key={layer.title}
+              className={styles.architectureCard}
+              style={
+                {
+                  ["--product-accent" as const]: layer.accent,
+                  ["--product-accent-soft" as const]: layer.accentSoft,
+                  ["--product-secondary" as const]: layer.accent,
+                } as CSSProperties
+              }
+            >
+              <div className={styles.sectionKicker}>{layer.title}</div>
+              <h3>{layer.summary}</h3>
+              <p>{layer.detail}</p>
+            </article>
+          ))}
+        </div>
+
+        <div className={styles.suiteGrid}>
           {products.map((product) => (
-            <article key={product.slug} className={styles.infoCard}>
-              <h2>{product.name}</h2>
+            <article
+              key={product.slug}
+              className={styles.productCard}
+              style={
+                {
+                  ["--product-accent" as const]: product.accent,
+                  ["--product-accent-soft" as const]: product.accentSoft,
+                  ["--product-secondary" as const]: product.secondaryAccent,
+                } as CSSProperties
+              }
+            >
+              <div className={styles.productCardHeader}>
+                <div className={styles.productGlyph}>
+                  <ProductGlyph slug={product.slug} className={styles.productGlyphSvg} />
+                </div>
+                <div>
+                  <div className={styles.productBrandLine}>{product.brandLine}</div>
+                  <h2>{product.name}</h2>
+                </div>
+              </div>
+              <p className={styles.productTagline}>{product.tagline}</p>
+              <p className={styles.productRole}>{product.role}</p>
               <p>
-                <strong>Who it is for:</strong> {product.audience}
+                <strong>Who it serves:</strong> {product.audience}
               </p>
               <p>
-                <strong>What it does:</strong> {product.summary}
+                <strong>What it is:</strong> {product.summary}
               </p>
-              <p className={styles.ioText}>
-                <strong>Inputs/Outputs:</strong> {product.inputsOutputs}
+              <p>
+                <strong>Role in the stack:</strong> {product.roleInSuite}
               </p>
-              <Link className={styles.inlineCta} to={`/products/${product.slug}`}>
-                View product
+              <Link className={styles.inlineCta} to={`/forge-suite/${product.slug}`}>
+                View product architecture
               </Link>
             </article>
           ))}
         </div>
+
+        <article className={styles.summaryCard}>
+          <h2>Stack architecture</h2>
+          <p>
+            NeuralForge shapes the bespoke brain. Forge Coder builds the software and interface layer around it.
+            ForgeOps helps run, monitor, and govern the finished solution in live operation.
+          </p>
+        </article>
       </section>
 
       <NextSteps
         steps={[
           {
-            label: "Pick a Service",
-            to: "/services",
-            description: "Match your chosen product to the right delivery option.",
+            label: "See the Platform",
+            to: "/platform",
+            description: "Review how we combine this stack into tailored operational deployments.",
           },
           {
-            label: "See Work Proof",
-            to: "/work",
-            description: "Review recent builds and delivery outcomes.",
+            label: "Learn How It Works",
+            to: "/how-it-works",
+            description: "See how we assess, design, and deploy around the client's real workflow.",
           },
           {
-            label: "Book Build Review",
+            label: "Request a Free Assessment",
             to: "/contact",
-            description: "Discuss your use case in a 20-minute call.",
+            description: "Discuss your organisation and get an initial view of where we could add value.",
           },
         ]}
       />

@@ -1,9 +1,9 @@
 .page {
-  --brand-accent: #0dcfdf;
-  --brand-deep: #143747;
-  --brand-ink: #0a0d12;
-  --brand-muted: #5f6c75;
-  --brand-text: #edeff2;
+  --brand-accent: #00d8ff;
+  --brand-deep: #0f1723;
+  --brand-ink: #090b10;
+  --brand-muted: #7c8794;
+  --brand-text: #f5f7fa;
   position: relative;
   min-height: 100vh;
   background-color: var(--brand-ink);
@@ -370,6 +370,8 @@
 
 .pathGrid,
 .cardGrid,
+.suiteGrid,
+.architectureGrid,
 .detailGrid,
 .miniGrid,
 .nextStepGrid,
@@ -380,7 +382,9 @@
 }
 
 .pathGrid,
-.cardGrid {
+.cardGrid,
+.suiteGrid,
+.architectureGrid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
@@ -455,6 +459,14 @@
   line-height: 1.55;
 }
 
+.productHero {
+  margin-top: 0;
+  background:
+    linear-gradient(160deg, var(--product-accent-soft), rgba(10, 13, 18, 0.08) 36%),
+    rgba(10, 13, 18, 0.1);
+  border-color: color-mix(in srgb, var(--product-accent) 36%, rgba(255, 255, 255, 0.08));
+}
+
 .ioText {
   font-size: 0.93rem;
 }
@@ -488,6 +500,108 @@
 
 .miniCardLink {
   text-decoration: none;
+}
+
+.productCard,
+.architectureCard {
+  --product-accent: var(--brand-accent);
+  --product-accent-soft: rgba(0, 216, 255, 0.16);
+  --product-secondary: var(--brand-accent);
+  border-radius: 18px;
+  border: 1px solid color-mix(in srgb, var(--product-accent) 34%, rgba(255, 255, 255, 0.06));
+  background:
+    linear-gradient(165deg, var(--product-accent-soft), rgba(10, 13, 18, 0.06) 38%),
+    rgba(10, 13, 18, 0.12);
+  padding: 18px;
+  box-shadow: 0 16px 38px rgba(0, 0, 0, 0.24);
+  backdrop-filter: blur(2px);
+}
+
+.productCard h2,
+.productCard h3,
+.architectureCard h2,
+.architectureCard h3 {
+  margin: 0;
+  color: var(--brand-text);
+}
+
+.productCard p,
+.architectureCard p {
+  margin: 10px 0 0;
+  color: rgba(245, 247, 250, 0.86);
+  line-height: 1.55;
+}
+
+.productCardHeader {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.productGlyph {
+  width: 68px;
+  height: 68px;
+  border-radius: 18px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(10, 13, 18, 0.12));
+  border: 1px solid color-mix(in srgb, var(--product-accent) 34%, rgba(255, 255, 255, 0.08));
+  box-shadow: 0 18px 34px rgba(0, 0, 0, 0.26);
+}
+
+.productGlyphSvg {
+  width: 50px;
+  height: 50px;
+}
+
+.productBrandLine {
+  color: rgba(245, 247, 250, 0.76);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.productRole {
+  color: color-mix(in srgb, var(--product-accent) 86%, #ffffff 14%);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.productTagline {
+  color: rgba(245, 247, 250, 0.96);
+  font-size: 1.04rem;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.productPositioning {
+  font-size: 1rem;
+  font-weight: 600;
+  color: rgba(245, 247, 250, 0.94);
+}
+
+.relatedProductTop {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.relatedProductGlyph {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(10, 13, 18, 0.12));
+  border: 1px solid color-mix(in srgb, var(--product-accent) 32%, rgba(255, 255, 255, 0.08));
+}
+
+.relatedProductGlyphSvg {
+  width: 30px;
+  height: 30px;
 }
 
 .breadcrumbs {
@@ -666,6 +780,8 @@ textarea:focus-visible {
 
   .pathGrid,
   .cardGrid,
+  .suiteGrid,
+  .architectureGrid,
   .nextStepGrid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -678,6 +794,8 @@ textarea:focus-visible {
   .trustChipRow,
   .pathGrid,
   .cardGrid,
+  .suiteGrid,
+  .architectureGrid,
   .nextStepGrid {
     grid-template-columns: 1fr;
   }

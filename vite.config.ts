@@ -6,6 +6,7 @@ const apiProxyTarget = process.env.VITE_API_PROXY_TARGET || "http://127.0.0.1:70
 export default defineConfig({
   plugins: [react()],
   server: {
+    allowedHosts: [".trycloudflare.com", ".ngrok-free.app", ".ngrok-free.dev", ".loca.lt"],
     proxy: {
       "/api": {
         target: apiProxyTarget,

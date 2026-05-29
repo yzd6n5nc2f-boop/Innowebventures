@@ -88,7 +88,7 @@ export default function SiteShell({ children }: SiteShellProps) {
 
         <div className={styles.headerActions}>
           <Link className={styles.headerCta} to="/contact">
-            Book a 20-min Build Review
+            Contact Us
           </Link>
 
           <div className={styles.menuWrapper} ref={menuRef}>
@@ -107,7 +107,7 @@ export default function SiteShell({ children }: SiteShellProps) {
             {isMenuOpen && (
               <div className={styles.dropdown} id="site-menu" role="menu">
                 <Link className={`${styles.dropdownItem} ${styles.mobileCta}`} role="menuitem" to="/contact">
-                  Book a 20-min Build Review
+                  Contact Us
                 </Link>
                 {headerNav.map((link) => (
                   <Link key={link.label} className={styles.dropdownItem} role="menuitem" to={link.to}>
@@ -124,7 +124,7 @@ export default function SiteShell({ children }: SiteShellProps) {
 
       <footer className={styles.footer}>
         <div>InnoWeb Ventures Limited</div>
-        <div>Workflow-first delivery. Human-controlled automation.</div>
+        <div>AI infrastructure for human-controlled operations.</div>
       </footer>
     </div>
   );

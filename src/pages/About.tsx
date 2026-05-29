@@ -3,9 +3,9 @@ import SiteShell from "../components/SiteShell";
 import styles from "../styles/home.module.css";
 
 const principles = [
-  "Ship useful systems quickly, then improve in controlled cycles.",
-  "Design for operators, not just dashboards.",
-  "Treat cost, security, and governance as first-class constraints.",
+  "Build operational software that stays useful under real-world conditions.",
+  "Keep humans in command of decisions, approvals, and escalation paths.",
+  "Treat governance, security, and cost control as product architecture requirements.",
 ];
 
 export default function About() {
@@ -16,18 +16,18 @@ export default function About() {
           <div className={styles.sectionKicker}>About</div>
           <h1>InnoWeb Ventures Limited</h1>
           <p>
-            We are a UK-led delivery collective working with partners across a broad range of professional services,
-            from engineering and construction to commercial and go-to-market teams, to build practical AI-assisted
-            automation systems for real operational workflows.
+            InnoWeb Ventures Limited is a UK-led AI infrastructure and operational software company. We build the
+            systems, governance layers, and intelligence frameworks that help organisations move into the next
+            generation of AI-enabled operations with real control.
           </p>
         </div>
 
         <div className={styles.detailGrid}>
           <article className={styles.infoCard}>
-            <h2>Our story</h2>
+            <h2>Our direction</h2>
             <p>
-              We started InnoWeb Ventures to close the gap between ambitious digital strategy and day-to-day execution.
-              Our model combines focused product capability with delivery services that keep risk low and momentum high.
+              The company is being built around the Forge Suite: a platform family that supports software build,
+              governed operations, and specialised intelligence for serious operational environments.
             </p>
           </article>
 
@@ -45,19 +45,19 @@ export default function About() {
       <NextSteps
         steps={[
           {
-            label: "See Products",
-            to: "/products",
-            description: "Understand what we have already built and deployed.",
+            label: "Explore the Forge Suite",
+            to: "/forge-suite",
+            description: "See the proprietary stack behind how we build tailored client solutions.",
           },
           {
-            label: "Review Services",
-            to: "/services",
-            description: "Choose your preferred delivery entry point.",
+            label: "See the Platform",
+            to: "/platform",
+            description: "Review how we approach intelligence, software, and operations together.",
           },
           {
             label: "Contact InnoWeb",
             to: "/contact",
-            description: "Start a direct conversation about your workflow goals.",
+            description: "Start a direct conversation about your business workflows and improvement opportunities.",
           },
         ]}
       />
