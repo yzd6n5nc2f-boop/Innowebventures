@@ -14,10 +14,45 @@ export default function Products() {
           <div className={styles.sectionKicker}>Forge Suite</div>
           <h1>The proprietary platform stack behind how we build tailored AI and automation solutions.</h1>
           <p>
-            The Forge Suite sits behind the way InnoWeb Ventures works. It brings together the intelligence layer,
-            the systems layer, and the operational layer we use to engineer bespoke solutions around a client's own
-            workflow, budget, and operating environment.
+            The Forge Suite is developed and owned by InnoWeb. It is the connected delivery stack we use to understand
+            workflow, shape automation, and build the solution that best fits a client's business, from one controlled
+            workflow to wider operational deployment.
           </p>
+        </div>
+
+        <figure className={styles.forgeSuiteVisual}>
+          <img
+            src={`${import.meta.env.BASE_URL}branding/forge-suite/forge-suite-overview.png`}
+            alt="The Forge Suite by InnoWeb, showing six connected layers across ForgeOps, NeuralForge, Forge Coder, Game Forge Studio, Forge Robotics Lab, and Forge Media Studio."
+            loading="eager"
+          />
+        </figure>
+
+        <div className={styles.forgeSuiteNarrative}>
+          <article className={styles.infoCard}>
+            <h2>Built around the modern workplace</h2>
+            <p>
+              We begin with the way people already work: handoffs, approvals, data, tools, exceptions, and daily
+              pressure points. The Forge Suite gives us a structured way to turn that workflow understanding into
+              practical automation and software without forcing the business into a generic product.
+            </p>
+          </article>
+          <article className={styles.infoCard}>
+            <h2>Scales in controlled stages</h2>
+            <p>
+              Adoption can start with one process, one team, or one automation path, then expand as the business gains
+              confidence. The same stack can support small, medium, and large operating environments because rollout is
+              staged around the client's risk, budget, and operational readiness.
+            </p>
+          </article>
+          <article className={styles.infoCard}>
+            <h2>Human control at the centre</h2>
+            <p>
+              Automation is designed with human review, approval, override paths, and visible checkpoints. Critical
+              actions do not move into live operation without the right person in the loop and accountable oversight in
+              place.
+            </p>
+          </article>
         </div>
 
         <div className={styles.architectureGrid}>

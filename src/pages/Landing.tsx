@@ -42,6 +42,14 @@ export default function Landing() {
           <p>{homeSummary}</p>
         </article>
 
+        <figure className={styles.forgeSuiteVisual}>
+          <img
+            src={`${import.meta.env.BASE_URL}branding/forge-suite/forge-suite-overview.png`}
+            alt="The Forge Suite by InnoWeb, showing six connected layers for a connected automation ecosystem."
+            loading="lazy"
+          />
+        </figure>
+
         <div className={styles.suiteGrid}>
           {products.map((product) => (
             <article

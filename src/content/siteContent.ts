@@ -84,7 +84,7 @@ export const homeTrustChips = [
 ];
 
 export const homeSummary =
-  "InnoWeb Ventures Limited is the main company. We design and deploy tailored automation, software, and AI systems for real businesses using our own internal platform stack. NeuralForge shapes the bespoke intelligence, Forge Coder builds the system and interface layer, and ForgeOps runs, governs, and helps deploy the operational layer. The Forge Suite is not something we are trying to sell on its own. It is the proprietary stack we use, alongside specialist sector knowledge, to engineer solutions around the workflows, budgets, and operating reality of each client.";
+  "InnoWeb Ventures Limited is the main company. We design and deploy tailored automation, software, and AI systems for real businesses using our own proprietary Forge Suite. It is the InnoWeb-owned stack we use to understand workflows, shape the right automation, build the system, and govern live operation. Clients can start with one focused workflow and scale gradually across teams, sites, and business units while keeping human approval, control, and oversight in the loop.";
 
 export const homePaths: SummaryPath[] = [
   {
