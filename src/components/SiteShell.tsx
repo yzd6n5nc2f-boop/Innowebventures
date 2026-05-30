@@ -88,7 +88,7 @@ export default function SiteShell({ children }: SiteShellProps) {
 
         <div className={styles.headerActions}>
           <Link className={styles.headerCta} to="/contact">
-            Contact Us
+            Book a Workflow Review
           </Link>
 
           <div className={styles.menuWrapper} ref={menuRef}>
@@ -107,7 +107,7 @@ export default function SiteShell({ children }: SiteShellProps) {
             {isMenuOpen && (
               <div className={styles.dropdown} id="site-menu" role="menu">
                 <Link className={`${styles.dropdownItem} ${styles.mobileCta}`} role="menuitem" to="/contact">
-                  Contact Us
+                  Book a Workflow Review
                 </Link>
                 {headerNav.map((link) => (
                   <Link key={link.label} className={styles.dropdownItem} role="menuitem" to={link.to}>

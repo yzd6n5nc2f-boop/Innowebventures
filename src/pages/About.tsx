@@ -45,17 +45,17 @@ export default function About() {
       <NextSteps
         steps={[
           {
-            label: "Explore the Forge Suite",
-            to: "/forge-suite",
+            label: "See Example Systems",
+            to: "/solutions",
             description: "See the proprietary stack behind how we build tailored client solutions.",
           },
           {
-            label: "See the Platform",
-            to: "/platform",
+            label: "View Delivery Method",
+            to: "/delivery-method",
             description: "Review how we approach intelligence, software, and operations together.",
           },
           {
-            label: "Contact InnoWeb",
+            label: "Book a Workflow Review",
             to: "/contact",
             description: "Start a direct conversation about your business workflows and improvement opportunities.",
           },

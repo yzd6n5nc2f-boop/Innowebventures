@@ -18,11 +18,14 @@ export default function Landing() {
             platform stack, specialist sector knowledge, and a controlled delivery model built around real workflows.
           </p>
           <div className={styles.heroActions}>
-            <Link className={styles.primaryButton} to="/forge-suite">
-              Explore the Forge Suite
+            <Link className={styles.primaryButton} to="/contact">
+              Book a Workflow Review
             </Link>
-            <Link className={styles.secondaryButton} to="/contact">
-              Request a free assessment
+            <Link className={styles.secondaryButton} to="/work">
+              See Example Systems
+            </Link>
+            <Link className={styles.secondaryButton} to="/delivery-method">
+              View Delivery Method
             </Link>
           </div>
         </div>
@@ -128,17 +131,17 @@ export default function Landing() {
       <NextSteps
         steps={[
           {
-            label: "Explore the Forge Suite",
-            to: "/forge-suite",
+            label: "See Example Systems",
+            to: "/solutions",
             description: "See the internal stack we use to shape intelligence, build systems, and run operations.",
           },
           {
-            label: "See the Platform",
-            to: "/platform",
+            label: "View Delivery Method",
+            to: "/delivery-method",
             description: "Review how we turn your workflows into tailored operational solutions.",
           },
           {
-            label: "Request a Free Assessment",
+            label: "Book a Workflow Review",
             to: "/contact",
             description: "Discuss your processes and get an initial view of where we could improve flows and systems.",
           },

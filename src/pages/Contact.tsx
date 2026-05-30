@@ -152,8 +152,8 @@ export default function Contact() {
               <li>We assess where tailored automation, intelligence shaping, or systems redesign may help.</li>
               <li>We outline a practical next step and how we could partner with you to engineer it.</li>
             </ul>
-            <Link className={styles.inlineCta} to="/platform">
-              See the platform
+            <Link className={styles.inlineCta} to="/delivery-method">
+              View Delivery Method
             </Link>
           </article>
         </div>
@@ -162,19 +162,19 @@ export default function Contact() {
       <NextSteps
         steps={[
           {
-            label: "Explore the Forge Suite",
-            to: "/forge-suite",
+            label: "See Example Systems",
+            to: "/solutions",
             description: "Review the internal stack we use before the conversation.",
           },
           {
-            label: "See the Platform",
-            to: "/platform",
+            label: "View Delivery Method",
+            to: "/delivery-method",
             description: "Understand how we approach tailored operational deployment.",
           },
           {
-            label: "Review Pathways",
-            to: "/services",
-            description: "See how organisations can engage with us and structure the work.",
+            label: "Book a Workflow Review",
+            to: "/contact",
+            description: "Use the form to start your workflow review and solution planning conversation.",
           },
         ]}
       />

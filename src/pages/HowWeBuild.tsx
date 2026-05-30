@@ -8,8 +8,8 @@ export default function HowWeBuild() {
     <SiteShell>
       <section className={styles.pageSection}>
         <div className={styles.pageIntro}>
-          <div className={styles.sectionKicker}>How It Works</div>
-          <h1>How the Forge Suite works in controlled operational deployment.</h1>
+          <div className={styles.sectionKicker}>Delivery Method</div>
+          <h1>How the Forge Suite is delivered in controlled operational deployment.</h1>
           <p>
             The platform is designed to connect build, governance, and intelligence without losing runtime control.
             Adoption stays measurable, staged, and anchored in real workflows.
@@ -53,17 +53,17 @@ export default function HowWeBuild() {
       <NextSteps
         steps={[
           {
-            label: "Explore the Forge Suite",
-            to: "/forge-suite",
+            label: "See Example Systems",
+            to: "/solutions",
             description: "Review the internal stack we use to shape intelligence, build systems, and run operations.",
           },
           {
-            label: "See the Platform",
-            to: "/platform",
+            label: "View Delivery Method",
+            to: "/delivery-method",
             description: "Understand how we translate that stack into tailored operational deployment.",
           },
           {
-            label: "Request a Free Assessment",
+            label: "Book a Workflow Review",
             to: "/contact",
             description: "Discuss your current workflows and where we could improve flow, systems, and control.",
           },

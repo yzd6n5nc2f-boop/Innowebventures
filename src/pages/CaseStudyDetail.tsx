@@ -75,7 +75,7 @@ export default function CaseStudyDetail() {
           <h2>Need a similar outcome?</h2>
           <p>We can scope a comparable build and define a low-risk start plan in one short session.</p>
           <Link className={styles.primaryButton} to="/contact?intent=similar-build">
-            Discuss a similar build
+            Book a Workflow Review
           </Link>
         </article>
       </section>
@@ -83,17 +83,17 @@ export default function CaseStudyDetail() {
       <NextSteps
         steps={[
           {
-            label: "See Products",
-            to: "/products",
+            label: "See Example Systems",
+            to: "/solutions",
             description: "Review the product capabilities used in these projects.",
           },
           {
-            label: "Compare Services",
-            to: "/services",
+            label: "View Delivery Method",
+            to: "/delivery-method",
             description: "Choose the most suitable engagement route.",
           },
           {
-            label: "Book Build Review",
+            label: "Book a Workflow Review",
             to: "/contact",
             description: "Align scope, timeline, and budget guardrails.",
           },

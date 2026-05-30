@@ -13,6 +13,7 @@ export type SummaryPath = {
 export type Product = {
   slug: string;
   name: string;
+  logoImage: string;
   audience: string;
   summary: string;
   positioning: string;
@@ -69,9 +70,9 @@ export type PlatformLayer = {
 };
 
 export const headerNav: NavItem[] = [
-  { label: "Forge Suite", to: "/forge-suite" },
-  { label: "Platform", to: "/platform" },
-  { label: "How It Works", to: "/how-it-works" },
+  { label: "Solutions", to: "/solutions" },
+  { label: "Work", to: "/work" },
+  { label: "Delivery Method", to: "/delivery-method" },
   { label: "About", to: "/about" },
   { label: "Contact", to: "/contact" },
 ];
@@ -88,22 +89,22 @@ export const homeSummary =
 
 export const homePaths: SummaryPath[] = [
   {
-    title: "Forge Suite",
+    title: "Solutions",
     description: "See the proprietary platform stack we use to shape intelligence, build systems, and govern operations.",
-    to: "/forge-suite",
-    cta: "Explore the Forge Suite",
+    to: "/solutions",
+    cta: "See Example Systems",
   },
   {
-    title: "Platform",
-    description: "Understand how we combine intelligence, software, hardware, and deployment into tailored operational solutions.",
-    to: "/platform",
-    cta: "See the platform",
+    title: "Work",
+    description: "Explore practical delivery snapshots showing how we solve real operational problems.",
+    to: "/work",
+    cta: "See Example Systems",
   },
   {
-    title: "How It Works",
+    title: "Delivery Method",
     description: "Review how we assess workflows, shape the right stack, and keep deployment measurable and human-led.",
-    to: "/how-it-works",
-    cta: "Learn how it works",
+    to: "/delivery-method",
+    cta: "View Delivery Method",
   },
 ];
 
@@ -111,6 +112,7 @@ export const products: Product[] = [
   {
     slug: "neuralforge",
     name: "NeuralForge",
+    logoImage: "branding/forge-suite/logos/neuralforge.png",
     audience: "Businesses needing sector-specific intelligence shaped around their own workflow context",
     summary:
       "NeuralForge is the bespoke intelligence layer we use to shape, fine-tune, and configure AI capability for the specific operational environment we are solving for.",
@@ -146,11 +148,12 @@ export const products: Product[] = [
       "A stronger foundation for tailored automation and software design.",
       "Greater control over how AI behaves inside the final solution.",
     ],
-    relatedProductSlugs: ["forge-coder", "forgeops"],
+    relatedProductSlugs: ["forge-coder", "forgeops", "forge-robotics-lab"],
   },
   {
     slug: "forge-coder",
     name: "Forge Coder",
+    logoImage: "branding/forge-suite/logos/forge-coder.png",
     audience: "Businesses needing tailored system build, interface design, and workflow software around the shaped intelligence layer",
     summary:
       "Forge Coder is the build layer we use to turn the intelligence and workflow design into software, interfaces, user journeys, and operational tooling.",
@@ -186,11 +189,12 @@ export const products: Product[] = [
       "Cleaner user journeys and workflow handling around the bespoke AI capability.",
       "A stronger bridge from intelligence shaping into deployment and live use.",
     ],
-    relatedProductSlugs: ["neuralforge", "forgeops"],
+    relatedProductSlugs: ["neuralforge", "forgeops", "game-forge-studio", "forge-media-studio"],
   },
   {
     slug: "forgeops",
     name: "ForgeOps",
+    logoImage: "branding/forge-suite/logos/forgeops.png",
     audience: "Operations leaders, directors, COOs, and teams needing oversight, rollout, and control of deployed systems",
     summary:
       "ForgeOps is the operational layer we use to run, monitor, govern, and help deploy the finished system in a controlled way.",
@@ -226,7 +230,115 @@ export const products: Product[] = [
       "Better operational visibility and accountability once the solution is running.",
       "A clearer route from custom build into stable day-to-day operation.",
     ],
-    relatedProductSlugs: ["neuralforge", "forge-coder"],
+    relatedProductSlugs: ["neuralforge", "forge-coder", "forge-robotics-lab", "forge-media-studio"],
+  },
+  {
+    slug: "forge-robotics-lab",
+    name: "Forge Robotics Lab",
+    logoImage: "branding/forge-suite/logos/forge-robotics-lab.png",
+    audience: "Operations teams building robotic autonomy, physical automation, and digital twins with controlled AI behavior",
+    summary:
+      "Forge Robotics Lab is the robotics systems layer that turns shaped intelligence into simulation-backed autonomous and semi-autonomous robotic workflows.",
+    positioning:
+      "The robotic systems layer connecting NeuralForge intelligence with real-world automation, simulation, and machine behavior.",
+    tagline: "Simulate the robotic systems layer.",
+    brandLine: "by InnoWeb",
+    role: "Robotics and autonomy layer",
+    glyph: "FR",
+    accent: "#14E3CF",
+    accentSoft: "rgba(20, 227, 207, 0.16)",
+    secondaryAccent: "#7EF0D2",
+    whatItDoes: [
+      "Builds and simulates robotic workflows before live deployment.",
+      "Links AI decisioning with sensors, control loops, and autonomous movement logic.",
+      "Supports validation, optimization, and staged deployment for physical systems.",
+    ],
+    whyItMatters: [
+      "Robotic deployment needs simulation, safety, and repeatable control before real-world use.",
+      "It creates a practical bridge from intelligence design to physical execution.",
+      "It helps businesses adopt AI-driven robotics with measurable operational control.",
+    ],
+    roleInSuite:
+      "Forge Robotics Lab extends NeuralForge intelligence into the robotic domain. It works with ForgeOps governance so automation in physical environments stays validated, monitored, and human-led.",
+    usedFor: ["Digital twins", "Robotic simulation", "Sensor and control validation", "Autonomy workflows"],
+    outcomes: [
+      "Faster and safer robotic rollout pathways.",
+      "Clearer insight into robotic behavior before physical deployment.",
+      "Better integration between AI decision logic and operational robotics.",
+    ],
+    relatedProductSlugs: ["neuralforge", "forgeops", "forge-coder"],
+  },
+  {
+    slug: "game-forge-studio",
+    name: "Game Forge Studio",
+    logoImage: "branding/forge-suite/logos/game-forge-studio.png",
+    audience: "Teams building interactive digital experiences for training, engagement, simulation, and entertainment",
+    summary:
+      "Game Forge Studio is the interactive worlds layer used to build game-driven interfaces, immersive training journeys, and experience-led digital products.",
+    positioning:
+      "The interactive experience layer that turns system capability into playable, teachable, and engaging digital worlds.",
+    tagline: "Craft the interactive worlds layer.",
+    brandLine: "by InnoWeb",
+    role: "Interactive experience layer",
+    glyph: "GFS",
+    accent: "#FF7A18",
+    accentSoft: "rgba(255, 122, 24, 0.16)",
+    secondaryAccent: "#FF3CAC",
+    whatItDoes: [
+      "Builds game and interactive environments around real operational use cases.",
+      "Supports simulation, engagement, and user learning in immersive formats.",
+      "Connects creative front-end experiences with core AI and system layers.",
+    ],
+    whyItMatters: [
+      "Interactive environments improve adoption, understanding, and engagement.",
+      "It provides a flexible front-end route for complex systems and training workflows.",
+      "It helps businesses communicate and deploy AI capability in human-friendly ways.",
+    ],
+    roleInSuite:
+      "Game Forge Studio sits alongside Forge Coder as an experience-facing build stream. It complements core system delivery with immersive interfaces, training journeys, and entertainment-grade interaction design.",
+    usedFor: ["Interactive training", "Simulation environments", "Gamified interfaces", "Experience-led engagement"],
+    outcomes: [
+      "Higher user engagement with complex systems.",
+      "Clearer training and onboarding experiences.",
+      "A stronger bridge between backend capability and human interaction.",
+    ],
+    relatedProductSlugs: ["forge-coder", "forge-media-studio", "neuralforge"],
+  },
+  {
+    slug: "forge-media-studio",
+    name: "Forge Media Studio",
+    logoImage: "branding/forge-suite/logos/forge-media-studio.png",
+    audience: "Marketing, brand, and content teams producing campaign assets across media formats",
+    summary:
+      "Forge Media Studio is the content production layer for AI-assisted creation across image, video, sound, voice, and campaign-ready brand assets.",
+    positioning:
+      "The media and content layer that scales brand, campaign, and entertainment outputs while staying connected to the wider Forge stack.",
+    tagline: "Create the content layer.",
+    brandLine: "by InnoWeb",
+    role: "Content and media layer",
+    glyph: "FMS",
+    accent: "#FF7A18",
+    accentSoft: "rgba(255, 60, 172, 0.16)",
+    secondaryAccent: "#FF3CAC",
+    whatItDoes: [
+      "Generates and edits multimedia content with AI-assisted workflows.",
+      "Supports campaign asset production across visual, audio, and voice formats.",
+      "Connects brand content pipelines with data, product, and deployment strategy.",
+    ],
+    whyItMatters: [
+      "Businesses need faster, scalable content operations without losing brand control.",
+      "It creates a practical media engine for modern marketing and entertainment outputs.",
+      "It helps teams move from concept to publishable assets with consistent workflow structure.",
+    ],
+    roleInSuite:
+      "Forge Media Studio is a specialist creative stream within the Forge Suite. It is closely aligned with Game Forge Studio for engagement use cases and with ForgeOps for governance, approvals, and controlled publishing flow.",
+    usedFor: ["Image and video generation", "Audio and voice assets", "Campaign content pipelines", "Brand content operations"],
+    outcomes: [
+      "Faster delivery of high-volume campaign assets.",
+      "More consistent brand output across channels.",
+      "Better coordination between creative production and operational governance.",
+    ],
+    relatedProductSlugs: ["game-forge-studio", "forgeops", "forge-coder"],
   },
 ];
 
@@ -435,17 +547,17 @@ export const deliveryPhases = ["Discover", "Deploy", "Operate", "Refine"];
 
 export const footerNextSteps: NextStep[] = [
   {
-    label: "Understand Our Stack",
-    to: "/forge-suite",
+    label: "See Example Systems",
+    to: "/solutions",
     description: "See how NeuralForge, Forge Coder, and ForgeOps work together behind tailored solutions.",
   },
   {
-    label: "See the Platform",
-    to: "/platform",
+    label: "View Delivery Method",
+    to: "/delivery-method",
     description: "Review how we combine intelligence, software, and operations into controlled deployments.",
   },
   {
-    label: "Request a Free Assessment",
+    label: "Book a Workflow Review",
     to: "/contact",
     description: "Discuss your processes and see where automation could improve your operation.",
   },

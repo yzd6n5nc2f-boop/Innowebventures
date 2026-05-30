@@ -36,17 +36,17 @@ export default function Services() {
       <NextSteps
         steps={[
           {
-            label: "Explore the Forge Suite",
-            to: "/forge-suite",
+            label: "See Example Systems",
+            to: "/solutions",
             description: "See the internal stack these delivery pathways are built around.",
           },
           {
-            label: "See the Platform",
-            to: "/platform",
+            label: "View Delivery Method",
+            to: "/delivery-method",
             description: "Review how we structure tailored deployment and control.",
           },
           {
-            label: "Request a Free Assessment",
+            label: "Book a Workflow Review",
             to: "/contact",
             description: "Discuss your current setup and how we could evaluate improvements.",
           },

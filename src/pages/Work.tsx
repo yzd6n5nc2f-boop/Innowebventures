@@ -38,17 +38,17 @@ export default function Work() {
       <NextSteps
         steps={[
           {
-            label: "Explore Products",
-            to: "/products",
-            description: "See the apps behind these delivery outcomes.",
+            label: "See Example Systems",
+            to: "/solutions",
+            description: "See the solution stack behind these delivery outcomes.",
           },
           {
-            label: "Review Services",
-            to: "/services",
-            description: "Choose a delivery model that matches your starting point.",
+            label: "View Delivery Method",
+            to: "/delivery-method",
+            description: "See the delivery method that takes these systems into operation.",
           },
           {
-            label: "Discuss Your Build",
+            label: "Book a Workflow Review",
             to: "/contact",
             description: "Bring your use case and leave with clear next actions.",
           },

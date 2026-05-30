@@ -1,7 +1,6 @@
 import type { CSSProperties } from "react";
 import { Link } from "react-router-dom";
 import NextSteps from "../components/NextSteps";
-import ProductGlyph from "../components/ProductGlyph";
 import SiteShell from "../components/SiteShell";
 import { platformLayers, products } from "../content/siteContent";
 import styles from "../styles/home.module.css";
@@ -16,7 +15,8 @@ export default function Products() {
           <p>
             The Forge Suite is developed and owned by InnoWeb. It is the connected delivery stack we use to understand
             workflow, shape automation, and build the solution that best fits a client's business, from one controlled
-            workflow to wider operational deployment.
+            workflow to wider operational deployment. It is designed to help established organisations move from legacy
+            operating models into the new world of AI without losing accountability, control, or human leadership.
           </p>
         </div>
 
@@ -90,7 +90,12 @@ export default function Products() {
             >
               <div className={styles.productCardHeader}>
                 <div className={styles.productGlyph}>
-                  <ProductGlyph slug={product.slug} className={styles.productGlyphSvg} />
+                  <img
+                    className={styles.productLogoImage}
+                    src={`${import.meta.env.BASE_URL}${product.logoImage}`}
+                    alt={`${product.name} official logo`}
+                    loading="lazy"
+                  />
                 </div>
                 <div>
                   <div className={styles.productBrandLine}>{product.brandLine}</div>
@@ -118,8 +123,10 @@ export default function Products() {
         <article className={styles.summaryCard}>
           <h2>Stack architecture</h2>
           <p>
-            NeuralForge shapes the bespoke brain. Forge Coder builds the software and interface layer around it.
-            ForgeOps helps run, monitor, and govern the finished solution in live operation.
+            NeuralForge shapes the bespoke brain, including robotic intelligence foundations. Forge Coder builds the
+            software and interface layer around it. ForgeOps governs live operations with human oversight in control.
+            Game Forge Studio and Forge Media Studio operate as specialist engagement and content streams connected to
+            the same controlled suite.
           </p>
         </article>
       </section>
@@ -127,17 +134,17 @@ export default function Products() {
       <NextSteps
         steps={[
           {
-            label: "See the Platform",
-            to: "/platform",
+            label: "See Example Systems",
+            to: "/work",
             description: "Review how we combine this stack into tailored operational deployments.",
           },
           {
-            label: "Learn How It Works",
-            to: "/how-it-works",
+            label: "View Delivery Method",
+            to: "/delivery-method",
             description: "See how we assess, design, and deploy around the client's real workflow.",
           },
           {
-            label: "Request a Free Assessment",
+            label: "Book a Workflow Review",
             to: "/contact",
             description: "Discuss your organisation and get an initial view of where we could add value.",
           },

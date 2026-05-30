@@ -83,17 +83,17 @@ export default function Platform() {
       <NextSteps
         steps={[
           {
-            label: "Explore the Forge Suite",
-            to: "/forge-suite",
+            label: "See Example Systems",
+            to: "/solutions",
             description: "Review the proprietary stack behind the solutions we engineer.",
           },
           {
-            label: "Learn How It Works",
-            to: "/how-it-works",
+            label: "View Delivery Method",
+            to: "/delivery-method",
             description: "See how we assess, shape, and deploy around the client workflow.",
           },
           {
-            label: "Request a Free Assessment",
+            label: "Book a Workflow Review",
             to: "/contact",
             description: "Talk through your operation and get an initial view of where we could add value.",
           },

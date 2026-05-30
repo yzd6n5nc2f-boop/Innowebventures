@@ -2,7 +2,6 @@ import type { CSSProperties } from "react";
 import { Link, useParams } from "react-router-dom";
 import Breadcrumbs from "../components/Breadcrumbs";
 import NextSteps from "../components/NextSteps";
-import ProductGlyph from "../components/ProductGlyph";
 import SiteShell from "../components/SiteShell";
 import { getProductBySlug, products } from "../content/siteContent";
 import styles from "../styles/home.module.css";
@@ -47,7 +46,12 @@ export default function ProductDetail() {
         >
           <div className={styles.productCardHeader}>
             <div className={styles.productGlyph}>
-              <ProductGlyph slug={product.slug} className={styles.productGlyphSvg} />
+              <img
+                className={styles.productLogoImage}
+                src={`${import.meta.env.BASE_URL}${product.logoImage}`}
+                alt={`${product.name} official logo`}
+                loading="eager"
+              />
             </div>
             <div>
               <div className={styles.productBrandLine}>{product.brandLine}</div>
@@ -107,11 +111,14 @@ export default function ProductDetail() {
             ))}
           </ul>
           <div className={styles.heroActionsInline}>
-            <Link className={styles.primaryButton} to="/contact?intent=free-assessment">
-              Contact us for a discussion
+            <Link className={styles.primaryButton} to="/contact?intent=workflow-review">
+              Book a Workflow Review
             </Link>
-            <Link className={styles.secondaryButton} to="/platform">
-              See the platform
+            <Link className={styles.secondaryButton} to="/work">
+              See Example Systems
+            </Link>
+            <Link className={styles.secondaryButton} to="/delivery-method">
+              View Delivery Method
             </Link>
           </div>
         </article>
@@ -136,7 +143,12 @@ export default function ProductDetail() {
               >
                 <div className={styles.relatedProductTop}>
                   <div className={styles.relatedProductGlyph}>
-                    <ProductGlyph slug={item.slug} className={styles.relatedProductGlyphSvg} />
+                    <img
+                      className={styles.relatedProductLogoImage}
+                      src={`${import.meta.env.BASE_URL}${item.logoImage}`}
+                      alt={`${item.name} official logo`}
+                      loading="lazy"
+                    />
                   </div>
                   <div>
                     <div className={styles.productBrandLine}>{item.brandLine}</div>
@@ -155,17 +167,17 @@ export default function ProductDetail() {
       <NextSteps
         steps={[
           {
-            label: "Explore the Forge Suite",
-            to: "/forge-suite",
+            label: "See Example Systems",
+            to: "/work",
             description: "See how the wider stack fits around this layer of the final solution.",
           },
           {
-            label: "See the Platform",
-            to: "/platform",
+            label: "View Delivery Method",
+            to: "/delivery-method",
             description: "Review how we combine the layers into tailored deployments.",
           },
           {
-            label: "Request a Free Assessment",
+            label: "Book a Workflow Review",
             to: "/contact",
             description: "Talk through your current processes and where tailored automation may help.",
           },

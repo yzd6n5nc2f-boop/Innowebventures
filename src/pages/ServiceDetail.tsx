@@ -75,8 +75,8 @@ export default function ServiceDetail() {
         <article className={styles.summaryCard}>
           <h2>Ready to map this pathway?</h2>
           <p>We will align the right platform entry point, deployment sequence, and governance checkpoints.</p>
-          <Link className={styles.primaryButton} to="/contact?intent=free-assessment">
-            Contact us for a discussion
+          <Link className={styles.primaryButton} to="/contact?intent=workflow-review">
+            Book a Workflow Review
           </Link>
         </article>
       </section>
@@ -84,17 +84,17 @@ export default function ServiceDetail() {
       <NextSteps
         steps={[
           {
-            label: "Explore the Forge Suite",
-            to: "/forge-suite",
+            label: "See Example Systems",
+            to: "/solutions",
             description: "Pair this pathway with the right internal platform layer.",
           },
           {
-            label: "See the Platform",
-            to: "/platform",
+            label: "View Delivery Method",
+            to: "/delivery-method",
             description: "Review how we combine the stack into a tailored route.",
           },
           {
-            label: "Contact InnoWeb",
+            label: "Book a Workflow Review",
             to: "/contact",
             description: "Start with a conversation about your operation and what could be improved.",
           },
