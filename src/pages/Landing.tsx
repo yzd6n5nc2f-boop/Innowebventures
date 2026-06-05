@@ -1,7 +1,6 @@
 import type { CSSProperties } from "react";
 import { Link } from "react-router-dom";
 import NextSteps from "../components/NextSteps";
-import ProductGlyph from "../components/ProductGlyph";
 import SiteShell from "../components/SiteShell";
 import { homePaths, homeSummary, homeTrustChips, platformLayers, products } from "../content/siteContent";
 import styles from "../styles/home.module.css";
@@ -68,7 +67,12 @@ export default function Landing() {
             >
               <div className={styles.productCardHeader}>
                 <div className={styles.productGlyph}>
-                  <ProductGlyph slug={product.slug} className={styles.productGlyphSvg} />
+                  <img
+                    className={styles.productLogoImage}
+                    src={`${import.meta.env.BASE_URL}${product.logoImage}`}
+                    alt={`${product.name} official logo`}
+                    loading="lazy"
+                  />
                 </div>
                 <div>
                   <div className={styles.productBrandLine}>{product.brandLine}</div>

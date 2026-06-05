@@ -1,7 +1,5 @@
-import { Link } from "react-router-dom";
 import NextSteps from "../components/NextSteps";
 import SiteShell from "../components/SiteShell";
-import { caseStudies } from "../content/siteContent";
 import styles from "../styles/home.module.css";
 
 export default function Work() {
@@ -9,30 +7,21 @@ export default function Work() {
     <SiteShell>
       <section className={styles.pageSection}>
         <div className={styles.pageIntro}>
-          <div className={styles.sectionKicker}>Case studies</div>
-          <h1>Proof-focused delivery snapshots.</h1>
-          <p>Scan each build by problem, implementation approach, and outcome.</p>
+          <div className={styles.sectionKicker}>Work</div>
+          <h1>Example systems are coming soon.</h1>
+          <p>
+            We are preparing this section so it reflects the right standard and the right story. For now, the Work
+            area is being held back until example systems can be published properly.
+          </p>
         </div>
 
-        <div className={styles.cardGrid}>
-          {caseStudies.map((study) => (
-            <article key={study.slug} className={styles.infoCard}>
-              <h2>{study.name}</h2>
-              <p>
-                <strong>Problem:</strong> {study.problem}
-              </p>
-              <p>
-                <strong>Build:</strong> {study.build}
-              </p>
-              <p>
-                <strong>Result:</strong> {study.result}
-              </p>
-              <Link className={styles.inlineCta} to={`/work/${study.slug}`}>
-                Read case study
-              </Link>
-            </article>
-          ))}
-        </div>
+        <article className={styles.summaryCard}>
+          <h2>Coming soon</h2>
+          <p>
+            When this section goes live, it will show carefully selected example systems and delivery patterns
+            without overstating where the business is today.
+          </p>
+        </article>
       </section>
 
       <NextSteps

@@ -2,79 +2,32 @@ import { Link, useParams } from "react-router-dom";
 import Breadcrumbs from "../components/Breadcrumbs";
 import NextSteps from "../components/NextSteps";
 import SiteShell from "../components/SiteShell";
-import { getCaseStudyBySlug } from "../content/siteContent";
 import styles from "../styles/home.module.css";
 
 export default function CaseStudyDetail() {
   const { slug } = useParams();
-  const study = getCaseStudyBySlug(slug);
-
-  if (!study) {
-    return (
-      <SiteShell>
-        <section className={styles.pageSection}>
-          <Breadcrumbs items={[{ label: "Work", to: "/work" }, { label: "Not found" }]} />
-          <article className={styles.summaryCard}>
-            <h1>Case study not found</h1>
-            <p>The requested case study does not exist.</p>
-            <Link className={styles.inlineCta} to="/work">
-              Back to work
-            </Link>
-          </article>
-        </section>
-      </SiteShell>
-    );
-  }
 
   return (
     <SiteShell>
       <section className={styles.pageSection}>
-        <Breadcrumbs items={[{ label: "Work", to: "/work" }, { label: study.name }]} />
+        <Breadcrumbs items={[{ label: "Work", to: "/work" }, { label: "Coming soon" }]} />
 
         <div className={styles.pageIntro}>
-          <div className={styles.sectionKicker}>Case study</div>
-          <h1>{study.name}</h1>
-          <p>{study.context}</p>
+          <div className={styles.sectionKicker}>Work</div>
+          <h1>Example system details are coming soon.</h1>
+          <p>
+            This route is being reserved for future work examples. We are not publishing case studies, screenshots,
+            or delivery claims here yet.
+          </p>
         </div>
-
-        <div className={styles.detailGrid}>
-          <article className={styles.infoCard}>
-            <h2>What was built</h2>
-            <ul className={styles.cleanList}>
-              {study.whatWasBuilt.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
-          </article>
-
-          <article className={styles.infoCard}>
-            <h2>Measurable value</h2>
-            <ul className={styles.cleanList}>
-              {study.measurableValue.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
-          </article>
-        </div>
-
-        <section className={styles.relatedSection}>
-          <div className={styles.sectionHeaderCompact}>
-            <h2>Screenshots</h2>
-          </div>
-          <div className={styles.screenshotGrid}>
-            {study.screenshots.map((shot) => (
-              <figure key={shot.title} className={styles.screenshotCard}>
-                <img src={`${import.meta.env.BASE_URL}${shot.imagePath}`} alt={`${study.name} - ${shot.title}`} />
-                <figcaption>{shot.title}</figcaption>
-              </figure>
-            ))}
-          </div>
-        </section>
 
         <article className={styles.summaryCard}>
-          <h2>Need a similar outcome?</h2>
-          <p>We can scope a comparable build and define a low-risk start plan in one short session.</p>
-          <Link className={styles.primaryButton} to="/contact?intent=similar-build">
+          <h2>Start with your workflow</h2>
+          <p>
+            If you want to discuss what a suitable system could look like for your operation, we can review the
+            workflow first and define the right starting point together.
+          </p>
+          <Link className={styles.primaryButton} to={`/contact?intent=workflow-review${slug ? `&reference=${slug}` : ""}`}>
             Book a Workflow Review
           </Link>
         </article>
