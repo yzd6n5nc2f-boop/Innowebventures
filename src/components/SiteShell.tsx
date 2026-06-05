@@ -60,7 +60,7 @@ export default function SiteShell({ children }: SiteShellProps) {
               alt="InnoWeb Ventures logo"
               loading="eager"
             />
-            <span className={styles.brandText}>InnoWeb Ventures Ltd</span>
+            <span className={styles.brandText}>InnoWeb Ventures</span>
           </a>
         ) : (
           <Link className={styles.brand} to="/">
@@ -70,7 +70,7 @@ export default function SiteShell({ children }: SiteShellProps) {
               alt="InnoWeb Ventures logo"
               loading="eager"
             />
-            <span className={styles.brandText}>InnoWeb Ventures Ltd</span>
+            <span className={styles.brandText}>InnoWeb Ventures</span>
           </Link>
         )}
 

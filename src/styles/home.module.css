@@ -79,6 +79,11 @@
 }
 
 .brandText {
+  font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+  font-size: 2.6rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  text-transform: none;
   text-shadow: 0 6px 16px rgba(10, 13, 18, 0.55);
 }
 
@@ -860,6 +865,10 @@ textarea:focus-visible {
 
   .brand {
     font-size: 0.78rem;
+  }
+
+  .brandText {
+    font-size: 1.2rem;
   }
 }
 
