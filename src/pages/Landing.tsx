@@ -3,24 +3,13 @@ import { Link } from "react-router-dom";
 import SiteShell from "../components/SiteShell";
 import { products } from "../content/siteContent";
 import styles from "../styles/landingShowcase.module.css";
+import refinements from "../styles/landingRefinement.module.css";
 
 const applicationExamples = [
-  {
-    name: "AI Assessment",
-    description: "Discover practical AI opportunities and turn findings into an actionable roadmap.",
-    url: "https://applications.innowebventures.com/group-ai-assessment/",
-    status: "Live",
-  },
   {
     name: "TenderRadar",
     description: "Find relevant tender opportunities faster with focused search and intelligent filtering.",
     url: "https://applications.innowebventures.com/TenderRadar/",
-    status: "Live",
-  },
-  {
-    name: "Catalogue Converter",
-    description: "Convert and standardise supplier catalogue data accurately and at operational speed.",
-    url: "https://applications.innowebventures.com/catalogueconverter/",
     status: "Live",
   },
   {
@@ -89,12 +78,10 @@ export default function Landing() {
             </div>
           </div>
 
-          <div className={styles.ecosystem} aria-label="Forge Suite connected ecosystem">
+          <div className={`${styles.ecosystem} ${refinements.ecosystemShift}`} aria-label="Forge Suite connected ecosystem">
             <div className={styles.orbit} aria-hidden />
             <div className={styles.orbitInner} aria-hidden />
-            <div className={styles.core}>
-              <span className={styles.coreHalo} aria-hidden />
-              <span className={styles.corePulse} aria-hidden />
+            <div className={`${styles.core} ${refinements.coreCard}`}>
               <div>
                 <img src={`${import.meta.env.BASE_URL}branding/logo/innoweb-logo.png`} alt="" />
                 <strong>FORGE CORE</strong>
@@ -121,7 +108,7 @@ export default function Landing() {
           </div>
         </section>
 
-        <section className={styles.trustBar} aria-label="Forge Suite benefits">
+        <section className={`${styles.trustBar} ${refinements.networkPanel}`} aria-label="Forge Suite benefits">
           {trustItems.map(([title, description]) => (
             <div key={title} className={styles.trustItem}>
               <strong>{title}</strong>
@@ -130,7 +117,7 @@ export default function Landing() {
           ))}
         </section>
 
-        <section className={styles.lightSection} id="forge-suite">
+        <section className={`${styles.lightSection} ${refinements.networkSection}`} id="forge-suite">
           <div className={styles.sectionInner}>
             <div className={styles.sectionHeader}>
               <div>
@@ -150,7 +137,7 @@ export default function Landing() {
               {products.slice(0, 6).map((product) => (
                 <article
                   key={product.slug}
-                  className={styles.suiteCard}
+                  className={`${styles.suiteCard} ${refinements.networkCard}`}
                   style={{ ["--accent" as const]: product.accent } as CSSProperties}
                 >
                   <img className={styles.suiteIcon} src={`${import.meta.env.BASE_URL}${product.logoImage}`} alt="" />
@@ -189,7 +176,7 @@ export default function Landing() {
           </div>
         </section>
 
-        <section className={styles.lightSection} id="applications">
+        <section className={`${styles.lightSection} ${refinements.networkSection}`} id="applications">
           <div className={styles.sectionInner}>
             <div className={styles.sectionHeader}>
               <div>
@@ -205,11 +192,11 @@ export default function Landing() {
               </Link>
             </div>
 
-            <div className={styles.appGrid}>
+            <div className={`${styles.appGrid} ${refinements.compactAppGrid}`}>
               {applicationExamples.map((application) => (
                 <a
                   key={application.name}
-                  className={styles.appCard}
+                  className={`${styles.appCard} ${refinements.networkCard}`}
                   href={application.url}
                   target="_blank"
                   rel="noreferrer"
