@@ -1,48 +1,91 @@
-import NextSteps from "../components/NextSteps";
 import SiteShell from "../components/SiteShell";
-import styles from "../styles/home.module.css";
+import styles from "../styles/applications.module.css";
+
+const applications = [
+  {
+    name: "AI Assessment",
+    description: "A guided assessment that helps organisations identify practical AI opportunities and shape a realistic action plan.",
+    url: "https://applications.innowebventures.com/group-ai-assessment/",
+    category: "Assessment",
+  },
+  {
+    name: "TenderRadar",
+    description: "A focused tender discovery workflow that reduces search effort and helps teams prioritise relevant opportunities.",
+    url: "https://applications.innowebventures.com/TenderRadar/",
+    category: "Opportunity Intelligence",
+  },
+  {
+    name: "Catalogue Converter",
+    description: "A structured data workflow for converting and standardising supplier catalogue information at operational speed.",
+    url: "https://applications.innowebventures.com/catalogueconverter/",
+    category: "Data Operations",
+  },
+  {
+    name: "CalRivoRecon",
+    description: "A reconciliation workflow that supports validation, exception handling and human review across complex datasets.",
+    url: "https://applications.innowebventures.com/calrivorecon/",
+    category: "Reconciliation",
+  },
+  {
+    name: "Pathfinder",
+    description: "A logic-led application that guides users through complex choices using structured steps and AI-assisted context.",
+    url: "https://applications.innowebventures.com/pathfinder/",
+    category: "Decision Support",
+  },
+];
 
 export default function Work() {
   return (
     <SiteShell>
-      <section className={styles.pageSection}>
-        <div className={styles.pageIntro}>
-          <div className={styles.sectionKicker}>Work</div>
-          <h1>Example systems are coming soon.</h1>
+      <div className={styles.page}>
+        <section className={styles.intro}>
+          <div className={styles.eyebrow}>Applications</div>
+          <h1>Practical systems built around real workflows.</h1>
           <p>
-            We are preparing this section so it reflects the right standard and the right story. For now, the Work
-            area is being held back until example systems can be published properly.
+            These live applications demonstrate how InnoWeb Ventures combines clear business logic, targeted automation and
+            AI assistance. Each system is designed around a specific workflow, with people retaining oversight of important
+            actions and decisions.
           </p>
-        </div>
+        </section>
 
-        <article className={styles.summaryCard}>
-          <h2>Coming soon</h2>
+        <section className={styles.grid} aria-label="Live applications">
+          {applications.map((application) => (
+            <article className={styles.card} key={application.name}>
+              <div className={styles.previewWrap}>
+                <iframe
+                  className={styles.preview}
+                  src={application.url}
+                  title={`${application.name} live preview`}
+                  loading="lazy"
+                  sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
+                />
+                <div className={styles.previewOverlay} aria-hidden />
+                <span className={styles.liveBadge}><i /> Live</span>
+              </div>
+              <div className={styles.cardBody}>
+                <div className={styles.category}>{application.category}</div>
+                <h2>{application.name}</h2>
+                <p>{application.description}</p>
+                <a href={application.url} target="_blank" rel="noreferrer" className={styles.launch}>
+                  Launch application <span aria-hidden>↗</span>
+                </a>
+              </div>
+            </article>
+          ))}
+        </section>
+
+        <section className={styles.closing}>
+          <div>
+            <div className={styles.eyebrow}>Built to fit</div>
+            <h2>Every workflow needs its own logic.</h2>
+          </div>
           <p>
-            When this section goes live, it will show carefully selected example systems and delivery patterns
-            without overstating where the business is today.
+            We do not force organisations into a generic AI product. We collaborate across professional services to
+            understand the workflow first, then build the right combination of rules, interfaces, automation and AI support.
           </p>
-        </article>
-      </section>
-
-      <NextSteps
-        steps={[
-          {
-            label: "See Example Systems",
-            to: "/solutions",
-            description: "See the solution stack behind these delivery outcomes.",
-          },
-          {
-            label: "View Delivery Method",
-            to: "/delivery-method",
-            description: "See the delivery method that takes these systems into operation.",
-          },
-          {
-            label: "Book a Workflow Review",
-            to: "/contact",
-            description: "Bring your use case and leave with clear next actions.",
-          },
-        ]}
-      />
+          <a href="/contact" className={styles.projectCta}>Start a project →</a>
+        </section>
+      </div>
     </SiteShell>
   );
 }
