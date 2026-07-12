@@ -81,9 +81,6 @@ export default function Landing() {
               <a className={styles.primary} href="#forge-suite">
                 Explore Forge Suite →
               </a>
-              <Link className={styles.secondary} to="/contact">
-                Book a Workflow Review
-              </Link>
             </div>
             <div className={styles.heroProof}>
               <div>Build bespoke applications without starting from zero.</div>
@@ -96,9 +93,12 @@ export default function Landing() {
             <div className={styles.orbit} aria-hidden />
             <div className={styles.orbitInner} aria-hidden />
             <div className={styles.core}>
+              <span className={styles.coreHalo} aria-hidden />
+              <span className={styles.corePulse} aria-hidden />
               <div>
                 <img src={`${import.meta.env.BASE_URL}branding/logo/innoweb-logo.png`} alt="" />
-                <strong>FORGE SUITE</strong>
+                <strong>FORGE CORE</strong>
+                <small>Human-controlled intelligence</small>
               </div>
             </div>
             {products.slice(0, 6).map((product, index) => (
@@ -201,7 +201,7 @@ export default function Landing() {
                 </p>
               </div>
               <Link className={styles.secondary} to="/work">
-                Explore more work
+                View all applications
               </Link>
             </div>
 
@@ -237,7 +237,7 @@ export default function Landing() {
             <p>Let&apos;s identify one valuable workflow and show how Forge Suite could improve it.</p>
           </div>
           <Link className={styles.smallButton} to="/contact">
-            Book a Workflow Review →
+            Start a Project →
           </Link>
         </section>
       </div>
