@@ -3,22 +3,10 @@ import styles from "../styles/applications.module.css";
 
 const applications = [
   {
-    name: "AI Assessment",
-    description: "A guided assessment that helps organisations identify practical AI opportunities and shape a realistic action plan.",
-    url: "https://applications.innowebventures.com/group-ai-assessment/",
-    category: "Assessment",
-  },
-  {
     name: "TenderRadar",
     description: "A focused tender discovery workflow that reduces search effort and helps teams prioritise relevant opportunities.",
     url: "https://applications.innowebventures.com/TenderRadar/",
     category: "Opportunity Intelligence",
-  },
-  {
-    name: "Catalogue Converter",
-    description: "A structured data workflow for converting and standardising supplier catalogue information at operational speed.",
-    url: "https://applications.innowebventures.com/catalogueconverter/",
-    category: "Data Operations",
   },
   {
     name: "CalRivoRecon",
