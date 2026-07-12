@@ -1,5 +1,5 @@
 .ecosystemShift {
-  transform: translateX(-20%);
+  transform: translateX(-8%);
 }
 
 .coreCard {
@@ -73,7 +73,7 @@
 
 @media (max-width: 1180px) {
   .ecosystemShift {
-    transform: translateX(-10%);
+    transform: translateX(-4%);
   }
 }
 
