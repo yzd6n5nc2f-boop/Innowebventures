@@ -43,12 +43,12 @@ const deliverySteps = [
 ];
 
 const orbitPositions = [
-  { x: "0px", y: "-235px" },
-  { x: "205px", y: "-118px" },
-  { x: "205px", y: "118px" },
-  { x: "0px", y: "235px" },
-  { x: "-205px", y: "118px" },
-  { x: "-205px", y: "-118px" },
+  { x: "0px", y: "-185px" },
+  { x: "165px", y: "-92px" },
+  { x: "165px", y: "92px" },
+  { x: "0px", y: "185px" },
+  { x: "-165px", y: "92px" },
+  { x: "-165px", y: "-92px" },
 ];
 
 export default function Landing() {
