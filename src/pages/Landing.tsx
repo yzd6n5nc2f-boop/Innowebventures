@@ -1,156 +1,246 @@
 import type { CSSProperties } from "react";
 import { Link } from "react-router-dom";
-import NextSteps from "../components/NextSteps";
 import SiteShell from "../components/SiteShell";
-import { homePaths, homeSummary, homeTrustChips, platformLayers, products } from "../content/siteContent";
-import styles from "../styles/home.module.css";
+import { products } from "../content/siteContent";
+import styles from "../styles/landingShowcase.module.css";
+
+const applicationExamples = [
+  {
+    name: "AI Assessment",
+    description: "Discover practical AI opportunities and turn findings into an actionable roadmap.",
+    url: "https://applications.innowebventures.com/group-ai-assessment/",
+    status: "Live",
+  },
+  {
+    name: "TenderRadar",
+    description: "Find relevant tender opportunities faster with focused search and intelligent filtering.",
+    url: "https://applications.innowebventures.com/TenderRadar/",
+    status: "Live",
+  },
+  {
+    name: "Catalogue Converter",
+    description: "Convert and standardise supplier catalogue data accurately and at operational speed.",
+    url: "https://applications.innowebventures.com/catalogueconverter/",
+    status: "Live",
+  },
+  {
+    name: "CalRivoRecon",
+    description: "Automate reconciliation, validation and exception handling across complex datasets.",
+    url: "https://applications.innowebventures.com/calrivorecon/",
+    status: "Live",
+  },
+  {
+    name: "Pathfinder",
+    description: "Guide users through complex decisions with structured, intelligent workflow support.",
+    url: "https://applications.innowebventures.com/pathfinder/",
+    status: "Live",
+  },
+];
+
+const trustItems = [
+  ["Enterprise ready", "Secure architecture for controlled operational use."],
+  ["Accelerated delivery", "Reusable Forge capabilities reduce time from idea to deployment."],
+  ["End-to-end platform", "Intelligence, software, operations, media and robotics in one ecosystem."],
+  ["Trust and governance", "Human approval, monitoring and accountability built into delivery."],
+  ["Human + AI", "Technology designed to strengthen teams rather than remove control."],
+];
+
+const deliverySteps = [
+  ["01", "Discover", "Understand the workflow, constraints and highest-value opportunities."],
+  ["02", "Shape", "Select and configure the right Forge Suite capabilities."],
+  ["03", "Build", "Create the tailored application, integration and user experience."],
+  ["04", "Deploy", "Introduce the solution safely with monitoring and governance."],
+  ["05", "Operate", "Measure performance, improve the workflow and scale with confidence."],
+];
+
+const orbitPositions = [
+  { x: "0px", y: "-235px" },
+  { x: "205px", y: "-118px" },
+  { x: "205px", y: "118px" },
+  { x: "0px", y: "235px" },
+  { x: "-205px", y: "118px" },
+  { x: "-205px", y: "-118px" },
+];
 
 export default function Landing() {
   return (
     <SiteShell>
-      <section className={`${styles.pageSection} ${styles.heroSection}`}>
-        <div className={styles.heroPanel}>
-          <div className={styles.kicker}>AI infrastructure for the next generation</div>
-          <h1>InnoWeb Ventures builds the infrastructure for the next AI generation.</h1>
-          <p className={styles.subtitle}>
-            We help organisations engineer tailored automation, software, and AI systems using our own proprietary
-            platform stack, specialist sector knowledge, and a controlled delivery model built around real workflows.
-          </p>
-          <div className={styles.heroActions}>
-            <Link className={styles.primaryButton} to="/contact">
-              Book a Workflow Review
-            </Link>
-            <Link className={styles.secondaryButton} to="/work">
-              See Example Systems
-            </Link>
-            <Link className={styles.secondaryButton} to="/delivery-method">
-              View Delivery Method
-            </Link>
+      <div className={styles.landing}>
+        <section className={styles.hero}>
+          <div className={styles.heroCopy}>
+            <div className={styles.eyebrow}>InnoWeb Ventures · Forge Suite</div>
+            <h1>
+              The AI engineering platform for <span>real-world impact.</span>
+            </h1>
+            <p className={styles.heroLead}>
+              Forge Suite is InnoWeb Ventures&apos; integrated platform for designing, building, deploying and operating
+              intelligent applications. It gives us a reusable engineering foundation while every client solution stays
+              tailored to the workflow, organisation and people using it.
+            </p>
+            <div className={styles.heroActions}>
+              <a className={styles.primary} href="#forge-suite">
+                Explore Forge Suite →
+              </a>
+              <Link className={styles.secondary} to="/contact">
+                Book a Workflow Review
+              </Link>
+            </div>
+            <div className={styles.heroProof}>
+              <div>Build bespoke applications without starting from zero.</div>
+              <div>Connect AI, software, data and operational governance.</div>
+              <div>Deploy gradually while keeping people in control.</div>
+            </div>
           </div>
-        </div>
-      </section>
 
-      <section className={styles.pageSection}>
-        <div className={styles.trustChipRow}>
-          {homeTrustChips.map((chip) => (
-            <div key={chip} className={styles.trustChip}>
-              {chip}
+          <div className={styles.ecosystem} aria-label="Forge Suite connected ecosystem">
+            <div className={styles.orbit} aria-hidden />
+            <div className={styles.orbitInner} aria-hidden />
+            <div className={styles.core}>
+              <div>
+                <img src={`${import.meta.env.BASE_URL}branding/logo/innoweb-logo.png`} alt="" />
+                <strong>FORGE SUITE</strong>
+              </div>
+            </div>
+            {products.slice(0, 6).map((product, index) => (
+              <div
+                key={product.slug}
+                className={styles.moduleNode}
+                style={
+                  {
+                    ["--x" as const]: orbitPositions[index]?.x ?? "0px",
+                    ["--y" as const]: orbitPositions[index]?.y ?? "0px",
+                    ["--accent" as const]: product.accent,
+                  } as CSSProperties
+                }
+              >
+                <img src={`${import.meta.env.BASE_URL}${product.logoImage}`} alt="" />
+                <strong>{product.name}</strong>
+                <span>{product.role}</span>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className={styles.trustBar} aria-label="Forge Suite benefits">
+          {trustItems.map(([title, description]) => (
+            <div key={title} className={styles.trustItem}>
+              <strong>{title}</strong>
+              <span>{description}</span>
             </div>
           ))}
-        </div>
+        </section>
 
-        <article className={styles.summaryCard}>
-          <h2>Forge Suite</h2>
-          <p>{homeSummary}</p>
-        </article>
-
-        <figure className={styles.forgeSuiteVisual}>
-          <img
-            src={`${import.meta.env.BASE_URL}branding/forge-suite/forge-suite-overview.png`}
-            alt="The Forge Suite by InnoWeb, showing six connected layers for a connected automation ecosystem."
-            loading="lazy"
-          />
-        </figure>
-
-        <div className={styles.suiteGrid}>
-          {products.map((product) => (
-            <article
-              key={product.slug}
-              className={styles.productCard}
-              style={
-                {
-                  ["--product-accent" as const]: product.accent,
-                  ["--product-accent-soft" as const]: product.accentSoft,
-                  ["--product-secondary" as const]: product.secondaryAccent,
-                } as CSSProperties
-              }
-            >
-              <div className={styles.productCardHeader}>
-                <div className={styles.productGlyph}>
-                  <img
-                    className={styles.productLogoImage}
-                    src={`${import.meta.env.BASE_URL}${product.logoImage}`}
-                    alt={`${product.name} official logo`}
-                    loading="lazy"
-                  />
-                </div>
-                <div>
-                  <div className={styles.productBrandLine}>{product.brandLine}</div>
-                  <h3>{product.name}</h3>
-                </div>
+        <section className={styles.lightSection} id="forge-suite">
+          <div className={styles.sectionInner}>
+            <div className={styles.sectionHeader}>
+              <div>
+                <div className={styles.sectionEyebrow}>Forge Suite</div>
+                <h2>One platform. Six connected capabilities.</h2>
+                <p className={styles.sectionIntro}>
+                  Each part of Forge Suite can support a focused project, but its real advantage comes from the way the
+                  capabilities work together across the full solution lifecycle.
+                </p>
               </div>
-              <p className={styles.productTagline}>{product.tagline}</p>
-              <p className={styles.productRole}>{product.role}</p>
-              <p>{product.summary}</p>
-              <Link className={styles.inlineCta} to={`/forge-suite/${product.slug}`}>
-                View product architecture
+              <Link className={styles.secondary} to="/forge-suite">
+                View full platform
               </Link>
-            </article>
-          ))}
-        </div>
+            </div>
 
-        <div className={styles.pathGrid}>
-          {homePaths.map((path) => (
-            <article key={path.title} className={styles.pathCard}>
-              <h3>{path.title}</h3>
-              <p>{path.description}</p>
-              <Link className={styles.inlineCta} to={path.to}>
-                {path.cta}
+            <div className={styles.suiteGrid}>
+              {products.slice(0, 6).map((product) => (
+                <article
+                  key={product.slug}
+                  className={styles.suiteCard}
+                  style={{ ["--accent" as const]: product.accent } as CSSProperties}
+                >
+                  <img className={styles.suiteIcon} src={`${import.meta.env.BASE_URL}${product.logoImage}`} alt="" />
+                  <div className={styles.suiteRole}>{product.role}</div>
+                  <h3>{product.name}</h3>
+                  <p>{product.summary}</p>
+                  <Link className={styles.inlineLink} to={`/forge-suite/${product.slug}`}>
+                    Explore capability →
+                  </Link>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className={styles.darkSection}>
+          <div className={styles.sectionInner}>
+            <div className={styles.sectionHeader}>
+              <div>
+                <div className={styles.sectionEyebrow}>How the advantage works</div>
+                <h2>From business problem to governed operation.</h2>
+                <p className={styles.sectionIntro}>
+                  Forge Suite gives InnoWeb a consistent delivery system rather than a collection of isolated tools.
+                </p>
+              </div>
+            </div>
+            <div className={styles.flow}>
+              {deliverySteps.map(([number, title, description]) => (
+                <article key={number} className={styles.flowStep}>
+                  <div className={styles.flowNumber}>{number}</div>
+                  <h3>{title}</h3>
+                  <p>{description}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className={styles.lightSection} id="applications">
+          <div className={styles.sectionInner}>
+            <div className={styles.sectionHeader}>
+              <div>
+                <div className={styles.sectionEyebrow}>Built with Forge Suite</div>
+                <h2>Practical applications. Real working examples.</h2>
+                <p className={styles.sectionIntro}>
+                  These examples sit behind the platform story as proof of what InnoWeb can create. They demonstrate
+                  different workflows, sectors and solution types rather than defining the company itself.
+                </p>
+              </div>
+              <Link className={styles.secondary} to="/work">
+                Explore more work
               </Link>
-            </article>
-          ))}
-        </div>
+            </div>
 
-        <div className={styles.architectureGrid}>
-          {platformLayers.map((layer) => (
-            <article
-              key={layer.title}
-              className={styles.architectureCard}
-              style={
-                {
-                  ["--product-accent" as const]: layer.accent,
-                  ["--product-accent-soft" as const]: layer.accentSoft,
-                  ["--product-secondary" as const]: layer.accent,
-                } as CSSProperties
-              }
-            >
-              <div className={styles.sectionKicker}>{layer.title}</div>
-              <h3>{layer.summary}</h3>
-              <p>{layer.detail}</p>
-            </article>
-          ))}
-        </div>
+            <div className={styles.appGrid}>
+              {applicationExamples.map((application) => (
+                <a
+                  key={application.name}
+                  className={styles.appCard}
+                  href={application.url}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <div className={styles.appPreview} aria-hidden>
+                    <iframe src={application.url} title="" tabIndex={-1} loading="lazy" />
+                  </div>
+                  <div className={styles.appBody}>
+                    <div className={styles.appTopline}>
+                      <h3>{application.name}</h3>
+                      <span className={styles.status}>{application.status}</span>
+                    </div>
+                    <p>{application.description}</p>
+                    <span className={styles.appCta}>Open example ↗</span>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+        </section>
 
-        <article className={styles.summaryCard}>
-          <h2>Why InnoWeb</h2>
-          <p>
-            We do not approach this as a generic software sale. We use our own stack, our own methods, and the right
-            mix of technical and sector understanding to shape a solution around each business. That can include
-            software, automation, intelligence shaping, hardware integration, and operational rollout, depending on
-            what the workflow actually needs.
-          </p>
-        </article>
-      </section>
-
-      <NextSteps
-        steps={[
-          {
-            label: "See Example Systems",
-            to: "/solutions",
-            description: "See the internal stack we use to shape intelligence, build systems, and run operations.",
-          },
-          {
-            label: "View Delivery Method",
-            to: "/delivery-method",
-            description: "Review how we turn your workflows into tailored operational solutions.",
-          },
-          {
-            label: "Book a Workflow Review",
-            to: "/contact",
-            description: "Discuss your processes and get an initial view of where we could improve flows and systems.",
-          },
-        ]}
-      />
+        <section className={styles.ctaBand}>
+          <div>
+            <h2>Ready to build what&apos;s next?</h2>
+            <p>Let&apos;s identify one valuable workflow and show how Forge Suite could improve it.</p>
+          </div>
+          <Link className={styles.smallButton} to="/contact">
+            Book a Workflow Review →
+          </Link>
+        </section>
+      </div>
     </SiteShell>
   );
 }
