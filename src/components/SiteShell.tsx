@@ -10,7 +10,6 @@ type SiteShellProps = {
 };
 
 const primaryNav = [
-  { label: "Forge Suite", to: "/forge-suite" },
   { label: "Applications", to: "/work" },
   { label: "How We Build", to: "/delivery-method" },
   { label: "About", to: "/about" },
