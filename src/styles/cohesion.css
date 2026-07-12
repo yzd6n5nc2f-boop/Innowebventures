@@ -24,16 +24,31 @@
 .siteFooter a { color: rgba(235,242,255,.72); text-decoration: none; font-size: .82rem; font-weight: 700; }
 .siteFooter a:hover { color: #fff; }
 
-/* Homepage refinements */
-.heroV3 { overflow: visible; }
-.heroCopyV3 { position: relative; z-index: 3; }
-.forgeEcosystemV3 { transform: translateX(clamp(10px, 3.2vw, 58px)); }
-.forgeCoreV3 {
-  isolation: isolate;
+/* Homepage refinements using stable structure and accessibility labels */
+main > div > section:first-child {
   overflow: visible;
 }
-.forgeCoreV3::before,
-.forgeCoreV3::after {
+main > div > section:first-child > div:first-child {
+  position: relative;
+  z-index: 3;
+}
+main > div > section:first-child > div:nth-child(2),
+[aria-label="Forge Suite connected ecosystem"] {
+  transform: translateX(clamp(18px, 3.8vw, 72px));
+}
+main > div > section:first-child a[href="/contact"] {
+  display: none !important;
+}
+
+[aria-label="Forge Suite connected ecosystem"] > div:nth-child(3) {
+  isolation: isolate;
+  overflow: visible;
+  background:
+    radial-gradient(circle at 50% 48%, rgba(0,216,255,.2), transparent 34%),
+    linear-gradient(145deg, rgba(28,59,142,.98), rgba(8,20,49,.98)) !important;
+}
+[aria-label="Forge Suite connected ecosystem"] > div:nth-child(3)::before,
+[aria-label="Forge Suite connected ecosystem"] > div:nth-child(3)::after {
   content: "";
   position: absolute;
   inset: 12%;
@@ -43,7 +58,7 @@
   animation: forgePulse 3.8s ease-in-out infinite;
   z-index: -1;
 }
-.forgeCoreV3::after {
+[aria-label="Forge Suite connected ecosystem"] > div:nth-child(3)::after {
   inset: 28%;
   background:
     radial-gradient(circle at 36% 32%, rgba(255,255,255,.95) 0 2%, transparent 3%),
@@ -54,12 +69,16 @@
   border: 0;
   animation-delay: -1.9s;
 }
-.forgeCoreV3 > div { display: grid; place-items: center; gap: 3px; }
-.forgeCoreMark {
+[aria-label="Forge Suite connected ecosystem"] > div:nth-child(3) img {
+  display: none !important;
+}
+[aria-label="Forge Suite connected ecosystem"] > div:nth-child(3) > div::before {
+  content: "F";
   width: 64px;
   height: 64px;
   display: grid;
   place-items: center;
+  margin: 0 auto 5px;
   border-radius: 18px;
   color: #fff;
   font-size: 2rem;
@@ -68,8 +87,15 @@
   background: linear-gradient(145deg, rgba(93,116,255,.96), rgba(0,216,255,.74));
   box-shadow: 0 0 32px rgba(0,216,255,.35);
 }
-.forgeCoreLabel { font-size: .68rem; letter-spacing: .16em; color: rgba(230,244,255,.7); text-transform: uppercase; }
-.forgeCoreV3 strong { font-size: 1.08rem !important; letter-spacing: .1em !important; }
+[aria-label="Forge Suite connected ecosystem"] > div:nth-child(3) strong::after {
+  content: "\A CORE";
+  white-space: pre;
+  display: block;
+  margin-top: 4px;
+  color: rgba(230,244,255,.68);
+  font-size: .58rem;
+  letter-spacing: .18em;
+}
 
 @keyframes forgePulse {
   0%,100% { transform: scale(.94); opacity: .58; }
@@ -144,7 +170,8 @@
   .siteHeader nav { display: none !important; }
   .startProjectCta { display: none !important; }
   .mobileMenuButton { display: grid !important; }
-  .forgeEcosystemV3 { transform: none; }
+  main > div > section:first-child > div:nth-child(2),
+  [aria-label="Forge Suite connected ecosystem"] { transform: none; }
 }
 
 @media (max-width: 760px) {
@@ -170,19 +197,29 @@
   }
   .mobileNavPanel a { min-height: 48px; display: flex; align-items: center; font-size: .96rem !important; }
 
-  .heroV3 { padding-top: 28px !important; gap: 18px !important; }
-  .heroCopyV3 { text-align: left; }
-  .heroCopyV3 h1 { font-size: clamp(2.35rem, 13vw, 3.8rem) !important; line-height: 1 !important; }
-  .heroCopyV3 p { font-size: .98rem !important; line-height: 1.65 !important; }
-  .heroCopyV3 [class*="heroActions"] { justify-content: stretch !important; }
-  .heroCopyV3 [class*="heroActions"] a { width: 100%; min-height: 52px; }
+  main > div > section:first-child {
+    padding-top: 28px !important;
+    gap: 18px !important;
+  }
+  main > div > section:first-child > div:first-child { text-align: left; }
+  main > div > section:first-child h1 { font-size: clamp(2.35rem, 13vw, 3.8rem) !important; line-height: 1 !important; }
+  main > div > section:first-child p { font-size: .98rem !important; line-height: 1.65 !important; }
+  main > div > section:first-child [class*="heroActions"] { justify-content: stretch !important; }
+  main > div > section:first-child [class*="heroActions"] a { width: 100%; min-height: 52px; }
 
-  .forgeEcosystemV3 {
+  [aria-label="Forge Suite connected ecosystem"] {
     margin-top: 4px !important;
     padding-top: 10px !important;
   }
-  .forgeCoreV3 { width: 142px !important; margin-inline: auto !important; }
-  .forgeCoreMark { width: 54px; height: 54px; font-size: 1.7rem; }
+  [aria-label="Forge Suite connected ecosystem"] > div:nth-child(3) {
+    width: 142px !important;
+    margin-inline: auto !important;
+  }
+  [aria-label="Forge Suite connected ecosystem"] > div:nth-child(3) > div::before {
+    width: 54px;
+    height: 54px;
+    font-size: 1.7rem;
+  }
 
   .applicationsGallery { grid-template-columns: 1fr; gap: 16px; }
   .applicationLivePreview { height: 185px; }
@@ -200,6 +237,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .forgeCoreV3::before, .forgeCoreV3::after { animation: none; }
+  [aria-label="Forge Suite connected ecosystem"] > div:nth-child(3)::before,
+  [aria-label="Forge Suite connected ecosystem"] > div:nth-child(3)::after { animation: none; }
   .applicationGalleryCard { transition: none; }
 }
