@@ -73,9 +73,10 @@ export default function Landing() {
             className={`${styles.ecosystem} ${refinements.ecosystemShift}`}
             aria-label="Forge Suite connected ecosystem"
             style={{
-              maxWidth: "700px",
+              maxWidth: "3500px",
               aspectRatio: "16 / 10",
               isolation: "isolate",
+              overflow: "visible",
             }}
           >
             <div
@@ -94,10 +95,10 @@ export default function Landing() {
               alt="Forge Suite core connected to Game Forge Studio, ForgeOps, NeuralForge, Forge Robotics Lab, Forge Media Studio and Forge Coder"
               style={{
                 display: "block",
-                width: "105%",
+                width: "525%",
                 maxWidth: "none",
                 height: "auto",
-                marginLeft: "-4%",
+                marginLeft: "-212%",
                 objectFit: "contain",
                 filter: "drop-shadow(0 0 28px rgba(0, 174, 255, 0.18))",
                 WebkitMaskImage:
