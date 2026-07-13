@@ -1,52 +1,42 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-labelledby="title desc">
   <title id="title">Forge Suite connected platform</title>
-  <desc id="desc">A neon Forge Suite core connected to six application layers over a neural-network background.</desc>
+  <desc id="desc">A transparent neon Forge Suite core connected to six application layers.</desc>
   <defs>
-    <radialGradient id="bg" cx="54%" cy="48%" r="72%"><stop offset="0" stop-color="#071d45"/><stop offset=".46" stop-color="#030d20"/><stop offset="1" stop-color="#01050d"/></radialGradient>
     <linearGradient id="cyan" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#00e7ff"/><stop offset="1" stop-color="#2874ff"/></linearGradient>
     <linearGradient id="violet" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#29d9ff"/><stop offset=".45" stop-color="#755cff"/><stop offset="1" stop-color="#ff3f91"/></linearGradient>
     <linearGradient id="warm" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ff9b42"/><stop offset="1" stop-color="#ff2f83"/></linearGradient>
-    <filter id="glow"><feGaussianBlur stdDeviation="8" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-    <filter id="soft"><feGaussianBlur stdDeviation="18"/></filter>
-    <pattern id="grid" width="56" height="56" patternUnits="userSpaceOnUse"><path d="M56 0H0V56" fill="none" stroke="#0a3b74" stroke-opacity=".18" stroke-width="1"/></pattern>
+    <radialGradient id="halo" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#147cff" stop-opacity=".22"/><stop offset=".55" stop-color="#674cff" stop-opacity=".1"/><stop offset="1" stop-color="#061329" stop-opacity="0"/></radialGradient>
+    <filter id="glow" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="8" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <filter id="soft" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="20"/></filter>
   </defs>
-  <rect width="1600" height="1000" fill="url(#bg)"/>
-  <rect width="1600" height="1000" fill="url(#grid)" opacity=".7"/>
-  <g opacity=".28" stroke="#168dff" stroke-width="2">
-    <path d="M0 170L130 120 240 210 360 145 470 245 585 190M0 330L160 250 280 355 430 300 560 390M1040 130L1170 205 1290 130 1445 215 1600 155M1020 760L1160 680 1280 770 1420 700 1600 790" fill="none"/>
-    <path d="M70 590L190 510 330 610 460 540 590 650M1030 470L1170 390 1310 500 1450 420 1600 530" fill="none"/>
-  </g>
-  <g fill="#1bbcff" filter="url(#glow)">
-    <circle cx="130" cy="120" r="5"/><circle cx="240" cy="210" r="4"/><circle cx="360" cy="145" r="5"/><circle cx="160" cy="250" r="4"/><circle cx="330" cy="610" r="5"/><circle cx="1170" cy="205" r="5"/><circle cx="1290" cy="130" r="4"/><circle cx="1445" cy="215" r="5"/><circle cx="1280" cy="770" r="5"/><circle cx="1450" cy="420" r="4"/>
-  </g>
-  <g opacity=".18" fill="#55baff" font-family="monospace" font-size="18">
-    <text x="36" y="260">01001101 11001010 001101</text><text x="72" y="286">10110010 00101101</text><text x="1250" y="120">SYSTEM.ACTIVE</text><text x="1280" y="148">NODE_06 CONNECTED</text><text x="60" y="790">AI_LAYER :: READY</text><text x="1240" y="860">FORGE.RUNTIME</text>
-  </g>
-  <ellipse cx="820" cy="820" rx="520" ry="145" fill="#0a6cff" opacity=".12" filter="url(#soft)"/>
-  <g fill="none" stroke="url(#cyan)" opacity=".68">
-    <ellipse cx="820" cy="820" rx="500" ry="130"/><ellipse cx="820" cy="820" rx="420" ry="105"/><ellipse cx="820" cy="820" rx="330" ry="78"/><ellipse cx="820" cy="820" rx="230" ry="50"/>
-  </g>
-  <g stroke-linecap="round" stroke-width="2" fill="none" opacity=".78">
-    <path d="M450 265H610L700 350" stroke="#ff4c8a"/><path d="M410 475H590L690 510" stroke="#00dff4"/><path d="M450 690H620L700 635" stroke="#9a65ff"/>
-    <path d="M1180 265H1030L940 350" stroke="#00dff4"/><path d="M1210 475H1050L950 510" stroke="#ff5a7c"/><path d="M1175 690H1030L940 635" stroke="#28bfff"/>
-  </g>
-  <g filter="url(#glow)">
-    <polygon points="820,215 990,315 990,615 820,715 650,615 650,315" fill="#041128" stroke="url(#violet)" stroke-width="4"/>
-    <polygon points="820,248 955,326 955,580 820,658 685,580 685,326" fill="#061633" stroke="#1fd9ff" stroke-opacity=".55"/>
-    <path d="M690 610L820 685 950 610 950 655 820 730 690 655Z" fill="#071c44" stroke="#00e7ff"/>
-    <path d="M705 656L820 722 935 656 935 700 820 766 705 700Z" fill="#10164a" stroke="#8b59ff"/>
-    <path d="M720 700L820 758 920 700 920 742 820 800 720 742Z" fill="#17123e" stroke="#ff4f9a"/>
-    <line x1="820" y1="800" x2="820" y2="866" stroke="#2ee8ff" stroke-width="8"/>
-  </g>
-  <g text-anchor="middle" fill="#fff" font-family="Arial, Helvetica, sans-serif">
-    <text x="820" y="405" font-size="32" letter-spacing="4">THE</text><text x="820" y="480" font-size="72" font-weight="800">FORGE</text><text x="820" y="555" font-size="72" font-weight="800">SUITE</text><text x="820" y="602" font-size="24" fill="#aebbd4">by <tspan fill="#ff4a6f" font-weight="700" letter-spacing="3">INNOWEB</tspan></text>
-  </g>
-  <g font-family="Arial, Helvetica, sans-serif">
-    <g transform="translate(250 195)"><rect width="290" height="140" rx="18" fill="#06101f" stroke="#ff4d82"/><path d="M28 36h52v52H28z" fill="none" stroke="url(#warm)" stroke-width="7"/><text x="102" y="52" fill="#fff" font-size="22" font-weight="700">GAME FORGE</text><text x="102" y="80" fill="#fff" font-size="22" font-weight="700">STUDIO</text><text x="102" y="112" fill="#b9c5d9" font-size="15">Craft the interactive worlds layer.</text></g>
-    <g transform="translate(170 405)"><rect width="300" height="140" rx="18" fill="#06101f" stroke="#00dff4"/><path d="M28 35h54v54H28z" fill="none" stroke="url(#cyan)" stroke-width="7"/><text x="104" y="63" fill="#fff" font-size="23" font-weight="700">FORGEOPS</text><text x="104" y="97" fill="#b9c5d9" font-size="15">Govern the operational layer.</text></g>
-    <g transform="translate(235 620)"><rect width="310" height="140" rx="18" fill="#06101f" stroke="#9b61ff"/><path d="M28 38l50 0-50 52z" fill="none" stroke="#9b61ff" stroke-width="8"/><text x="104" y="62" fill="#fff" font-size="23" font-weight="700">NEURALFORGE</text><text x="104" y="97" fill="#b9c5d9" font-size="15">Shape the intelligence layer.</text></g>
-    <g transform="translate(1060 195)"><rect width="320" height="140" rx="18" fill="#06101f" stroke="#00dff4"/><circle cx="55" cy="62" r="28" fill="none" stroke="#00dff4" stroke-width="7"/><text x="105" y="52" fill="#fff" font-size="22" font-weight="700">FORGE</text><text x="105" y="80" fill="#fff" font-size="22" font-weight="700">ROBOTICS LAB</text><text x="105" y="112" fill="#b9c5d9" font-size="15">Simulate the robotic systems layer.</text></g>
-    <g transform="translate(1110 405)"><rect width="320" height="140" rx="18" fill="#06101f" stroke="#ff4d82"/><path d="M32 40l50 22-50 22z" fill="none" stroke="url(#warm)" stroke-width="7"/><text x="105" y="52" fill="#fff" font-size="22" font-weight="700">FORGE</text><text x="105" y="80" fill="#fff" font-size="22" font-weight="700">MEDIA STUDIO</text><text x="105" y="112" fill="#b9c5d9" font-size="15">Create the content layer.</text></g>
-    <g transform="translate(1060 620)"><rect width="320" height="140" rx="18" fill="#06101f" stroke="#29bfff"/><path d="M30 38h54L55 64h29L30 96z" fill="none" stroke="#29bfff" stroke-width="7"/><text x="105" y="62" fill="#fff" font-size="23" font-weight="700">FORGE CODER</text><text x="105" y="97" fill="#b9c5d9" font-size="15">Build the systems layer.</text></g>
+  <g transform="translate(-45 0)">
+    <ellipse cx="820" cy="510" rx="570" ry="400" fill="url(#halo)"/>
+    <ellipse cx="820" cy="820" rx="520" ry="145" fill="#0a6cff" opacity=".12" filter="url(#soft)"/>
+    <g fill="none" stroke="url(#cyan)" opacity=".68">
+      <ellipse cx="820" cy="820" rx="500" ry="130"/><ellipse cx="820" cy="820" rx="420" ry="105"/><ellipse cx="820" cy="820" rx="330" ry="78"/><ellipse cx="820" cy="820" rx="230" ry="50"/>
+    </g>
+    <g stroke-linecap="round" stroke-width="2" fill="none" opacity=".82">
+      <path d="M450 265H610L700 350" stroke="#ff4c8a"/><path d="M410 475H590L690 510" stroke="#00dff4"/><path d="M450 690H620L700 635" stroke="#9a65ff"/>
+      <path d="M1180 265H1030L940 350" stroke="#00dff4"/><path d="M1210 475H1050L950 510" stroke="#ff5a7c"/><path d="M1175 690H1030L940 635" stroke="#28bfff"/>
+    </g>
+    <g filter="url(#glow)">
+      <polygon points="820,215 990,315 990,615 820,715 650,615 650,315" fill="#041128" fill-opacity=".96" stroke="url(#violet)" stroke-width="4"/>
+      <polygon points="820,248 955,326 955,580 820,658 685,580 685,326" fill="#061633" fill-opacity=".94" stroke="#1fd9ff" stroke-opacity=".55"/>
+      <path d="M690 610L820 685 950 610 950 655 820 730 690 655Z" fill="#071c44" fill-opacity=".9" stroke="#00e7ff"/>
+      <path d="M705 656L820 722 935 656 935 700 820 766 705 700Z" fill="#10164a" fill-opacity=".9" stroke="#8b59ff"/>
+      <path d="M720 700L820 758 920 700 920 742 820 800 720 742Z" fill="#17123e" fill-opacity=".9" stroke="#ff4f9a"/>
+      <line x1="820" y1="800" x2="820" y2="866" stroke="#2ee8ff" stroke-width="8"/>
+    </g>
+    <g text-anchor="middle" fill="#fff" font-family="Arial, Helvetica, sans-serif">
+      <text x="820" y="405" font-size="32" letter-spacing="4">THE</text><text x="820" y="480" font-size="72" font-weight="800">FORGE</text><text x="820" y="555" font-size="72" font-weight="800">SUITE</text><text x="820" y="602" font-size="24" fill="#aebbd4">by <tspan fill="#ff4a6f" font-weight="700" letter-spacing="3">INNOWEB</tspan></text>
+    </g>
+    <g font-family="Arial, Helvetica, sans-serif">
+      <g transform="translate(250 195)"><rect width="290" height="140" rx="18" fill="#06101f" fill-opacity=".96" stroke="#ff4d82"/><path d="M28 36h52v52H28z" fill="none" stroke="url(#warm)" stroke-width="7"/><text x="102" y="52" fill="#fff" font-size="22" font-weight="700">GAME FORGE</text><text x="102" y="80" fill="#fff" font-size="22" font-weight="700">STUDIO</text><text x="102" y="112" fill="#b9c5d9" font-size="15">Craft the interactive worlds layer.</text></g>
+      <g transform="translate(170 405)"><rect width="300" height="140" rx="18" fill="#06101f" fill-opacity=".96" stroke="#00dff4"/><path d="M28 35h54v54H28z" fill="none" stroke="url(#cyan)" stroke-width="7"/><text x="104" y="63" fill="#fff" font-size="23" font-weight="700">FORGEOPS</text><text x="104" y="97" fill="#b9c5d9" font-size="15">Govern the operational layer.</text></g>
+      <g transform="translate(235 620)"><rect width="310" height="140" rx="18" fill="#06101f" fill-opacity=".96" stroke="#9b61ff"/><path d="M28 38l50 0-50 52z" fill="none" stroke="#9b61ff" stroke-width="8"/><text x="104" y="62" fill="#fff" font-size="23" font-weight="700">NEURALFORGE</text><text x="104" y="97" fill="#b9c5d9" font-size="15">Shape the intelligence layer.</text></g>
+      <g transform="translate(1060 195)"><rect width="320" height="140" rx="18" fill="#06101f" fill-opacity=".96" stroke="#00dff4"/><circle cx="55" cy="62" r="28" fill="none" stroke="#00dff4" stroke-width="7"/><text x="105" y="52" fill="#fff" font-size="22" font-weight="700">FORGE</text><text x="105" y="80" fill="#fff" font-size="22" font-weight="700">ROBOTICS LAB</text><text x="105" y="112" fill="#b9c5d9" font-size="15">Simulate the robotic systems layer.</text></g>
+      <g transform="translate(1110 405)"><rect width="320" height="140" rx="18" fill="#06101f" fill-opacity=".96" stroke="#ff4d82"/><path d="M32 40l50 22-50 22z" fill="none" stroke="url(#warm)" stroke-width="7"/><text x="105" y="52" fill="#fff" font-size="22" font-weight="700">FORGE</text><text x="105" y="80" fill="#fff" font-size="22" font-weight="700">MEDIA STUDIO</text><text x="105" y="112" fill="#b9c5d9" font-size="15">Create the content layer.</text></g>
+      <g transform="translate(1060 620)"><rect width="320" height="140" rx="18" fill="#06101f" fill-opacity=".96" stroke="#29bfff"/><path d="M30 38h54L55 64h29L30 96z" fill="none" stroke="#29bfff" stroke-width="7"/><text x="105" y="62" fill="#fff" font-size="23" font-weight="700">FORGE CODER</text><text x="105" y="97" fill="#b9c5d9" font-size="15">Build the systems layer.</text></g>
+    </g>
   </g>
 </svg>
