@@ -46,8 +46,8 @@ export default function Landing() {
   return (
     <SiteShell>
       <div className={styles.landing}>
-        <section className={styles.hero}>
-          <div className={styles.heroCopy}>
+        <section className={styles.hero} style={{ gridTemplateColumns: "minmax(0, 1fr)" }}>
+          <div className={styles.heroCopy} style={{ maxWidth: "820px" }}>
             <div className={styles.eyebrow}>InnoWeb Ventures · Forge Suite</div>
             <h1>
               The AI engineering platform for <span>real-world impact.</span>
@@ -67,46 +67,6 @@ export default function Landing() {
               <div>Connect AI, software, data and operational governance.</div>
               <div>Deploy gradually while keeping people in control.</div>
             </div>
-          </div>
-
-          <div
-            className={`${styles.ecosystem} ${refinements.ecosystemShift}`}
-            aria-label="Forge Suite connected ecosystem"
-            style={{
-              maxWidth: "3500px",
-              aspectRatio: "16 / 10",
-              isolation: "isolate",
-              overflow: "visible",
-            }}
-          >
-            <div
-              aria-hidden
-              style={{
-                position: "absolute",
-                inset: "8% 4% 2%",
-                background:
-                  "radial-gradient(circle at 55% 48%, rgba(0, 216, 255, 0.2), rgba(84, 64, 255, 0.12) 38%, transparent 72%)",
-                filter: "blur(28px)",
-                zIndex: -1,
-              }}
-            />
-            <img
-              src={`${import.meta.env.BASE_URL}branding/forge-suite-hero.svg`}
-              alt="Forge Suite core connected to Game Forge Studio, ForgeOps, NeuralForge, Forge Robotics Lab, Forge Media Studio and Forge Coder"
-              style={{
-                display: "block",
-                width: "525%",
-                maxWidth: "none",
-                height: "auto",
-                marginLeft: "-212%",
-                objectFit: "contain",
-                filter: "drop-shadow(0 0 28px rgba(0, 174, 255, 0.18))",
-                WebkitMaskImage:
-                  "radial-gradient(ellipse 88% 86% at 52% 50%, #000 68%, rgba(0,0,0,.84) 78%, transparent 100%)",
-                maskImage:
-                  "radial-gradient(ellipse 88% 86% at 52% 50%, #000 68%, rgba(0,0,0,.84) 78%, transparent 100%)",
-              }}
-            />
           </div>
         </section>
 
