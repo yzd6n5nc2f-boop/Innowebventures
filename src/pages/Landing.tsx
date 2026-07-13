@@ -42,15 +42,6 @@ const deliverySteps = [
   ["05", "Operate", "Measure performance, improve the workflow and scale with confidence."],
 ];
 
-const orbitPositions = [
-  { x: "0px", y: "-185px" },
-  { x: "165px", y: "-92px" },
-  { x: "165px", y: "92px" },
-  { x: "0px", y: "185px" },
-  { x: "-165px", y: "92px" },
-  { x: "-165px", y: "-92px" },
-];
-
 export default function Landing() {
   return (
     <SiteShell>
@@ -78,33 +69,43 @@ export default function Landing() {
             </div>
           </div>
 
-          <div className={`${styles.ecosystem} ${refinements.ecosystemShift}`} aria-label="Forge Suite connected ecosystem">
-            <div className={styles.orbit} aria-hidden />
-            <div className={styles.orbitInner} aria-hidden />
-            <div className={`${styles.core} ${refinements.coreCard}`}>
-              <div>
-                <img src={`${import.meta.env.BASE_URL}branding/logo/innoweb-logo.png`} alt="" />
-                <strong>FORGE CORE</strong>
-                <small>Human-controlled intelligence</small>
-              </div>
-            </div>
-            {products.slice(0, 6).map((product, index) => (
-              <div
-                key={product.slug}
-                className={styles.moduleNode}
-                style={
-                  {
-                    ["--x" as const]: orbitPositions[index]?.x ?? "0px",
-                    ["--y" as const]: orbitPositions[index]?.y ?? "0px",
-                    ["--accent" as const]: product.accent,
-                  } as CSSProperties
-                }
-              >
-                <img src={`${import.meta.env.BASE_URL}${product.logoImage}`} alt="" />
-                <strong>{product.name}</strong>
-                <span>{product.role}</span>
-              </div>
-            ))}
+          <div
+            className={`${styles.ecosystem} ${refinements.ecosystemShift}`}
+            aria-label="Forge Suite connected ecosystem"
+            style={{
+              maxWidth: "760px",
+              aspectRatio: "16 / 10",
+              isolation: "isolate",
+            }}
+          >
+            <div
+              aria-hidden
+              style={{
+                position: "absolute",
+                inset: "8% 4% 2%",
+                background:
+                  "radial-gradient(circle at 55% 48%, rgba(0, 216, 255, 0.2), rgba(84, 64, 255, 0.12) 38%, transparent 72%)",
+                filter: "blur(28px)",
+                zIndex: -1,
+              }}
+            />
+            <img
+              src={`${import.meta.env.BASE_URL}branding/forge-suite-hero.svg`}
+              alt="Forge Suite core connected to Game Forge Studio, ForgeOps, NeuralForge, Forge Robotics Lab, Forge Media Studio and Forge Coder"
+              style={{
+                display: "block",
+                width: "116%",
+                maxWidth: "none",
+                height: "auto",
+                marginLeft: "-8%",
+                objectFit: "contain",
+                filter: "drop-shadow(0 0 28px rgba(0, 174, 255, 0.18))",
+                WebkitMaskImage:
+                  "radial-gradient(ellipse 88% 86% at 52% 50%, #000 68%, rgba(0,0,0,.84) 78%, transparent 100%)",
+                maskImage:
+                  "radial-gradient(ellipse 88% 86% at 52% 50%, #000 68%, rgba(0,0,0,.84) 78%, transparent 100%)",
+              }}
+            />
           </div>
         </section>
 
