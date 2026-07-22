@@ -20,6 +20,12 @@ const applications = [
     url: "https://applications.innowebventures.com/pathfinder/",
     category: "Decision Support",
   },
+  {
+    name: "Workbook Timesheet",
+    description: "A streamlined timesheet workflow for recording, reviewing and managing workbook-based time entries.",
+    url: "https://applications.innowebventures.com/workbooktimesheet",
+    category: "Time Management",
+  },
 ];
 
 export default function Work() {
