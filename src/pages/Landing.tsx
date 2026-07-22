@@ -1,7 +1,5 @@
-import type { CSSProperties } from "react";
 import { Link } from "react-router-dom";
 import SiteShell from "../components/SiteShell";
-import { products } from "../content/siteContent";
 import styles from "../styles/landingShowcase.module.css";
 import refinements from "../styles/landingRefinement.module.css";
 
@@ -32,6 +30,25 @@ const trustItems = [
   ["End-to-end platform", "Intelligence, software, operations, media and robotics in one ecosystem."],
   ["Trust and governance", "Human approval, monitoring and accountability built into delivery."],
   ["Human + AI", "Technology designed to strengthen teams rather than remove control."],
+];
+
+const stackHighlights = [
+  [
+    "Agentic workflows",
+    "Purpose-built agents coordinate tools, data and approvals around the task rather than forcing every problem into one generic assistant.",
+  ],
+  [
+    "Intelligent planners",
+    "Planning layers break complex work into controlled steps, select the right route and keep execution aligned with the intended outcome.",
+  ],
+  [
+    "Purpose-fit LLMs",
+    "Models are selected for the job, balancing reasoning quality, speed, privacy and cost instead of defaulting to the largest model available.",
+  ],
+  [
+    "Cost and output control",
+    "Token spend is measured at task and workflow level so output quality, operational value and model cost can be reviewed together.",
+  ],
 ];
 
 const deliverySteps = [
@@ -83,32 +100,25 @@ export default function Landing() {
           <div className={styles.sectionInner}>
             <div className={styles.sectionHeader}>
               <div>
-                <div className={styles.sectionEyebrow}>Forge Suite</div>
-                <h2>One platform. Six connected capabilities.</h2>
+                <div className={styles.sectionEyebrow}>Development stack</div>
+                <h2>Agentic systems designed around the work.</h2>
                 <p className={styles.sectionIntro}>
-                  Each part of Forge Suite can support a focused project, but its real advantage comes from the way the
-                  capabilities work together across the full solution lifecycle.
+                  Forge Suite combines workflow orchestration, intelligent planning, fit-for-purpose language models and
+                  operational cost controls. The homepage gives the overview; the development stack explains how these
+                  layers work together in practice.
                 </p>
               </div>
-              <Link className={styles.secondary} to="/forge-suite">
-                View full platform
+              <Link className={styles.secondary} to="/delivery-method">
+                Explore development stack
               </Link>
             </div>
 
             <div className={styles.suiteGrid}>
-              {products.slice(0, 6).map((product) => (
-                <article
-                  key={product.slug}
-                  className={`${styles.suiteCard} ${refinements.networkCard}`}
-                  style={{ ["--accent" as const]: product.accent } as CSSProperties}
-                >
-                  <img className={styles.suiteIcon} src={`${import.meta.env.BASE_URL}${product.logoImage}`} alt="" />
-                  <div className={styles.suiteRole}>{product.role}</div>
-                  <h3>{product.name}</h3>
-                  <p>{product.summary}</p>
-                  <Link className={styles.inlineLink} to={`/forge-suite/${product.slug}`}>
-                    Explore capability →
-                  </Link>
+              {stackHighlights.map(([title, description]) => (
+                <article key={title} className={`${styles.suiteCard} ${refinements.networkCard}`}>
+                  <div className={styles.suiteRole}>Forge engineering</div>
+                  <h3>{title}</h3>
+                  <p>{description}</p>
                 </article>
               ))}
             </div>
