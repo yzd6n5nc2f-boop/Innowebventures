@@ -33,17 +33,13 @@
 
 .networkSection {
   color: #f7f9ff;
-  background:
-    linear-gradient(180deg, rgba(3, 10, 24, 0.58), rgba(4, 13, 31, 0.82)),
-    radial-gradient(circle at 18% 12%, rgba(0, 216, 255, 0.16), transparent 38%),
-    radial-gradient(circle at 82% 72%, rgba(79, 111, 255, 0.15), transparent 44%);
+  background: transparent;
   border-top: 1px solid rgba(100, 150, 255, 0.12);
   border-bottom: 1px solid rgba(100, 150, 255, 0.12);
-  backdrop-filter: blur(2px);
 }
 
 .networkSection :global(.sectionIntro) {
-  color: rgba(235, 242, 255, 0.7);
+  color: rgba(235, 242, 255, 0.76);
 }
 
 .networkCard {
@@ -57,18 +53,53 @@
   color: rgba(235, 242, 255, 0.68);
 }
 
+.clearTextCard,
+.clearFlowCard {
+  color: #f7f9ff;
+  background: rgba(6, 16, 36, 0.18);
+  border: 1px solid rgba(128, 176, 255, 0.2);
+  box-shadow: none;
+  backdrop-filter: blur(3px);
+}
+
+.clearTextCard p,
+.clearFlowCard p {
+  color: rgba(235, 242, 255, 0.74);
+}
+
+.applicationCard {
+  color: #f7f9ff;
+  background: rgba(6, 16, 36, 0.2);
+  border-color: rgba(128, 176, 255, 0.2);
+  box-shadow: none;
+  backdrop-filter: blur(3px);
+}
+
+.applicationCard p {
+  color: rgba(235, 242, 255, 0.74);
+}
+
 .networkPanel {
   color: #f7f9ff;
-  background: linear-gradient(135deg, rgba(10, 28, 63, 0.94), rgba(5, 16, 38, 0.94));
-  border-color: rgba(92, 145, 255, 0.28);
+  background: rgba(6, 16, 36, 0.22);
+  border-color: rgba(92, 145, 255, 0.22);
+  box-shadow: none;
+  backdrop-filter: blur(3px);
 }
 
 .networkPanel span {
-  color: rgba(235, 242, 255, 0.68);
+  color: rgba(235, 242, 255, 0.72);
+}
+
+.clearCtaBand {
+  background: rgba(6, 16, 36, 0.18);
+  border: 1px solid rgba(128, 176, 255, 0.2);
+  box-shadow: none;
+  backdrop-filter: blur(3px);
 }
 
 .compactAppGrid {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 @media (max-width: 1180px) {
@@ -80,6 +111,12 @@
 @media (max-width: 1050px) {
   .ecosystemShift {
     transform: none;
+  }
+}
+
+@media (max-width: 760px) {
+  .compactAppGrid {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -96,9 +133,5 @@
 
   .coreCard img {
     margin: 0;
-  }
-
-  .compactAppGrid {
-    grid-template-columns: 1fr;
   }
 }
