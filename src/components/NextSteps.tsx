@@ -7,7 +7,7 @@ type NextStepsProps = {
   steps: NextStep[];
 };
 
-export default function NextSteps({ title = "Next step", steps }: NextStepsProps) {
+export default function NextSteps({ title = "Continue exploring", steps }: NextStepsProps) {
   return (
     <section className={styles.nextSteps} aria-label={title}>
       <div className={styles.sectionHeaderCompact}>
@@ -18,7 +18,7 @@ export default function NextSteps({ title = "Next step", steps }: NextStepsProps
           <Link key={step.label} className={styles.nextStepCard} to={step.to}>
             <div className={styles.nextStepTitle}>{step.label}</div>
             <p>{step.description}</p>
-            <span className={styles.inlineCta}>Continue</span>
+            <span className={styles.inlineCta}>View details →</span>
           </Link>
         ))}
       </div>
