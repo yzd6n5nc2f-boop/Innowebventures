@@ -14,22 +14,9 @@
   box-shadow: 0 16px 38px rgba(0, 0, 0, 0.32), 0 0 34px rgba(0, 216, 255, 0.2);
 }
 
-.coreCard img {
-  width: 48px;
-  height: 48px;
-}
-
-.coreCard strong {
-  font-size: 0.88rem;
-}
-
-.coreCard small {
-  display: block;
-  margin-top: 5px;
-  color: rgba(235, 242, 255, 0.66);
-  font-size: 0.66rem;
-  line-height: 1.3;
-}
+.coreCard img { width: 48px; height: 48px; }
+.coreCard strong { font-size: 0.88rem; }
+.coreCard small { display: block; margin-top: 5px; color: rgba(235, 242, 255, 0.66); font-size: 0.66rem; line-height: 1.3; }
 
 .networkSection {
   color: #f7f9ff;
@@ -38,19 +25,9 @@
   border-bottom: 1px solid rgba(100, 150, 255, 0.12);
 }
 
-.networkSection :global(.sectionIntro) {
-  color: rgba(235, 242, 255, 0.76);
-}
-
-.networkCard {
-  color: #f7f9ff;
-  background: linear-gradient(160deg, rgba(12, 28, 58, 0.9), rgba(5, 13, 28, 0.92));
-  border-color: rgba(99, 157, 255, 0.22);
-  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.24), inset 0 1px 0 rgba(255, 255, 255, 0.03);
-}
-
-.networkCard p {
-  color: rgba(235, 242, 255, 0.68);
+.brightIntro {
+  color: #f7f9ff !important;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.42);
 }
 
 .clearTextCard,
@@ -71,9 +48,7 @@
 }
 
 .clearTextCard p,
-.clearFlowCard p {
-  color: rgba(235, 242, 255, 0.74);
-}
+.clearFlowCard p { color: rgba(245, 248, 255, 0.82); }
 
 .applicationCard {
   color: #f7f9ff;
@@ -88,9 +63,7 @@
   box-shadow: 0 20px 52px rgba(0, 0, 0, 0.24);
 }
 
-.applicationCard p {
-  color: rgba(235, 242, 255, 0.74);
-}
+.applicationCard p { color: rgba(245, 248, 255, 0.82); }
 
 .networkPanel {
   color: #f7f9ff;
@@ -100,16 +73,12 @@
   backdrop-filter: blur(4px);
 }
 
-.networkPanel span {
-  color: rgba(235, 242, 255, 0.72);
-}
+.networkPanel span { color: rgba(245, 248, 255, 0.8); }
 
 .clearCtaBand {
   position: relative;
   overflow: hidden;
-  background:
-    linear-gradient(120deg, rgba(11, 28, 60, 0.68), rgba(5, 16, 36, 0.32)),
-    rgba(6, 16, 36, 0.16);
+  background: linear-gradient(120deg, rgba(11, 28, 60, 0.68), rgba(5, 16, 36, 0.32)), rgba(6, 16, 36, 0.16);
   border: 1px solid rgba(128, 176, 255, 0.22);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
   backdrop-filter: blur(5px);
@@ -127,10 +96,11 @@
 .sectionButton,
 .projectButton {
   position: relative;
-  gap: 18px;
+  gap: 14px;
   overflow: hidden;
   isolation: isolate;
   letter-spacing: 0.01em;
+  white-space: nowrap;
 }
 
 .heroButton::before,
@@ -150,14 +120,10 @@
   border: 1px solid rgba(139, 180, 255, 0.46);
   border-radius: 11px;
   background: linear-gradient(135deg, #2648d8, #4f6fff 55%, #2a8ec7);
-  box-shadow:
-    0 18px 44px rgba(35, 70, 210, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.24);
+  box-shadow: 0 18px 44px rgba(35, 70, 210, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.24);
 }
 
-.heroButton::before {
-  background: linear-gradient(135deg, #3158ee, #627cff 55%, #00a9d4);
-}
+.heroButton::before { background: linear-gradient(135deg, #3158ee, #627cff 55%, #00a9d4); }
 
 .heroButton strong,
 .sectionButton strong,
@@ -172,14 +138,12 @@
   transition: transform 0.22s ease, background 0.22s ease;
 }
 
-.heroButton strong {
-  color: #07101f;
-  background: rgba(255, 255, 255, 0.92);
-}
+.heroButton strong,
+.projectButton strong { color: #07101f; background: rgba(255, 255, 255, 0.92); }
 
 .sectionButton {
-  min-height: 46px;
-  padding: 0 8px 0 16px;
+  min-height: 44px;
+  padding: 0 7px 0 15px;
   border: 1px solid rgba(132, 174, 255, 0.32);
   border-radius: 10px;
   background: rgba(6, 16, 36, 0.44);
@@ -187,15 +151,8 @@
   backdrop-filter: blur(6px);
 }
 
-.sectionButton::before {
-  background: linear-gradient(90deg, rgba(0, 216, 255, 0.12), rgba(79, 111, 255, 0.14));
-}
-
-.sectionButton strong {
-  color: #8beeff;
-  background: rgba(0, 216, 255, 0.08);
-  border: 1px solid rgba(0, 216, 255, 0.16);
-}
+.sectionButton::before { background: linear-gradient(90deg, rgba(0, 216, 255, 0.12), rgba(79, 111, 255, 0.14)); }
+.sectionButton strong { color: #8beeff; background: rgba(0, 216, 255, 0.08); border: 1px solid rgba(0, 216, 255, 0.16); }
 
 .projectButton {
   min-height: 50px;
@@ -203,86 +160,35 @@
   border: 1px solid rgba(140, 184, 255, 0.42);
   border-radius: 10px;
   background: linear-gradient(135deg, #2d53dc, #617aff);
-  box-shadow:
-    0 16px 40px rgba(35, 70, 210, 0.24),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  box-shadow: 0 16px 40px rgba(35, 70, 210, 0.24), inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
-.projectButton::before {
-  background: linear-gradient(135deg, #3b61eb, #7388ff);
-}
-
-.projectButton strong {
-  color: #07101f;
-  background: rgba(255, 255, 255, 0.9);
-}
-
+.projectButton::before { background: linear-gradient(135deg, #3b61eb, #7388ff); }
 .heroButton:hover::before,
 .sectionButton:hover::before,
-.projectButton:hover::before {
-  opacity: 1;
-}
-
+.projectButton:hover::before { opacity: 1; }
 .heroButton:hover strong,
 .sectionButton:hover strong,
-.projectButton:hover strong {
-  transform: translateX(2px);
-}
-
+.projectButton:hover strong { transform: translateX(2px); }
 .heroButton:focus-visible,
 .sectionButton:focus-visible,
-.projectButton:focus-visible {
-  outline: 2px solid #9cf2ff;
-  outline-offset: 3px;
-}
+.projectButton:focus-visible { outline: 2px solid #9cf2ff; outline-offset: 3px; }
 
-.compactAppGrid {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
+.compactAppGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 
-@media (max-width: 1180px) {
-  .ecosystemShift {
-    transform: translateX(-4%);
-  }
-}
-
-@media (max-width: 1050px) {
-  .ecosystemShift {
-    transform: none;
-  }
-}
+@media (max-width: 1180px) { .ecosystemShift { transform: translateX(-4%); } }
+@media (max-width: 1050px) { .ecosystemShift { transform: none; } }
 
 @media (max-width: 760px) {
-  .compactAppGrid {
-    grid-template-columns: 1fr;
-  }
-
-  .sectionButton {
-    margin-top: 18px;
-    width: fit-content;
-  }
+  .compactAppGrid { grid-template-columns: 1fr; }
+  .sectionButton { margin-top: 18px; width: fit-content; }
 }
 
 @media (max-width: 700px) {
-  .coreCard {
-    width: 100%;
-    min-height: 0;
-    margin-bottom: 0;
-    display: grid;
-    grid-template-columns: 50px 1fr;
-    text-align: left;
-    align-items: center;
-  }
-
-  .coreCard img {
-    margin: 0;
-  }
-
+  .coreCard { width: 100%; min-height: 0; margin-bottom: 0; display: grid; grid-template-columns: 50px 1fr; text-align: left; align-items: center; }
+  .coreCard img { margin: 0; }
   .heroButton,
-  .projectButton {
-    width: 100%;
-    justify-content: space-between;
-  }
+  .projectButton { width: 100%; justify-content: space-between; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -293,7 +199,5 @@
   .projectButton::before,
   .heroButton strong,
   .sectionButton strong,
-  .projectButton strong {
-    transition: none;
-  }
+  .projectButton strong { transition: none; }
 }
