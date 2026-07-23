@@ -89,8 +89,9 @@ export default function Landing() {
               activity, approvals and token usage stay visible and measurable.
             </p>
             <div className={styles.heroActions}>
-              <a className={styles.primary} href="#forge-suite">
-                Explore the development stack →
+              <a className={`${styles.primary} ${refinements.heroButton}`} href="#forge-suite">
+                <span>Explore the development stack</span>
+                <strong aria-hidden>↘</strong>
               </a>
             </div>
             <div className={styles.heroProof}>
@@ -122,8 +123,9 @@ export default function Landing() {
                   doing. Cost, token use and output quality are treated as part of the design rather than an afterthought.
                 </p>
               </div>
-              <Link className={styles.secondary} to="/delivery-method">
-                Explore development stack
+              <Link className={`${styles.secondary} ${refinements.sectionButton}`} to="/delivery-method">
+                <span>Explore development stack</span>
+                <strong aria-hidden>→</strong>
               </Link>
             </div>
 
@@ -174,8 +176,9 @@ export default function Landing() {
                   underlying automation designed for the task rather than presented as a generic chatbot.
                 </p>
               </div>
-              <Link className={styles.secondary} to="/work">
-                View all applications
+              <Link className={`${styles.secondary} ${refinements.sectionButton}`} to="/work">
+                <span>View all applications</span>
+                <strong aria-hidden>→</strong>
               </Link>
             </div>
 
@@ -210,8 +213,9 @@ export default function Landing() {
             <h2>Ready to customise an agentic workflow?</h2>
             <p>Start with one valuable task and design the right interface, agents, models and controls around it.</p>
           </div>
-          <Link className={styles.smallButton} to="/contact">
-            Start a Project →
+          <Link className={`${styles.smallButton} ${refinements.projectButton}`} to="/contact">
+            <span>Start a Project</span>
+            <strong aria-hidden>↗</strong>
           </Link>
         </section>
       </div>
