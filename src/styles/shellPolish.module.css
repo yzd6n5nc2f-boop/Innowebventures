@@ -1,16 +1,105 @@
 .topNav {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-  backdrop-filter: blur(18px);
-  background: linear-gradient(180deg, rgba(7, 10, 15, 0.92), rgba(7, 10, 15, 0.68));
+  min-height: 82px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(122, 183, 255, 0.2);
+  backdrop-filter: blur(24px) saturate(145%);
+  background:
+    linear-gradient(90deg, rgba(0, 216, 255, 0.1), transparent 18%, transparent 82%, rgba(91, 112, 255, 0.1)),
+    linear-gradient(180deg, rgba(4, 10, 22, 0.96), rgba(6, 13, 27, 0.84));
+  box-shadow:
+    0 18px 44px rgba(0, 0, 0, 0.28),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.035);
+}
+
+.topNav::before {
+  content: "";
+  position: absolute;
+  left: clamp(16px, 3.8vw, 44px);
+  right: clamp(16px, 3.8vw, 44px);
+  bottom: -1px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0, 216, 255, 0.72) 18%, rgba(91, 112, 255, 0.52) 82%, transparent);
+  pointer-events: none;
+}
+
+.topNav > a {
+  position: relative;
+  padding-right: 24px;
+}
+
+.topNav > a::after {
+  content: "";
+  position: absolute;
+  top: 11px;
+  right: 0;
+  bottom: 11px;
+  width: 1px;
+  background: linear-gradient(180deg, transparent, rgba(148, 190, 255, 0.32), transparent);
+}
+
+.topNav nav {
+  padding: 5px;
+  border: 1px solid rgba(125, 169, 255, 0.12);
+  border-radius: 14px;
+  background: rgba(3, 10, 22, 0.28);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.025);
+}
+
+.topNav nav a {
+  position: relative;
+  min-height: 38px;
+  display: inline-flex;
+  align-items: center;
+  border-radius: 10px;
+}
+
+.topNav nav a::after {
+  content: "";
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 3px;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #00d8ff, #6f82ff);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.2s ease;
+}
+
+.topNav nav a:hover::after {
+  transform: scaleX(1);
 }
 
 .headerCta {
+  min-height: 44px;
+  padding: 0 18px;
   white-space: nowrap;
+  border-radius: 10px;
+  letter-spacing: 0.015em;
+  box-shadow:
+    0 12px 34px rgba(0, 216, 255, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.46);
+}
+
+.headerCta::after {
+  content: "↗";
+  margin-left: 9px;
+  font-size: 0.9rem;
+  transition: transform 0.2s ease;
+}
+
+.headerCta:hover::after {
+  transform: translate(2px, -2px);
 }
 
 .menuButton {
   position: relative;
   z-index: 60;
+  border-radius: 10px;
+  background: rgba(4, 12, 26, 0.76);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
 }
 
 .menuButton span {
@@ -105,7 +194,7 @@
   justify-content: space-between;
   gap: 18px;
   padding: 0 20px;
-  border-radius: 14px;
+  border-radius: 12px;
   color: #061016;
   text-decoration: none;
   font-weight: 800;
@@ -134,12 +223,28 @@
   .mobileOverlay {
     display: block;
   }
+
+  .topNav nav {
+    padding: 0;
+    border: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  .topNav > a::after {
+    display: none;
+  }
 }
 
 @media (max-width: 720px) {
   .topNav {
     min-height: 72px;
     padding: 10px 16px;
+  }
+
+  .topNav::before {
+    left: 16px;
+    right: 16px;
   }
 
   .mobileOverlay {
@@ -155,7 +260,9 @@
 
 @media (prefers-reduced-motion: reduce) {
   .mobileMenu,
-  .menuButton span {
+  .menuButton span,
+  .headerCta::after,
+  .topNav nav a::after {
     animation: none;
     transition: none;
   }
