@@ -56,10 +56,18 @@
 .clearTextCard,
 .clearFlowCard {
   color: #f7f9ff;
-  background: rgba(6, 16, 36, 0.18);
+  background: linear-gradient(145deg, rgba(8, 20, 43, 0.42), rgba(5, 14, 31, 0.2));
   border: 1px solid rgba(128, 176, 255, 0.2);
-  box-shadow: none;
-  backdrop-filter: blur(3px);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.025);
+  backdrop-filter: blur(4px);
+  transition: transform 0.22s ease, border-color 0.22s ease, background 0.22s ease;
+}
+
+.clearTextCard:hover,
+.clearFlowCard:hover {
+  transform: translateY(-3px);
+  border-color: rgba(0, 216, 255, 0.38);
+  background: linear-gradient(145deg, rgba(11, 29, 59, 0.54), rgba(6, 17, 36, 0.28));
 }
 
 .clearTextCard p,
@@ -69,10 +77,15 @@
 
 .applicationCard {
   color: #f7f9ff;
-  background: rgba(6, 16, 36, 0.2);
+  background: linear-gradient(145deg, rgba(8, 20, 43, 0.48), rgba(5, 14, 31, 0.22));
   border-color: rgba(128, 176, 255, 0.2);
-  box-shadow: none;
-  backdrop-filter: blur(3px);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.025);
+  backdrop-filter: blur(4px);
+}
+
+.applicationCard:hover {
+  border-color: rgba(0, 216, 255, 0.38);
+  box-shadow: 0 20px 52px rgba(0, 0, 0, 0.24);
 }
 
 .applicationCard p {
@@ -81,10 +94,10 @@
 
 .networkPanel {
   color: #f7f9ff;
-  background: rgba(6, 16, 36, 0.22);
+  background: linear-gradient(90deg, rgba(6, 16, 36, 0.32), rgba(9, 24, 52, 0.2));
   border-color: rgba(92, 145, 255, 0.22);
-  box-shadow: none;
-  backdrop-filter: blur(3px);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.025);
+  backdrop-filter: blur(4px);
 }
 
 .networkPanel span {
@@ -92,10 +105,135 @@
 }
 
 .clearCtaBand {
-  background: rgba(6, 16, 36, 0.18);
-  border: 1px solid rgba(128, 176, 255, 0.2);
-  box-shadow: none;
-  backdrop-filter: blur(3px);
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(120deg, rgba(11, 28, 60, 0.68), rgba(5, 16, 36, 0.32)),
+    rgba(6, 16, 36, 0.16);
+  border: 1px solid rgba(128, 176, 255, 0.22);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(5px);
+}
+
+.clearCtaBand::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 4px;
+  background: linear-gradient(180deg, #00d8ff, #6f82ff);
+}
+
+.heroButton,
+.sectionButton,
+.projectButton {
+  position: relative;
+  gap: 18px;
+  overflow: hidden;
+  isolation: isolate;
+  letter-spacing: 0.01em;
+}
+
+.heroButton::before,
+.sectionButton::before,
+.projectButton::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.22s ease;
+}
+
+.heroButton {
+  min-height: 54px;
+  padding: 0 12px 0 22px;
+  border: 1px solid rgba(139, 180, 255, 0.46);
+  border-radius: 11px;
+  background: linear-gradient(135deg, #2648d8, #4f6fff 55%, #2a8ec7);
+  box-shadow:
+    0 18px 44px rgba(35, 70, 210, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.24);
+}
+
+.heroButton::before {
+  background: linear-gradient(135deg, #3158ee, #627cff 55%, #00a9d4);
+}
+
+.heroButton strong,
+.sectionButton strong,
+.projectButton strong {
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: transform 0.22s ease, background 0.22s ease;
+}
+
+.heroButton strong {
+  color: #07101f;
+  background: rgba(255, 255, 255, 0.92);
+}
+
+.sectionButton {
+  min-height: 46px;
+  padding: 0 8px 0 16px;
+  border: 1px solid rgba(132, 174, 255, 0.32);
+  border-radius: 10px;
+  background: rgba(6, 16, 36, 0.44);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.035);
+  backdrop-filter: blur(6px);
+}
+
+.sectionButton::before {
+  background: linear-gradient(90deg, rgba(0, 216, 255, 0.12), rgba(79, 111, 255, 0.14));
+}
+
+.sectionButton strong {
+  color: #8beeff;
+  background: rgba(0, 216, 255, 0.08);
+  border: 1px solid rgba(0, 216, 255, 0.16);
+}
+
+.projectButton {
+  min-height: 50px;
+  padding: 0 10px 0 18px;
+  border: 1px solid rgba(140, 184, 255, 0.42);
+  border-radius: 10px;
+  background: linear-gradient(135deg, #2d53dc, #617aff);
+  box-shadow:
+    0 16px 40px rgba(35, 70, 210, 0.24),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.projectButton::before {
+  background: linear-gradient(135deg, #3b61eb, #7388ff);
+}
+
+.projectButton strong {
+  color: #07101f;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.heroButton:hover::before,
+.sectionButton:hover::before,
+.projectButton:hover::before {
+  opacity: 1;
+}
+
+.heroButton:hover strong,
+.sectionButton:hover strong,
+.projectButton:hover strong {
+  transform: translateX(2px);
+}
+
+.heroButton:focus-visible,
+.sectionButton:focus-visible,
+.projectButton:focus-visible {
+  outline: 2px solid #9cf2ff;
+  outline-offset: 3px;
 }
 
 .compactAppGrid {
@@ -118,6 +256,11 @@
   .compactAppGrid {
     grid-template-columns: 1fr;
   }
+
+  .sectionButton {
+    margin-top: 18px;
+    width: fit-content;
+  }
 }
 
 @media (max-width: 700px) {
@@ -133,5 +276,24 @@
 
   .coreCard img {
     margin: 0;
+  }
+
+  .heroButton,
+  .projectButton {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .clearTextCard,
+  .clearFlowCard,
+  .heroButton::before,
+  .sectionButton::before,
+  .projectButton::before,
+  .heroButton strong,
+  .sectionButton strong,
+  .projectButton strong {
+    transition: none;
   }
 }
