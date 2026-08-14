@@ -9,10 +9,10 @@ const applications = [
     category: "Opportunity Intelligence",
   },
   {
-    name: "CalRivoRecon",
-    description: "A reconciliation workflow that supports validation, exception handling and human review across complex datasets.",
-    url: "https://applications.innowebventures.com/calrivorecon/",
-    category: "Reconciliation",
+    name: "BrainForge ForgePilot",
+    description: "A tailored agentic AI workspace that brings planning, specialist assistance and guided workflows into one practical interface.",
+    url: "https://applications.innowebventures.com/BrainForge/forgepilot",
+    category: "Agentic AI Workspace",
   },
   {
     name: "Pathfinder",
