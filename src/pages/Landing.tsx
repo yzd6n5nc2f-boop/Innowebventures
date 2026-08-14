@@ -11,9 +11,9 @@ const applicationExamples = [
     status: "Live",
   },
   {
-    name: "CalRivoRecon",
-    description: "Automate reconciliation, validation and exception handling across complex datasets.",
-    url: "https://applications.innowebventures.com/calrivorecon/",
+    name: "BrainForge ForgePilot",
+    description: "A tailored agentic AI workspace that brings planning, specialist assistance and guided workflows into one practical interface.",
+    url: "https://applications.innowebventures.com/BrainForge/forgepilot",
     status: "Live",
   },
   {
