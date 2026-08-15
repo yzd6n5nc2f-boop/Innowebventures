@@ -12,6 +12,7 @@ type SiteShellProps = {
 const primaryNav = [
   { label: "Applications", to: "/work" },
   { label: "How We Build", to: "/delivery-method" },
+  { label: "Blog", to: "/blog" },
   { label: "About", to: "/about" },
 ];
 
