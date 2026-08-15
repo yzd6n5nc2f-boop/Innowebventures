@@ -1,5 +1,7 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import About from "./pages/About";
+import Blog from "./pages/Blog";
+import BlogPost from "./pages/BlogPost";
 import CaseStudyDetail from "./pages/CaseStudyDetail";
 import Contact from "./pages/Contact";
 import HowWeBuild from "./pages/HowWeBuild";
@@ -25,6 +27,8 @@ export default function App() {
       <Route path="/services/:slug" element={<ServiceDetail />} />
       <Route path="/work" element={<Work />} />
       <Route path="/work/:slug" element={<CaseStudyDetail />} />
+      <Route path="/blog" element={<Blog />} />
+      <Route path="/blog/:slug" element={<BlogPost />} />
       <Route path="/delivery-method" element={<HowWeBuild />} />
       <Route path="/how-it-works" element={<Navigate to="/delivery-method" replace />} />
       <Route path="/how-we-build" element={<Navigate to="/delivery-method" replace />} />
