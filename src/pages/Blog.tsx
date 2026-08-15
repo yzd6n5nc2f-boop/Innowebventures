@@ -24,7 +24,6 @@ export default function Blog() {
             <div className={styles.featuredMeta}>
               <span>{featured.category}</span>
               <span>{featured.published}</span>
-              <span>{featured.readTime}</span>
             </div>
             <h2>{featured.title}</h2>
             <p>{featured.excerpt}</p>
