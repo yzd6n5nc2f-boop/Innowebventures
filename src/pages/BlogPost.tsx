@@ -19,7 +19,6 @@ export default function BlogPost() {
           <div className={styles.articleMeta}>
             <span>{post.category}</span>
             <span>{post.published}</span>
-            <span>{post.readTime}</span>
           </div>
           <h1>{post.title}</h1>
           <p>{post.excerpt}</p>
