@@ -4,7 +4,8 @@ import { blogPosts } from "../content/blogPosts";
 import styles from "../styles/blog.module.css";
 
 export default function Blog() {
-  const [featured, ...rest] = blogPosts;
+  const visiblePosts = blogPosts.filter((post) => post.featured);
+  const [featured, ...rest] = visiblePosts;
 
   return (
     <SiteShell>
