@@ -2,11 +2,12 @@ import { Link, Navigate, useParams } from "react-router-dom";
 import SiteShell from "../components/SiteShell";
 import { getBlogPost } from "../content/blogPosts";
 import { getInnowebCapabilityPost } from "../content/innowebCapabilityPosts";
+import { getRealWorldAutomationPost } from "../content/realWorldAutomationPosts";
 import styles from "../styles/blog.module.css";
 
 export default function BlogPost() {
   const { slug = "" } = useParams();
-  const post = getBlogPost(slug) ?? getInnowebCapabilityPost(slug);
+  const post = getBlogPost(slug) ?? getInnowebCapabilityPost(slug) ?? getRealWorldAutomationPost(slug);
 
   if (!post) {
     return <Navigate to="/blog" replace />;
