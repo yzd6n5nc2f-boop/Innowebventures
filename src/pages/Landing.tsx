@@ -93,6 +93,10 @@ export default function Landing() {
                 <span>See how it works</span>
                 <strong aria-hidden>↘</strong>
               </a>
+              <Link className={`${styles.secondary} ${refinements.heroButton}`} to="/blog">
+                <span>Read our insights</span>
+                <strong aria-hidden>→</strong>
+              </Link>
             </div>
             <div className={styles.heroProof}>
               <div>Designed around the workflow rather than a generic AI product.</div>
