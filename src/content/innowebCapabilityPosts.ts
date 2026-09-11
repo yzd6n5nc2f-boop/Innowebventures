@@ -47,46 +47,55 @@ export const innowebCapabilityPosts: BlogPost[] = [
     ],
   },
   {
-    slug: "why-innoweb-builds-ai-around-the-user",
-    title: "Why InnoWeb builds AI around the user, not just the model",
+    slug: "ai-will-change-the-world-but-it-doesnt-need-to-replace-us",
+    title: "AI Will Change the World. But It Doesn't Need to Replace Us.",
     excerpt:
-      "The model matters, but the user experience determines whether AI becomes useful in daily work. InnoWeb designs AI systems around roles, dashboards, approvals, notifications and clear controls.",
-    category: "User-Centred AI",
+      "AI may become one of humanity's most powerful inventions. Its greatest purpose is not to replace people, but to extend human capability while preserving what makes human experience unique.",
+    category: "Human-Centred AI",
     published: "15 September 2026",
-    readTime: "",
+    readTime: "6 min read",
     sections: [
       {
         paragraphs: [
-          "A strong AI model can still fail if the system around it is difficult to use. In business workflows, people do not just need intelligence. They need clarity, control and a simple way to move work forward.",
-          "That is why InnoWeb builds AI around the user, not just around the model. The model is one part of the system. The real value comes from fitting that intelligence into the way people actually work.",
+          "Artificial intelligence is increasingly discussed in extremes. At one end, AI is presented as the technology that will solve almost everything: increasing productivity, accelerating scientific discovery and ushering in an era of abundance. At the other, we are warned of mass unemployment, machines escaping human control and, ultimately, artificial intelligence posing an existential threat to humanity.",
+          "These are important debates. The power of AI should not be underestimated, and neither should its risks. But perhaps we are asking the wrong question. Instead of continually asking whether AI will replace human beings, perhaps we should first ask something much more fundamental: what does it actually mean to be human?",
         ],
       },
       {
-        heading: "Different users need different views",
+        heading: "Intelligence is not humanity",
         paragraphs: [
-          "A manager, operator, reviewer, client contact and administrator may all interact with the same workflow in different ways. Each role needs the right information, not every piece of information.",
-          "A tailored interface can show what matters to each user: outstanding tasks, decisions awaiting approval, exceptions, summaries, status, history and next actions.",
+          "AI is becoming remarkably capable. It can write software, analyse complex documents, generate images, compose music, solve mathematical problems, assist engineers and doctors, operate autonomous systems and increasingly coordinate other AI agents to complete complex tasks. Those capabilities will grow.",
+          "There may eventually be many intellectual tasks where machines consistently outperform humans. But intelligence and humanity are not necessarily the same thing.",
+          "A machine may generate a beautiful piece of music. A human being can write music after losing someone they loved. A machine may generate a painting depicting grief. A human artist may paint because grief changed their life. The outputs may sometimes appear remarkably similar, but behind them lies something fundamentally different.",
+          "Human creativity is not simply the production of an artefact. It emerges from experience, relationships, memory, hope, suffering, failure, love and mortality. AI can learn the patterns contained within human expression and generate extraordinary new combinations from them. That does not mean the human story behind creativity has ceased to matter.",
         ],
       },
       {
-        heading: "Dashboards make AI operational",
+        heading: "The wrong ambition",
         paragraphs: [
-          "Many AI tools stop at the response. In a business system, the response is only part of the work. Users also need to understand progress, workload, risk and what the system has already done.",
-          "Dashboards help turn AI from a clever tool into an operational system. They make activity visible and give people confidence that the workflow is being managed properly.",
+          "There is a temptation when developing increasingly capable AI to measure progress by how successfully a machine can imitate a human being. Can it speak like us? Can it reason like us? Can a humanoid robot walk like us? Can an AI companion behave like a friend? These are remarkable engineering achievements.",
+          "But perhaps the ultimate purpose of AI should not be to manufacture artificial humans. Perhaps we should be building extraordinary machines: machines capable of doing things humans cannot do, working at speeds humans cannot achieve and operating in environments humans should never have to enter.",
+          "AI does not need to become human to transform humanity.",
         ],
       },
       {
-        heading: "Approvals and notifications matter",
+        heading: "The workhorse of a new industrial era",
         paragraphs: [
-          "A good AI system should know when to act and when to ask. Approval points are not a weakness; they are part of good system design.",
-          "Notifications also matter. Users should not have to keep checking whether something has changed. The system should bring the right item to the right person at the right time.",
+          "The industrial revolutions of the past multiplied human capability. Steam multiplied physical power. Electricity transformed industry. Computers multiplied our ability to calculate and process information. The internet connected much of humanity's knowledge. AI may now multiply something different: our cognitive capability.",
+          "AI agents add another dimension by turning intelligence into action. Robotics can connect that intelligence to the physical world. Together, AI, agents and robotics could become the workhorses of a new industrial era.",
+          "The important word is workhorse. The technology exists to serve human purposes.",
+          "Imagine engineers supported by AI systems capable of analysing thousands of drawings, standards and previous projects before highlighting risks that might otherwise have been missed. Imagine doctors having access to AI capable of comparing a patient's condition with medical knowledge accumulated across the world. Imagine a small company having access to digital workers capable of performing tasks that previously required entire departments. Imagine scientists compressing years of research into months.",
+          "That is an extraordinary future. And none of it requires us to diminish the value of being human.",
         ],
       },
       {
-        heading: "Complex AI should feel simple",
+        heading: "Keeping the distinction",
         paragraphs: [
-          "The underlying system may include agents, prompts, rules, tools, data sources, model routing and validation. The user should not have to manage that complexity directly.",
-          "InnoWeb’s aim is to make complex AI feel simple: clear interfaces, visible workflow stages, human control and intelligent support that fits the user’s role.",
+          "As AI becomes more convincing, maintaining the distinction between human and machine may actually become more important.",
+          "We should be comfortable talking naturally to AI. Natural language is one of the great breakthroughs that makes the technology accessible. We can joke with it. We can brainstorm with it. We can work alongside it. We can even enjoy interacting with it. But we should never need to fool ourselves about what it is.",
+          "An AI system is an extraordinary human invention. It can become a collaborator, adviser, tutor, assistant and powerful extension of our own capabilities. But our technology should ultimately remain directed towards human flourishing.",
+          "The goal should not be to create a world in which machines replace humanity. It should be to create one in which machines allow human beings to accomplish things that were previously impossible.",
+          "The more capable our machines become, the more important it becomes to remember why we built them.",
         ],
       },
     ],
@@ -222,6 +231,51 @@ export const innowebCapabilityPosts: BlogPost[] = [
         paragraphs: [
           "For InnoWeb, architecture is not just a technical decision. It is part of how the business controls risk, cost and quality.",
           "The right architecture should make the workflow more reliable, not more complicated. Local, cloud and hybrid AI are all useful when they are chosen for the right reason.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "why-innoweb-builds-ai-around-the-user",
+    title: "Why InnoWeb builds AI around the user, not just the model",
+    excerpt:
+      "The model matters, but the user experience determines whether AI becomes useful in daily work. InnoWeb designs AI systems around roles, dashboards, approvals, notifications and clear controls.",
+    category: "User-Centred AI",
+    published: "22 October 2026",
+    readTime: "",
+    sections: [
+      {
+        paragraphs: [
+          "A strong AI model can still fail if the system around it is difficult to use. In business workflows, people do not just need intelligence. They need clarity, control and a simple way to move work forward.",
+          "That is why InnoWeb builds AI around the user, not just around the model. The model is one part of the system. The real value comes from fitting that intelligence into the way people actually work.",
+        ],
+      },
+      {
+        heading: "Different users need different views",
+        paragraphs: [
+          "A manager, operator, reviewer, client contact and administrator may all interact with the same workflow in different ways. Each role needs the right information, not every piece of information.",
+          "A tailored interface can show what matters to each user: outstanding tasks, decisions awaiting approval, exceptions, summaries, status, history and next actions.",
+        ],
+      },
+      {
+        heading: "Dashboards make AI operational",
+        paragraphs: [
+          "Many AI tools stop at the response. In a business system, the response is only part of the work. Users also need to understand progress, workload, risk and what the system has already done.",
+          "Dashboards help turn AI from a clever tool into an operational system. They make activity visible and give people confidence that the workflow is being managed properly.",
+        ],
+      },
+      {
+        heading: "Approvals and notifications matter",
+        paragraphs: [
+          "A good AI system should know when to act and when to ask. Approval points are not a weakness; they are part of good system design.",
+          "Notifications also matter. Users should not have to keep checking whether something has changed. The system should bring the right item to the right person at the right time.",
+        ],
+      },
+      {
+        heading: "Complex AI should feel simple",
+        paragraphs: [
+          "The underlying system may include agents, prompts, rules, tools, data sources, model routing and validation. The user should not have to manage that complexity directly.",
+          "InnoWeb’s aim is to make complex AI feel simple: clear interfaces, visible workflow stages, human control and intelligent support that fits the user’s role.",
         ],
       },
     ],
