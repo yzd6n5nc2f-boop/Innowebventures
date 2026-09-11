@@ -105,46 +105,60 @@ export const realWorldAutomationPosts: BlogPost[] = [
     ],
   },
   {
-    slug: "ai-will-not-stay-inside-the-screen",
-    title: "AI will not stay inside the screen: the move from digital workflows to real-world automation",
+    slug: "the-machine-goes-in-first",
+    title: "The Machine Goes In First: A Human-Centred Future for Robotics",
     excerpt:
-      "AI is already moving beyond chat, documents and dashboards. The next stage is connecting intelligent workflows to drones, rovers, robots, sensors and real-world systems while keeping humans in control.",
-    category: "Real-World Automation",
+      "The most powerful role for advanced robotics may not be replacing people, but protecting them — sending machines into the dangerous places humans should not have to enter.",
+    category: "Human-Centred Robotics",
     published: "27 October 2026",
-    readTime: "",
+    readTime: "6 min read",
     sections: [
       {
         paragraphs: [
-          "AI is often discussed as something that sits inside a screen: a chat interface, a document assistant, a dashboard or a workflow tool.",
-          "That is only the beginning. As AI systems become more capable, they will increasingly connect to the physical world through drones, rovers, robots, sensors, cameras and automated equipment.",
+          "An earthquake has brought down part of an apartment building. Somewhere beneath the concrete, a survivor is trapped. The structure is unstable. Gas may be leaking. Aftershocks are possible. Every person who enters the building is taking a serious risk.",
+          "Now imagine a humanoid rescue robot entering instead. It moves through the damaged structure, climbs across debris and reaches the survivor. Its systems calculate that continuing the rescue creates a high probability that the machine itself will be destroyed. It continues anyway.",
+          "The robot is not being brave. It is not making a heroic sacrifice. It is doing precisely what we built it to do. The machine is replaceable. The human being is not.",
         ],
       },
       {
-        heading: "Digital workflows are the control layer",
+        heading: "Why build robots in our image?",
         paragraphs: [
-          "Before machines move safely in the real world, the workflow around them needs to be designed. What is the task? What data is needed? What are the boundaries? What should the system do automatically, and when should it stop and ask for human approval?",
-          "This is why the digital workflow matters. The interface, logs, permissions, alerts and approval points become the control layer for physical automation.",
+          "There is a practical reason humanoid robots are attracting so much attention. The world around us was designed for the human body. We have stairs, doors, ladders, tools, vehicles, corridors and workspaces designed around our height, reach and movement.",
+          "A machine that can navigate those environments may be able to use infrastructure that already exists rather than requiring the world to be redesigned around the robot.",
+          "But the fact that a robot looks increasingly human does not mean its purpose should be to become human. Its form can be useful precisely because it allows the machine to go where people currently go — including places where people should not have to go at all.",
         ],
       },
       {
-        heading: "Drones, rovers and robots extend human reach",
+        heading: "The machine should take the risk",
         paragraphs: [
-          "Drones can inspect assets, record progress, survey difficult locations and help teams understand what is happening without putting people in unnecessary danger.",
-          "Rovers and robotic systems can enter spaces that are repetitive, awkward, hazardous or hard to access. Humanoids and hybrid machines may eventually support tasks that need more flexible movement, but they will still need clear instructions, safe boundaries and human supervision.",
+          "Collapsed buildings are only one example. Consider chemical accidents, major fires, nuclear facilities, deep mines, unstable tunnels, offshore environments and eventually other planets.",
+          "If a robot can enter a burning structure instead of a firefighter, send the machine. If a robotic system can inspect an unstable tunnel instead of an engineer, send the machine. If an autonomous machine can approach a dangerous chemical leak instead of a worker, send the machine.",
+          "This is one of the clearest ways technology can serve humanity: transferring physical risk away from human beings and onto machines designed to withstand it.",
         ],
       },
       {
-        heading: "The aim is not to remove the human",
+        heading: "Human life remains the priority",
         paragraphs: [
-          "The most useful real-world automation will not simply push people out of the process. It will move people into safer and more strategic positions.",
-          "Humans can monitor the workflow, review exceptions, approve important actions, set constraints and take control when judgement is required. Automation becomes a way to extend human capability, not erase human responsibility.",
+          "There will inevitably be situations where a robot's preservation conflicts with the immediate goal of protecting a person. A human-centred system should be designed with a clear hierarchy: human life comes first.",
+          "That does not mean expensive machines should be used recklessly. A rescue robot worth millions may be capable of saving many people over its lifetime. Preserving it can therefore matter greatly. But that value is instrumental: we preserve the machine because of what it can do for people, not because the machine has automatically acquired the same moral status as a human being.",
+          "If saving a human life requires the destruction of the robot, the purpose of the technology should make the priority clear.",
         ],
       },
       {
-        heading: "InnoWeb’s role in this shift",
+        heading: "From replacement to protection",
         paragraphs: [
-          "For InnoWeb, the opportunity is to design the systems that sit between people, AI and machines. That means dashboards, agentic workflows, alerts, model routing, operational logs, safety boundaries and human approval points.",
-          "AI will not stay inside the screen. The businesses that prepare for that shift will need practical systems that make real-world automation visible, controlled and useful.",
+          "This principle extends beyond emergency robotics. AI can take repetitive cognitive work away from people. Autonomous systems can inspect dangerous infrastructure. Intelligent agents can process enormous volumes of information before presenting the important decisions to a human.",
+          "The better question is not simply: how many humans can this technology replace? It is: what can this technology allow humans to stop doing, do more safely or do better?",
+          "That changes the direction of innovation. Instead of designing technology around human redundancy, we design it around human augmentation and protection.",
+        ],
+      },
+      {
+        heading: "Reasoning, action and the physical world",
+        paragraphs: [
+          "AI gives machines increasingly powerful reasoning capabilities. Agentic systems allow that intelligence to plan and take autonomous action. Robotics connects those capabilities to the physical world.",
+          "Together, these technologies could transform construction, engineering, manufacturing, healthcare, logistics, emergency response and countless other fields. But the purpose matters.",
+          "The goal should not be to elevate machines above humanity. It should be to use extraordinary machines to elevate, protect and extend human life.",
+          "And when a dangerous place must be entered, the principle can be remarkably simple: send the machine.",
         ],
       },
     ],
