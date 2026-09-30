@@ -162,8 +162,7 @@ export const realWorldAutomationPosts: BlogPost[] = [
         ],
       },
     ],
-  },,
-
+  },
   {
     slug: "your-ai-agent-doesnt-need-freedom-it-needs-a-destination",
     title: "Your AI Agent Doesn't Need Freedom. It Needs a Destination.",
