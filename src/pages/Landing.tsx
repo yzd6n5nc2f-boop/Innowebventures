@@ -77,7 +77,7 @@ export default function Landing() {
   return (
     <SiteShell>
       <div className={styles.landing}>
-        <section className={styles.hero} style={{ gridTemplateColumns: "minmax(0, 1fr)" }}>
+        <section className={styles.hero} style={{ gridTemplateColumns: "minmax(0, 1fr) minmax(0, 1fr)" }}>
           <div className={styles.heroCopy} style={{ maxWidth: "860px" }}>
             <div className={styles.eyebrow}>InnoWeb Ventures · Agentic AI Systems</div>
             <h1>
@@ -196,7 +196,7 @@ export default function Landing() {
                   rel="noreferrer"
                 >
                   <div className={styles.appPreview} aria-hidden>
-                    <iframe src={application.url} title="" tabIndex={-1} loading="lazy" />
+                    <span />
                   </div>
                   <div className={styles.appBody}>
                     <div className={styles.appTopline}>

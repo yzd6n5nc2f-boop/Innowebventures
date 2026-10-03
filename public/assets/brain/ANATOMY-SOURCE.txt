@@ -1,0 +1,6 @@
+Outer anatomical mesh adapted from StarKnightt/brain-explorer, public/models/brain-atlas.glb.
+https://github.com/StarKnightt/brain-explorer
+Derived from OpenNeuro ds006128, subject sub-01, snapshot 1.0.11.
+Source data licence: CC0 1.0 Universal.
+https://doi.org/10.18112/openneuro.ds006128.v1.0.11
+Neural points, graph and presentation added for InnoWeb Ventures.
