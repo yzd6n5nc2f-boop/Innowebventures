@@ -1,10 +1,19 @@
 import { Link } from "react-router-dom";
 import SiteShell from "../components/SiteShell";
 import { blogPosts } from "../content/blogPosts";
+import { innowebCapabilityPosts } from "../content/innowebCapabilityPosts";
+import { realWorldAutomationPosts } from "../content/realWorldAutomationPosts";
 import styles from "../styles/blog.module.css";
 
+// Later articles remain available through their existing direct URLs.
+const listingCutoff = Date.UTC(2026, 9, 1);
+const publishedTime = (published: string) => Date.parse(`${published} 00:00:00 GMT`);
+const listedPosts = [...blogPosts, ...innowebCapabilityPosts, ...realWorldAutomationPosts]
+  .filter((post) => publishedTime(post.published) <= listingCutoff)
+  .sort((a, b) => publishedTime(b.published) - publishedTime(a.published));
+
 export default function Blog() {
-  const [featured, ...rest] = blogPosts;
+  const [featured, ...rest] = listedPosts;
 
   return (
     <SiteShell>
