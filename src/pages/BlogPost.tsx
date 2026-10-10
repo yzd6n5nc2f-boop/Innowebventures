@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Link, Navigate, useParams } from "react-router-dom";
 import SiteShell from "../components/SiteShell";
 import { getBlogPost } from "../content/blogPosts";
@@ -9,6 +10,11 @@ import styles from "../styles/blog.module.css";
 export default function BlogPost() {
   const { slug = "" } = useParams();
   const post = getBlogPost(slug) ?? getInnowebCapabilityPost(slug) ?? getRealWorldAutomationPost(slug) ?? getNovemberPartnershipPost(slug);
+
+  useEffect(() => {
+    if (post) document.title = `${post.title} · InnoWeb Ventures`;
+    return () => { document.title = "InnoWeb Ventures · Intelligent Workflows"; };
+  }, [post]);
 
   if (!post) {
     return <Navigate to="/blog" replace />;
