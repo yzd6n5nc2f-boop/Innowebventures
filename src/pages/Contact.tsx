@@ -126,6 +126,11 @@ export default function Contact() {
                 What process, workflow, or system challenge are you trying to improve?
                 <textarea className={styles.formInput} name="challenge" rows={4} required />
               </label>
+              <p className={styles.formStatus}>
+                We use your details to respond to your enquiry. Read our{" "}
+                <a className={styles.inlineCta} href="/privacy-policy">privacy policy</a>{" "}
+                for how we handle your information and your rights.
+              </p>
               <div className={styles.formActions}>
                 <button className={styles.secondaryButton} type="submit" disabled={isSubmitting}>
                   {isSubmitting ? "Sending..." : "Send enquiry"}

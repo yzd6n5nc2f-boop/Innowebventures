@@ -137,6 +137,7 @@ export default function SiteShell({ children }: SiteShellProps) {
       <footer className={`${styles.footer} ${shellStyles.footer}`}>
         <div>InnoWeb Ventures Limited</div>
         <div>Logic-led systems. AI-assisted delivery. Human-controlled operation.</div>
+        <a className={styles.inlineCta} href="/privacy-policy">Privacy policy</a>
       </footer>
     </div>
   );
