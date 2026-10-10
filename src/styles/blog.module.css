@@ -197,6 +197,22 @@
   font-size: clamp(2.5rem, 5vw, 4.6rem);
 }
 
+.articleHeaderWithImage {
+  max-width: 100%;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 360px);
+  gap: 36px;
+  align-items: center;
+}
+
+.articleImage {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  border: 1px solid rgba(0, 216, 255, 0.24);
+}
+
 .articleBody {
   width: min(760px, 100%);
   margin: 0 auto;
@@ -229,6 +245,8 @@
 }
 
 @media (max-width: 900px) {
+  .articleHeaderWithImage { grid-template-columns: 1fr; }
+  .articleImage { max-width: 400px; }
   .closing,
   .articleFooter {
     grid-template-columns: 1fr;

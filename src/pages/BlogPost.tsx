@@ -3,11 +3,12 @@ import SiteShell from "../components/SiteShell";
 import { getBlogPost } from "../content/blogPosts";
 import { getInnowebCapabilityPost } from "../content/innowebCapabilityPosts";
 import { getRealWorldAutomationPost } from "../content/realWorldAutomationPosts";
+import { getNovemberPartnershipPost } from "../content/novemberPartnershipPosts";
 import styles from "../styles/blog.module.css";
 
 export default function BlogPost() {
   const { slug = "" } = useParams();
-  const post = getBlogPost(slug) ?? getInnowebCapabilityPost(slug) ?? getRealWorldAutomationPost(slug);
+  const post = getBlogPost(slug) ?? getInnowebCapabilityPost(slug) ?? getRealWorldAutomationPost(slug) ?? getNovemberPartnershipPost(slug);
 
   if (!post) {
     return <Navigate to="/blog" replace />;
@@ -17,13 +18,16 @@ export default function BlogPost() {
     <SiteShell>
       <article className={styles.articlePage}>
         <Link className={styles.backLink} to="/blog">← Back to insights</Link>
-        <header className={styles.articleHeader}>
+        <header className={`${styles.articleHeader} ${post.image ? styles.articleHeaderWithImage : ""}`}>
+          <div>
           <div className={styles.articleMeta}>
             <span>{post.category}</span>
             <span>{post.published}</span>
           </div>
           <h1>{post.title}</h1>
           <p>{post.excerpt}</p>
+          </div>
+          {post.image && <img className={styles.articleImage} src={post.image} alt={post.imageAlt ?? post.title} width={1024} height={1280} />}
         </header>
 
         <div className={styles.articleBody}>

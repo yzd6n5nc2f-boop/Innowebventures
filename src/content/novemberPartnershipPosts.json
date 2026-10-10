@@ -1,0 +1,229 @@
+[
+  {
+    "slug": "the-work-behind-the-workflow",
+    "title": "The work behind the workflow: what an AI audit should uncover",
+    "excerpt": "Useful AI begins with understanding how work actually happens. A workflow audit follows the tasks, handovers and decisions that determine whether a process runs well.",
+    "category": "Workflow Discovery",
+    "published": "17 November 2026",
+    "publishAt": "2026-11-17T00:00:00Z",
+    "readTime": "3 min read",
+    "image": "/branding/november-2026/17-november.webp",
+    "imageAlt": "How does work really happen here? Useful AI starts with understanding your business.",
+    "sections": [
+      {
+        "paragraphs": [
+          "A customer sends an enquiry. Someone reads it, copies the details into a spreadsheet and asks a colleague for advice. A document comes back with a missing measurement. Another email goes out. Eventually, someone has enough information to prepare a response.",
+          "This is an illustrative example, but it shows why understanding a workflow requires more than naming its steps. The work includes the waiting, the checking and the conversations that happen between them.",
+          "Before designing an AI system, we need to understand that work."
+        ]
+      },
+      {
+        "heading": "The procedure and the working day",
+        "paragraphs": [
+          "A written procedure gives us a starting point. The people carrying it out can explain where it works, where it becomes difficult and which exceptions they handle through experience.",
+          "An audit should bring those views together. Follow a real piece of work from the moment it arrives to the point where someone considers it complete. Ask what information each person needs, which tools they use and how they decide what happens next.",
+          "An informal check may carry important judgement. A spreadsheet may hold information that another system never receives. A process may depend on one person remembering to chase an approval.",
+          "These details influence what a useful system must do."
+        ]
+      },
+      {
+        "heading": "Look at the handovers",
+        "paragraphs": [
+          "Time spent doing a task and time spent waiting for the next step are different things.",
+          "A team may prepare a document quickly, then wait several days for someone to review it. Automating the preparation helps with one part of that process. Making the review visible and giving it a clear owner addresses another.",
+          "The audit needs evidence for both. Where possible, examine a sample of completed tasks and record the active work, the waiting and any correction needed. State the limits of that sample rather than turning a few observations into a confident prediction."
+        ]
+      },
+      {
+        "heading": "Understand the exceptions",
+        "paragraphs": [
+          "The usual case is only part of the job.",
+          "What happens when a customer leaves out information? Who decides whether a request needs specialist advice? What should happen when two documents disagree?",
+          "These questions help identify where software can apply a clear rule, where AI might assist and where a person needs to make a decision. Some improvements may simply require a clearer process or better information.",
+          "The people doing the work should help review those conclusions."
+        ]
+      },
+      {
+        "heading": "An audit should leave something useful behind",
+        "paragraphs": [
+          "The result should be a process map the team recognises, a record of the main difficulties and a prioritised set of opportunities. It should also identify dependencies, unresolved questions and a suitable first pilot.",
+          "That gives the business something concrete to review before committing to development.",
+          "At InnoWeb, this is the approach we want to build our partnerships around: understanding a real workflow, agreeing what could improve and developing a system around the people who use it.",
+          "The starting question is straightforward. Which process in your business would you most like to make easier?"
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "turning-a-workflow-audit-into-an-ai-system-blueprint",
+    "title": "Turning a workflow audit into an AI system blueprint",
+    "excerpt": "A workflow audit becomes valuable when its findings turn into a design the business can review. The blueprint connects each task to its information, owner and acceptance conditions.",
+    "category": "AI System Design",
+    "published": "19 November 2026",
+    "publishAt": "2026-11-19T00:00:00Z",
+    "readTime": "3 min read",
+    "image": "/branding/november-2026/19-november.webp",
+    "imageAlt": "Your workflow becomes the blueprint. Map the tasks, handovers and decisions before designing the system.",
+    "sections": [
+      {
+        "paragraphs": [
+          "After a workflow audit, a business should have a clearer picture of how a process operates. The next step is to turn that understanding into a design that people can examine and challenge.",
+          "Consider an illustrative quotation process. An administrator collects the enquiry. A specialist checks whether the request is feasible. Someone prepares the price, and a manager approves the response.",
+          "Each person needs different information. Each step has a different definition of success. A system blueprint makes those distinctions explicit."
+        ]
+      },
+      {
+        "heading": "Give every step a clear purpose",
+        "paragraphs": [
+          "For each task, record what starts it, who owns it, which information it needs and what it should produce.",
+          "Then define what makes that output acceptable. A quotation may need to use the approved price source, include the required customer details and pass a specialist review.",
+          "“Prepare a quotation” leaves many questions open. A documented task with known inputs and acceptance conditions gives the development team something they can implement and check.",
+          "It also gives the client a useful way to review the design."
+        ]
+      },
+      {
+        "heading": "Choose the right treatment for the task",
+        "paragraphs": [
+          "Different steps need different solutions.",
+          "A calculation with a fixed rule may belong in ordinary software. A messy description may benefit from AI helping to structure the information. A decision about an unusual application may require specialist judgement.",
+          "The blueprint should show those choices and explain them. It should also record what the team has not resolved.",
+          "If the required information is missing or the source system is difficult to access, that affects the pilot scope. A proposed integration needs investigation before anyone relies on it."
+        ]
+      },
+      {
+        "heading": "Design the handovers and approvals",
+        "paragraphs": [
+          "A useful system needs a clear way to pass work between people and tools.",
+          "Who receives a draft? What evidence do they need? Can they return it for correction? What happens while a decision is pending?",
+          "These details shape the interface. An operator may need to see incomplete requests and the next action. A reviewer may need a concise summary with access to the supporting evidence.",
+          "The process should remain understandable when something goes wrong. A visible exception with an owner is more useful than a task that quietly disappears from view."
+        ]
+      },
+      {
+        "heading": "Agree what the pilot must prove",
+        "paragraphs": [
+          "Choose a process with a manageable scope and a result the team can measure.",
+          "The baseline might include the time needed to prepare an enquiry pack, the number of missing fields or the proportion of drafts returned for correction. The measure should reflect the actual problem.",
+          "Agree the pilot's boundaries, dependencies and success conditions before development begins. Record assumptions separately from observed facts.",
+          "The blueprint then becomes a shared reference for the client and delivery team.",
+          "At InnoWeb, we see this as an essential part of the partnership. The business contributes its knowledge of the work. We use that knowledge to shape a reviewable design and an achievable first implementation.",
+          "That connection between discovery and delivery is what makes the system specific to the organisation."
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "forge-os-an-ai-operating-layer-shaped-around-your-business",
+    "title": "Forge OS: an AI operating layer shaped around your business",
+    "excerpt": "Forge OS is being shaped around a practical idea: a connected place to request work, follow progress and manage the decisions that keep a business workflow moving.",
+    "category": "Forge OS",
+    "published": "24 November 2026",
+    "publishAt": "2026-11-24T00:00:00Z",
+    "readTime": "3 min read",
+    "image": "/branding/november-2026/24-november.webp",
+    "imageAlt": "Forge OS, built around your business. A connected place for work, progress and approvals. Forge OS concept.",
+    "sections": [
+      {
+        "paragraphs": [
+          "What would an AI operating layer look like inside an ordinary working business?",
+          "It could begin with a staff member opening a workspace and submitting a task. The system checks whether the necessary information is present, prepares the next stage of work and shows what needs attention. When a decision requires a person, the task reaches the appropriate reviewer.",
+          "This is the direction we are exploring with Forge OS.",
+          "By an operating layer, we mean a business workspace that coordinates selected workflows and connects them to the tools the organisation already uses. It would work through explicitly scoped integrations, with responsibilities and permissions defined around the process."
+        ]
+      },
+      {
+        "heading": "Begin with one workflow",
+        "paragraphs": [
+          "A useful first implementation has a clear boundary.",
+          "For example, a customer enquiry might become a structured task. Missing details could be flagged before someone prepares a response. A draft could then reach a reviewer, along with the information used to produce it.",
+          "That is a proposed pilot, rather than a claim about a completed product. Its value would need to be demonstrated with real users and an agreed measure.",
+          "Beginning with a defined workflow helps the team investigate the data, test the handovers and understand where the system needs improvement."
+        ]
+      },
+      {
+        "heading": "Give people a view of the work",
+        "paragraphs": [
+          "An AI-generated answer is often one part of a larger process.",
+          "People also need to know what is running, what has finished and what is waiting for a decision. They need access to the result and enough evidence to review it.",
+          "Different roles will need different views. A manager may focus on outstanding decisions. An operator may focus on incomplete inputs and corrections. A reviewer may need the draft and its source material together.",
+          "The workflow audit helps define those needs before the interface takes shape."
+        ]
+      },
+      {
+        "heading": "Connect the system to the organisation",
+        "paragraphs": [
+          "A company's knowledge includes more than its documents. It includes ownership, working practices and the reasons certain decisions need approval.",
+          "That context should influence the design. The system needs to know which information it may use, which actions require permission and where responsibility remains with a person.",
+          "A record of actions helps the team understand what happened when an output needs investigation. Clear statuses and exception handling help people recover when the usual path cannot continue."
+        ]
+      },
+      {
+        "heading": "Develop the operating layer through evidence",
+        "paragraphs": [
+          "Our ambition for Forge OS is a reusable foundation that can be configured around particular business workflows.",
+          "The first demonstration should make its available features clear. Planned capabilities and mocked integrations should remain visibly identified.",
+          "As a pilot proves useful, the client and delivery team can consider the next workflow. Expansion should follow evidence about usability, quality and operating cost.",
+          "For InnoWeb, the operating layer and the partnership belong together. Understanding the organisation provides the blueprint. Working with its people helps turn that blueprint into something they can use."
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "building-an-ai-system-is-the-beginning-of-the-partnership",
+    "title": "Building an AI system is the beginning of the partnership",
+    "excerpt": "A tailored AI system needs a way to evolve as the business changes. A useful partnership connects workflow discovery, pilot delivery and ongoing review.",
+    "category": "Delivery Partnership",
+    "published": "26 November 2026",
+    "publishAt": "2026-11-26T00:00:00Z",
+    "readTime": "3 min read",
+    "image": "/branding/november-2026/26-november.webp",
+    "imageAlt": "Your AI system evolves with you. A delivery partnership shaped by real work and measured results.",
+    "sections": [
+      {
+        "paragraphs": [
+          "A pilot begins with a set of expectations. The team agrees how the process should work, which outputs it should produce and what success would look like.",
+          "Once people start using it, they provide another kind of evidence.",
+          "They find inputs the design did not anticipate. They discover a review step that takes too long. They explain why a technically correct result still needs a different format before it becomes useful.",
+          "That feedback is part of developing a system around the business."
+        ]
+      },
+      {
+        "heading": "Review the result in the working day",
+        "paragraphs": [
+          "A demonstration can show that a task runs from start to finish. A pilot can help establish whether the system improves the actual workflow.",
+          "The review should return to the baseline agreed during discovery. Has the time needed to prepare the output changed? Are fewer requests missing information? How often does a reviewer need to make corrections?",
+          "The team should examine the results alongside the users' experience. A process that looks faster on paper may still create extra work somewhere else.",
+          "Evidence helps decide what to improve next."
+        ]
+      },
+      {
+        "heading": "Make responsibilities clear",
+        "paragraphs": [
+          "A business needs to know who handles a problem and how changes reach the system.",
+          "An ongoing agreement should explain support responsibilities, access arrangements and the process for approving updates. It should identify any third-party dependencies and what happens when an integration becomes unavailable.",
+          "It should also make the cost of running the system visible enough for the client to judge whether it remains worthwhile.",
+          "Those details help turn a pilot into an operational service."
+        ]
+      },
+      {
+        "heading": "Change the system deliberately",
+        "paragraphs": [
+          "Workflows evolve. Staff roles change, customers ask different questions and suppliers alter the information they provide.",
+          "A useful partnership gives the client a route to request improvements. The delivery team can assess the request, record the effect on the process and check the change before release.",
+          "Feedback should lead to an agreed improvement. It should not silently alter important business rules or expand what the system can do without review.",
+          "This keeps the client involved in the direction of its own system."
+        ]
+      },
+      {
+        "heading": "Choose the next workflow together",
+        "paragraphs": [
+          "A successful pilot may reveal other opportunities. It may also show that the existing process needs further attention before the scope expands.",
+          "The decision should follow the evidence and the business's priorities.",
+          "That is the service direction we are developing at InnoWeb: a scoped workflow audit, an agreed first implementation and an ongoing partnership for support and improvement.",
+          "The client brings its knowledge of the organisation. We bring system design and development, with the aim of making that knowledge useful in a working process.",
+          "If a task repeatedly creates delays, duplicated effort or difficult handovers, that is a worthwhile place to begin the conversation."
+        ]
+      }
+    ]
+  }
+]

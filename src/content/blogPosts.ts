@@ -11,6 +11,8 @@ export type BlogPost = {
   published: string;
   readTime: string;
   featured?: boolean;
+  image?: string;
+  imageAlt?: string;
   sections: BlogSection[];
 };
 
