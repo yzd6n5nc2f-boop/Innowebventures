@@ -14,9 +14,8 @@ export async function buildRouting() {
   for (const route of publicPaths) {
     // Preserve standalone privacy and article-specific sharing HTML rewrites.
     if (!rules.has(route)) rules.set(route, { route, rewrite: "/index.html", methods: ["GET", "HEAD"] });
-    if (route !== "/" && !route.endsWith(".html")) {
-      rules.set(`${route}/`, { route: `${route}/`, redirect: route, statusCode: 301, methods: ["GET", "HEAD"] });
-    }
+    // Azure treats /page and /page/ as the same route. A second slash rule
+    // is rejected as a duplicate by the deployment validator.
   }
 
   // Keep explicit legacy redirects in sync with React, without accepting
@@ -32,9 +31,7 @@ export async function buildRouting() {
         const target = attribute(expression, "to");
         if (/[:*]/.test(route.text)) throw new Error(`Replace broad redirect ${route.text} with explicit known URLs.`);
         if (!target || !ts.isStringLiteral(target) || !publicPaths.includes(target.text)) throw new Error(`Invalid redirect target for ${route.text}`);
-        for (const alias of [route.text, `${route.text}/`]) {
-          rules.set(alias, { route: alias, redirect: target.text, statusCode: 301, methods: ["GET", "HEAD"] });
-        }
+        rules.set(route.text, { route: route.text, redirect: target.text, statusCode: 301, methods: ["GET", "HEAD"] });
       }
     }
     ts.forEachChild(node, visit);

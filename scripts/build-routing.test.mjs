@@ -21,11 +21,9 @@ test("production routes serve every real URL and never accept unknown paths or s
     const rule = rules.get(route);
     assert.ok(rule?.rewrite, `Missing SPA/static rewrite for ${route}`);
     await readFile(`dist${rule.rewrite}`);
-    if (route !== "/" && !route.endsWith(".html")) {
-      assert.equal(rules.get(`${route}/`).redirect, route);
-      assert.equal(rules.get(`${route}/`).statusCode, 301);
-    }
   }
+  const normalized = config.routes.map((rule) => rule.route.replace(/\/$/, "") || "/");
+  assert.equal(new Set(normalized).size, normalized.length, "Azure treats trailing-slash variants as duplicate routes");
   for (const route of ["/does-not-exist", "/blog/not-a-real-post", "/services/not-a-service", "/products/not-a-product", "/forge-suite/not-a-product", "/work/not-a-case-study", "/services/extra/path", "/assets/missing.js", "/branding/missing.png"]) {
     assert.ok(!rules.has(route), `${route} must reach Azure's real 404 handling`);
     await assert.rejects(readFile(`dist${route}`));

@@ -49,9 +49,9 @@ This ensures Azure receives the generated rules alongside the matching files.
 The broad `navigationFallback` is removed: Azure serves missing paths with HTTP
 404 and `responseOverrides["404"]` supplies the standalone `public/404.html`.
 That page works without JavaScript and links to Services, Insights and Contact.
-It is marked `noindex` and is not included in the sitemap. Existing public
-trailing-slash URLs redirect to the corresponding URL without the slash;
-explicit legacy redirects are discovered from `Navigate` routes in `src/App.tsx`.
+It is marked `noindex` and is not included in the sitemap. Azure matches each
+exact rule with or without a trailing slash; duplicate slash rules must not be
+generated. Explicit legacy redirects are discovered from `Navigate` routes in `src/App.tsx`.
 The old `/work/:slug` redirect is restricted to the three known legacy case-study
 slugs so arbitrary missing case studies can return 404.
 
