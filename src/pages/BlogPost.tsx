@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import NotFound from "./NotFound";
 import SiteShell from "../components/SiteShell";
@@ -12,17 +11,12 @@ export default function BlogPost() {
   const { slug = "" } = useParams();
   const post = getBlogPost(slug) ?? getInnowebCapabilityPost(slug) ?? getRealWorldAutomationPost(slug) ?? getNovemberPartnershipPost(slug);
 
-  useEffect(() => {
-    if (post) document.title = `${post.title} · InnoWeb Ventures`;
-    return () => { document.title = "InnoWeb Ventures · Intelligent Workflows"; };
-  }, [post]);
-
   if (!post) {
     return <NotFound />;
   }
 
   return (
-    <SiteShell>
+    <SiteShell meta={{ title: `${post.title} | InnoWeb Ventures`, description: post.excerpt }}>
       <article className={styles.articlePage}>
         <Link className={styles.backLink} to="/blog">← Back to insights</Link>
         <header className={`${styles.articleHeader} ${post.image ? styles.articleHeaderWithImage : ""}`}>

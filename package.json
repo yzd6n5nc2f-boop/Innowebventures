@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build && node scripts/copy-staticwebapp-config.mjs && node scripts/build-campaign-pages.mjs && node scripts/build-sitemap.mjs && node scripts/build-routing.mjs",
+    "build": "tsc -b && vite build && node scripts/copy-staticwebapp-config.mjs && node scripts/build-campaign-pages.mjs && node scripts/build-page-meta.mjs && node scripts/build-sitemap.mjs && node scripts/build-routing.mjs",
     "preview": "vite preview",
     "test:sitemap": "node --test scripts/build-sitemap.test.mjs",
     "test:routing": "node --test scripts/build-routing.test.mjs"
