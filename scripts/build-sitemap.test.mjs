@@ -46,6 +46,10 @@ test("discovers new routes/posts, preserves per-post lastmod, and excludes priva
       <Route path="*" element={<Home />} />${extra}</Routes>; }`;
     await write("src/App.tsx", app());
     await write("public/privacy-policy/index.html", "<h1>Privacy</h1>");
+    await write("src/content/pageMetadata.json", JSON.stringify({
+      "/": { title: "Home", description: "Home description" },
+      "/privacy-policy": { title: "Privacy", description: "Original privacy description" },
+    }));
     await write("public/assets/brain/index.html", "<h1>Preview</h1>");
     await write("public/preview/index.html", "<h1>Preview</h1>");
     await write("public/hidden.html", '<meta name="robots" content="noindex">');
@@ -55,6 +59,10 @@ test("discovers new routes/posts, preserves per-post lastmod, and excludes priva
     await write("src/content/posts.ts", `export const posts = [${article("first", "Updated")}, ${unchanged}, ${article("new-post", "New")}, ${article("preview", "Preview")}];\n`);
     await write("src/pages/New.tsx", "export default function New() {}\n");
     await write("src/App.tsx", app('<Route path="/new-page" element={<Home />} />'));
+    await write("src/content/pageMetadata.json", JSON.stringify({
+      "/": { title: "Home", description: "Home description" },
+      "/privacy-policy": { title: "Privacy", description: "Updated privacy description" },
+    }));
     commit("Add route and post", "2026-10-27T10:00:00Z");
     const run = () => execFileSync(process.execPath, ["--input-type=module", "-e", `const {generateSitemap} = await import(${JSON.stringify(generator)}); await generateSitemap();`], { cwd: directory, encoding: "utf8" });
     run();
@@ -67,6 +75,8 @@ test("discovers new routes/posts, preserves per-post lastmod, and excludes priva
     assert.equal(entries.get(`${origin}/blog/new-post`), "2026-10-27");
     assert.equal(entries.get(`${origin}/new-page`), "2026-10-27");
     assert.ok(entries.has(`${origin}/privacy-policy`));
+    assert.equal(entries.get(`${origin}/privacy-policy`), "2026-10-27", "Editing a page's metadata updates its lastmod");
+    assert.equal(entries.get(`${origin}/`), "2026-10-01", "Unchanged metadata entries keep their own date");
     assert.ok(![...entries.keys()].some((url) => /admin|test|preview|thank-you|hidden|\/old$/.test(url)));
     assert.equal(new Set(entries.keys()).size, entries.size);
     assert.match(xml, /xmlns="http:\/\/www.sitemaps.org\/schemas\/sitemap\/0.9"/);

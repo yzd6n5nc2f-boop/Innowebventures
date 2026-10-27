@@ -62,6 +62,29 @@ client-side route changes alone do not generate an HTTP response.
 Run `npm run test:routing` after a production build to check valid routes,
 unknown paths, legacy redirects, metadata rewrites and the custom 404 document.
 
+## Search titles and descriptions
+
+The approved copy is maintained in `src/content/pageMetadata.json`, keyed by
+public URL path. Keep each title under 60 characters and each description under
+155 characters. Product aliases intentionally share their matching product's
+metadata; the 404 page remains `noindex`.
+
+`scripts/build-page-metadata.mjs` runs after route generation. It injects the
+approved title and description into the actual HTML returned for each public
+route, including all blog posts and the standalone privacy/error pages. Existing
+campaign sharing metadata and images are preserved, with sharing titles and
+descriptions aligned to the approved copy. Internal HTML files are served through
+exact route rewrites; direct requests to their storage paths return HTTP 404.
+
+`src/components/PageMetadata.tsx` keeps titles and descriptions in sync during
+React navigation. Article headlines and body copy are unchanged. Sitemap lastmod
+dates include changes to each page's own metadata entry.
+
+Add a metadata entry when introducing a new page or post. The production build
+fails on missing metadata or over-length copy, rather than shipping a generic
+title. `npm run test:metadata` verifies the HTML, copy limits, preserved 404s and
+client navigation behaviour in CI and before deployment.
+
 This repo does not use Cloudflare. The hosting path in the codebase is Azure Static Web Apps for the frontend and Azure Functions for the contact form API.
 
 ## Contact form delivery and storage audit trail

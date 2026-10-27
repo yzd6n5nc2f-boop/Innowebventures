@@ -28,16 +28,16 @@ test("production routes serve every real URL and never accept unknown paths or s
     assert.ok(!rules.has(route), `${route} must reach Azure's real 404 handling`);
     await assert.rejects(readFile(`dist${route}`));
   }
-  assert.ok(!config.routes.some((rule) => /[:*]/.test(rule.route)), "No wildcard/pattern can serve invalid slugs as 200");
+  assert.ok(!config.routes.some((rule) => /[:*]/.test(rule.route) && rule.statusCode !== 404), "No wildcard/pattern can serve invalid slugs as 200");
   for (const [route, target] of [["/products", "/solutions"], ["/capabilities", "/platform"], ["/how-it-works", "/delivery-method"], ["/how-we-build", "/delivery-method"], ["/work/operational-build-layer", "/work"]]) {
     assert.equal(rules.get(route)?.redirect, target);
     assert.equal(rules.get(route)?.statusCode, 301);
   }
-  for (const rule of config.routes.filter((rule) => rule.route.startsWith("/blog/") && rule.rewrite !== "/index.html" && rule.rewrite)) {
+  for (const rule of config.routes.filter((rule) => rule.route.startsWith("/blog/") && rule.rewrite?.startsWith("/blog/"))) {
     assert.match(await readFile(`dist${rule.rewrite}`, "utf8"), /property="og:type" content="article"/);
   }
   const html = await readFile("dist/404.html", "utf8");
-  assert.match(html, /404.*Page not found/i);
+  assert.match(html, /404[\s\S]*PAGE NOT FOUND/i);
   assert.match(html, /name="robots" content="noindex"/);
   assert.doesNotMatch(html, /<script/i, "The 404 must be useful without JavaScript");
   for (const href of ["/services", "/blog", "/contact", "/"]) assert.ok(html.includes(`href="${href}"`));

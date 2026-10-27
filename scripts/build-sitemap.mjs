@@ -29,6 +29,12 @@ function property(node, key) {
 
 function objects(file, text) {
   const result = new Map();
+  if (file.endsWith("/pageMetadata.json")) {
+    for (const [slug, metadata] of Object.entries(JSON.parse(text))) {
+      result.set(slug, { slug, kind: "metadata", file, signature: JSON.stringify(metadata) });
+    }
+    return result;
+  }
   const source = parse(file, text);
   function visit(node) {
     if (ts.isJsxSelfClosingElement(node) && node.tagName.getText(source) === "Route") {
@@ -131,6 +137,11 @@ export async function generateSitemap() {
   if (git("rev-parse", "--is-shallow-repository") === "true") {
     throw new Error("Sitemap lastmod requires full Git history. Set actions/checkout fetch-depth: 0.");
   }
+  const metadataFile = "src/content/pageMetadata.json";
+  let metadata = new Map();
+  try { metadata = objects(metadataFile, await source(metadataFile)); } catch (error) {
+    if (error.code !== "ENOENT") throw error;
+  }
   const appFile = "src/App.tsx";
   const app = parse(appFile, await source(appFile));
   const imports = new Map();
@@ -161,7 +172,8 @@ export async function generateSitemap() {
     if (excludedPath.test(route)) return;
     const url = new URL(route, origin);
     if (url.origin !== origin || url.search || url.hash || /[:*]/.test(url.pathname)) throw new Error(`Invalid sitemap route: ${route}`);
-    entries.set(url.href, latest(dates));
+    const pageMetadata = metadata.get(route);
+    entries.set(url.href, latest(pageMetadata ? [...dates, itemLastChanged(pageMetadata)] : dates));
   }
 
   for (const { route, component, signature } of routes) {

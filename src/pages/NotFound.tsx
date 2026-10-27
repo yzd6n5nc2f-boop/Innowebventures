@@ -1,14 +1,7 @@
-import { useEffect } from "react";
 import SiteShell from "../components/SiteShell";
 import styles from "../styles/home.module.css";
 
 export default function NotFound() {
-  useEffect(() => {
-    const previousTitle = document.title;
-    document.title = "404 — Page not found | InnoWeb Ventures";
-    return () => { document.title = previousTitle; };
-  }, []);
-
   return (
     <SiteShell>
       <section className={styles.pageSection}>

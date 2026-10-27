@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import NotFound from "./NotFound";
 import SiteShell from "../components/SiteShell";
@@ -11,11 +10,6 @@ import styles from "../styles/blog.module.css";
 export default function BlogPost() {
   const { slug = "" } = useParams();
   const post = getBlogPost(slug) ?? getInnowebCapabilityPost(slug) ?? getRealWorldAutomationPost(slug) ?? getNovemberPartnershipPost(slug);
-
-  useEffect(() => {
-    if (post) document.title = `${post.title} · InnoWeb Ventures`;
-    return () => { document.title = "InnoWeb Ventures · Intelligent Workflows"; };
-  }, [post]);
 
   if (!post) {
     return <NotFound />;

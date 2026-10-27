@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import AppErrorBoundary from "./components/AppErrorBoundary";
+import PageMetadata from "./components/PageMetadata";
 import "./styles/global.css";
 
 const rootElement = document.getElementById("root");
@@ -15,6 +16,7 @@ ReactDOM.createRoot(rootElement).render(
   <React.StrictMode>
     <AppErrorBoundary>
       <BrowserRouter>
+        <PageMetadata />
         <App />
       </BrowserRouter>
     </AppErrorBoundary>
