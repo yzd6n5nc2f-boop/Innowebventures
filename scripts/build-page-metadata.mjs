@@ -74,7 +74,7 @@ export async function buildPageMetadata() {
   // requests to these implementation files must not create soft-404 URLs.
   const internalRoute = "/assets/page-metadata/*";
   config.routes = config.routes.filter((rule) => rule.route !== internalRoute);
-  config.routes.unshift({ route: internalRoute, rewrite: "/404.html", statusCode: 404 });
+  config.routes.unshift({ route: internalRoute, statusCode: 404, headers: { "X-Robots-Tag": "noindex" } });
   const json = JSON.stringify(config) + "\n";
   if (Buffer.byteLength(json) > 20_000) throw new Error("Generated Azure config exceeds 20KB.");
   await writeFile("dist/staticwebapp.config.json", json);

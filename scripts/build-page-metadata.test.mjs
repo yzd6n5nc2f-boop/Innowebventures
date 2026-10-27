@@ -46,7 +46,8 @@ test("every public document contains exactly the approved searchable title and d
     }
   }
   assert.equal(config.routes.find((rule) => rule.route === "/assets/page-metadata/*").statusCode, 404);
-  assert.equal(config.routes.find((rule) => rule.route === "/assets/page-metadata/*").rewrite, "/404.html");
+  assert.equal(config.routes.find((rule) => rule.route === "/assets/page-metadata/*").headers["X-Robots-Tag"], "noindex");
+  for (const rule of config.routes) if (rule.rewrite) assert.equal(rule.statusCode, undefined, "Azure forbids statusCode on rewrite rules");
   assert.equal(config.routes.find((rule) => rule.route === "/404.html").statusCode, 404);
   assert.match(await readFile("dist/404.html", "utf8"), /name="robots" content="noindex"/);
   assert.ok(!sitemap.includes("/404.html"));
