@@ -3,10 +3,28 @@
     {
       "route": "/privacy-policy",
       "rewrite": "/privacy-policy/index.html"
+    },
+    {
+      "route": "/sitemap.xml",
+      "headers": {
+        "Content-Type": "application/xml; charset=utf-8"
+      }
+    },
+    {
+      "route": "/robots.txt",
+      "headers": {
+        "Content-Type": "text/plain; charset=utf-8"
+      }
     }
   ],
   "navigationFallback": {
     "rewrite": "/index.html",
-    "exclude": ["/api/*", "/assets/*", "/branding/*"]
+    "exclude": [
+      "/api/*",
+      "/assets/*",
+      "/branding/*",
+      "/sitemap.xml",
+      "/robots.txt"
+    ]
   }
 }

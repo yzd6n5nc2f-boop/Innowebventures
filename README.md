@@ -2,6 +2,39 @@
 
 Static landing site (Vite + React + TypeScript) deployed with Azure Static Web Apps.
 
+## Automatic XML sitemap
+
+The public sitemap is `https://www.innowebventures.com/sitemap.xml`.
+`scripts/build-sitemap.mjs` generates `dist/sitemap.xml` and `dist/robots.txt`
+at the end of every `npm run build`; GitHub Actions deploys these with the site.
+Do not edit the generated XML by hand.
+
+- Public React pages are discovered from `src/App.tsx`. Redirects and the wildcard
+  fallback are omitted. Both existing product URL families are included because
+  both currently render public content rather than redirecting.
+- Product/service slugs and all blog posts are discovered from the content files
+  imported by their detail components, including JSON collections. New posts in
+  those collections and new ordinary routes are picked up automatically.
+- Standalone HTML pages in `public`, including the privacy policy, are discovered
+  automatically. Asset/branding HTML, pages marked `noindex`, and admin, test,
+  preview and thank-you paths are excluded.
+- Future-dated posts are included while their direct URLs remain public. The blog
+  listing schedule is not an access restriction.
+- Every URL uses the fixed `https://www.innowebventures.com` origin. `lastmod` uses
+  Git history for the route, page dependencies and individual content object;
+  it is not replaced with the build date on every deployment. Editing one post
+  does not change the dates of other posts in the same collection.
+- The origin, exclusion rule and mappings for new dynamic page types live at the
+  top of `scripts/build-sitemap.mjs`. A new dynamic page type must be registered
+  there; the build fails rather than silently leaving it out.
+- Both CI checkouts use `fetch-depth: 0` for trustworthy dates. A shallow checkout
+  deliberately fails sitemap generation; run `git fetch --unshallow` locally.
+- `staticwebapp.config.json` excludes `/sitemap.xml` and `/robots.txt` from SPA
+  fallback and specifies their XML/text content types.
+
+Run `npm run test:sitemap` to check route/post discovery, exclusions, individual
+article dates and reproducibility across unchanged builds.
+
 This repo does not use Cloudflare. The hosting path in the codebase is Azure Static Web Apps for the frontend and Azure Functions for the contact form API.
 
 ## Contact form delivery and storage audit trail
