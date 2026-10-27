@@ -2,11 +2,14 @@ import type { CSSProperties, ReactNode } from "react";
 import { useEffect, useRef, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { SITE_URL } from "../content/runtimeConfig";
+import { canonicalPath, DEFAULT_META, getPageMeta, SITE_ORIGIN, type PageMeta } from "../content/pageMeta";
 import styles from "../styles/home.module.css";
 import shellStyles from "../styles/shellPolish.module.css";
 
 type SiteShellProps = {
   children: ReactNode;
+  // Used when pageMeta.json has no entry for this URL (for example a newly added blog post).
+  meta?: PageMeta;
 };
 
 const primaryNav = [
@@ -16,7 +19,14 @@ const primaryNav = [
   { label: "About", to: "/about" },
 ];
 
-export default function SiteShell({ children }: SiteShellProps) {
+function setHeadTag(selector: string, create: () => HTMLElement, attribute: string, value: string | null) {
+  let tag = document.head.querySelector<HTMLElement>(selector);
+  if (value === null) { tag?.remove(); return; }
+  if (!tag) { tag = create(); document.head.appendChild(tag); }
+  tag.setAttribute(attribute, value);
+}
+
+export default function SiteShell({ children, meta }: SiteShellProps) {
   const heroStyles = {
     ["--hero-bg" as const]: `url(${import.meta.env.BASE_URL}branding/innoweb-hero-bg-desktop.jpeg)`,
     ["--hero-bg-mobile" as const]: `url(${import.meta.env.BASE_URL}branding/innoweb-hero-bg-mobile.jpeg)`,
@@ -29,6 +39,15 @@ export default function SiteShell({ children }: SiteShellProps) {
   useEffect(() => {
     setIsMenuOpen(false);
   }, [location.pathname]);
+
+  const pageMeta = getPageMeta(location.pathname) ?? meta;
+  useEffect(() => {
+    const { title, description } = pageMeta ?? DEFAULT_META;
+    document.title = title;
+    setHeadTag('meta[name="description"]', () => Object.assign(document.createElement("meta"), { name: "description" }), "content", description);
+    setHeadTag('link[rel="canonical"]', () => Object.assign(document.createElement("link"), { rel: "canonical" }), "href",
+      pageMeta ? `${SITE_ORIGIN}${canonicalPath(location.pathname)}` : null);
+  }, [location.pathname, pageMeta?.title, pageMeta?.description]);
 
   useEffect(() => {
     document.body.style.overflow = isMenuOpen ? "hidden" : "";

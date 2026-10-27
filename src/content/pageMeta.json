@@ -1,0 +1,188 @@
+{
+  "origin": "https://www.innowebventures.com",
+  "canonical": {
+    "/forge-suite": "/solutions"
+  },
+  "pages": {
+    "/": {
+      "title": "Bespoke Agentic AI Workflow Systems | InnoWeb Ventures",
+      "description": "Bespoke agentic AI systems built around your real workflows, with people kept in control. Book a workflow review with InnoWeb Ventures."
+    },
+    "/solutions": {
+      "title": "AI and Automation Solutions: Forge Suite | InnoWeb Ventures",
+      "description": "Explore the Forge Suite: InnoWeb's own AI stack for intelligence, software, governance, robotics, games and media, combined into tailored solutions."
+    },
+    "/forge-suite": {
+      "title": "Forge Suite AI Platform Stack | InnoWeb Ventures",
+      "description": "The Forge Suite is InnoWeb's proprietary AI platform: six connected layers we combine to build tailored AI and automation for your business."
+    },
+    "/forge-suite/neuralforge": {
+      "title": "NeuralForge: Custom AI Model Fine-Tuning | InnoWeb Ventures",
+      "description": "NeuralForge shapes, fine-tunes and configures AI for your sector and workflow, so the intelligence layer fits how your business actually works."
+    },
+    "/forge-suite/forge-coder": {
+      "title": "Forge Coder: Custom Workflow Software | InnoWeb Ventures",
+      "description": "Forge Coder turns AI and workflow design into working software: interfaces, user journeys and operational tools built around your process."
+    },
+    "/forge-suite/forgeops": {
+      "title": "ForgeOps: AI Operations and Governance | InnoWeb Ventures",
+      "description": "ForgeOps runs, monitors and governs deployed AI systems, giving operations leaders oversight, controlled rollout and clear approval points."
+    },
+    "/forge-suite/forge-robotics-lab": {
+      "title": "Forge Robotics Lab: Robot Simulation | InnoWeb Ventures",
+      "description": "Forge Robotics Lab turns AI into simulation-backed robotic workflows and digital twins for autonomous and semi-autonomous operations."
+    },
+    "/forge-suite/game-forge-studio": {
+      "title": "Game Forge Studio: Interactive Training | InnoWeb Ventures",
+      "description": "Game Forge Studio builds game-driven interfaces, immersive training journeys and interactive digital experiences for engagement and simulation."
+    },
+    "/forge-suite/forge-media-studio": {
+      "title": "Forge Media Studio: AI Content Creation | InnoWeb Ventures",
+      "description": "AI-assisted production of images, video, sound, voice and campaign-ready brand assets for marketing, brand and content teams."
+    },
+    "/platform": {
+      "title": "AI Platform Architecture for Industry | InnoWeb Ventures",
+      "description": "How InnoWeb helps industry adopt AI with control, through three connected layers: system build, operational governance and specialist intelligence."
+    },
+    "/services": {
+      "title": "AI Adoption and Deployment Services | InnoWeb Ventures",
+      "description": "From a one-week discovery to rollout and ongoing governance support: structured ways to adopt AI and automation without losing control."
+    },
+    "/services/platform-discovery": {
+      "title": "AI Platform Discovery in One Week | InnoWeb Ventures",
+      "description": "A one-week discovery to find the right AI entry point for your business, map operational constraints and set governance priorities."
+    },
+    "/services/deployment-sprint": {
+      "title": "10-Day AI Deployment Sprint | InnoWeb Ventures",
+      "description": "Stand up one controlled AI deployment in 10 days and validate the operating model quickly, before committing to a wider rollout."
+    },
+    "/services/integration-rollout": {
+      "title": "AI Integration and Rollout (4-8 Weeks) | InnoWeb Ventures",
+      "description": "A structured 4–8 week rollout of AI capability into your existing systems, operational workflows and reporting."
+    },
+    "/services/optimisation-governance-support": {
+      "title": "AI Optimisation and Governance Support | InnoWeb Ventures",
+      "description": "Ongoing retainer support to tune AI performance, strengthen governance and improve operational outcomes over time."
+    },
+    "/work": {
+      "title": "AI Workflow Case Studies and Live Apps | InnoWeb Ventures",
+      "description": "Live systems built around real workflows: tender discovery, an agentic AI workspace, guided decision support and timesheet management."
+    },
+    "/delivery-method": {
+      "title": "How We Build Agentic AI Systems | InnoWeb Ventures",
+      "description": "Our delivery method: workflow design, planning, models, tools and governance combined, with model performance and token spend monitored throughout."
+    },
+    "/about": {
+      "title": "About InnoWeb Ventures, a UK AI Software Company",
+      "description": "InnoWeb Ventures Limited is a UK-led AI infrastructure and operational software company building the systems and governance that make AI useful."
+    },
+    "/contact": {
+      "title": "Book an AI Workflow Review | InnoWeb Ventures",
+      "description": "Bring one operational challenge and get an initial view of where automation, software or AI could improve how your business runs."
+    },
+    "/blog": {
+      "title": "Agentic AI and Automation Insights | InnoWeb Ventures",
+      "description": "Practical articles on agentic AI, workflow automation, model choice, AI cost, governance and privacy, from the team building real-world systems."
+    },
+    "/blog/useful-ai-starts-with-the-workflow": {
+      "title": "Workflow-First AI: Start With the Work | InnoWeb Ventures",
+      "description": "The strongest AI systems don't start by picking the biggest model. They start with the work, the people involved and the decisions that matter."
+    },
+    "/blog/why-smaller-ai-models-may-matter-more-than-people-think": {
+      "title": "Why Small AI Models Matter for Business | InnoWeb Ventures",
+      "description": "Smaller AI models can be faster, more private, cheaper and easier to control. Where they fit best in real business workflows."
+    },
+    "/blog/agentic-ai-is-not-a-chatbot": {
+      "title": "Agentic AI vs Chatbots: What to Automate | InnoWeb Ventures",
+      "description": "A chatbot answers questions; an agentic system moves work forward. How to decide which business tasks AI should actually automate."
+    },
+    "/blog/when-should-a-business-run-ai-locally": {
+      "title": "Local vs Cloud AI for Business | InnoWeb Ventures",
+      "description": "When local AI makes more sense than the cloud: weighing privacy, cost, latency and control, and why a hybrid setup is often the right answer."
+    },
+    "/blog/the-hidden-cost-of-ai-token-usage": {
+      "title": "The Hidden Cost of AI Token Usage | InnoWeb Ventures",
+      "description": "AI cost isn't just the model price. It's how often you call it, how much context you send and whether the output justifies the spend."
+    },
+    "/blog/why-ai-projects-fail-when-they-start-with-technology": {
+      "title": "Why AI Projects Fail: Process First | InnoWeb Ventures",
+      "description": "Many AI projects fail because they start with a tool and hunt for a use case. Lasting value comes from starting with the process first."
+    },
+    "/blog/human-in-the-loop-is-good-system-design": {
+      "title": "Human-in-the-Loop AI: Good System Design | InnoWeb Ventures",
+      "description": "Keeping people in AI workflows isn't a failure of automation. It's often what makes a system trustworthy, useful and safe to operate."
+    },
+    "/blog/what-we-are-learning-from-specialist-ai-systems": {
+      "title": "Building Specialist AI Systems: Lessons | InnoWeb Ventures",
+      "description": "What building specialist AI for real tasks teaches: workflow design, visibility, cost, integration and human control matter most."
+    },
+    "/blog/how-innoweb-turns-one-workflow-into-an-intelligent-system": {
+      "title": "Turn One Workflow Into an AI System | InnoWeb Ventures",
+      "description": "You don't need a big transformation programme to start with AI. Begin with one real workflow, find where work slows down, and build around it."
+    },
+    "/blog/ai-will-change-the-world-but-it-doesnt-need-to-replace-us": {
+      "title": "Will AI Replace Humans? It Doesn't Need To",
+      "description": "AI may be one of humanity's most powerful inventions. Its greatest purpose is to extend human capability, not replace the people using it."
+    },
+    "/blog/what-a-bespoke-ai-workflow-can-do-for-a-business": {
+      "title": "Bespoke AI Workflows for Business | InnoWeb Ventures",
+      "description": "A bespoke AI workflow isn't a generic chatbot. It's built around one business process to prepare information, check details and support decisions."
+    },
+    "/blog/why-innoweb-uses-agentic-ai-for-real-operational-tasks": {
+      "title": "Agentic AI for Real Operational Tasks | InnoWeb Ventures",
+      "description": "Agentic AI earns its place on real tasks: planning steps, using tools, checking information, routing work and bringing people in for control."
+    },
+    "/blog/how-innoweb-chooses-local-cloud-or-hybrid-ai": {
+      "title": "Local, Cloud or Hybrid AI Architecture | InnoWeb Ventures",
+      "description": "How to choose local, cloud or hybrid AI for each workflow by weighing privacy, cost, latency, capability and control before you build."
+    },
+    "/blog/why-innoweb-builds-ai-around-the-user": {
+      "title": "AI Built Around the User, Not the Model | InnoWeb Ventures",
+      "description": "The model matters, but user experience decides whether AI gets used: designing around roles, dashboards, approvals, notifications and controls."
+    },
+    "/blog/your-ai-is-not-your-friend-and-thats-okay": {
+      "title": "Is AI Your Friend? Why the Line Matters | InnoWeb Ventures",
+      "description": "AI can talk naturally, remember context and even comfort you. As it grows more human-like, keeping it distinct from human relationships matters."
+    },
+    "/blog/the-future-is-human-centred-automation": {
+      "title": "Human-Centred Automation and AI | InnoWeb Ventures",
+      "description": "The future of AI and robotics isn't humans disappearing from work. It's intelligent systems giving people more leverage, control and safety."
+    },
+    "/blog/the-machine-goes-in-first": {
+      "title": "Robots for Dangerous Work, Not Jobs | InnoWeb Ventures",
+      "description": "Advanced robots may matter most not by replacing people but by protecting them, going into the dangerous places humans shouldn't have to enter."
+    },
+    "/blog/your-ai-agent-doesnt-need-freedom-it-needs-a-destination": {
+      "title": "Bounded Autonomy for AI Agents | InnoWeb Ventures",
+      "description": "Agentic AI works best with bounded autonomy, not unlimited freedom: clear objectives, defined permissions, validation and human control."
+    },
+    "/blog/your-next-colleague-might-never-take-a-lunch-break": {
+      "title": "AI Agents as Digital Colleagues | InnoWeb Ventures",
+      "description": "AI agents are moving from chat windows into everyday work. The opportunity is digital colleagues that handle the work around the work."
+    },
+    "/blog/ai-probably-wont-take-your-job-but-someone-using-ai-might-change-it": {
+      "title": "Will AI Take Your Job? How Work Changes | InnoWeb Ventures",
+      "description": "Some jobs will go and many will change. The better question: what's left when AI takes the tasks machines can do, and what it frees people to do."
+    },
+    "/blog/the-most-dangerous-ai-agent-may-be-the-one-doing-exactly-what-you-asked": {
+      "title": "AI Agent Risk: Poorly Defined Objectives | InnoWeb Ventures",
+      "description": "The real risk of agentic AI may not be a rogue machine, but a capable system pursuing a poorly defined goal exactly as instructed."
+    },
+    "/blog/the-work-behind-the-workflow": {
+      "title": "AI Workflow Audit: What It Should Find | InnoWeb Ventures",
+      "description": "Useful AI starts with how work really happens. A workflow audit traces the tasks, handovers and decisions that decide whether a process runs well."
+    },
+    "/blog/turning-a-workflow-audit-into-an-ai-system-blueprint": {
+      "title": "Workflow Audit to AI System Blueprint | InnoWeb Ventures",
+      "description": "How audit findings become an AI system design your business can review, linking each task to its information, owner and acceptance criteria."
+    },
+    "/blog/forge-os-an-ai-operating-layer-shaped-around-your-business": {
+      "title": "Forge OS: AI Operating Layer | InnoWeb Ventures",
+      "description": "Forge OS is being shaped as one connected place to request work, follow progress and manage the decisions that keep your workflows moving."
+    },
+    "/blog/building-an-ai-system-is-the-beginning-of-the-partnership": {
+      "title": "Ongoing AI Partnership After Launch | InnoWeb Ventures",
+      "description": "A tailored AI system has to evolve as your business changes. How a partnership links workflow discovery, pilot delivery and ongoing review."
+    }
+  }
+}
