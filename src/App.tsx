@@ -11,6 +11,7 @@ import Products from "./pages/Products";
 import ServiceDetail from "./pages/ServiceDetail";
 import Services from "./pages/Services";
 import Work from "./pages/Work";
+import NotFound from "./pages/NotFound";
 
 export default function App() {
   return (
@@ -25,7 +26,9 @@ export default function App() {
       <Route path="/services" element={<Services />} />
       <Route path="/services/:slug" element={<ServiceDetail />} />
       <Route path="/work" element={<Work />} />
-      <Route path="/work/:slug" element={<Navigate to="/work" replace />} />
+      <Route path="/work/operational-build-layer" element={<Navigate to="/work" replace />} />
+      <Route path="/work/governed-runtime-operations" element={<Navigate to="/work" replace />} />
+      <Route path="/work/specialised-intelligence-layer" element={<Navigate to="/work" replace />} />
       <Route path="/blog" element={<Blog />} />
       <Route path="/blog/:slug" element={<BlogPost />} />
       <Route path="/delivery-method" element={<HowWeBuild />} />
@@ -34,7 +37,7 @@ export default function App() {
       <Route path="/about" element={<About />} />
       <Route path="/contact" element={<Contact />} />
       <Route path="/capabilities" element={<Navigate to="/platform" replace />} />
-      <Route path="*" element={<Landing />} />
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 }

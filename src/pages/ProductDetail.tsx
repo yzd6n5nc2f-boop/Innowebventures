@@ -1,3 +1,4 @@
+import NotFound from "./NotFound";
 import type { CSSProperties } from "react";
 import { Link, useParams } from "react-router-dom";
 import Breadcrumbs from "../components/Breadcrumbs";
@@ -10,22 +11,7 @@ export default function ProductDetail() {
   const { slug } = useParams();
   const product = getProductBySlug(slug);
 
-  if (!product) {
-    return (
-      <SiteShell>
-        <section className={styles.pageSection}>
-          <Breadcrumbs items={[{ label: "Forge Suite", to: "/forge-suite" }, { label: "Not found" }]} />
-          <article className={styles.summaryCard}>
-            <h1>Product not found</h1>
-            <p>The requested Forge Suite product does not exist.</p>
-            <Link className={styles.inlineCta} to="/forge-suite">
-              Back to Forge Suite
-            </Link>
-          </article>
-        </section>
-      </SiteShell>
-    );
-  }
+  if (!product) return <NotFound />;
 
   const relatedProducts = products.filter((item) => product.relatedProductSlugs.includes(item.slug));
 

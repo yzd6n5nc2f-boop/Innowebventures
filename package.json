@@ -5,9 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build && node scripts/copy-staticwebapp-config.mjs && node scripts/build-campaign-pages.mjs && node scripts/build-sitemap.mjs",
+    "build": "tsc -b && vite build && node scripts/copy-staticwebapp-config.mjs && node scripts/build-campaign-pages.mjs && node scripts/build-sitemap.mjs && node scripts/build-routing.mjs",
     "preview": "vite preview",
-    "test:sitemap": "node --test scripts/build-sitemap.test.mjs"
+    "test:sitemap": "node --test scripts/build-sitemap.test.mjs",
+    "test:routing": "node --test scripts/build-routing.test.mjs"
   },
   "dependencies": {
     "react": "^18.3.1",

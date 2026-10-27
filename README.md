@@ -29,11 +29,35 @@ Do not edit the generated XML by hand.
   there; the build fails rather than silently leaving it out.
 - Both CI checkouts use `fetch-depth: 0` for trustworthy dates. A shallow checkout
   deliberately fails sitemap generation; run `git fetch --unshallow` locally.
-- `staticwebapp.config.json` excludes `/sitemap.xml` and `/robots.txt` from SPA
-  fallback and specifies their XML/text content types.
+- `staticwebapp.config.json` specifies XML/text content types and the custom 404
+  response. There is no broad SPA fallback.
 
 Run `npm run test:sitemap` to check route/post discovery, exclusions, individual
 article dates and reproducibility across unchanged builds.
+
+## Real HTTP 404 responses
+
+`scripts/build-routing.mjs` runs after sitemap generation on every build. It
+uses the discovered public URLs to write exact Azure rewrites into
+`dist/staticwebapp.config.json`. Existing standalone privacy/campaign rewrites
+are preserved. New public pages and post slugs therefore receive hosting rules
+automatically, without allowing arbitrary slugs to return HTTP 200.
+
+The broad `navigationFallback` is removed: Azure serves missing paths with HTTP
+404 and `responseOverrides["404"]` supplies the standalone `public/404.html`.
+That page works without JavaScript and links to Services, Insights and Contact.
+It is marked `noindex` and is not included in the sitemap. Existing public
+trailing-slash URLs redirect to the corresponding URL without the slash;
+explicit legacy redirects are discovered from `Navigate` routes in `src/App.tsx`.
+The old `/work/:slug` redirect is restricted to the three known legacy case-study
+slugs so arbitrary missing case studies can return 404.
+
+React's wildcard and invalid content slugs render `src/pages/NotFound.tsx` during
+in-app navigation. HTTP status codes are supplied by Azure on document requests;
+client-side route changes alone do not generate an HTTP response.
+
+Run `npm run test:routing` after a production build to check valid routes,
+unknown paths, legacy redirects, metadata rewrites and the custom 404 document.
 
 This repo does not use Cloudflare. The hosting path in the codebase is Azure Static Web Apps for the frontend and Azure Functions for the contact form API.
 

@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>404 — Page not found | InnoWeb Ventures</title>
+    <link rel="icon" type="image/png" href="/branding/logo/innoweb-logo.png" />
+    <style>
+      :root { color-scheme: dark; font-family: Inter, ui-sans-serif, system-ui, sans-serif; }
+      * { box-sizing: border-box; }
+      body { margin: 0; min-height: 100vh; background: #080e1a; color: #edf3ff; }
+      main { width: min(100% - 40px, 920px); margin: auto; padding: clamp(36px, 8vw, 90px) 0; }
+      .brand { color: #edf3ff; font-size: 18px; font-weight: 700; text-decoration: none; letter-spacing: .02em; }
+      .code { margin: 64px 0 8px; font-size: 16px; font-weight: 700; letter-spacing: .15em; color: #71d9ed; }
+      h1 { margin: 0 0 20px; font-size: clamp(36px, 7vw, 60px); line-height: 1.1; letter-spacing: -.04em; }
+      p { max-width: 620px; color: #b5c1d5; font-size: 18px; line-height: 1.7; }
+      nav { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 36px 0; }
+      nav a { display: block; border: 1px solid #2b3950; border-radius: 16px; padding: 24px; background: #101b2c; color: #edf3ff; text-decoration: none; }
+      nav a:hover { border-color: #71d9ed; background: #142238; }
+      a:focus-visible { outline: 3px solid #71d9ed; outline-offset: 5px; }
+      strong { display: block; font-size: 20px; margin-bottom: 10px; }
+      span { display: block; color: #b5c1d5; line-height: 1.6; }
+      .home { display: inline-block; color: #71d9ed; padding: 8px 0; text-underline-offset: 4px; }
+      @media (max-width: 640px) { nav { grid-template-columns: 1fr; } .code { margin-top: 44px; } }
+    </style>
+  </head>
+  <body>
+    <main>
+      <a class="brand" href="/">InnoWeb Ventures</a>
+      <p class="code">404 · PAGE NOT FOUND</p>
+      <h1>Let’s find your next step.</h1>
+      <p>The page you’re looking for doesn’t exist, or its address may have changed. Check the address, or explore one of these pages.</p>
+      <nav aria-label="Helpful pages">
+        <a href="/services"><strong>Our services →</strong><span>Explore how we design and deliver intelligent workflows.</span></a>
+        <a href="/blog"><strong>Insights →</strong><span>Read our thinking on AI, automation and better systems.</span></a>
+        <a href="/contact"><strong>Contact us →</strong><span>Tell us what you’re looking for. We’ll help you find it.</span></a>
+      </nav>
+      <a class="home" href="/">← Back to the home page</a>
+    </main>
+  </body>
+</html>

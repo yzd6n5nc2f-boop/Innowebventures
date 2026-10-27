@@ -1,5 +1,6 @@
 import { useEffect } from "react";
-import { Link, Navigate, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import NotFound from "./NotFound";
 import SiteShell from "../components/SiteShell";
 import { getBlogPost } from "../content/blogPosts";
 import { getInnowebCapabilityPost } from "../content/innowebCapabilityPosts";
@@ -17,7 +18,7 @@ export default function BlogPost() {
   }, [post]);
 
   if (!post) {
-    return <Navigate to="/blog" replace />;
+    return <NotFound />;
   }
 
   return (

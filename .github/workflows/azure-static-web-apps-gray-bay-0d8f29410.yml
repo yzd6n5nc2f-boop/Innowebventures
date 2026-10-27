@@ -26,6 +26,8 @@ jobs:
         run: npm run build
       - name: Check sitemap generation
         run: npm run test:sitemap
+      - name: Check public routes and 404 handling
+        run: npm run test:routing
 
   build_and_deploy_job:
     needs: build_job

@@ -1,3 +1,4 @@
+import NotFound from "./NotFound";
 import { Link, useParams } from "react-router-dom";
 import Breadcrumbs from "../components/Breadcrumbs";
 import NextSteps from "../components/NextSteps";
@@ -9,22 +10,7 @@ export default function ServiceDetail() {
   const { slug } = useParams();
   const service = getServiceBySlug(slug);
 
-  if (!service) {
-    return (
-      <SiteShell>
-        <section className={styles.pageSection}>
-          <Breadcrumbs items={[{ label: "Deployment pathways", to: "/services" }, { label: "Not found" }]} />
-          <article className={styles.summaryCard}>
-            <h1>Pathway not found</h1>
-            <p>The requested deployment pathway is not available.</p>
-            <Link className={styles.inlineCta} to="/services">
-              Back to pathways
-            </Link>
-          </article>
-        </section>
-      </SiteShell>
-    );
-  }
+  if (!service) return <NotFound />;
 
   return (
     <SiteShell>
