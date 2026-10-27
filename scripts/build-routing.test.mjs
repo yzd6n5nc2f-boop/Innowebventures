@@ -44,6 +44,10 @@ test("production routes serve every real URL and never accept unknown paths or s
   assert.doesNotMatch(html, /<script/i, "The 404 must be useful without JavaScript");
   for (const href of ["/services", "/blog", "/contact", "/"]) assert.ok(html.includes(`href="${href}"`));
   assert.match(await readFile("src/App.tsx", "utf8"), /path="\*" element=\{<NotFound \/>\}/);
+  const workflow = await readFile(".github/workflows/azure-static-web-apps-gray-bay-0d8f29410.yml", "utf8");
+  assert.match(workflow, /app_location: "dist"/);
+  assert.match(workflow, /skip_app_build: true/);
+  assert.match(workflow, /config_file_location: "dist"/);
   for (const file of ["BlogPost", "ProductDetail", "ServiceDetail"]) assert.match(await readFile(`src/pages/${file}.tsx`, "utf8"), /return <NotFound \/>/);
 });
 

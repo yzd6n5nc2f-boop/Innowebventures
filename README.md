@@ -42,6 +42,9 @@ uses the discovered public URLs to write exact Azure rewrites into
 `dist/staticwebapp.config.json`. Existing standalone privacy/campaign rewrites
 are preserved. New public pages and post slugs therefore receive hosting rules
 automatically, without allowing arbitrary slugs to return HTTP 200.
+The deployment job builds the site first, verifies the generated routing, then
+uploads `dist` with `skip_app_build: true` and `config_file_location: "dist"`.
+This ensures Azure receives the generated rules alongside the matching files.
 
 The broad `navigationFallback` is removed: Azure serves missing paths with HTTP
 404 and `responseOverrides["404"]` supplies the standalone `public/404.html`.
