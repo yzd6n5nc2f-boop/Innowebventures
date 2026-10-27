@@ -1,6 +1,8 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import metadata from "../content/pageMetadata.json";
+import socialConfig from "../content/socialMetadata.json";
+import { getSocialMetadata } from "../content/socialMetadata.mjs";
 
 type Metadata = { title: string; description: string };
 const pages: Record<string, Metadata> = metadata;
@@ -18,12 +20,25 @@ export default function PageMetadata() {
       document.head.append(description);
     }
     description.content = page.description;
-    for (const [selector, content] of [
-      ['meta[property="og:title"]', page.title],
-      ['meta[property="og:description"]', page.description],
-      ['meta[name="twitter:title"]', page.title],
-      ['meta[name="twitter:description"]', page.description],
-    ]) document.querySelector<HTMLMetaElement>(selector)?.setAttribute("content", content);
+    const social = getSocialMetadata(socialConfig, route, page);
+    let canonical = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
+    if (!canonical) {
+      canonical = document.createElement("link");
+      canonical.rel = "canonical";
+      document.head.append(canonical);
+    }
+    canonical.href = social.canonical;
+    for (const [attribute, tags] of [["property", social.properties], ["name", social.names]] as const) {
+      for (const [key, value] of Object.entries(tags)) {
+        let tag = document.querySelector<HTMLMetaElement>(`meta[${attribute}="${key}"]`);
+        if (!tag) {
+          tag = document.createElement("meta");
+          tag.setAttribute(attribute, key);
+          document.head.append(tag);
+        }
+        tag.content = value;
+      }
+    }
 
     const managedRobots = document.querySelector<HTMLMetaElement>('meta[data-page-metadata="robots"]');
     if (!pages[route] || route === "/404.html") {

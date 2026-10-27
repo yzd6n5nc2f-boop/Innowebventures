@@ -85,6 +85,17 @@ fails on missing metadata or over-length copy, rather than shipping a generic
 title. `npm run test:metadata` verifies the HTML, copy limits, preserved 404s and
 client navigation behaviour in CI and before deployment.
 
+Every public page also gets a self-referencing canonical URL on
+`https://www.innowebventures.com`, Open Graph metadata and a Twitter
+`summary_large_image` card. `src/content/socialMetadata.json` selects the branded
+default share image or a page-specific image. All share images are 1200 x 630
+JPEGs under `public/branding/social`; the four existing November campaign
+artworks retain separate originals and use landscape sharing variants.
+The shared `src/content/socialMetadata.mjs` helper keeps the generated HTML and
+React navigation consistent, including canonical URLs, image URLs and alt text.
+Metadata checks verify one canonical per page, all sharing tags, actual image
+dimensions and updates when visitors navigate between articles and other pages.
+
 This repo does not use Cloudflare. The hosting path in the codebase is Azure Static Web Apps for the frontend and Azure Functions for the contact form API.
 
 ## Contact form delivery and storage audit trail

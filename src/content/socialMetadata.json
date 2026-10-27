@@ -1,0 +1,25 @@
+{
+  "siteUrl": "https://www.innowebventures.com",
+  "defaultImage": "/branding/social/default-share.jpg",
+  "defaultImageAlt": "InnoWeb Ventures: intelligent workflows, human control.",
+  "width": 1200,
+  "height": 630,
+  "images": {
+    "/blog/the-work-behind-the-workflow": {
+      "image": "/branding/social/17-november-share.jpg",
+      "alt": "How does work really happen here? Useful AI starts with understanding your business."
+    },
+    "/blog/turning-a-workflow-audit-into-an-ai-system-blueprint": {
+      "image": "/branding/social/19-november-share.jpg",
+      "alt": "Your workflow becomes the blueprint. Map the tasks, handovers and decisions before designing the system."
+    },
+    "/blog/forge-os-an-ai-operating-layer-shaped-around-your-business": {
+      "image": "/branding/social/24-november-share.jpg",
+      "alt": "Forge OS, built around your business. A connected place for work, progress and approvals. Forge OS concept."
+    },
+    "/blog/building-an-ai-system-is-the-beginning-of-the-partnership": {
+      "image": "/branding/social/26-november-share.jpg",
+      "alt": "Your AI system evolves with you. A delivery partnership shaped by real work and measured results."
+    }
+  }
+}
