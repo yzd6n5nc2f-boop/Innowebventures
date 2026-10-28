@@ -34,3 +34,6 @@ Verification:
   Playwright installation to verify all pages with and without JavaScript,
   hydration, navigation, the mobile menu, a mocked form submission and 404.
   It does not submit a real enquiry or upload build artifacts.
+
+After deployment, scripts/verify-live-html.mjs checks the raw HTTP HTML of every
+public URL against the build, metadata, real 404 responses, robots and sitemap.

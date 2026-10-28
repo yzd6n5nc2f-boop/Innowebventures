@@ -68,3 +68,5 @@ jobs:
           output_location: ""
           config_file_location: "dist"
           production_branch: "main"
+      - name: Verify initial HTML on the live public site
+        run: node scripts/verify-live-html.mjs
