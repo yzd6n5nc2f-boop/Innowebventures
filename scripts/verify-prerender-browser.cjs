@@ -75,6 +75,7 @@ async function main() {
     await page.waitForFunction(() => document.documentElement.dataset.hydrated === "true");
     await page.getByRole("navigation", { name: "Primary", exact: true }).getByRole("link", { name: "About", exact: true }).click();
     await page.waitForURL(origin + "/about");
+    await page.waitForFunction(() => document.querySelector('link[rel="canonical"]')?.href === "https://www.innowebventures.com/about");
     assert.match(await page.title(), /InnoWeb/);
     assert.equal(await page.locator('link[rel="canonical"]').getAttribute("href"), "https://www.innowebventures.com/about");
     await page.setViewportSize({ width: 390, height: 844 });
