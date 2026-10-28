@@ -1,3 +1,4 @@
+import { getRenderTime } from "./renderTime";
 import type { BlogPost } from "./blogPosts";
 import campaignPosts from "./novemberPartnershipPosts.json";
 
@@ -8,6 +9,6 @@ export function getNovemberPartnershipPost(slug: string) {
   return novemberPartnershipPosts.find((post) => post.slug === slug);
 }
 
-export function getPublishedPartnershipPosts(now = Date.now()) {
+export function getPublishedPartnershipPosts(now = getRenderTime()) {
   return novemberPartnershipPosts.filter((post) => Date.parse(post.publishAt) <= now);
 }

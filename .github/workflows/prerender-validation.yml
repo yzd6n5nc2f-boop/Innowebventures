@@ -1,0 +1,33 @@
+name: Static HTML validation
+on:
+  push:
+    branches: [seo/static-html]
+  pull_request:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Build and verify public HTML
+        run: |
+          npm ci
+          npm run build
+          npm run test:sitemap
+          npm run test:routing
+          npm run test:metadata
+          npm run test:prerender
+      - name: Install browser verification tools temporarily
+        run: |
+          npm install --prefix "$RUNNER_TEMP/innoweb-browser" --no-package-lock --no-save playwright@1.56.1
+          node "$RUNNER_TEMP/innoweb-browser/node_modules/playwright/cli.js" install --with-deps chromium
+      - name: Verify content and interactions in Chromium
+        run: NODE_PATH="$RUNNER_TEMP/innoweb-browser/node_modules" node scripts/verify-prerender-browser.cjs
