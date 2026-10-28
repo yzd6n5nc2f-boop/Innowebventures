@@ -40,6 +40,12 @@ async function verify() {
     assert.equal(response.status, 404, route);
     assert.ok(html.includes('href="/services"') && html.includes('href="/blog"') && html.includes('href="/contact"'), route);
   }
+  const llms = await get("/llms.txt");
+  assert.equal(llms.response.status, 200, "llms.txt");
+  assert.match(llms.response.headers.get("content-type"), /^text\/plain\b/i);
+  assert.equal(llms.html, await readFile("dist/llms.txt", "utf8"), "live Markdown differs from build");
+  assert.ok(llms.html.split("\n").length < 150);
+  console.log("LIVE llms.txt VERIFIED: plain Markdown, " + llms.html.split("\n").length + " lines, exact build match.");
   const robots = await get("/robots.txt");
   assert.equal(robots.response.status, 200);
   assert.ok(robots.html.trimEnd().endsWith("Sitemap: " + origin + "/sitemap.xml"));

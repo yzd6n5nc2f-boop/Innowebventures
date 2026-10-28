@@ -25,6 +25,7 @@ jobs:
           npm run test:routing
           npm run test:metadata
           npm run test:prerender
+          npm run test:llms
       - name: Install browser verification tools temporarily
         run: |
           npm install --prefix "$RUNNER_TEMP/innoweb-browser" --no-package-lock --no-save playwright@1.56.1

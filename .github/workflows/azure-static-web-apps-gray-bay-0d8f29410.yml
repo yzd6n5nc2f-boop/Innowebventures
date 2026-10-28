@@ -4,10 +4,12 @@ on:
   push:
     branches:
       - main
+  schedule:
+    - cron: '17 0 * * *'
 
 jobs:
   build_job:
-    if: github.event_name == 'push'
+    if: (github.event_name == 'push' || github.event_name == 'schedule')
     runs-on: ubuntu-latest
     name: Build Validation Job
     steps:
@@ -30,12 +32,14 @@ jobs:
         run: npm run test:routing
       - name: Check approved page metadata
         run: npm run test:metadata
+      - name: Check Markdown site guide
+        run: npm run test:llms
       - name: Check full initial HTML
         run: npm run test:prerender
 
   build_and_deploy_job:
     needs: build_job
-    if: needs.build_job.result == 'success' && github.event_name == 'push'
+    if: needs.build_job.result == 'success' && (github.event_name == 'push' || github.event_name == 'schedule')
     runs-on: ubuntu-latest
     name: Build and Deploy Job
     steps:
@@ -55,6 +59,7 @@ jobs:
           npm run test:routing
           npm run test:metadata
           npm run test:prerender
+          npm run test:llms
       - name: Build And Deploy
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
