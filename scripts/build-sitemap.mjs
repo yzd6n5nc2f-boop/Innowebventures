@@ -142,6 +142,14 @@ export async function generateSitemap() {
   try { metadata = objects(metadataFile, await source(metadataFile)); } catch (error) {
     if (error.code !== "ENOENT") throw error;
   }
+  // Homepage structured-data edits also count as changes to its public HTML.
+  let homeStructuredDataDate;
+  try {
+    await source("src/content/homeStructuredData.json");
+    homeStructuredDataDate = lastChanged("src/content/homeStructuredData.json");
+  } catch (error) {
+    if (error.code !== "ENOENT") throw error;
+  }
   const appFile = "src/App.tsx";
   const app = parse(appFile, await source(appFile));
   const imports = new Map();
@@ -172,6 +180,7 @@ export async function generateSitemap() {
     if (excludedPath.test(route)) return;
     const url = new URL(route, origin);
     if (url.origin !== origin || url.search || url.hash || /[:*]/.test(url.pathname)) throw new Error(`Invalid sitemap route: ${route}`);
+    if (url.pathname === "/" && homeStructuredDataDate) dates = [...dates, homeStructuredDataDate];
     const pageMetadata = metadata.get(route);
     entries.set(url.href, latest(pageMetadata ? [...dates, itemLastChanged(pageMetadata)] : dates));
   }

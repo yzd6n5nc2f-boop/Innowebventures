@@ -8,6 +8,7 @@ const routes = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => new 
 const metadata = JSON.parse(await readFile("src/content/pageMetadata.json", "utf8"));
 const main = (html) => html.match(/<main\b[^>]*>[\s\S]*?<\/main>/i)?.[0];
 const escape = (value) => value.replaceAll("&", "&amp;").replaceAll('"', "&quot;").replaceAll("<", "&lt;").replaceAll(">", "&gt;");
+const homeStructuredData = JSON.parse(await readFile("src/content/homeStructuredData.json", "utf8"));
 const stamp = Date.now();
 async function get(route) {
   const response = await fetch(origin + route + (route.includes("?") ? "&" : "?") + "html-verification=" + stamp,
@@ -22,6 +23,9 @@ async function verify() {
       const expected = await readFile("dist" + file, "utf8");
       const { response, html } = await get(route);
       assert.equal(response.status, 200, route);
+      const graphs = [...html.matchAll(/<script\b[^>]*id="home-structured-data"[^>]*>([\s\S]*?)<\/script>/gi)];
+      assert.equal(graphs.length, route === "/" ? 1 : 0, route + ": homepage JSON-LD scope");
+      if (route === "/") assert.deepEqual(JSON.parse(graphs[0][1]), homeStructuredData);
       assert.ok(main(html), route + ": missing initial HTML body");
       assert.equal(main(html), main(expected), route + ": live body differs from build");
       assert.ok(html.includes("<title>" + escape(metadata[route].title) + "</title>"), route + ": title");
@@ -42,7 +46,7 @@ async function verify() {
   const liveSitemap = await get("/sitemap.xml");
   assert.equal(liveSitemap.response.status, 200);
   assert.equal((liveSitemap.html.match(/<loc>/g) || []).length, routes.length);
-  console.log("LIVE VERIFIED: all " + routes.length + " public URLs deliver complete build-matching HTML and metadata; real 404, robots.txt and sitemap passed.");
+  console.log("LIVE VERIFIED: all " + routes.length + " public URLs deliver complete build-matching HTML and metadata; homepage JSON-LD, real 404, robots.txt and sitemap passed.");
 }
 let lastError;
 for (let attempt = 1; attempt <= 8; attempt++) {

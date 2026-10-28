@@ -50,6 +50,7 @@ export function applyMetadata(html, metadata, social) {
 export async function buildPageMetadata() {
   const pages = JSON.parse(await readFile("src/content/pageMetadata.json", "utf8"));
   const socialConfig = JSON.parse(await readFile("src/content/socialMetadata.json", "utf8"));
+  const homeStructuredData = JSON.parse(await readFile("src/content/homeStructuredData.json", "utf8"));
   const config = JSON.parse(await readFile("dist/staticwebapp.config.json", "utf8"));
   const xml = await readFile("dist/sitemap.xml", "utf8");
   const paths = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => new URL(match[1]).pathname);
@@ -61,7 +62,15 @@ export async function buildPageMetadata() {
     const rule = config.routes.find((entry) => entry.route === route);
     const original = route === "/404.html" ? "/404.html" : rule?.rewrite;
     if (!original) throw new Error(`No HTML rewrite for public page ${route}`);
-    const html = applyMetadata(await readFile(`dist${original}`, "utf8"), metadata, getSocialMetadata(socialConfig, route, metadata));
+    let html = applyMetadata(await readFile(`dist${original}`, "utf8"), metadata, getSocialMetadata(socialConfig, route, metadata));
+    // The homepage is also the template for other routes. Remove its graph
+    // before reusing that template, then add it only to the actual homepage.
+    html = html.replace(/<script\b[^>]*id="home-structured-data"[^>]*>[\s\S]*?<\/script>/gi, "");
+    if (route === "/") {
+      const jsonLd = JSON.stringify(homeStructuredData, null, 2).replaceAll("<", "\\u003c");
+      html = html.replace(/<\/head>/i, () =>
+        '    <script id="home-structured-data" type="application/ld+json">\n' + jsonLd + '\n    </script>\n  </head>');
+    }
     if (original === "/index.html" && route !== "/") {
       const hash = createHash("sha256").update(route).digest("hex").slice(0, 20);
       const target = `/assets/page-metadata/${hash}.html`;

@@ -13,6 +13,7 @@ test("every public document contains exactly the approved searchable title and d
   const metadata = JSON.parse(await readFile("src/content/pageMetadata.json", "utf8"));
   const config = JSON.parse(await readFile("dist/staticwebapp.config.json", "utf8"));
   const socialConfig = JSON.parse(await readFile("src/content/socialMetadata.json", "utf8"));
+  const homeStructuredData = JSON.parse(await readFile("src/content/homeStructuredData.json", "utf8"));
   const sitemap = await readFile("dist/sitemap.xml", "utf8");
   const paths = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => new URL(match[1]).pathname);
   for (const route of [...paths, "/404.html"]) {
@@ -22,6 +23,18 @@ test("every public document contains exactly the approved searchable title and d
     assert.ok(approved.description.length < 155, route);
     const file = route === "/404.html" ? "/404.html" : config.routes.find((rule) => rule.route === route).rewrite;
     const html = await readFile(`dist${file}`, "utf8");
+    const graphs = [...html.matchAll(/<script\b[^>]*id="home-structured-data"[^>]*>([\s\S]*?)<\/script>/gi)];
+    assert.equal(graphs.length, route === "/" ? 1 : 0, route + ": homepage JSON-LD scope");
+    if (route === "/") {
+      assert.deepEqual(JSON.parse(graphs[0][1]), homeStructuredData);
+      const [organization, website] = homeStructuredData["@graph"];
+      assert.equal(organization["@type"], "ProfessionalService");
+      assert.equal(organization["@id"], "https://www.innowebventures.com/#organization");
+      assert.equal(website["@id"], "https://www.innowebventures.com/#website");
+      assert.equal(website.publisher["@id"], organization["@id"]);
+      for (const key of ["email", "telephone", "address", "sameAs"]) assert.ok(!(key in organization), key + ": unconfirmed");
+      assert.match(html, /<head\b[^>]*>[\s\S]*id="home-structured-data"[\s\S]*<\/head>/i);
+    }
     const titles = [...html.matchAll(/<title\b[^>]*>([\s\S]*?)<\/title>/gi)];
     const descriptions = [...html.matchAll(/<meta\b[^>]*>/gi)].map((match) => match[0]).filter((tag) => attribute(tag, "name")?.toLowerCase() === "description");
     assert.equal(titles.length, 1, route);
