@@ -21,7 +21,12 @@ export default function App() {
       <Route path="/forge-suite" element={<Products />} />
       <Route path="/forge-suite/:slug" element={<ProductDetail />} />
       <Route path="/products" element={<Navigate to="/solutions" replace />} />
-      <Route path="/products/:slug" element={<ProductDetail />} />
+      <Route path="/products/neuralforge" element={<Navigate to="/forge-suite/neuralforge" replace />} />
+      <Route path="/products/forge-coder" element={<Navigate to="/forge-suite/forge-coder" replace />} />
+      <Route path="/products/forgeops" element={<Navigate to="/forge-suite/forgeops" replace />} />
+      <Route path="/products/forge-robotics-lab" element={<Navigate to="/forge-suite/forge-robotics-lab" replace />} />
+      <Route path="/products/game-forge-studio" element={<Navigate to="/forge-suite/game-forge-studio" replace />} />
+      <Route path="/products/forge-media-studio" element={<Navigate to="/forge-suite/forge-media-studio" replace />} />
       <Route path="/platform" element={<Platform />} />
       <Route path="/services" element={<Services />} />
       <Route path="/services/:slug" element={<ServiceDetail />} />

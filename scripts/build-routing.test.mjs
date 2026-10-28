@@ -22,6 +22,13 @@ test("production routes serve every real URL and never accept unknown paths or s
     assert.ok(rule?.rewrite, `Missing SPA/static rewrite for ${route}`);
     await readFile(`dist${rule.rewrite}`);
   }
+  assert.ok(!paths.some((route) => route.startsWith("/products/")), "Redirect aliases must not be indexed as separate pages");
+  for (const slug of ["neuralforge", "forge-coder", "forgeops", "forge-robotics-lab", "game-forge-studio", "forge-media-studio"]) {
+    const alias = "/products/" + slug;
+    assert.equal(rules.get(alias)?.statusCode, 301, alias);
+    assert.equal(rules.get(alias)?.redirect, "/forge-suite/" + slug, alias);
+    assert.equal(rules.get(alias)?.rewrite, undefined, alias);
+  }
   const normalized = config.routes.map((rule) => rule.route.replace(/\/$/, "") || "/");
   assert.equal(new Set(normalized).size, normalized.length, "Azure treats trailing-slash variants as duplicate routes");
   for (const route of ["/does-not-exist", "/blog/not-a-real-post", "/services/not-a-service", "/products/not-a-product", "/forge-suite/not-a-product", "/work/not-a-case-study", "/services/extra/path", "/assets/missing.js", "/branding/missing.png"]) {

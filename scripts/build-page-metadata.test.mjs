@@ -16,6 +16,8 @@ test("every public document contains exactly the approved searchable title and d
   const homeStructuredData = JSON.parse(await readFile("src/content/homeStructuredData.json", "utf8"));
   const sitemap = await readFile("dist/sitemap.xml", "utf8");
   const paths = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => new URL(match[1]).pathname);
+  const seenTitles = new Set();
+  const seenDescriptions = new Set();
   for (const route of [...paths, "/404.html"]) {
     const approved = metadata[route];
     assert.ok(approved, `Missing approved metadata for ${route}`);
@@ -41,6 +43,14 @@ test("every public document contains exactly the approved searchable title and d
     assert.equal(descriptions.length, 1, route);
     assert.equal(unescape(titles[0][1]), approved.title, route);
     assert.equal(unescape(attribute(descriptions[0], "content")), approved.description, route);
+    if (route !== "/404.html") {
+      const title = unescape(titles[0][1]);
+      const description = unescape(attribute(descriptions[0], "content"));
+      assert.ok(!seenTitles.has(title), route + ": duplicate public title");
+      assert.ok(!seenDescriptions.has(description), route + ": duplicate public description");
+      seenTitles.add(title);
+      seenDescriptions.add(description);
+    }
     const canonicals = (html.match(/<link\b[^>]*>/gi) ?? []).filter((tag) => attribute(tag, "rel") === "canonical");
     assert.equal(canonicals.length, 1, route);
     assert.equal(attribute(canonicals[0], "href"), `https://www.innowebventures.com${route}`, route);

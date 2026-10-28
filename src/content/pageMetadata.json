@@ -63,15 +63,7 @@
     "title": "Specialist AI Models: NeuralForge | InnoWeb Ventures",
     "description": "Explore NeuralForge, our specialist intelligence layer for adapting AI behaviour to your sector, business language and operational workflows."
   },
-  "/products/neuralforge": {
-    "title": "Specialist AI Models: NeuralForge | InnoWeb Ventures",
-    "description": "Explore NeuralForge, our specialist intelligence layer for adapting AI behaviour to your sector, business language and operational workflows."
-  },
   "/forge-suite/forge-coder": {
-    "title": "AI Software Development: Forge Coder | InnoWeb Ventures",
-    "description": "Explore Forge Coder, the software and interface layer we use to build tailored applications, internal tools and AI-enabled business workflows."
-  },
-  "/products/forge-coder": {
     "title": "AI Software Development: Forge Coder | InnoWeb Ventures",
     "description": "Explore Forge Coder, the software and interface layer we use to build tailored applications, internal tools and AI-enabled business workflows."
   },
@@ -79,15 +71,7 @@
     "title": "AI Operations and Governance: ForgeOps | InnoWeb Ventures",
     "description": "Explore ForgeOps for managing AI workflows with monitoring, approvals, auditability and human oversight during deployment and live operation."
   },
-  "/products/forgeops": {
-    "title": "AI Operations and Governance: ForgeOps | InnoWeb Ventures",
-    "description": "Explore ForgeOps for managing AI workflows with monitoring, approvals, auditability and human oversight during deployment and live operation."
-  },
   "/forge-suite/forge-robotics-lab": {
-    "title": "Robotics Simulation: Forge Robotics Lab | InnoWeb Ventures",
-    "description": "Explore Forge Robotics Lab for robotic workflow simulation, sensor and control validation, and staged development of physical automation."
-  },
-  "/products/forge-robotics-lab": {
     "title": "Robotics Simulation: Forge Robotics Lab | InnoWeb Ventures",
     "description": "Explore Forge Robotics Lab for robotic workflow simulation, sensor and control validation, and staged development of physical automation."
   },
@@ -95,15 +79,7 @@
     "title": "Interactive Training: Game Forge Studio | InnoWeb Ventures",
     "description": "Explore Game Forge Studio for interactive training, simulations and game-based experiences designed to help people learn and engage."
   },
-  "/products/game-forge-studio": {
-    "title": "Interactive Training: Game Forge Studio | InnoWeb Ventures",
-    "description": "Explore Game Forge Studio for interactive training, simulations and game-based experiences designed to help people learn and engage."
-  },
   "/forge-suite/forge-media-studio": {
-    "title": "AI Content Creation: Forge Media Studio | InnoWeb Ventures",
-    "description": "Explore Forge Media Studio for AI-assisted images, video, audio and voice, with connected workflows for campaign assets and brand content."
-  },
-  "/products/forge-media-studio": {
     "title": "AI Content Creation: Forge Media Studio | InnoWeb Ventures",
     "description": "Explore Forge Media Studio for AI-assisted images, video, audio and voice, with connected workflows for campaign assets and brand content."
   },
