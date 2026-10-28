@@ -1,0 +1,16 @@
+name: Read-only live site audit
+on:
+  push:
+    branches: [audit/live-check-20261028]
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: false
+      - name: Read live HTTP responses and initial HTML only
+        run: python3 .audit/live-check.py
