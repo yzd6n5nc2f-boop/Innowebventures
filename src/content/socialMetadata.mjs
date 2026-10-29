@@ -8,7 +8,7 @@ export function getSocialMetadata(config, route, metadata) {
   return {
     canonical: url.href,
     properties: {
-      "og:type": route.startsWith("/blog/") ? "article" : "website",
+      "og:type": (route.startsWith("/blog/") || route.startsWith("/case-studies/")) ? "article" : "website",
       "og:site_name": "InnoWeb Ventures",
       "og:title": metadata.title,
       "og:description": metadata.description,

@@ -83,3 +83,37 @@ test("homepage product names and links are static HTML, not dependent on the old
   assert.ok(!html.includes('src="/assets/showcase.js'));
   assert.ok(!html.includes('src="/assets/neural.js'), "DOM enhancement must start after hydration");
 });
+
+test("the case study contains the full account, connected raw JSON-LD and product/service links", async () => {
+  const study = JSON.parse(await readFile("src/content/stockOrderCaseStudy.json", "utf8"));
+  const route = "/case-studies/" + study.slug;
+  const url = "https://www.innowebventures.com" + route;
+  const html = await documentFor(route);
+  const words = [...Object.values(study.summary), ...study.introduction, ...study.sections.flatMap((section) => section.paragraphs)].join(" ").split(/\s+/).length;
+  assert.ok(words >= 600 && words <= 1000, "Case study must be 600–1,000 words");
+  for (const section of study.sections) {
+    assert.ok(text(html).includes(section.heading));
+    for (const paragraph of section.paragraphs) assert.ok(text(html).includes(text(paragraph)));
+  }
+  const graph = JSON.parse(html.match(/id="case-study-structured-data"[^>]*>([\s\S]*?)<\/script>/)[1])["@graph"];
+  const article = graph.find((item) => item["@type"] === "Article");
+  assert.equal(article.headline, study.headline);
+  assert.equal(article.author["@type"], "Person");
+  assert.equal(article.author.name, "Mauricio");
+  assert.equal(article.author.url, "https://www.innowebventures.com/about/mauricio");
+  assert.equal(article.publisher["@id"], "https://www.innowebventures.com/#organization");
+  assert.equal(article.datePublished, study.datePublished);
+  assert.ok(article.image.startsWith("https://www.innowebventures.com/"));
+  assert.equal(article.mainEntityOfPage["@id"], url);
+  assert.ok(article.about.length > 0);
+  const breadcrumbs = graph.find((item) => item["@type"] === "BreadcrumbList");
+  assert.equal(breadcrumbs.itemListElement.at(-1).item, url);
+  assert.ok(html.includes('href="' + study.servicePath + '"'));
+  assert.ok((await documentFor("/forge-suite/" + study.relatedProductSlug)).includes('href="' + route + '"'));
+  assert.ok((await readFile("dist/llms.txt", "utf8")).includes(url));
+  assert.ok(!/\d/.test(study.sections.find((section) => section.heading === "Results").paragraphs.join(" ")), "No unsupported numerical results");
+  for (const screenshot of study.screenshots) {
+    assert.ok(screenshot.alt.trim());
+    assert.ok(html.includes('alt="' + screenshot.alt + '"'));
+  }
+});

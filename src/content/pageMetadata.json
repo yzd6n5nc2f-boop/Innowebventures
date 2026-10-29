@@ -186,5 +186,13 @@
   "/404.html": {
     "title": "Page Not Found | InnoWeb Ventures",
     "description": "We couldn't find that page. Explore InnoWeb Ventures services and AI insights, contact the team, or return to the home page."
+  },
+  "/case-studies/stock-and-order-automation": {
+    "title": "Stock & Order Automation Case Study | InnoWeb Ventures",
+    "description": "A working example of stock monitoring, AI-supported order preparation and delivery tracking, with human oversight and ongoing support."
+  },
+  "/about/mauricio": {
+    "title": "Mauricio: Case Study Author | InnoWeb Ventures",
+    "description": "Read Mauricio's account of building stock and order automation around a critical business workflow, human oversight and ongoing partnership."
   }
 }

@@ -1,5 +1,7 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import About from "./pages/About";
+import StockOrderCaseStudy from "./pages/StockOrderCaseStudy";
+import Mauricio from "./pages/Mauricio";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
 import Contact from "./pages/Contact";
@@ -39,6 +41,8 @@ export default function App() {
       <Route path="/delivery-method" element={<HowWeBuild />} />
       <Route path="/how-it-works" element={<Navigate to="/delivery-method" replace />} />
       <Route path="/how-we-build" element={<Navigate to="/delivery-method" replace />} />
+      <Route path="/case-studies/stock-and-order-automation" element={<StockOrderCaseStudy />} />
+      <Route path="/about/mauricio" element={<Mauricio />} />
       <Route path="/about" element={<About />} />
       <Route path="/contact" element={<Contact />} />
       <Route path="/capabilities" element={<Navigate to="/platform" replace />} />

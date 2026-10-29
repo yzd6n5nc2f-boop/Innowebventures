@@ -6,6 +6,7 @@ import NextSteps from "../components/NextSteps";
 import SiteShell from "../components/SiteShell";
 import { getProductBySlug, products } from "../content/siteContent";
 import styles from "../styles/home.module.css";
+import study from "../content/stockOrderCaseStudy.json";
 
 export default function ProductDetail() {
   const { slug } = useParams();
@@ -108,6 +109,14 @@ export default function ProductDetail() {
             </Link>
           </div>
         </article>
+
+        {product.slug === study.relatedProductSlug && (
+          <article className={styles.summaryCard}>
+            <h2>Related workflow example</h2>
+            <p>Stock monitoring, AI-supported order preparation and delivery tracking with continuing owner oversight.</p>
+            <Link className={styles.inlineCta} to={"/case-studies/" + study.slug}>{study.headline} →</Link>
+          </article>
+        )}
 
         <section className={styles.relatedSection}>
           <div className={styles.sectionHeaderCompact}>
