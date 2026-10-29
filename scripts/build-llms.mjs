@@ -50,6 +50,7 @@ export function generateLlms({ paths, metadata, records, applications, now = Dat
     ["Services", []],
     ["Forge Suite products", []],
     ["Live applications", []],
+    ["Case studies", []],
     ["Useful articles", []],
     ["More published articles", []],
   ]);
@@ -85,6 +86,7 @@ export function generateLlms({ paths, metadata, records, applications, now = Dat
     if (route === "/services" || route.startsWith("/services/")) section = "Services";
     if (route === "/forge-suite" || route.startsWith("/forge-suite/")) section = "Forge Suite products";
     if (route === "/work") section = "Live applications";
+    if (route.startsWith("/case-studies/")) section = "Case studies";
     if (route === "/blog") section = "Useful articles";
     const item = named.get(route.split("/").at(-1));
     add(section, route, item?.name || title, page.description);

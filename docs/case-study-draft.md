@@ -1,0 +1,55 @@
+# Stock and order automation with the owner in control
+
+Draft for an anonymous working example. Application screenshots are still required before publication.
+
+## Summary
+
+- **Who it is for:** Individual users and business owners who need oversight of stock, orders and deliveries.
+- **The challenge:** Keep stock monitoring, order preparation and delivery updates connected without losing control of the workflow.
+- **The solution:** Connect continuous stock monitoring with AI-supported order preparation, order tracking and delivery updates.
+- **The result:** An ongoing view of stock and order activity that helps the owner understand this part of the business.
+
+Stock monitoring, ordering and deliveries are connected parts of running a business. This working example brings them into a focused automation workflow so the owner or user can keep an ongoing view of what is happening, from stock at the site through to the next delivery.
+The approach starts with understanding the business and its needs. It focuses on a critical workflow, develops useful automation around that workflow and keeps the business involved as the system develops. Expansion into other areas follows over time, with processes and guidance in place.
+
+## The challenge
+
+The challenge is to maintain oversight across the stock and order cycle. Counting stock is part of that cycle, but the owner also needs to understand stock levels, orders being prepared, orders already in progress and the deliveries expected next. Those activities need to remain connected to the business they support.
+
+Automation also needs a clear purpose and structure. Introducing agents across many activities at once can make it harder to retain control. The starting point here is to understand a critical workflow closely enough to build something useful, while keeping the owner informed and involved.
+
+## What we built
+
+The application connects continuous stocktaking and monitoring of stock levels at the site with an ordering workflow. AI supports the preparation of orders, and the system tracks those orders as they progress towards the next delivery. Delivery updates help maintain a continuing picture of that activity.
+
+This gives the owner or user an ongoing view of the workflow rather than treating each stock count, order or delivery update as an isolated task. The focus is on helping them understand how their stock and this part of their business are doing.
+
+The development approach is collaborative. It involves working closely with the business to understand how the workflow operates, what the business needs and where automation can add value. The stock and order cycle is a working example of that approach, rather than a requirement to automate every business process.
+
+## How the human stays in control
+
+The owner remains part of the workflow through continuing oversight of stock, orders and deliveries. Automation provides information and support around the process, while the business remains involved in how that process is shaped and developed.
+
+That involvement extends beyond the initial build. Processes, guidance and structure need to be in place so the automation remains directed towards a worthwhile business need. Continuing partnership also provides support when issues arise and when the workflow needs further attention.
+
+The aim is to develop automation with the business over time. Broader automation should follow an understanding of the next workflow and its needs, rather than allowing agents to operate without that guidance.
+
+## Results
+
+The outcome described is a connected view of the stock and order cycle: continuous stock monitoring, AI-supported order preparation, tracking of orders towards delivery and delivery updates. Together, these give the owner ongoing oversight of this part of the business.
+
+The value of the example is in that visibility and continuity. The owner can follow the workflow as it progresses and use the information to maintain a better understanding of stock and business activity. Continued involvement keeps the automation connected to the needs it was built to support.
+
+## Lessons learned
+
+Understanding the workflow is central to the work. The business, its needs and the way its processes operate provide the starting point for deciding what to automate. Close collaboration helps keep the work focused on something that has practical value for the people using it.
+
+A critical workflow provides a focused place to begin. Building useful automation around that workflow creates a basis for gradual expansion into other areas. Each expansion still needs its own understanding, processes and guidance.
+
+Ongoing partnership matters alongside the application itself. Continued involvement supports the business through potential issues and helps guide the development of its automation. The stock and order example shows the approach: keep the owner informed, keep the workflow directed and develop from there.
+
+## Start with a critical workflow
+
+Work with us to understand your business needs and identify a focused starting point for automation.
+
+[Explore workflow discovery](https://www.innowebventures.com/services/platform-discovery)
