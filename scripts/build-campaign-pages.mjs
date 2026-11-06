@@ -8,7 +8,7 @@ const config = JSON.parse(await readFile("dist/staticwebapp.config.json", "utf8"
 
 for (const post of posts) {
   const url = `${origin}/blog/${post.slug}`;
-  const image = `${origin}${post.image}`;
+  const image = `${origin}${post.image || "/branding/social/default-share.jpg"}`;
   const metadata = [
     `<link rel="canonical" href="${url}" />`,
     `<meta property="og:type" content="article" />`,
@@ -17,7 +17,7 @@ for (const post of posts) {
     `<meta property="og:description" content="${escape(post.excerpt)}" />`,
     `<meta property="og:url" content="${url}" />`,
     `<meta property="og:image" content="${image}" />`,
-    `<meta property="og:image:alt" content="${escape(post.imageAlt)}" />`,
+    `<meta property="og:image:alt" content="${escape(post.imageAlt || "InnoWeb Ventures: intelligent workflows, human control.")}" />`,
     `<meta property="article:published_time" content="${post.publishAt}" />`,
     `<meta name="twitter:card" content="summary_large_image" />`,
     `<meta name="twitter:title" content="${escape(post.title)}" />`,

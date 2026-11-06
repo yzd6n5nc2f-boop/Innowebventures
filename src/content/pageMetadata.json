@@ -186,5 +186,25 @@
   "/404.html": {
     "title": "Page Not Found | InnoWeb Ventures",
     "description": "We couldn't find that page. Explore InnoWeb Ventures services and AI insights, contact the team, or return to the home page."
+  },
+  "/blog/its-just-a-fad-what-if-youre-wrong": {
+    "title": "“It’s Just a Fad.” What If You’re Wrong? | InnoWeb Ventures",
+    "description": "Dismissing AI can feel safer than testing it. Explore the hidden cost of waiting and how a focused business trial turns uncertainty into evidence."
+  },
+  "/blog/you-wouldnt-run-your-business-without-email": {
+    "title": "Beyond Email: What Are You Dismissing? | InnoWeb Ventures",
+    "description": "Email changed everyday work. Which frustrations could AI and automation help your business stop accepting as inevitable?"
+  },
+  "/blog/ai-cant-do-my-job-are-we-asking-the-wrong-question": {
+    "title": "“AI Can’t Do My Job.” Wrong Question? | InnoWeb Ventures",
+    "description": "A job contains many tasks. Find where AI and automation can support professional expertise, reduce preparation and earn their place through testing."
+  },
+  "/blog/watching-ai-develop-wont-change-your-business": {
+    "title": "Watching AI Won’t Change Your Business | InnoWeb Ventures",
+    "description": "Move from following AI to improving one real workflow. Define the task, handle exceptions and measure the full cost of a useful pilot."
+  },
+  "/blog/when-experience-becomes-a-reason-to-resist-change": {
+    "title": "When Experience Resists Change | InnoWeb Ventures",
+    "description": "Experience can shape better automation. Explore how professional judgement becomes useful system requirements rather than a defence of familiar methods."
   }
 }
