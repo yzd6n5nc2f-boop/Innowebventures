@@ -40,7 +40,6 @@ export default function About() {
             </ul>
           </article>
         </div>
-        <article className={styles.summaryCard} id="mauricio"><h2>Mauricio Rodrigues Jardim</h2><p>Mauricio works on InnoWeb Ventures’ tailored software and AI workflows, with a focus on practical business use and human oversight.</p></article>
       </section>
 
       <NextSteps
