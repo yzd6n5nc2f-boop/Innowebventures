@@ -255,10 +255,10 @@ export default function Landing() {
           <div>
             <div className={styles.sectionEyebrow}>04 · Start with one workflow</div>
             <h2>Ready to design a tailored agentic system?</h2>
-            <p>Identify one valuable task, then shape the right interface, agents, models and controls around it.</p>
+            <p>Take our free workflow assessment to identify a useful starting point for improving one process.</p>
           </div>
-          <Link className={`${styles.smallButton} ${refinements.projectButton}`} to="/contact">
-            <span>Start a project</span>
+          <Link className={`${styles.smallButton} ${refinements.projectButton}`} to="/workflow-assessment">
+            <span>Assess your workflow</span>
             <strong aria-hidden>↗</strong>
           </Link>
         </section>

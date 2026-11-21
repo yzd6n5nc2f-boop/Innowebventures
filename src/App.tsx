@@ -1,4 +1,5 @@
 import { Navigate, Route, Routes } from "react-router-dom";
+import WorkflowAssessment from "./pages/WorkflowAssessment";
 import About from "./pages/About";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
@@ -40,6 +41,7 @@ export default function App() {
       <Route path="/how-it-works" element={<Navigate to="/delivery-method" replace />} />
       <Route path="/how-we-build" element={<Navigate to="/delivery-method" replace />} />
       <Route path="/about" element={<About />} />
+      <Route path="/workflow-assessment" element={<WorkflowAssessment />} />
       <Route path="/contact" element={<Contact />} />
       <Route path="/capabilities" element={<Navigate to="/platform" replace />} />
       <Route path="*" element={<NotFound />} />

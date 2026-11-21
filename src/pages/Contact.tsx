@@ -89,21 +89,18 @@ export default function Contact() {
         <article className={styles.summaryCard}>
           <h2>Free assessment</h2>
           <p>
-            Use the quick form below to send your enquiry through our secure server-side contact endpoint and store it
-            in our linked Azure storage account for traceability. We will review the challenge, the current flow, and
-            where tailored improvements could add value.
+            Tell us about your process and where work becomes difficult. We will explore where improvements could help and agree a practical next step. You can also start with our interactive assessment.
           </p>
-          <a className={styles.primaryButton} href="#quick-form">
-            Start quick form
-          </a>
+          <Link className={styles.primaryButton} to="/workflow-assessment">
+            Take the free workflow assessment →
+          </Link>
         </article>
 
         <div className={styles.detailGrid}>
           <article className={styles.infoCard}>
             <h2>Quick form</h2>
             <p>
-              Submissions are delivered to our team securely and logged to Azure Table Storage for operational
-              traceability.
+              Use this form if you would prefer to discuss your workflow with us directly.
             </p>
             <form className={styles.formGrid} id="quick-form" onSubmit={handleQuickFormSubmit}>
               <label className={styles.formField}>

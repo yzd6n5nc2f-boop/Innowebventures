@@ -535,3 +535,6 @@ app.http("contactSubmit", {
     }
   },
 });
+
+// Shared server-only delivery adapters; credentials never enter the browser bundle.
+module.exports = { getConfig, getConfigError, escapeHtml, sendViaBrevo, sendViaSmtp, sendViaResend, sendViaSendGrid };

@@ -24,6 +24,8 @@ jobs:
           cache: npm
       - name: Install dependencies
         run: npm ci
+      - name: Check workflow assessment rules and email handling
+        run: npm run test:assessment
       - name: Build app
         run: npm run build
       - name: Check sitemap generation

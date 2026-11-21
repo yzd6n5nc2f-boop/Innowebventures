@@ -48,7 +48,7 @@ export default function BlogPost() {
             <h2>Turn one valuable workflow into a better system.</h2>
             <p>We design tailored agentic AI systems around the task, the users and the controls that matter.</p>
           </div>
-          <Link to="/contact" className={styles.projectCta}>Start a conversation →</Link>
+          <Link to="/workflow-assessment" className={styles.projectCta}>Assess your workflow →</Link>
         </footer>
       </article>
     </SiteShell>
