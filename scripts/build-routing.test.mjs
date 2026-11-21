@@ -26,7 +26,10 @@ test("production routes serve every real URL and never accept unknown paths or s
   for (const slug of ["neuralforge", "forge-coder", "forgeops", "forge-robotics-lab", "game-forge-studio", "forge-media-studio"]) {
     const alias = "/products/" + slug;
     assert.equal(rules.get(alias)?.statusCode, 301, alias);
-    assert.equal(rules.get(alias)?.redirect, "/forge-suite/" + slug, alias);
+    assert.equal(rules.get(alias)?.redirect, "/forge-suite", alias);
+    assert.equal(rules.get("/forge-suite/" + slug)?.redirect, "/forge-suite", slug);
+    assert.equal(rules.get("/forge-suite/" + slug)?.statusCode, 301, slug);
+    assert.ok(!paths.includes("/forge-suite/" + slug), slug);
     assert.equal(rules.get(alias)?.rewrite, undefined, alias);
   }
   const normalized = config.routes.map((rule) => rule.route.replace(/\/$/, "") || "/");

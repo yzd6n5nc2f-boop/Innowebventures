@@ -4,12 +4,12 @@
     "description": "Turn repetitive business tasks into tailored AI workflows. Explore software, automation and human oversight designed around your organisation."
   },
   "/solutions": {
-    "title": "Bespoke AI Systems | InnoWeb Ventures",
-    "description": "Explore the Forge Suite behind our bespoke AI systems, from specialist intelligence and software development to governed operations and content tools."
+    "title": "Tailored AI Workflow Solutions | InnoWeb Ventures",
+    "description": "See how InnoWeb uses its Forge Suite framework to build tailored business workflows, connect systems and support decisions with human oversight."
   },
   "/forge-suite": {
-    "title": "Forge Suite: AI Development Tools | InnoWeb Ventures",
-    "description": "Meet the Forge Suite: connected tools for specialist AI, software, operations, robotics, interactive experiences and media creation."
+    "title": "Forge Suite Workflow Framework | InnoWeb Ventures",
+    "description": "Explore the Forge Suite, InnoWeb’s proprietary software framework for tailored AI workflows, business system integration and human oversight."
   },
   "/platform": {
     "title": "AI Platform Architecture | InnoWeb Ventures",
@@ -58,30 +58,6 @@
   "/services/optimisation-governance-support": {
     "title": "AI Optimisation and Governance | InnoWeb Ventures",
     "description": "Keep your AI workflows useful as your business changes, with ongoing performance reviews, cost monitoring and governance improvements."
-  },
-  "/forge-suite/neuralforge": {
-    "title": "Specialist AI Models: NeuralForge | InnoWeb Ventures",
-    "description": "Explore NeuralForge, our specialist intelligence layer for adapting AI behaviour to your sector, business language and operational workflows."
-  },
-  "/forge-suite/forge-coder": {
-    "title": "AI Software Development: Forge Coder | InnoWeb Ventures",
-    "description": "Explore Forge Coder, the software and interface layer we use to build tailored applications, internal tools and AI-enabled business workflows."
-  },
-  "/forge-suite/forgeops": {
-    "title": "AI Operations and Governance: ForgeOps | InnoWeb Ventures",
-    "description": "Explore ForgeOps for managing AI workflows with monitoring, approvals, auditability and human oversight during deployment and live operation."
-  },
-  "/forge-suite/forge-robotics-lab": {
-    "title": "Robotics Simulation: Forge Robotics Lab | InnoWeb Ventures",
-    "description": "Explore Forge Robotics Lab for robotic workflow simulation, sensor and control validation, and staged development of physical automation."
-  },
-  "/forge-suite/game-forge-studio": {
-    "title": "Interactive Training: Game Forge Studio | InnoWeb Ventures",
-    "description": "Explore Game Forge Studio for interactive training, simulations and game-based experiences designed to help people learn and engage."
-  },
-  "/forge-suite/forge-media-studio": {
-    "title": "AI Content Creation: Forge Media Studio | InnoWeb Ventures",
-    "description": "Explore Forge Media Studio for AI-assisted images, video, audio and voice, with connected workflows for campaign assets and brand content."
   },
   "/blog/useful-ai-starts-with-the-workflow": {
     "title": "AI Workflow Design: Where to Start | InnoWeb Ventures",

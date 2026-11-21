@@ -435,77 +435,7 @@ export const services: Service[] = [
   },
 ];
 
-export const caseStudies: CaseStudy[] = [
-  {
-    slug: "operational-build-layer",
-    name: "Operational Build Layer",
-    problem: "Legacy workflows slowed down software delivery for operational teams.",
-    build: "Structured build layer for AI-enabled workflow software and internal tools.",
-    result: "Faster movement from workflow concept to controlled system delivery.",
-    context:
-      "Representative platform pattern showing how the Forge Suite build layer can support serious internal software creation.",
-    whatWasBuilt: [
-      "Structured workflow assembly layer",
-      "Reusable software components for operational tooling",
-      "Controlled handoff into governed deployment",
-    ],
-    measurableValue: [
-      "Pattern example: faster movement from workflow mapping to working system",
-      "Pattern example: reduced fragmentation across internal tool development",
-      "Pattern example: stronger architectural consistency at deployment time",
-    ],
-    screenshots: [
-      { title: "Build layer overview", imagePath: "branding/innoweb-hero-bg-desktop.jpeg" },
-      { title: "Workflow assembly view", imagePath: "branding/innoweb-hero-bg-mobile.jpeg" },
-    ],
-  },
-  {
-    slug: "governed-runtime-operations",
-    name: "Governed Runtime Operations",
-    problem: "AI workflows needed approval, oversight, and auditability in live environments.",
-    build: "Operational governance layer with runtime visibility and human checkpointing.",
-    result: "Clearer control over how deployed AI workflows behave in production.",
-    context:
-      "Representative platform pattern showing how operational oversight becomes part of live AI infrastructure.",
-    whatWasBuilt: [
-      "Runtime command surface",
-      "Approval and escalation pathway design",
-      "Audit and oversight structure",
-    ],
-    measurableValue: [
-      "Pattern example: stronger runtime visibility for operational owners",
-      "Pattern example: clearer approval handling in live workflows",
-      "Pattern example: better governance posture for production AI usage",
-    ],
-    screenshots: [
-      { title: "Operations board", imagePath: "branding/innoweb-hero-bg-desktop.jpeg" },
-      { title: "Approval view", imagePath: "branding/innoweb-hero-bg-mobile.jpeg" },
-    ],
-  },
-  {
-    slug: "specialised-intelligence-layer",
-    name: "Specialised Intelligence Layer",
-    problem: "Generic model behaviour lacked domain fit for specialist operational use.",
-    build: "Intelligence shaping layer for domain adaptation and specialist knowledge behaviour.",
-    result: "Higher relevance and stronger operational fit for AI-assisted outputs.",
-    context:
-      "Representative platform pattern showing how specialised intelligence can sit inside a governed AI stack.",
-    whatWasBuilt: [
-      "Domain adaptation flow",
-      "Specialised intelligence configuration layer",
-      "Outcome monitoring against operational context",
-    ],
-    measurableValue: [
-      "Pattern example: stronger domain relevance in system outputs",
-      "Pattern example: clearer intelligence specialization by workflow",
-      "Pattern example: improved operational fit for AI-enabled systems",
-    ],
-    screenshots: [
-      { title: "Intelligence map", imagePath: "branding/innoweb-hero-bg-desktop.jpeg" },
-      { title: "Specialisation view", imagePath: "branding/innoweb-hero-bg-mobile.jpeg" },
-    ],
-  },
-];
+export const caseStudies: CaseStudy[] = [];
 
 export const platformLayers: PlatformLayer[] = [
   {
@@ -559,7 +489,7 @@ export const footerNextSteps: NextStep[] = [
   {
     label: "See Example Systems",
     to: "/solutions",
-    description: "See how NeuralForge, Forge Coder, and ForgeOps work together behind tailored solutions.",
+    description: "See the software framework behind our tailored workflows.",
   },
   {
     label: "View Delivery Method",

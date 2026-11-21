@@ -35,6 +35,6 @@ test("deployed Markdown stays short, describes each link and points only to publ
   assert.equal(new Set(links.map((item) => item[1])).size, links.length);
   for (const link of links) assert.ok(allowed.has(link[1]), "Unknown link: " + link[1]);
   for (const route of ["/services", "/forge-suite", "/work", "/about", "/contact"]) assert.ok(markdown.includes("](" + "https://www.innowebventures.com" + route + ")"));
-  assert.ok(markdown.includes("/forge-suite/neuralforge"));
+  assert.ok(!markdown.includes("/forge-suite/neuralforge"));
   for (const application of applications) assert.ok(markdown.includes("](" + application.url + ")"));
 });

@@ -75,11 +75,9 @@ test("every blog article includes its full title, section headings and all parag
   assert.equal(posts.length, paths.filter((route) => route.startsWith("/blog/")).length);
 });
 
-test("homepage product names and links are static HTML, not dependent on the old injected gallery", async () => {
-  const html = await documentFor("/");
-  for (const slug of ["neuralforge", "forge-coder", "forgeops", "forge-robotics-lab", "game-forge-studio", "forge-media-studio"]) {
-    assert.ok(html.includes('href="/forge-suite/' + slug + '"'), slug);
-  }
-  assert.ok(!html.includes('src="/assets/showcase.js'));
-  assert.ok(!html.includes('src="/assets/neural.js'), "DOM enhancement must start after hydration");
+test("homepage presents one Forge Suite framework without the retired product showcase", async () => {
+ const html = await documentFor("/");
+ assert.ok(html.includes('href="/forge-suite"'));
+ for (const slug of ["neuralforge", "forge-coder", "forgeops", "forge-robotics-lab", "game-forge-studio", "forge-media-studio"]) assert.ok(!html.includes('href="/forge-suite/' + slug + '"'));
+ assert.ok(!html.includes('class="forge-logo-showcase"'));
 });

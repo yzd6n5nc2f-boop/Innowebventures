@@ -39,7 +39,7 @@
           "section": "Capability should match the task",
           "paragraph": 0,
           "anchor": "specialist workflow",
-          "to": "/forge-suite/neuralforge"
+          "to": "/services/private-local-llm"
         }
       ],
       "extra": [],
@@ -60,7 +60,7 @@
           "section": "Introduction",
           "paragraph": 1,
           "anchor": "acts within a designed workflow",
-          "to": "/forge-suite/forgeops"
+          "to": "/services/optimisation-governance-support"
         },
         {
           "section": "The problem with chat-only thinking",
@@ -168,7 +168,7 @@
           "section": "Approval points create trust",
           "paragraph": 0,
           "anchor": "Approval points",
-          "to": "/forge-suite/forgeops"
+          "to": "/services/optimisation-governance-support"
         },
         {
           "section": "Good automation keeps people responsible",
@@ -235,7 +235,7 @@
           "section": "Make the system visible and usable",
           "paragraph": 1,
           "anchor": "interface as much as the intelligence",
-          "to": "/forge-suite/forge-coder"
+          "to": "/services/integration-rollout"
         }
       ],
       "extra": [],
@@ -256,13 +256,13 @@
           "section": "Intelligence is not humanity",
           "paragraph": 0,
           "anchor": "AI agents",
-          "to": "/forge-suite/forgeops"
+          "to": "/services/optimisation-governance-support"
         },
         {
           "section": "The workhorse of a new industrial era",
           "paragraph": 1,
           "anchor": "Robotics",
-          "to": "/forge-suite/forge-robotics-lab"
+          "to": "/forge-suite"
         }
       ],
       "extra": [],
@@ -283,13 +283,13 @@
           "section": "Prepare information before people need it",
           "paragraph": 1,
           "anchor": "extract relevant details",
-          "to": "/forge-suite/neuralforge"
+          "to": "/services/private-local-llm"
         },
         {
           "section": "Fit the system to the business",
           "paragraph": 0,
           "anchor": "terminology, roles, data, approvals and operating style",
-          "to": "/forge-suite/forge-coder"
+          "to": "/services/integration-rollout"
         }
       ],
       "extra": [
@@ -317,7 +317,7 @@
           "section": "Specialist agents can handle specialist steps",
           "paragraph": 1,
           "anchor": "defined purpose, expected output and validation step",
-          "to": "/forge-suite/forgeops"
+          "to": "/services/optimisation-governance-support"
         },
         {
           "section": "Planning is only useful when it connects to action",
@@ -371,13 +371,13 @@
           "section": "Different users need different views",
           "paragraph": 1,
           "anchor": "A tailored interface",
-          "to": "/forge-suite/forge-coder"
+          "to": "/services/integration-rollout"
         },
         {
           "section": "Approvals and notifications matter",
           "paragraph": 0,
           "anchor": "Approval points",
-          "to": "/forge-suite/forgeops"
+          "to": "/services/optimisation-governance-support"
         }
       ],
       "extra": [],
@@ -398,7 +398,7 @@
           "section": "Build machines that help humans remain human",
           "paragraph": 0,
           "anchor": "design AI systems",
-          "to": "/forge-suite/forge-coder"
+          "to": "/services/integration-rollout"
         },
         {
           "section": "Build machines that help humans remain human",
@@ -425,13 +425,13 @@
           "section": "Introduction",
           "paragraph": 1,
           "anchor": "drones, rovers, robots, sensors and machines",
-          "to": "/forge-suite/forge-robotics-lab"
+          "to": "/forge-suite"
         },
         {
           "section": "Control panels will matter",
           "paragraph": 1,
           "anchor": "control layer",
-          "to": "/forge-suite/forgeops"
+          "to": "/services/optimisation-governance-support"
         }
       ],
       "extra": [],
@@ -452,7 +452,7 @@
           "section": "Reasoning, action and the physical world",
           "paragraph": 0,
           "anchor": "Robotics connects those capabilities to the physical world",
-          "to": "/forge-suite/forge-robotics-lab"
+          "to": "/forge-suite"
         },
         {
           "section": "Human life remains the priority",
@@ -479,7 +479,7 @@
           "section": "The InnoWeb view",
           "paragraph": 0,
           "anchor": "permissions, validation stages, logs, escalation paths and human approval",
-          "to": "/forge-suite/forgeops"
+          "to": "/services/optimisation-governance-support"
         },
         {
           "section": "Defined does not mean rigid",
@@ -506,7 +506,7 @@
           "section": "A different kind of team",
           "paragraph": 0,
           "anchor": "specialist digital agents",
-          "to": "/forge-suite/forgeops"
+          "to": "/services/optimisation-governance-support"
         },
         {
           "section": "Which 40% of your job would you give away?",
@@ -560,7 +560,7 @@
           "section": "Security must live inside the workflow",
           "paragraph": 0,
           "anchor": "role-based permissions",
-          "to": "/forge-suite/forgeops"
+          "to": "/services/optimisation-governance-support"
         },
         {
           "section": "The question every business should ask",
@@ -654,7 +654,7 @@
           "section": "Give people a view of the work",
           "paragraph": 3,
           "anchor": "interface takes shape",
-          "to": "/forge-suite/forge-coder"
+          "to": "/services/integration-rollout"
         }
       ],
       "extra": [],
@@ -769,7 +769,7 @@
           "section": "The practical question is where support is useful",
           "paragraph": 3,
           "anchor": "approve the result",
-          "to": "/forge-suite/forgeops"
+          "to": "/services/optimisation-governance-support"
         }
       ],
       "extra": [],
@@ -823,7 +823,7 @@
           "section": "Turn judgement into design requirements",
           "paragraph": 3,
           "anchor": "Some tasks may benefit from AI assistance",
-          "to": "/forge-suite/neuralforge"
+          "to": "/services/private-local-llm"
         }
       ],
       "extra": [],

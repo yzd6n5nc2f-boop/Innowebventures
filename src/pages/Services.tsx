@@ -12,10 +12,10 @@ export default function Services() {
       <section className={styles.pageSection}>
         <div className={styles.pageIntro}>
           <div className={styles.sectionKicker}>Deployment pathways</div>
-          <h1>Structured ways to adopt the Forge Suite without losing control.</h1>
+          <h1>Practical AI and automation services for your business.</h1>
           <p>
-            Services remain secondary to the platform. They exist to help organisations choose the right entry point,
-            deploy responsibly, and expand with operational discipline.
+            Start with one workflow, agree a focused pilot and build around the people using it. Our services cover
+            discovery, integration, private AI deployment and ongoing improvement, with clear scope and human controls.
           </p>
         </div>
 

@@ -3,33 +3,6 @@ import SiteShell from "../components/SiteShell";
 import styles from "../styles/landingShowcase.module.css";
 import refinements from "../styles/landingRefinement.module.css";
 
-const productLogos = [
-  [
-    "neuralforge",
-    "NeuralForge"
-  ],
-  [
-    "forge-coder",
-    "Forge Coder"
-  ],
-  [
-    "forgeops",
-    "ForgeOps"
-  ],
-  [
-    "forge-robotics-lab",
-    "Forge Robotics Lab"
-  ],
-  [
-    "game-forge-studio",
-    "Game Forge Studio"
-  ],
-  [
-    "forge-media-studio",
-    "Forge Media Studio"
-  ]
-];
-
 const applicationExamples = [
   {
     name: "TenderRadar",
@@ -170,17 +143,11 @@ export default function Landing() {
               ))}
             </div>
 
-            <div className="forge-logo-showcase">
-              <div className="forge-logo-heading">The Forge Suite</div>
-              <div className="forge-logo-grid">
-                {productLogos.map(([slug, name]) => (
-                  <Link key={slug} to={"/forge-suite/" + slug}>
-                    <img src={"/branding/forge-suite/logos/" + slug + ".png"} alt="" width="90" height="90" loading="lazy" />
-                    <span>{name}</span>
-                  </Link>
-                ))}
-              </div>
-            </div>
+            <article className={`${styles.suiteCard} ${refinements.clearTextCard}`}>
+              <h3>Powered by the Forge Suite</h3>
+              <p>Our proprietary software framework helps us build tailored AI workflows, connect business systems and keep people in control.</p>
+              <Link className={styles.secondary} to="/forge-suite">Explore our workflow framework →</Link>
+            </article>
           </div>
         </section>
 

@@ -26,8 +26,8 @@ export default function About() {
           <article className={styles.infoCard}>
             <h2>Our direction</h2>
             <p>
-              The company is being built around the Forge Suite: a platform family that supports software build,
-              governed operations, and specialised intelligence for serious operational environments.
+              The Forge Suite is our proprietary software framework for building tailored workflows, connecting business systems
+              and keeping people in control. We choose the approach around each client’s actual needs.
             </p>
           </article>
 
@@ -40,6 +40,7 @@ export default function About() {
             </ul>
           </article>
         </div>
+        <article className={styles.summaryCard} id="mauricio"><h2>Mauricio Rodrigues Jardim</h2><p>Mauricio works on InnoWeb Ventures’ tailored software and AI workflows, with a focus on practical business use and human oversight.</p></article>
       </section>
 
       <NextSteps
