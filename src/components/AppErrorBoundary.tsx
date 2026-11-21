@@ -31,8 +31,8 @@ export default class AppErrorBoundary extends Component<AppErrorBoundaryProps, A
             placeItems: "center",
             padding: "2rem",
             textAlign: "center",
-            background: "#05070b",
-            color: "#fff",
+            background: "#f7f8fa",
+            color: "#152235",
             fontFamily: "Inter, system-ui, -apple-system, sans-serif",
           }}
         >

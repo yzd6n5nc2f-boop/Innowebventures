@@ -1,4 +1,4 @@
-import type { CSSProperties, ReactNode } from "react";
+import type { ReactNode } from "react";
 import { useEffect, useRef, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { SITE_URL } from "../content/runtimeConfig";
@@ -19,11 +19,6 @@ const primaryNav = [
 ];
 
 export default function SiteShell({ children }: SiteShellProps) {
-  const heroStyles = {
-    ["--hero-bg" as const]: `url(${import.meta.env.BASE_URL}branding/innoweb-hero-bg-desktop.jpeg)`,
-    ["--hero-bg-mobile" as const]: `url(${import.meta.env.BASE_URL}branding/innoweb-hero-bg-mobile.jpeg)`,
-  } as CSSProperties;
-
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement | null>(null);
   const location = useLocation();
@@ -68,7 +63,7 @@ export default function SiteShell({ children }: SiteShellProps) {
   );
 
   return (
-    <div className={styles.page} style={heroStyles}>
+    <div className={styles.page}>
       <header className={`${styles.topNav} ${shellStyles.topNav}`}>
         {SITE_URL ? (
           <a className={styles.brand} href={SITE_URL}>

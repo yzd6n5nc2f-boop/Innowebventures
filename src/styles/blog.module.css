@@ -3,7 +3,7 @@
   width: min(1180px, calc(100vw - 40px));
   margin: 0 auto;
   padding: 70px 0 48px;
-  color: #f7f9ff;
+  color: #152235;
 }
 
 .intro {
@@ -12,7 +12,7 @@
 }
 
 .eyebrow {
-  color: #7cecff;
+  color: #152235;
   font-size: 0.76rem;
   font-weight: 850;
   letter-spacing: 0.15em;
@@ -32,7 +32,7 @@
 .articleHeader p {
   max-width: 760px;
   margin: 0;
-  color: rgba(240, 245, 255, 0.82);
+  color: #526176;
   font-size: clamp(1rem, 1.2vw, 1.16rem);
   line-height: 1.72;
 }
@@ -41,14 +41,12 @@
   position: relative;
   display: block;
   padding: clamp(28px, 4vw, 46px);
-  color: #f7f9ff;
+  color: #152235;
   text-decoration: none;
-  border: 1px solid rgba(119, 173, 255, 0.26);
+  border:1px solid #e3e7ee;
   border-radius: 18px;
-  background:
-    linear-gradient(140deg, rgba(9, 25, 54, 0.78), rgba(4, 13, 28, 0.42)),
-    rgba(6, 16, 36, 0.18);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.035);
+  background: #ffffff;
+  box-shadow: none;
   overflow: hidden;
   transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
 }
@@ -58,14 +56,14 @@
   position: absolute;
   inset: 0 auto 0 0;
   width: 4px;
-  background: linear-gradient(180deg, #00d8ff, #687bff);
+  background: #ffffff;
 }
 
 .featured:hover,
 .card:hover {
   transform: translateY(-3px);
-  border-color: rgba(0, 216, 255, 0.46);
-  box-shadow: 0 20px 56px rgba(0, 0, 0, 0.24);
+  border-color: #e3e7ee;
+  box-shadow: none;
 }
 
 .featuredMeta,
@@ -74,7 +72,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 9px 18px;
-  color: rgba(184, 214, 255, 0.76);
+  color: #526176;
   font-size: 0.76rem;
   font-weight: 760;
   letter-spacing: 0.04em;
@@ -91,7 +89,7 @@
 
 .featured p,
 .card p {
-  color: rgba(235, 242, 255, 0.76);
+  color: #526176;
   line-height: 1.66;
 }
 
@@ -103,7 +101,7 @@
   gap: 10px;
   align-items: center;
   margin-top: 12px;
-  color: #8fefff;
+  color: #152235;
   font-size: 0.88rem;
 }
 
@@ -119,12 +117,12 @@
   min-height: 260px;
   flex-direction: column;
   padding: 26px;
-  color: #f7f9ff;
+  color: #152235;
   text-decoration: none;
-  border: 1px solid rgba(119, 173, 255, 0.2);
+  border:1px solid #e3e7ee;
   border-radius: 16px;
-  background: linear-gradient(145deg, rgba(8, 20, 43, 0.44), rgba(5, 14, 31, 0.22));
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.025);
+  background: #ffffff;
+  box-shadow: none;
   transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
 }
 
@@ -144,9 +142,9 @@
   grid-template-columns: minmax(0, 1.1fr) minmax(260px, 0.9fr) auto;
   gap: 26px;
   align-items: center;
-  border: 1px solid rgba(119, 173, 255, 0.22);
+  border:1px solid #e3e7ee;
   border-radius: 16px;
-  background: linear-gradient(120deg, rgba(11, 28, 60, 0.62), rgba(5, 16, 36, 0.26));
+  background: #ffffff;
 }
 
 .closing h2,
@@ -158,7 +156,7 @@
 .closing p,
 .articleFooter p {
   margin: 0;
-  color: rgba(235, 242, 255, 0.72);
+  color: #526176;
   line-height: 1.62;
 }
 
@@ -169,19 +167,19 @@
   justify-content: center;
   padding: 0 17px;
   border-radius: 10px;
-  color: white;
+  color: #152235;
   text-decoration: none;
   white-space: nowrap;
   font-weight: 800;
-  background: linear-gradient(135deg, #3158e5, #637cff);
-  border: 1px solid rgba(135, 176, 255, 0.38);
-  box-shadow: 0 14px 36px rgba(45, 80, 220, 0.2);
+  background: #ffffff;
+  border:1px solid #e3e7ee;
+  box-shadow: none;
 }
 
 .backLink {
   display: inline-flex;
   margin-bottom: 30px;
-  color: #92eeff;
+  color: #152235;
   text-decoration: none;
   font-size: 0.88rem;
   font-weight: 780;
@@ -190,7 +188,7 @@
 .articleHeader {
   max-width: 930px;
   padding-bottom: 38px;
-  border-bottom: 1px solid rgba(120, 169, 255, 0.16);
+  border-bottom:1px solid #e3e7ee;
 }
 
 .articleHeader h1 {
@@ -210,7 +208,7 @@
   width: 100%;
   height: auto;
   border-radius: 16px;
-  border: 1px solid rgba(0, 216, 255, 0.24);
+  border:1px solid #e3e7ee;
 }
 
 .articleBody {
@@ -231,7 +229,7 @@
 
 .articleBody p {
   margin: 0;
-  color: rgba(240, 245, 255, 0.86);
+  color: #526176;
   font-size: 1.02rem;
   line-height: 1.82;
 }
@@ -289,3 +287,5 @@
     transition: none;
   }
 }
+
+.eyebrow,.backLink{color:#2458d3}.articleBody{color:#152235}.articleBody p{color:#526176;line-height:1.9}.articleBody a{color:#2458d3;text-decoration:underline;text-underline-offset:4px}.articleFooter,.closing{background:#fff;border-color:#e3e7ee;box-shadow:none}.projectCta{background:#2458d3;color:#fff;border-color:#2458d3}.featured,.card{background:#fff;border-color:#e3e7ee;box-shadow:none}

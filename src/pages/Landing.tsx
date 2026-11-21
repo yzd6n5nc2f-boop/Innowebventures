@@ -77,11 +77,11 @@ export default function Landing() {
   return (
     <SiteShell>
       <div className={styles.landing}>
-        <section className={styles.hero} style={{ gridTemplateColumns: "minmax(0, 1fr) minmax(0, 1fr)" }}>
+        <section className={styles.hero} >
           <div className={styles.heroCopy} style={{ maxWidth: "860px" }}>
             <div className={styles.eyebrow}>InnoWeb Ventures · Agentic AI Systems</div>
             <h1>
-              Intelligent workflows tailored for <span>real-world use.</span>
+              Intelligent workflows.<span>Human control.</span>
             </h1>
             <p className={styles.heroLead}>
               We design agentic AI systems around the organisation, workflow and people using them. Planning, model routing
