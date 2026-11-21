@@ -9,7 +9,7 @@ const applications = [
     category: "Opportunity Intelligence",
   },
   {
-    name: "BrainForge ForgePilot",
+    name: "InnoWeb AI Workspace",
     description: "A tailored agentic AI workspace that brings planning, specialist assistance and guided workflows into one practical interface.",
     url: "https://applications.innowebventures.com/BrainForge/forgepilot",
     category: "Agentic AI Workspace",
