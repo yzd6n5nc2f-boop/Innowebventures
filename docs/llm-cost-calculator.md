@@ -1,0 +1,13 @@
+# Private/local LLM service and cost calculator
+
+Route: `/services/private-local-llm#cost-calculator`. The service is included in the shared service catalogue, sitemap and llms.txt, with links from relevant local/hybrid/smaller-model articles. It inherits the AI readiness CTA from ServiceDetail. No form submissions or model/API calls are made by this calculator.
+
+All figures are editable GBP working estimates set 21 November 2026, excluding VAT. Cloud profiles are generic scenarios, not named supplier quotes or a claim of equivalent capability. No proprietary model parameter count is asserted. Defaults: economical £0.12 input / £0.35 output per million tokens; premium £2.50 / £12. Local target around 30B parameters, quantised; hardware £2,500 / 36 months, support allowance £25/month, electricity £0.28/kWh, active system 300W, idle 60W, 8 powered hours per operating day. Input/output rates of 300/20 tokens per second are illustrative, not benchmarks. No promise that a particular model fits a given GPU or achieves a particular speed.
+
+Default task is 4,000 input and 1,000 billed output tokens; 1,000 documents/month or requests/day × operating days. Repeat calls multiply both token totals. Include reasoning tokens where the provider bills them. Plan fee and included usage credits can be entered separately for each cloud profile. Unused credit never generates a negative bill. Electricity includes idle hours within the powered schedule; the machine is assumed off outside it. Existing-hardware mode removes only purchase allocation.
+
+When required processing hours exceed powered hours, the local card shows Capacity exceeded and the table labels its cost as an insufficient one-machine budget; it must not be treated as a feasible cost comparison. Throughput, concurrency, latency, quality, privacy and model licences require separate evaluation. Setup, development, cloud application hosting, retrieval, OCR, tools, storage, cooling, backup and VAT are excluded unless reflected in the user's allowances.
+
+Public API pricing context: https://ai.google.dev/gemini-api/docs/pricing. Cloud defaults are rounded planning estimates, not live currency-converted rates. Update assumptions centrally in src/content/llmCost.mjs and review visible default explanations at the same time.
+
+Validation: npm run test:llm-cost, npm run build, existing route/metadata/sitemap/llms/prerender checks. Browser QA: monthly/daily units, changing assumptions, existing-hardware mode, zero/invalid values, over-capacity warning and reset.

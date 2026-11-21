@@ -42,6 +42,8 @@ export default function BlogPost() {
           ))}
         </div>
 
+        {["when-should-a-business-run-ai-locally", "why-smaller-ai-models-may-matter-more-than-people-think", "how-innoweb-chooses-local-cloud-or-hybrid-ai"].includes(post.slug) && <p><Link className={styles.backLink} to="/services/private-local-llm#cost-calculator">Compare local and cloud LLM costs in pounds →</Link></p>}
+
         <footer className={styles.articleFooter}>
           <div>
             <div className={styles.eyebrow}>InnoWeb Ventures</div>

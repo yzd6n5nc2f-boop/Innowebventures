@@ -1,3 +1,4 @@
+import LlmCostCalculator from "../components/LlmCostCalculator";
 import NotFound from "./NotFound";
 import { Link, useParams } from "react-router-dom";
 import Breadcrumbs from "../components/Breadcrumbs";
@@ -14,6 +15,7 @@ export default function ServiceDetail() {
 
   return (
     <SiteShell>
+      {service.slug === "private-local-llm" && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ "@context": "https://schema.org", "@graph": [{ "@type": "Service", "@id": "https://www.innowebventures.com/services/private-local-llm#service", name: service.name, serviceType: "Private and local LLM deployment", description: service.summary, provider: { "@id": "https://www.innowebventures.com/#organization" }, areaServed: { "@type": "Country", name: "United Kingdom" } }, { "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: "https://www.innowebventures.com/" }, { "@type": "ListItem", position: 2, name: "Services", item: "https://www.innowebventures.com/services" }, { "@type": "ListItem", position: 3, name: service.name, item: "https://www.innowebventures.com/services/private-local-llm" }] }] }).replaceAll("<", "\\u003c") }} />}
       <section className={styles.pageSection}>
         <Breadcrumbs items={[{ label: "Deployment pathways", to: "/services" }, { label: service.name }]} />
 
@@ -22,6 +24,8 @@ export default function ServiceDetail() {
           <h1>{service.name}</h1>
           <p>{service.summary}</p>
         </div>
+
+        {service.slug === "private-local-llm" && <LlmCostCalculator />}
 
         <div className={styles.detailGrid}>
           <article className={styles.infoCard}>

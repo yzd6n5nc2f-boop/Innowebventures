@@ -12,7 +12,8 @@
     "test:metadata": "node --test scripts/build-page-metadata.test.mjs",
     "test:prerender": "node --test scripts/build-prerender.test.mjs",
     "test:llms": "node --test scripts/build-llms.test.mjs",
-    "test:assessment": "node --test api/tests/*.test.cjs"
+    "test:assessment": "node --test api/tests/*.test.cjs",
+    "test:llm-cost": "node --test scripts/llm-cost.test.mjs"
   },
   "dependencies": {
     "react": "^18.3.1",

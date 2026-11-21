@@ -344,6 +344,16 @@ export const products: Product[] = [
 
 export const services: Service[] = [
   {
+    slug: "private-local-llm",
+    name: "Private and local LLM for business",
+    duration: "Scoped to your requirements",
+    summary: "Private LLM deployment for UK SMEs, shaped around your information, workflow and users. Compare local AI for business with cloud and hybrid options before choosing a system.",
+    whatYouGet: ["Workflow and data-boundary review", "Model and hardware suitability assessment", "A scoped deployment and evaluation plan", "Agreed human review, access and support arrangements"],
+    timeline: "We agree a programme after reviewing your workflow, existing hardware, integration needs and privacy requirements.",
+    clientNeeds: "A workflow owner, representative non-sensitive test tasks, expected usage and any requirements for where information can be processed.",
+    guardrails: ["Test output quality and throughput on the actual workload", "Keep important decisions and external actions under agreed human approval", "Review access, retention, supplier terms and security for every deployment option", "Agree implementation and ongoing costs before development"],
+  },
+  {
     slug: "platform-discovery",
     name: "Platform Discovery",
     duration: "1 week",

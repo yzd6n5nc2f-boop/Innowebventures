@@ -26,6 +26,8 @@ jobs:
         run: npm ci
       - name: Check workflow assessment rules and email handling
         run: npm run test:assessment
+      - name: Check LLM cost calculations
+        run: npm run test:llm-cost
       - name: Build app
         run: npm run build
       - name: Check sitemap generation

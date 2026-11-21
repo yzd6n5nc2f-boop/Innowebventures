@@ -214,5 +214,9 @@
   "/ai-readiness-assessment": {
     "title": "AI Readiness Assessment | InnoWeb Ventures",
     "description": "Assess your SME’s data, processes, team skills, governance and privacy needs. Get a free AI readiness score and practical recommended next steps."
+  },
+  "/services/private-local-llm": {
+    "title": "Private & Local LLM for Business | InnoWeb Ventures",
+    "description": "Explore private and local LLM deployment for UK SMEs. Compare indicative cloud and local AI costs in GBP using editable usage and hardware assumptions."
   }
 }
