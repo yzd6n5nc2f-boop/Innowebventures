@@ -1,8 +1,8 @@
 export const defaults = {
- mode:'documents',volume:1000,days:22,inputTokens:4000,outputTokens:1000,callsPerTask:1,
- economyInput:.12,economyOutput:.35,economyFee:0,economyCredits:0,
- premiumInput:2.5,premiumOutput:12,premiumFee:0,premiumCredits:0,
- hardware:2500,months:36,existingHardware:false,support:25,electricity:.28,
+ mode:'requests',volume:100,days:22,inputTokens:4000,outputTokens:500,callsPerTask:4,
+ economyInput:3.2,economyOutput:16,economyFee:0,economyCredits:0,
+ premiumInput:6.4,premiumOutput:32,premiumFee:0,premiumCredits:0,
+ hardware:2500,months:36,existingHardware:true,support:0,electricity:.28,
  activeWatts:300,idleWatts:60,hoursPerDay:8,inputSpeed:300,outputSpeed:20,
 };
 const limits={volume:[0,1000000],days:[1,31],inputTokens:[0,1000000],outputTokens:[0,1000000],callsPerTask:[1,100],economyInput:[0,10000],economyOutput:[0,10000],economyFee:[0,1000000],economyCredits:[0,1000000],premiumInput:[0,10000],premiumOutput:[0,10000],premiumFee:[0,1000000],premiumCredits:[0,1000000],hardware:[0,1000000],months:[1,120],support:[0,1000000],electricity:[0,5],activeWatts:[0,10000],idleWatts:[0,10000],hoursPerDay:[0,24],inputSpeed:[.01,1000000],outputSpeed:[.01,1000000]};
