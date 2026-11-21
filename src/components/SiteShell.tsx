@@ -10,6 +10,7 @@ type SiteShellProps = {
 };
 
 const primaryNav = [
+  { label: "Sectors", to: "/sectors" },
   { label: "Free Assessments", to: "/ai-readiness-assessment" },
   { label: "Applications", to: "/work" },
   { label: "How We Build", to: "/delivery-method" },

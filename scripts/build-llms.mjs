@@ -48,6 +48,8 @@ export function generateLlms({ paths, metadata, records, applications, now = Dat
   const sections = new Map([
     ["Main pages", []],
     ["Services", []],
+    ["Sectors", []],
+    ["Case studies", []],
     ["Forge Suite products", []],
     ["Live applications", []],
     ["Useful articles", []],
@@ -84,6 +86,8 @@ export function generateLlms({ paths, metadata, records, applications, now = Dat
     let section = "Main pages";
     if (route === "/services" || route.startsWith("/services/")) section = "Services";
     if (route === "/forge-suite" || route.startsWith("/forge-suite/")) section = "Forge Suite products";
+    if (route === "/sectors" || route.startsWith("/sectors/")) section = "Sectors";
+    if (route.startsWith("/case-studies/")) section = "Case studies";
     if (route === "/work") section = "Live applications";
     if (route === "/blog") section = "Useful articles";
     const item = named.get(route.split("/").at(-1));

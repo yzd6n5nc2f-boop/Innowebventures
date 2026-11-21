@@ -1,3 +1,6 @@
+import Sectors from "./pages/Sectors";
+import EquipmentSector from "./pages/EquipmentSector";
+import EquipmentCaseStudy from "./pages/EquipmentCaseStudy";
 import { Navigate, Route, Routes } from "react-router-dom";
 import AiReadinessAssessment from "./pages/AiReadinessAssessment";
 import WorkflowAssessment from "./pages/WorkflowAssessment";
@@ -30,6 +33,9 @@ export default function App() {
       <Route path="/products/game-forge-studio" element={<Navigate to="/forge-suite/game-forge-studio" replace />} />
       <Route path="/products/forge-media-studio" element={<Navigate to="/forge-suite/forge-media-studio" replace />} />
       <Route path="/platform" element={<Platform />} />
+      <Route path="/sectors" element={<Sectors />} />
+      <Route path="/sectors/equipment-suppliers-installers" element={<EquipmentSector />} />
+      <Route path="/case-studies/coffee-equipment-management" element={<EquipmentCaseStudy />} />
       <Route path="/services" element={<Services />} />
       <Route path="/services/:slug" element={<ServiceDetail />} />
       <Route path="/work" element={<Work />} />
