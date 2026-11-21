@@ -1,11 +1,13 @@
 import { useState, type FormEvent } from "react";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import NextSteps from "../components/NextSteps";
 import SiteShell from "../components/SiteShell";
 import { CONTACT_ENDPOINT } from "../content/runtimeConfig";
 import styles from "../styles/home.module.css";
 
 export default function Contact() {
+  const [params] = useSearchParams();
+  const readinessReview = params.get("intent") === "ai-readiness-review";
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [statusMessage, setStatusMessage] = useState<{ type: "success" | "error"; text: string } | null>(null);
 
@@ -79,7 +81,7 @@ export default function Contact() {
       <section className={styles.pageSection}>
         <div className={styles.pageIntro}>
           <div className={styles.sectionKicker}>Contact</div>
-          <h1>Contact us for a discussion</h1>
+          <h1>{readinessReview ? "Book an AI readiness review call" : "Contact us for a discussion"}</h1>
           <p>
             Bring one operational challenge and we will give you an initial assessment of where automation, software,
             intelligence shaping, or systems engineering could improve the way your business runs.
@@ -98,9 +100,9 @@ export default function Contact() {
 
         <div className={styles.detailGrid}>
           <article className={styles.infoCard}>
-            <h2>Quick form</h2>
+            <h2>{readinessReview ? "Request your review call" : "Quick form"}</h2>
             <p>
-              Use this form if you would prefer to discuss your workflow with us directly.
+              {readinessReview ? "Send your details and what you would like to discuss. We will reply to agree a suitable time; submitting this form does not book an appointment automatically." : "Use this form if you would prefer to discuss your workflow with us directly."}
             </p>
             <form className={styles.formGrid} id="quick-form" onSubmit={handleQuickFormSubmit}>
               <label className={styles.formField}>
@@ -121,7 +123,7 @@ export default function Contact() {
               </label>
               <label className={styles.formField}>
                 What process, workflow, or system challenge are you trying to improve?
-                <textarea className={styles.formInput} name="challenge" rows={4} required />
+                <textarea className={styles.formInput} name="challenge" rows={4} defaultValue={readinessReview ? "I would like to book a call to discuss my AI readiness assessment and next steps." : ""} required />
               </label>
               <p className={styles.formStatus}>
                 We use your details to respond to your enquiry. Read our{" "}

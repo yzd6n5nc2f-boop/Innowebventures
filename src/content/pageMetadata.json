@@ -210,5 +210,9 @@
   "/workflow-assessment": {
     "title": "Free Workflow Assessment | InnoWeb Ventures",
     "description": "Find opportunities to improve a recurring business process. Complete a free workflow assessment and receive practical initial findings by email."
+  },
+  "/ai-readiness-assessment": {
+    "title": "AI Readiness Assessment | InnoWeb Ventures",
+    "description": "Assess your SME’s data, processes, team skills, governance and privacy needs. Get a free AI readiness score and practical recommended next steps."
   }
 }

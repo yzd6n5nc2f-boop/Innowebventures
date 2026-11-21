@@ -65,6 +65,11 @@ export default function ServiceDetail() {
             Book a Workflow Review
           </Link>
         </article>
+        <article className={styles.summaryCard}>
+          <h2>How ready is your business for AI?</h2>
+          <p>Answer 12 questions about data, processes, team skills, governance and privacy. Get your readiness band and a practical next step, with no obligation.</p>
+          <Link className={styles.primaryButton} to="/ai-readiness-assessment">Take the free AI readiness assessment →</Link>
+        </article>
       </section>
 
       <NextSteps
