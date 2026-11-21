@@ -37,7 +37,7 @@ async function handler(request, context) {
     return delivery.sendViaSendGrid({ ...payload, apiKey: config.sendgridApiKey });
   }
   return createHandler({
-    config: { ready }, secret: config.storageConnectionString,
+    config: { ready, deliveryRoute: config.provider === 'smtp' ? /brevo|sendinblue/i.test(config.smtpHost) ? 'Brevo SMTP' : 'SMTP' : config.provider }, secret: config.storageConnectionString,
     allowedOrigins: ['https://www.innowebventures.com', 'https://innowebventures.com', ...(process.env.CONTACT_ALLOWED_ORIGINS || '').split(',').map(s => s.trim()).filter(s => s && s !== '*')],
     reserve: async ({ email, assessmentType, ip, nonce, issuedAt, now, sign }) => {
       const client = TableClient.fromConnectionString(config.storageConnectionString, 'WorkflowAssessmentLimits');
@@ -56,6 +56,10 @@ async function handler(request, context) {
       if (!await reserveSlot(client, 'token-' + Math.floor(issuedAt / 7200000), [sign(nonce)])) return false;
       if (!await reserveSlot(client, 'ip-' + Math.floor(now / 3600000), Array.from({ length: 5 }, (_, i) => sign(ip) + '-' + i))) return false;
       return reserveSlot(client, 'daily-' + new Date(now).toISOString().slice(0,10), Array.from({ length: 100 }, (_, i) => String(i)));
+    },
+    release: async ({ email, assessmentType, reservedAt, sign }) => {
+      const client = TableClient.fromConnectionString(config.storageConnectionString, 'WorkflowAssessmentLimits');
+      await client.deleteEntity('recipient-' + assessmentType + '-' + Math.floor(reservedAt / 900000), sign(email));
     },
     deliver: ({ email, text, assessmentType }) => send({ to: email, replyTo: config.toEmail, subject: assessmentType === 'readiness' ? 'Your AI readiness assessment | InnoWeb Ventures' : 'Your free workflow assessment | InnoWeb Ventures', text, tag: assessmentType === 'readiness' ? 'ai-readiness-assessment' : 'workflow-assessment' }),
     notify: ({ name, email, company, text, followUp, assessmentType }) => send({ to: config.toEmail, replyTo: email, subject: assessmentType === 'readiness' ? 'New AI readiness assessment result' : 'New workflow assessment request', text: `Name: ${name}\nEmail: ${email}\nCompany: ${company || 'Not provided'}\nRequests personal follow-up: ${followUp ? 'Yes' : 'No'}\n\n${text}`, tag: assessmentType === 'readiness' ? 'ai-readiness-assessment' : 'workflow-assessment' }),

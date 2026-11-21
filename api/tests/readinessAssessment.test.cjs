@@ -41,3 +41,12 @@ test('readiness result is calculated on the server and delivered to participant 
  assert.equal(messages[0].assessmentType,'readiness');assert.match(messages[0].text,/Your AI readiness assessment/);assert.equal(notices[0].email,'owner@example.com');assert.equal(notices[0].assessmentType,'readiness');assert.equal(notices[0].followUp,false);
  assert.equal((await handler(request('POST',{...body,assessmentType:'unknown'}),ctx)).status,400);
 });
+
+test('failed delivery releases only recipient cooldown and returns a safe diagnostic code',async()=>{
+ let time=1800000000000;let released=null;let notified=false;
+ const handler=createHandler({config:{ready:true,deliveryRoute:'Brevo SMTP'},secret:'test-secret',allowedOrigins:[],now:()=>time,reserve:async()=>true,release:async value=>{released=value;},deliver:async()=>{const e=new Error('private provider error');e.code='EAUTH';throw e;},notify:async()=>{notified=true;}});
+ const req=(method,body)=>({method,headers:new Headers(),text:async()=>JSON.stringify(body)}),ctx={error(){},warn(){}};
+ const get=await handler(req('GET'),ctx);assert.equal(get.jsonBody.deliveryRoute,'Brevo SMTP');time+=3000;
+ const response=await handler(req('POST',{token:get.jsonBody.token,assessmentType:'readiness',answers:all(2),name:'Test Owner',email:'owner@example.com',company:'Test',requestResults:true,followUp:false}),ctx);
+ assert.equal(response.status,502);assert.equal(response.jsonBody.deliveryCode,'DELIVERY_AUTH');assert.equal(released.assessmentType,'readiness');assert.equal(released.email,'owner@example.com');assert.equal(released.reservedAt,time);assert.equal(notified,false);assert.ok(!JSON.stringify(response).includes('private provider error'));
+});

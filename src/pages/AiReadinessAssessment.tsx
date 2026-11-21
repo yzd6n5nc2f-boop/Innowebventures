@@ -37,7 +37,7 @@ export default function AiReadinessAssessment() {
   const form=new FormData(event.currentTarget);setBusy(true);setError('');
   try{
    const response=await fetch(endpoint,{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify({assessmentType:'readiness',answers,token,name:String(form.get('name')||'').trim(),email:String(form.get('email')||'').trim(),company:String(form.get('company')||'').trim(),website:form.get('website'),requestResults:form.get('requestResults')==='on',followUp:form.get('followUp')==='on'})});
-   const data=await response.json();if(!response.ok||data.success!==true||!data.result?.band)throw Error(data.error||'We could not complete your assessment. Please try again later.');
+   const data=await response.json();if(!response.ok||data.success!==true||!data.result?.band)throw Error((data.error||'We could not complete your assessment. Please try again later.')+(data.deliveryCode?' Reference: '+data.deliveryCode:''));
    setResult(data.result);
   }catch(e){setError(e instanceof Error?e.message:'We could not submit your assessment. Please try again later.');}
   finally{setBusy(false);}

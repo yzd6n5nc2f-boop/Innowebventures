@@ -4,7 +4,7 @@ const readiness = require('./readinessAssessment');
 const json = (status, body, headers = {}) => ({ status, jsonBody: body, headers: { 'Cache-Control': 'no-store', ...headers } });
 const emailValid = value => typeof value === 'string' && value.length <= 254 && /^[^\s@<>\r\n]+@[^\s@<>\r\n]+\.[^\s@<>\r\n]+$/.test(value);
 const short = (value, max) => typeof value === 'string' && value.trim().length <= max && !/[\r\n]/.test(value) ? value.trim() : '';
-function createHandler({ config, reserve, deliver, notify, now = Date.now, secret, allowedOrigins }) {
+function createHandler({ config, reserve, release = async () => {}, deliver, notify, now = Date.now, secret, allowedOrigins }) {
   return async (request, context) => {
     const origin = request.headers.get('origin');
     const permitted = !origin || allowedOrigins.includes(origin);
@@ -15,7 +15,7 @@ function createHandler({ config, reserve, deliver, notify, now = Date.now, secre
     const sign = text => crypto.createHmac('sha256', secret).update(text).digest('hex');
     if (request.method === 'GET') {
       const payload = `${now()}.${crypto.randomUUID()}`;
-      return json(200, { token: `${payload}.${sign(payload)}` }, headers);
+      return json(200, { token: `${payload}.${sign(payload)}`, deliveryRoute: config.deliveryRoute || "configured email service" }, headers);
     }
     let body;
     try {
@@ -38,8 +38,9 @@ function createHandler({ config, reserve, deliver, notify, now = Date.now, secre
     try { answers = rules.validateAnswers(body.answers); } catch (e) { return json(400, { error: e.message }, headers); }
     const email = body.email.trim().toLowerCase();
     const result = rules.assess(answers);
+    const reservedAt = now();
     try {
-      const ok = await reserve({ email, assessmentType, ip: request.headers.get('x-forwarded-for')?.split(',')[0].trim() || 'unknown', nonce: parts[1], issuedAt: Number(parts[0]), now: now(), sign });
+      const ok = await reserve({ email, assessmentType, ip: request.headers.get('x-forwarded-for')?.split(',')[0].trim() || 'unknown', nonce: parts[1], issuedAt: Number(parts[0]), now: reservedAt, sign });
       if (!ok) return json(429, { error: 'An assessment has recently been requested. Please check your inbox or try again later.' }, { ...headers, 'Retry-After': '900' });
     } catch {
       context.error('Assessment rate-limit store unavailable');
@@ -51,7 +52,8 @@ function createHandler({ config, reserve, deliver, notify, now = Date.now, secre
       const known = ['DELIVERY_AUTH', 'DELIVERY_PERMISSION', 'DELIVERY_LIMIT', 'DELIVERY_PROVIDER', 'DELIVERY_SENDER'];
       const deliveryCode = known.includes(e.code) ? e.code : e.code === 'EAUTH' ? 'DELIVERY_AUTH' : e.code === 'EENVELOPE' ? 'DELIVERY_SENDER' : ['ECONNECTION', 'ESOCKET', 'ETIMEDOUT'].includes(e.code) ? 'DELIVERY_CONNECTION' : 'DELIVERY_UNAVAILABLE';
       context.error('Assessment email delivery failed: ' + deliveryCode);
-      return json(502, { deliveryCode, error: 'The email could not be sent. Please try again in 15 minutes or contact us.' }, headers);
+      try { await release({ email, assessmentType, reservedAt, sign }); } catch { context.warn('Failed assessment cooldown cleanup deferred'); }
+      return json(502, { deliveryCode, error: 'The email could not be sent. Refresh the email form to try again, or contact us.' }, headers);
     }
     try { await notify({ name, email, company, answers, result, followUp: body.followUp, text, assessmentType }); }
     catch { context.warn('Assessment delivered; team notification failed. Check transactional delivery records.'); }
