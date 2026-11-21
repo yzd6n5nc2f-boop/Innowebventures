@@ -43,9 +43,11 @@ function createHandler({ config, reserve, deliver, notify, now = Date.now, secre
     }
     const text = `Hello ${name},\n\n${reportText(answers, result)}`;
     try { await deliver({ email, name, text }); }
-    catch {
-      context.error('Assessment email delivery failed');
-      return json(502, { error: 'The email could not be sent. Please try again in 15 minutes or contact us.' }, headers);
+    catch (e) {
+      const known = ['DELIVERY_AUTH', 'DELIVERY_PERMISSION', 'DELIVERY_LIMIT', 'DELIVERY_PROVIDER', 'DELIVERY_SENDER'];
+      const deliveryCode = known.includes(e.code) ? e.code : e.code === 'EAUTH' ? 'DELIVERY_AUTH' : e.code === 'EENVELOPE' ? 'DELIVERY_SENDER' : ['ECONNECTION', 'ESOCKET', 'ETIMEDOUT'].includes(e.code) ? 'DELIVERY_CONNECTION' : 'DELIVERY_UNAVAILABLE';
+      context.error('Assessment email delivery failed: ' + deliveryCode);
+      return json(502, { deliveryCode, error: 'The email could not be sent. Please try again in 15 minutes or contact us.' }, headers);
     }
     try { await notify({ name, email, company, answers, result, followUp: body.followUp, text }); }
     catch { context.warn('Assessment delivered; team notification failed. Check transactional delivery records.'); }

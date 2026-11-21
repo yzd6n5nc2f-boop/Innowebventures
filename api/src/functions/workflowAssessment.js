@@ -23,7 +23,14 @@ async function handler(request, context) {
       const response = await fetch('https://api.brevo.com/v3/smtp/email', { method: 'POST', signal: timeout,
         headers: { 'api-key': config.brevoApiKey, 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify({ sender: { email: payload.fromEmail, name: 'InnoWeb Ventures' }, to: [{ email: to }], replyTo: { email: replyTo }, subject, textContent: text, htmlContent: payload.html, tags: ['workflow-assessment'] }) });
-      if (!response.ok) throw new Error('Email provider rejected request');
+      if (!response.ok) {
+        const error = new Error('Email provider rejected request');
+        error.code = response.status === 401 ? 'DELIVERY_AUTH' : response.status === 403 ? 'DELIVERY_PERMISSION' : response.status === 429 ? 'DELIVERY_LIMIT' : 'DELIVERY_PROVIDER';
+        // Classify sender setup problems without returning provider content or credentials.
+        const detail = await response.text();
+        if (response.status === 400 && /sender|from.*(?:valid|verif)|domain/i.test(detail)) error.code = 'DELIVERY_SENDER';
+        throw error;
+      }
       return;
     }
     if (config.provider === 'resend') return delivery.sendViaResend({ ...payload, apiKey: config.resendApiKey });
