@@ -9,7 +9,7 @@ const sitemap = await readFile("dist/sitemap.xml", "utf8");
 const paths = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => new URL(match[1]).pathname);
 const decode = (value) => value.replaceAll("&quot;", '"').replaceAll("&#x27;", "'")
   .replaceAll("&#39;", "'").replaceAll("&lt;", "<").replaceAll("&gt;", ">").replaceAll("&amp;", "&");
-const text = (value) => decode(value.replace(/<!--[\s\S]*?-->/g, "").replace(/<[^>]*>/g, " ")).replace(/\s+/g, " ").trim();
+const text = (value) => decode(value.replace(/<!--[\s\S]*?-->/g, "").replace(/<\/?a\b[^>]*>/g, "").replace(/<[^>]*>/g, " ")).replace(/\s+/g, " ").trim();
 async function documentFor(route) {
   const file = config.routes.find((rule) => rule.route === route)?.rewrite;
   assert.ok(file, "Missing exact route: " + route);

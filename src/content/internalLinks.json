@@ -1,0 +1,956 @@
+{
+  "posts": {
+    "useful-ai-starts-with-the-workflow": {
+      "body": [
+        {
+          "section": "Start with the work",
+          "paragraph": 0,
+          "anchor": "Mapping those elements",
+          "to": "/services/platform-discovery"
+        },
+        {
+          "section": "Use different intelligence for different tasks",
+          "paragraph": 0,
+          "anchor": "focused local language model",
+          "to": "/services/private-local-llm"
+        }
+      ],
+      "extra": [],
+      "related": [
+        {
+          "title": "Agentic AI is not a chatbot: what businesses should actually automate",
+          "to": "/blog/agentic-ai-is-not-a-chatbot"
+        },
+        {
+          "title": "Why AI projects fail when they start with technology instead of the process",
+          "to": "/blog/why-ai-projects-fail-when-they-start-with-technology"
+        }
+      ]
+    },
+    "why-smaller-ai-models-may-matter-more-than-people-think": {
+      "body": [
+        {
+          "section": "Local deployment changes the conversation",
+          "paragraph": 0,
+          "anchor": "local deployment",
+          "to": "/services/private-local-llm"
+        },
+        {
+          "section": "Capability should match the task",
+          "paragraph": 0,
+          "anchor": "specialist workflow",
+          "to": "/forge-suite/neuralforge"
+        }
+      ],
+      "extra": [],
+      "related": [
+        {
+          "title": "When should a business run AI locally instead of in the cloud?",
+          "to": "/blog/when-should-a-business-run-ai-locally"
+        },
+        {
+          "title": "Local, cloud or hybrid AI: how InnoWeb chooses the right architecture",
+          "to": "/blog/how-innoweb-chooses-local-cloud-or-hybrid-ai"
+        }
+      ]
+    },
+    "agentic-ai-is-not-a-chatbot": {
+      "body": [
+        {
+          "section": "Introduction",
+          "paragraph": 1,
+          "anchor": "acts within a designed workflow",
+          "to": "/forge-suite/forgeops"
+        },
+        {
+          "section": "The problem with chat-only thinking",
+          "paragraph": 1,
+          "anchor": "workflow itself can guide the process",
+          "to": "/services/deployment-sprint"
+        }
+      ],
+      "extra": [],
+      "related": [
+        {
+          "title": "Why InnoWeb uses agentic AI for real operational tasks",
+          "to": "/blog/why-innoweb-uses-agentic-ai-for-real-operational-tasks"
+        },
+        {
+          "title": "Human-in-the-loop is not a weakness — it is good system design",
+          "to": "/blog/human-in-the-loop-is-good-system-design"
+        }
+      ]
+    },
+    "when-should-a-business-run-ai-locally": {
+      "body": [
+        {
+          "section": "Privacy is the first reason to consider local AI",
+          "paragraph": 1,
+          "anchor": "Running a model locally",
+          "to": "/services/private-local-llm"
+        },
+        {
+          "section": "Local AI can suit repeatable specialist tasks",
+          "paragraph": 1,
+          "anchor": "measure performance against the actual task",
+          "to": "/services/deployment-sprint"
+        }
+      ],
+      "extra": [],
+      "related": [
+        {
+          "title": "Why smaller AI models may matter more than people think",
+          "to": "/blog/why-smaller-ai-models-may-matter-more-than-people-think"
+        },
+        {
+          "title": "Local, cloud or hybrid AI: how InnoWeb chooses the right architecture",
+          "to": "/blog/how-innoweb-chooses-local-cloud-or-hybrid-ai"
+        }
+      ]
+    },
+    "the-hidden-cost-of-ai-token-usage": {
+      "body": [
+        {
+          "section": "Introduction",
+          "paragraph": 1,
+          "anchor": "Token usage, model calls and routing decisions",
+          "to": "/services/optimisation-governance-support"
+        },
+        {
+          "section": "Bigger models should earn their place",
+          "paragraph": 1,
+          "anchor": "local models",
+          "to": "/services/private-local-llm"
+        }
+      ],
+      "extra": [],
+      "related": [
+        {
+          "title": "When should a business run AI locally instead of in the cloud?",
+          "to": "/blog/when-should-a-business-run-ai-locally"
+        },
+        {
+          "title": "Useful AI starts with the workflow, not the model",
+          "to": "/blog/useful-ai-starts-with-the-workflow"
+        }
+      ]
+    },
+    "why-ai-projects-fail-when-they-start-with-technology": {
+      "body": [
+        {
+          "section": "Start with the operational pain",
+          "paragraph": 0,
+          "anchor": "A better starting point is the work itself",
+          "to": "/services/platform-discovery"
+        },
+        {
+          "section": "The best AI projects become part of operations",
+          "paragraph": 0,
+          "anchor": "integration",
+          "to": "/services/integration-rollout"
+        }
+      ],
+      "extra": [],
+      "related": [
+        {
+          "title": "The work behind the workflow: what an AI audit should uncover",
+          "to": "/blog/the-work-behind-the-workflow"
+        },
+        {
+          "title": "Turning a workflow audit into an AI system blueprint",
+          "to": "/blog/turning-a-workflow-audit-into-an-ai-system-blueprint"
+        }
+      ]
+    },
+    "human-in-the-loop-is-good-system-design": {
+      "body": [
+        {
+          "section": "Approval points create trust",
+          "paragraph": 0,
+          "anchor": "Approval points",
+          "to": "/forge-suite/forgeops"
+        },
+        {
+          "section": "Good automation keeps people responsible",
+          "paragraph": 0,
+          "anchor": "source of learning",
+          "to": "/services/optimisation-governance-support"
+        }
+      ],
+      "extra": [],
+      "related": [
+        {
+          "title": "Agentic AI is not a chatbot: what businesses should actually automate",
+          "to": "/blog/agentic-ai-is-not-a-chatbot"
+        },
+        {
+          "title": "The future is human-centred automation, not humans replaced by machines",
+          "to": "/blog/the-future-is-human-centred-automation"
+        }
+      ]
+    },
+    "what-we-are-learning-from-specialist-ai-systems": {
+      "body": [
+        {
+          "section": "The workflow defines the system",
+          "paragraph": 0,
+          "anchor": "workflow matters more than the model",
+          "to": "/services/platform-discovery"
+        },
+        {
+          "section": "Specialist systems improve through use",
+          "paragraph": 0,
+          "anchor": "connecting those pieces",
+          "to": "/services/integration-rollout"
+        }
+      ],
+      "extra": [
+        {
+          "section": "Specialist systems improve through use",
+          "text": "One current example is our coffee equipment management system in development, which focuses on ordering, supply and equipment monitoring.",
+          "anchor": "coffee equipment management system in development",
+          "to": "/case-studies/coffee-equipment-management"
+        }
+      ],
+      "related": [
+        {
+          "title": "Useful AI starts with the workflow, not the model",
+          "to": "/blog/useful-ai-starts-with-the-workflow"
+        },
+        {
+          "title": "How InnoWeb turns one workflow into an intelligent system",
+          "to": "/blog/how-innoweb-turns-one-workflow-into-an-intelligent-system"
+        }
+      ]
+    },
+    "how-innoweb-turns-one-workflow-into-an-intelligent-system": {
+      "body": [
+        {
+          "section": "Start with the work itself",
+          "paragraph": 0,
+          "anchor": "inputs, outputs, people, systems, checks, exceptions and approval points",
+          "to": "/services/platform-discovery"
+        },
+        {
+          "section": "Make the system visible and usable",
+          "paragraph": 1,
+          "anchor": "interface as much as the intelligence",
+          "to": "/forge-suite/forge-coder"
+        }
+      ],
+      "extra": [],
+      "related": [
+        {
+          "title": "The work behind the workflow: what an AI audit should uncover",
+          "to": "/blog/the-work-behind-the-workflow"
+        },
+        {
+          "title": "Turning a workflow audit into an AI system blueprint",
+          "to": "/blog/turning-a-workflow-audit-into-an-ai-system-blueprint"
+        }
+      ]
+    },
+    "ai-will-change-the-world-but-it-doesnt-need-to-replace-us": {
+      "body": [
+        {
+          "section": "Intelligence is not humanity",
+          "paragraph": 0,
+          "anchor": "AI agents",
+          "to": "/forge-suite/forgeops"
+        },
+        {
+          "section": "The workhorse of a new industrial era",
+          "paragraph": 1,
+          "anchor": "Robotics",
+          "to": "/forge-suite/forge-robotics-lab"
+        }
+      ],
+      "extra": [],
+      "related": [
+        {
+          "title": "The future is human-centred automation, not humans replaced by machines",
+          "to": "/blog/the-future-is-human-centred-automation"
+        },
+        {
+          "title": "Human-in-the-loop is not a weakness — it is good system design",
+          "to": "/blog/human-in-the-loop-is-good-system-design"
+        }
+      ]
+    },
+    "what-a-bespoke-ai-workflow-can-do-for-a-business": {
+      "body": [
+        {
+          "section": "Prepare information before people need it",
+          "paragraph": 1,
+          "anchor": "extract relevant details",
+          "to": "/forge-suite/neuralforge"
+        },
+        {
+          "section": "Fit the system to the business",
+          "paragraph": 0,
+          "anchor": "terminology, roles, data, approvals and operating style",
+          "to": "/forge-suite/forge-coder"
+        }
+      ],
+      "extra": [
+        {
+          "section": "Fit the system to the business",
+          "text": "Equipment suppliers and installers can apply this thinking to order checks, installation handovers and service follow-ups.",
+          "anchor": "Equipment suppliers and installers",
+          "to": "/sectors/equipment-suppliers-installers"
+        }
+      ],
+      "related": [
+        {
+          "title": "How InnoWeb turns one workflow into an intelligent system",
+          "to": "/blog/how-innoweb-turns-one-workflow-into-an-intelligent-system"
+        },
+        {
+          "title": "Agentic AI is not a chatbot: what businesses should actually automate",
+          "to": "/blog/agentic-ai-is-not-a-chatbot"
+        }
+      ]
+    },
+    "why-innoweb-uses-agentic-ai-for-real-operational-tasks": {
+      "body": [
+        {
+          "section": "Specialist agents can handle specialist steps",
+          "paragraph": 1,
+          "anchor": "defined purpose, expected output and validation step",
+          "to": "/forge-suite/forgeops"
+        },
+        {
+          "section": "Planning is only useful when it connects to action",
+          "paragraph": 0,
+          "anchor": "data, tools and rules",
+          "to": "/services/integration-rollout"
+        }
+      ],
+      "extra": [],
+      "related": [
+        {
+          "title": "Agentic AI is not a chatbot: what businesses should actually automate",
+          "to": "/blog/agentic-ai-is-not-a-chatbot"
+        },
+        {
+          "title": "Human-in-the-loop is not a weakness — it is good system design",
+          "to": "/blog/human-in-the-loop-is-good-system-design"
+        }
+      ]
+    },
+    "how-innoweb-chooses-local-cloud-or-hybrid-ai": {
+      "body": [
+        {
+          "section": "When local AI can make sense",
+          "paragraph": 0,
+          "anchor": "smaller model running on a local server or dedicated AI machine",
+          "to": "/services/private-local-llm"
+        },
+        {
+          "section": "Hybrid systems use each model deliberately",
+          "paragraph": 1,
+          "anchor": "each stage can be measured separately",
+          "to": "/services/optimisation-governance-support"
+        }
+      ],
+      "extra": [],
+      "related": [
+        {
+          "title": "When should a business run AI locally instead of in the cloud?",
+          "to": "/blog/when-should-a-business-run-ai-locally"
+        },
+        {
+          "title": "The hidden cost of AI: why token usage should be designed into the workflow",
+          "to": "/blog/the-hidden-cost-of-ai-token-usage"
+        }
+      ]
+    },
+    "why-innoweb-builds-ai-around-the-user": {
+      "body": [
+        {
+          "section": "Different users need different views",
+          "paragraph": 1,
+          "anchor": "A tailored interface",
+          "to": "/forge-suite/forge-coder"
+        },
+        {
+          "section": "Approvals and notifications matter",
+          "paragraph": 0,
+          "anchor": "Approval points",
+          "to": "/forge-suite/forgeops"
+        }
+      ],
+      "extra": [],
+      "related": [
+        {
+          "title": "What a bespoke AI workflow can do for a business",
+          "to": "/blog/what-a-bespoke-ai-workflow-can-do-for-a-business"
+        },
+        {
+          "title": "Human-in-the-loop is not a weakness — it is good system design",
+          "to": "/blog/human-in-the-loop-is-good-system-design"
+        }
+      ]
+    },
+    "your-ai-is-not-your-friend-and-thats-okay": {
+      "body": [
+        {
+          "section": "Build machines that help humans remain human",
+          "paragraph": 0,
+          "anchor": "design AI systems",
+          "to": "/forge-suite/forge-coder"
+        },
+        {
+          "section": "Build machines that help humans remain human",
+          "paragraph": 1,
+          "anchor": "human-centred vision of artificial intelligence",
+          "to": "/services/platform-discovery"
+        }
+      ],
+      "extra": [],
+      "related": [
+        {
+          "title": "AI Will Change the World. But It Doesn't Need to Replace Us.",
+          "to": "/blog/ai-will-change-the-world-but-it-doesnt-need-to-replace-us"
+        },
+        {
+          "title": "The future is human-centred automation, not humans replaced by machines",
+          "to": "/blog/the-future-is-human-centred-automation"
+        }
+      ]
+    },
+    "the-future-is-human-centred-automation": {
+      "body": [
+        {
+          "section": "Introduction",
+          "paragraph": 1,
+          "anchor": "drones, rovers, robots, sensors and machines",
+          "to": "/forge-suite/forge-robotics-lab"
+        },
+        {
+          "section": "Control panels will matter",
+          "paragraph": 1,
+          "anchor": "control layer",
+          "to": "/forge-suite/forgeops"
+        }
+      ],
+      "extra": [],
+      "related": [
+        {
+          "title": "Human-in-the-loop is not a weakness — it is good system design",
+          "to": "/blog/human-in-the-loop-is-good-system-design"
+        },
+        {
+          "title": "AI Will Change the World. But It Doesn't Need to Replace Us.",
+          "to": "/blog/ai-will-change-the-world-but-it-doesnt-need-to-replace-us"
+        }
+      ]
+    },
+    "the-machine-goes-in-first": {
+      "body": [
+        {
+          "section": "Reasoning, action and the physical world",
+          "paragraph": 0,
+          "anchor": "Robotics connects those capabilities to the physical world",
+          "to": "/forge-suite/forge-robotics-lab"
+        },
+        {
+          "section": "Human life remains the priority",
+          "paragraph": 0,
+          "anchor": "human-centred system",
+          "to": "/services/optimisation-governance-support"
+        }
+      ],
+      "extra": [],
+      "related": [
+        {
+          "title": "The future is human-centred automation, not humans replaced by machines",
+          "to": "/blog/the-future-is-human-centred-automation"
+        },
+        {
+          "title": "AI Will Change the World. But It Doesn't Need to Replace Us.",
+          "to": "/blog/ai-will-change-the-world-but-it-doesnt-need-to-replace-us"
+        }
+      ]
+    },
+    "your-ai-agent-doesnt-need-freedom-it-needs-a-destination": {
+      "body": [
+        {
+          "section": "The InnoWeb view",
+          "paragraph": 0,
+          "anchor": "permissions, validation stages, logs, escalation paths and human approval",
+          "to": "/forge-suite/forgeops"
+        },
+        {
+          "section": "Defined does not mean rigid",
+          "paragraph": 2,
+          "anchor": "clearly engineered operating envelope",
+          "to": "/services/platform-discovery"
+        }
+      ],
+      "extra": [],
+      "related": [
+        {
+          "title": "Agentic AI is not a chatbot: what businesses should actually automate",
+          "to": "/blog/agentic-ai-is-not-a-chatbot"
+        },
+        {
+          "title": "Human-in-the-loop is not a weakness — it is good system design",
+          "to": "/blog/human-in-the-loop-is-good-system-design"
+        }
+      ]
+    },
+    "your-next-colleague-might-never-take-a-lunch-break": {
+      "body": [
+        {
+          "section": "A different kind of team",
+          "paragraph": 0,
+          "anchor": "specialist digital agents",
+          "to": "/forge-suite/forgeops"
+        },
+        {
+          "section": "Which 40% of your job would you give away?",
+          "paragraph": 1,
+          "anchor": "searching for information, transferring data",
+          "to": "/services/integration-rollout"
+        }
+      ],
+      "extra": [],
+      "related": [
+        {
+          "title": "Why InnoWeb uses agentic AI for real operational tasks",
+          "to": "/blog/why-innoweb-uses-agentic-ai-for-real-operational-tasks"
+        },
+        {
+          "title": "The future is human-centred automation, not humans replaced by machines",
+          "to": "/blog/the-future-is-human-centred-automation"
+        }
+      ]
+    },
+    "ai-probably-wont-take-your-job-but-someone-using-ai-might-change-it": {
+      "body": [
+        {
+          "section": "The uncomfortable transition",
+          "paragraph": 2,
+          "anchor": "direct, verify and work alongside increasingly capable systems",
+          "to": "/services/optimisation-governance-support"
+        },
+        {
+          "section": "Introduction",
+          "paragraph": 1,
+          "anchor": "jobs are collections of very different activities",
+          "to": "/services/platform-discovery"
+        }
+      ],
+      "extra": [],
+      "related": [
+        {
+          "title": "What a bespoke AI workflow can do for a business",
+          "to": "/blog/what-a-bespoke-ai-workflow-can-do-for-a-business"
+        },
+        {
+          "title": "AI Will Change the World. But It Doesn't Need to Replace Us.",
+          "to": "/blog/ai-will-change-the-world-but-it-doesnt-need-to-replace-us"
+        }
+      ]
+    },
+    "the-most-dangerous-ai-agent-may-be-the-one-doing-exactly-what-you-asked": {
+      "body": [
+        {
+          "section": "Security must live inside the workflow",
+          "paragraph": 0,
+          "anchor": "role-based permissions",
+          "to": "/forge-suite/forgeops"
+        },
+        {
+          "section": "The question every business should ask",
+          "paragraph": 1,
+          "anchor": "security, permissions and accountability",
+          "to": "/services/optimisation-governance-support"
+        }
+      ],
+      "extra": [],
+      "related": [
+        {
+          "title": "Human-in-the-loop is not a weakness — it is good system design",
+          "to": "/blog/human-in-the-loop-is-good-system-design"
+        },
+        {
+          "title": "Agentic AI is not a chatbot: what businesses should actually automate",
+          "to": "/blog/agentic-ai-is-not-a-chatbot"
+        }
+      ]
+    },
+    "the-work-behind-the-workflow": {
+      "body": [
+        {
+          "section": "The procedure and the working day",
+          "paragraph": 1,
+          "anchor": "Follow a real piece of work",
+          "to": "/services/platform-discovery"
+        },
+        {
+          "section": "An audit should leave something useful behind",
+          "paragraph": 0,
+          "anchor": "suitable first pilot",
+          "to": "/services/deployment-sprint"
+        }
+      ],
+      "extra": [
+        {
+          "section": "An audit should leave something useful behind",
+          "text": "For a developing example of this operational focus, see our anonymised coffee equipment management case study.",
+          "anchor": "anonymised coffee equipment management case study",
+          "to": "/case-studies/coffee-equipment-management"
+        }
+      ],
+      "related": [
+        {
+          "title": "Why AI projects fail when they start with technology instead of the process",
+          "to": "/blog/why-ai-projects-fail-when-they-start-with-technology"
+        },
+        {
+          "title": "Turning a workflow audit into an AI system blueprint",
+          "to": "/blog/turning-a-workflow-audit-into-an-ai-system-blueprint"
+        }
+      ]
+    },
+    "turning-a-workflow-audit-into-an-ai-system-blueprint": {
+      "body": [
+        {
+          "section": "Choose the right treatment for the task",
+          "paragraph": 3,
+          "anchor": "A proposed integration",
+          "to": "/services/integration-rollout"
+        },
+        {
+          "section": "Agree what the pilot must prove",
+          "paragraph": 2,
+          "anchor": "pilot's boundaries, dependencies and success conditions",
+          "to": "/services/deployment-sprint"
+        }
+      ],
+      "extra": [],
+      "related": [
+        {
+          "title": "How InnoWeb turns one workflow into an intelligent system",
+          "to": "/blog/how-innoweb-turns-one-workflow-into-an-intelligent-system"
+        },
+        {
+          "title": "The work behind the workflow: what an AI audit should uncover",
+          "to": "/blog/the-work-behind-the-workflow"
+        }
+      ]
+    },
+    "forge-os-an-ai-operating-layer-shaped-around-your-business": {
+      "body": [
+        {
+          "section": "Introduction",
+          "paragraph": 3,
+          "anchor": "explicitly scoped integrations",
+          "to": "/services/integration-rollout"
+        },
+        {
+          "section": "Give people a view of the work",
+          "paragraph": 3,
+          "anchor": "interface takes shape",
+          "to": "/forge-suite/forge-coder"
+        }
+      ],
+      "extra": [],
+      "related": [
+        {
+          "title": "How InnoWeb turns one workflow into an intelligent system",
+          "to": "/blog/how-innoweb-turns-one-workflow-into-an-intelligent-system"
+        },
+        {
+          "title": "Local, cloud or hybrid AI: how InnoWeb chooses the right architecture",
+          "to": "/blog/how-innoweb-chooses-local-cloud-or-hybrid-ai"
+        }
+      ]
+    },
+    "building-an-ai-system-is-the-beginning-of-the-partnership": {
+      "body": [
+        {
+          "section": "Make responsibilities clear",
+          "paragraph": 1,
+          "anchor": "support responsibilities, access arrangements and the process for approving updates",
+          "to": "/services/optimisation-governance-support"
+        },
+        {
+          "section": "Choose the next workflow together",
+          "paragraph": 2,
+          "anchor": "an agreed first implementation",
+          "to": "/services/deployment-sprint"
+        }
+      ],
+      "extra": [],
+      "related": [
+        {
+          "title": "What we are learning from building specialist AI systems for real workflows",
+          "to": "/blog/what-we-are-learning-from-specialist-ai-systems"
+        },
+        {
+          "title": "The hidden cost of AI: why token usage should be designed into the workflow",
+          "to": "/blog/the-hidden-cost-of-ai-token-usage"
+        }
+      ]
+    },
+    "its-just-a-fad-what-if-youre-wrong": {
+      "body": [
+        {
+          "section": "You do not need certainty to begin",
+          "paragraph": 0,
+          "anchor": "problem worth investigating",
+          "to": "/services/platform-discovery"
+        },
+        {
+          "section": "You do not need certainty to begin",
+          "paragraph": 0,
+          "anchor": "limited trial",
+          "to": "/services/deployment-sprint"
+        }
+      ],
+      "extra": [],
+      "related": [
+        {
+          "title": "Why AI projects fail when they start with technology instead of the process",
+          "to": "/blog/why-ai-projects-fail-when-they-start-with-technology"
+        },
+        {
+          "title": "The work behind the workflow: what an AI audit should uncover",
+          "to": "/blog/the-work-behind-the-workflow"
+        }
+      ]
+    },
+    "you-wouldnt-run-your-business-without-email": {
+      "body": [
+        {
+          "section": "Look for the unnecessary wait",
+          "paragraph": 2,
+          "anchor": "two applications do not communicate",
+          "to": "/services/integration-rollout"
+        },
+        {
+          "section": "Buying a tool is only the beginning",
+          "paragraph": 1,
+          "anchor": "define the workflow",
+          "to": "/services/platform-discovery"
+        }
+      ],
+      "extra": [
+        {
+          "section": "Look for the unnecessary wait",
+          "text": "For equipment suppliers and installers, the same investigation can start with order information and handovers.",
+          "anchor": "equipment suppliers and installers",
+          "to": "/sectors/equipment-suppliers-installers"
+        }
+      ],
+      "related": [
+        {
+          "title": "What a bespoke AI workflow can do for a business",
+          "to": "/blog/what-a-bespoke-ai-workflow-can-do-for-a-business"
+        },
+        {
+          "title": "Agentic AI is not a chatbot: what businesses should actually automate",
+          "to": "/blog/agentic-ai-is-not-a-chatbot"
+        }
+      ]
+    },
+    "ai-cant-do-my-job-are-we-asking-the-wrong-question": {
+      "body": [
+        {
+          "section": "The practical question is where support is useful",
+          "paragraph": 1,
+          "anchor": "assembling the quotation",
+          "to": "/sectors/equipment-suppliers-installers"
+        },
+        {
+          "section": "The practical question is where support is useful",
+          "paragraph": 3,
+          "anchor": "approve the result",
+          "to": "/forge-suite/forgeops"
+        }
+      ],
+      "extra": [],
+      "related": [
+        {
+          "title": "What a bespoke AI workflow can do for a business",
+          "to": "/blog/what-a-bespoke-ai-workflow-can-do-for-a-business"
+        },
+        {
+          "title": "Human-in-the-loop is not a weakness — it is good system design",
+          "to": "/blog/human-in-the-loop-is-good-system-design"
+        }
+      ]
+    },
+    "watching-ai-develop-wont-change-your-business": {
+      "body": [
+        {
+          "section": "Choose something ordinary enough to measure",
+          "paragraph": 3,
+          "anchor": "examine how it works",
+          "to": "/services/platform-discovery"
+        },
+        {
+          "section": "Measure the result honestly",
+          "paragraph": 0,
+          "anchor": "Compare the pilot with the existing process",
+          "to": "/services/deployment-sprint"
+        }
+      ],
+      "extra": [],
+      "related": [
+        {
+          "title": "How InnoWeb turns one workflow into an intelligent system",
+          "to": "/blog/how-innoweb-turns-one-workflow-into-an-intelligent-system"
+        },
+        {
+          "title": "Turning a workflow audit into an AI system blueprint",
+          "to": "/blog/turning-a-workflow-audit-into-an-ai-system-blueprint"
+        }
+      ]
+    },
+    "when-experience-becomes-a-reason-to-resist-change": {
+      "body": [
+        {
+          "section": "Familiarity can hide the effort",
+          "paragraph": 3,
+          "anchor": "knowledge that has never been made explicit",
+          "to": "/services/platform-discovery"
+        },
+        {
+          "section": "Turn judgement into design requirements",
+          "paragraph": 3,
+          "anchor": "Some tasks may benefit from AI assistance",
+          "to": "/forge-suite/neuralforge"
+        }
+      ],
+      "extra": [],
+      "related": [
+        {
+          "title": "The work behind the workflow: what an AI audit should uncover",
+          "to": "/blog/the-work-behind-the-workflow"
+        },
+        {
+          "title": "Human-in-the-loop is not a weakness — it is good system design",
+          "to": "/blog/human-in-the-loop-is-good-system-design"
+        }
+      ]
+    }
+  },
+  "pages": {
+    "/services": [
+      {
+        "title": "Useful AI starts with the workflow, not the model",
+        "to": "/blog/useful-ai-starts-with-the-workflow"
+      },
+      {
+        "title": "Local, cloud or hybrid AI: how InnoWeb chooses the right architecture",
+        "to": "/blog/how-innoweb-chooses-local-cloud-or-hybrid-ai"
+      },
+      {
+        "title": "Human-in-the-loop is not a weakness — it is good system design",
+        "to": "/blog/human-in-the-loop-is-good-system-design"
+      }
+    ],
+    "/services/platform-discovery": [
+      {
+        "title": "The work behind the workflow: what an AI audit should uncover",
+        "to": "/blog/the-work-behind-the-workflow"
+      },
+      {
+        "title": "Why AI projects fail when they start with technology instead of the process",
+        "to": "/blog/why-ai-projects-fail-when-they-start-with-technology"
+      },
+      {
+        "title": "Useful AI starts with the workflow, not the model",
+        "to": "/blog/useful-ai-starts-with-the-workflow"
+      }
+    ],
+    "/services/deployment-sprint": [
+      {
+        "title": "Turning a workflow audit into an AI system blueprint",
+        "to": "/blog/turning-a-workflow-audit-into-an-ai-system-blueprint"
+      },
+      {
+        "title": "How InnoWeb turns one workflow into an intelligent system",
+        "to": "/blog/how-innoweb-turns-one-workflow-into-an-intelligent-system"
+      },
+      {
+        "title": "Agentic AI is not a chatbot: what businesses should actually automate",
+        "to": "/blog/agentic-ai-is-not-a-chatbot"
+      }
+    ],
+    "/services/integration-rollout": [
+      {
+        "title": "What a bespoke AI workflow can do for a business",
+        "to": "/blog/what-a-bespoke-ai-workflow-can-do-for-a-business"
+      },
+      {
+        "title": "Why InnoWeb uses agentic AI for real operational tasks",
+        "to": "/blog/why-innoweb-uses-agentic-ai-for-real-operational-tasks"
+      },
+      {
+        "title": "Turning a workflow audit into an AI system blueprint",
+        "to": "/blog/turning-a-workflow-audit-into-an-ai-system-blueprint"
+      }
+    ],
+    "/services/optimisation-governance-support": [
+      {
+        "title": "The hidden cost of AI: why token usage should be designed into the workflow",
+        "to": "/blog/the-hidden-cost-of-ai-token-usage"
+      },
+      {
+        "title": "Human-in-the-loop is not a weakness — it is good system design",
+        "to": "/blog/human-in-the-loop-is-good-system-design"
+      },
+      {
+        "title": "What we are learning from building specialist AI systems for real workflows",
+        "to": "/blog/what-we-are-learning-from-specialist-ai-systems"
+      }
+    ],
+    "/services/private-local-llm": [
+      {
+        "title": "When should a business run AI locally instead of in the cloud?",
+        "to": "/blog/when-should-a-business-run-ai-locally"
+      },
+      {
+        "title": "Why smaller AI models may matter more than people think",
+        "to": "/blog/why-smaller-ai-models-may-matter-more-than-people-think"
+      },
+      {
+        "title": "Local, cloud or hybrid AI: how InnoWeb chooses the right architecture",
+        "to": "/blog/how-innoweb-chooses-local-cloud-or-hybrid-ai"
+      }
+    ],
+    "/sectors": [
+      {
+        "title": "Useful AI starts with the workflow, not the model",
+        "to": "/blog/useful-ai-starts-with-the-workflow"
+      },
+      {
+        "title": "What a bespoke AI workflow can do for a business",
+        "to": "/blog/what-a-bespoke-ai-workflow-can-do-for-a-business"
+      },
+      {
+        "title": "The work behind the workflow: what an AI audit should uncover",
+        "to": "/blog/the-work-behind-the-workflow"
+      }
+    ],
+    "/sectors/equipment-suppliers-installers": [
+      {
+        "title": "What a bespoke AI workflow can do for a business",
+        "to": "/blog/what-a-bespoke-ai-workflow-can-do-for-a-business"
+      },
+      {
+        "title": "The work behind the workflow: what an AI audit should uncover",
+        "to": "/blog/the-work-behind-the-workflow"
+      },
+      {
+        "title": "Turning a workflow audit into an AI system blueprint",
+        "to": "/blog/turning-a-workflow-audit-into-an-ai-system-blueprint"
+      }
+    ]
+  }
+}

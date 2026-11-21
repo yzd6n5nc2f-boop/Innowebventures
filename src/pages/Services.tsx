@@ -1,3 +1,5 @@
+import RelatedArticles from "../components/RelatedArticles";
+import { pageLinks } from "../content/internalLinks";
 import { Link } from "react-router-dom";
 import NextSteps from "../components/NextSteps";
 import SiteShell from "../components/SiteShell";
@@ -31,6 +33,7 @@ export default function Services() {
             </article>
           ))}
         </div>
+        <RelatedArticles articles={pageLinks["/services"] ?? []} source={"/services"} />
         <article className={styles.summaryCard}>
           <h2>How ready is your business for AI?</h2>
           <p>Answer 12 questions about data, processes, team skills, governance and privacy. Get your readiness band and a practical next step, with no obligation.</p>

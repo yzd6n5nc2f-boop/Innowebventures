@@ -30,6 +30,8 @@ jobs:
         run: npm run test:llm-cost
       - name: Build app
         run: npm run build
+      - name: Check approved internal links
+        run: npm run test:internal-links
       - name: Check sitemap generation
         run: npm run test:sitemap
       - name: Check public routes and 404 handling

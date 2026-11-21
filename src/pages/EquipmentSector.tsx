@@ -1,3 +1,5 @@
+import RelatedArticles from "../components/RelatedArticles";
+import { pageLinks } from "../content/internalLinks";
 import { Link } from 'react-router-dom';
 import SiteShell from '../components/SiteShell';
 import Breadcrumbs from '../components/Breadcrumbs';
@@ -29,6 +31,7 @@ export default function EquipmentSector(){
  <li><Link to="/forge-suite/neuralforge">NeuralForge</Link> — specialist intelligence configuration where understanding sector language or approved knowledge is useful.</li></ul></article>
  <article className={styles.summaryCard}><div className={styles.sectionKicker}>Relevant work · in development</div><h2>A coffee equipment management system</h2><p>InnoWeb is working on a management system for an equipment business in Australia, focused on ordering, supply and monitoring of coffee machines. It is a relevant development example for this sector; it is not a completed UK deployment or a verified savings claim.</p><Link className={styles.primaryButton} to="/case-studies/coffee-equipment-management">Read the anonymised development case study →</Link></article>
  <h2>Frequently asked questions</h2><div className={styles.detailGrid}>{equipmentFaqs.map(f=><article className={styles.infoCard} key={f.question}><h3>{f.question}</h3><p>{f.answer}</p></article>)}</div>
+ <RelatedArticles articles={pageLinks["/sectors/equipment-suppliers-installers"] ?? []} source={"/sectors/equipment-suppliers-installers"} />
  <article className={styles.summaryCard}><h2>Find a practical starting point</h2><p>Use our free assessment to review your data, processes, team skills, governance and privacy needs. Then discuss one workflow worth improving.</p><Link className={styles.primaryButton} to="/ai-readiness-assessment">Take the free AI readiness assessment →</Link></article>
  </section></SiteShell>;
 }

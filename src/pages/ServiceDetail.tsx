@@ -1,3 +1,5 @@
+import RelatedArticles from "../components/RelatedArticles";
+import { pageLinks } from "../content/internalLinks";
 import LlmCostCalculator from "../components/LlmCostCalculator";
 import NotFound from "./NotFound";
 import { Link, useParams } from "react-router-dom";
@@ -62,6 +64,7 @@ export default function ServiceDetail() {
           </article>
         </div>
 
+        <RelatedArticles articles={pageLinks[`/services/${service.slug}`] ?? []} source={`/services/${service.slug}`} />
         <article className={styles.summaryCard}>
           <h2>Ready to map this pathway?</h2>
           <p>We will align the right platform entry point, deployment sequence, and governance checkpoints.</p>
