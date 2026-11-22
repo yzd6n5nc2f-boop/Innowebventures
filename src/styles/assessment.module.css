@@ -3,5 +3,5 @@
 .page{color:#152235}.panel,.aside{background:#fff;border-color:#e3e7ee}.panel input,.panel textarea,.panel select{background:#fff;color:#152235;border-color:#c8d1df;color-scheme:light}.page .primary{background:#2458d3;color:#fff!important}.page a{color:#2458d3}.notice{background:#edf2fc;border-color:#2458d3}.error{background:#fff4f2;color:#8c2525;border-color:#d6a29c}.error button{color:#152235}.back{color:#2458d3}.panel small{color:#526176}
 
 /* Reserve a corner for the neural illustration; keep text clear of it. */
-.intro{max-width:none;padding-right:280px;min-height:220px}.tags span{background:#edf2fc;color:#152235;border-color:#c8d1df;font-weight:600}
+.intro{max-width:none;padding-right:clamp(280px,36vw,460px);min-height:440px}.tags span{background:#edf2fc;color:#152235;border-color:#c8d1df;font-weight:600}
 @media(max-width:760px){.intro{padding-right:0;min-height:0}}

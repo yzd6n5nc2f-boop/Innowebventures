@@ -1,5 +1,5 @@
-const rows = 7;
-const columns = 12;
+const rows = 10;
+const columns = 17;
 export const neuralIndices = Array.from({length: rows * columns}, (_,i)=>i);
 export const neuralEdges = neuralIndices.flatMap(i=>{
   const row=Math.floor(i/columns),col=i%columns;
