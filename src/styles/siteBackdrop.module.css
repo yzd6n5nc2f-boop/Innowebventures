@@ -1,8 +1,8 @@
-/* Decorative textures stay behind content and fade before the reading sections. */
-.main{isolation:isolate}
+/* Repeat the page's decorative texture through the full content height. */
+.main{isolation:isolate;--texture-height:max(760px,56.28vw)}
 .main[data-backdrop="code"]{--page-texture:url('/assets/backgrounds/code-neural-v1.webp')}
 .main[data-backdrop="workflow"]{--page-texture:url('/assets/backgrounds/workflow-v1.webp')}
 .main[data-backdrop="robotics"]{--page-texture:url('/assets/backgrounds/robotics-v1.webp')}
-.main::before{content:"";position:absolute;top:86px;left:0;right:0;height:clamp(760px,70vw,1100px);max-height:calc(100% - 86px);z-index:-1;pointer-events:none;background-image:var(--page-texture);background-position:center top;background-size:cover;background-repeat:no-repeat;opacity:.82;mask-image:linear-gradient(to bottom,#000 0%,#000 68%,transparent 100%)}
-@media(max-width:760px){.main::before{top:76px;height:760px;max-height:calc(100% - 76px);background-size:auto 760px;background-position:right top;opacity:.55}}
+.main::before{content:"";position:absolute;top:86px;bottom:0;left:0;right:0;z-index:-1;pointer-events:none;background-image:var(--page-texture);background-position:center top;background-size:auto var(--texture-height);background-repeat:repeat-y;opacity:.82;mask-image:linear-gradient(to bottom,transparent 0,#000 48px,#000 calc(100% - 48px),transparent 100%);mask-size:100% var(--texture-height);mask-repeat:repeat-y;mask-position:center top}
+@media(max-width:760px){.main{--texture-height:760px}.main::before{top:76px;background-position:right top;opacity:.55}}
 @media print{.main::before{display:none}}
