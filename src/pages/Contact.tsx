@@ -79,7 +79,7 @@ export default function Contact() {
   return (
     <SiteShell>
       <section className={styles.pageSection}>
-        <div className={styles.pageIntro}>
+        <div className={styles.pageIntro} data-neural-intro="true">
           <div className={styles.sectionKicker}>Contact</div>
           <h1>{readinessReview ? "Book an AI readiness review call" : "Contact us for a discussion"}</h1>
           <p>

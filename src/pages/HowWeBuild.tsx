@@ -40,7 +40,7 @@ export default function HowWeBuild() {
   return (
     <SiteShell>
       <section className={styles.pageSection}>
-        <div className={styles.pageIntro}>
+        <div className={styles.pageIntro} data-neural-intro="true">
           <div className={styles.sectionKicker}>Development Stack</div>
           <h1>Agentic systems built for useful output, controlled operation and measurable cost.</h1>
           <p>

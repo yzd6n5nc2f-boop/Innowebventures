@@ -32,7 +32,7 @@ export default function Work() {
   return (
     <SiteShell>
       <div className={styles.page}>
-        <section className={styles.intro}>
+        <section className={styles.intro} data-neural-intro="true">
           <div className={styles.eyebrow}>Applications</div>
           <h1>Practical systems built around real workflows.</h1>
           <p>

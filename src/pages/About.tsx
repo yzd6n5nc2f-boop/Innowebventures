@@ -12,7 +12,7 @@ export default function About() {
   return (
     <SiteShell>
       <section className={styles.pageSection}>
-        <div className={styles.pageIntro}>
+        <div className={styles.pageIntro} data-neural-intro="true">
           <div className={styles.sectionKicker}>About</div>
           <h1>InnoWeb Ventures Limited</h1>
           <p>

@@ -30,3 +30,7 @@ a{color:var(--accent);text-underline-offset:4px}a:hover{color:#173d9e}
 button,input,textarea,select{font:inherit}input,textarea,select{color-scheme:light;accent-color:var(--accent)}
 :focus-visible{outline:3px solid #2458d3;outline-offset:4px}
 ::selection{background:#dce7ff;color:#152235}
+
+/* Keep the neural corner separate from the introduction on main pages. */
+[data-neural-page="true"] [data-neural-intro="true"]{width:min(100%,calc(100vw - 390px))}
+@media(max-width:760px){[data-neural-page="true"] [data-neural-intro="true"]{width:100%}}

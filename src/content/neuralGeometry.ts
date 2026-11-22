@@ -26,7 +26,7 @@ export function neuralFrame(time:number) {
     const perspective=490/(490-z);
     return {x:260+tx*perspective-(2-shell)*18,y:255+ty*perspective+(2-shell)*9,
       radius:(shell===2?2.5:1.8)*perspective,
-      opacity:[.13,.29,.95][shell],
+      opacity:[.10,.25,.95][shell] * Math.min(1, (col+.35)/1.3, (columns-col-.65)/1.3, (row+.45)/1.2, (rows-row-.55)/1.2),
       blue:Math.sin(time/3200+col*.85+row*.6)>.05,
       shell};
   });

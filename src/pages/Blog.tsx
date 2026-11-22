@@ -20,7 +20,7 @@ export default function Blog() {
   return (
     <SiteShell>
       <div className={styles.page}>
-        <section className={styles.intro}>
+        <section className={styles.intro} data-neural-intro="true">
           <div className={styles.eyebrow}>Ideas & Insights</div>
           <h1>Practical thinking on agentic AI, automation and intelligent workflows.</h1>
           <p>

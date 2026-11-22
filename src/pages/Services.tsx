@@ -10,7 +10,7 @@ export default function Services() {
   return (
     <SiteShell>
       <section className={styles.pageSection}>
-        <div className={styles.pageIntro}>
+        <div className={styles.pageIntro} data-neural-intro="true">
           <div className={styles.sectionKicker}>Deployment pathways</div>
           <h1>Practical AI and automation services for your business.</h1>
           <p>

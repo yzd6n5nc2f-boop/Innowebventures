@@ -8,7 +8,7 @@ export default function Platform() {
   return (
     <SiteShell>
       <section className={styles.pageSection}>
-        <div className={styles.pageIntro}>
+        <div className={styles.pageIntro} data-neural-intro="true">
           <div className={styles.sectionKicker}>Platform</div>
           <h1>A platform architecture designed for real-world AI adoption.</h1>
           <p>

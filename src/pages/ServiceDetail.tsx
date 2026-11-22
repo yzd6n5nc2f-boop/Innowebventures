@@ -21,7 +21,7 @@ export default function ServiceDetail() {
       <section className={styles.pageSection}>
         <Breadcrumbs items={[{ label: "Deployment pathways", to: "/services" }, { label: service.name }]} />
 
-        <div className={styles.pageIntro}>
+        <div className={styles.pageIntro} data-neural-intro="true">
           <div className={styles.sectionKicker}>Deployment pathway</div>
           <h1>{service.name}</h1>
           <p>{service.summary}</p>

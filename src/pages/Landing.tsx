@@ -78,7 +78,7 @@ export default function Landing() {
     <SiteShell>
       <div className={styles.landing}>
         <section className={styles.hero} >
-          <div className={styles.heroCopy} style={{ maxWidth: "860px" }}>
+          <div className={styles.heroCopy} data-neural-intro="true" style={{ maxWidth: "860px" }}>
             <div className={styles.eyebrow}>InnoWeb Ventures · Agentic AI Systems</div>
             <h1>
               Intelligent workflows.<span>Human control.</span>

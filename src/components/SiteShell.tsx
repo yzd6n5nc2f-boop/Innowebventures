@@ -23,6 +23,7 @@ export default function SiteShell({ children }: SiteShellProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement | null>(null);
   const location = useLocation();
+  const neuralPage = ["/", "/about", "/work", "/delivery-method", "/blog", "/sectors", "/services", "/forge-suite", "/solutions", "/platform", "/contact", "/ai-readiness-assessment", "/workflow-assessment"].includes(location.pathname) || location.pathname.startsWith("/services/") || location.pathname.startsWith("/sectors/");
 
   useEffect(() => {
     setIsMenuOpen(false);
@@ -130,8 +131,8 @@ export default function SiteShell({ children }: SiteShellProps) {
         </div>
       )}
 
-      <main className={styles.mainContent} style={{ position: "relative" }}>
-        {["/ai-readiness-assessment", "/workflow-assessment"].includes(location.pathname) && <NeuralLattice />}
+      <main className={styles.mainContent} style={{ position: "relative" }} data-neural-page={neuralPage ? "true" : undefined}>
+        {neuralPage && <NeuralLattice />}
         {children}
       </main>
 
