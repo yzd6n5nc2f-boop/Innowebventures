@@ -1,17 +1,19 @@
 import { useEffect, useRef, useState } from "react";
 import styles from "../styles/neuralLattice.module.css";
 
-// A small projected 3D network: no model download or WebGL dependency.
-const nodes = Array.from({ length: 35 }, (_, i) => {
-  const row = Math.floor(i / 7), col = i % 7;
-  const angle = (col - 3) * .32;
-  return { x: Math.sin(angle) * 125, y: (row - 2) * 32, z: Math.cos(angle) * 70 + Math.sin(row * .8) * 15 };
+const layers = 8;
+const spokes = 9;
+const indices = Array.from({ length: layers * spokes }, (_, i) => i);
+const edges = indices.flatMap(i => {
+  const row = Math.floor(i / spokes), col = i % spokes;
+  return [col < spokes - 1 ? i + 1 : -1, row < layers - 1 ? i + spokes : -1,
+    row < layers - 1 && col < spokes - 1 ? i + spokes + 1 : -1]
+    .filter(j => j >= 0).map(j => [i, j]);
 });
-const edges = nodes.flatMap((_, i) => [i % 7 < 6 ? i + 1 : -1, i < 28 ? i + 7 : -1, i < 28 && i % 7 < 6 ? i + 8 : -1].filter(j => j >= 0).map(j => [i, j]));
 
 export default function NeuralLattice() {
   const svg = useRef<SVGSVGElement>(null);
-  const clock = useRef(0);
+  const clock = useRef(4500);
   const [paused, setPaused] = useState(false);
   const [reduced, setReduced] = useState(false);
   useEffect(() => {
@@ -23,52 +25,81 @@ export default function NeuralLattice() {
   useEffect(() => {
     const root = svg.current;
     if (!root) return;
+    // Cache elements once: only update the small illustration at 25 fps.
+    const lines = [...root.querySelectorAll<SVGLineElement>('[data-edge]')];
+    const circles = [...root.querySelectorAll<SVGCircleElement>('[data-node]')];
+    const facets = [...root.querySelectorAll<SVGPathElement>('[data-facet]')];
+    const signals = [...root.querySelectorAll<SVGCircleElement>('[data-signal]')];
     let frame = 0, last = 0, visible = true;
     const paint = (time: number) => {
-      const angle = Math.sin(time / 16000) * .5 - .22;
-      const points = nodes.map((p, i) => {
-        const x = p.x * Math.cos(angle) + p.z * Math.sin(angle);
-        const z = -p.x * Math.sin(angle) + p.z * Math.cos(angle);
-        const scale = 420 / (420 - z);
-        return { x: 160 + x * scale, y: 115 + (p.y + Math.sin(time / 2400 + i) * 1.5) * scale, z };
+      // Rings advance from a distant vanishing point towards the viewer.
+      // A curved open cone, tilted in three dimensions, gives a canopy rather
+      // than a flat rectangular grid. The near edge exits the page corner.
+      const points = indices.map(i => {
+        const row = Math.floor(i / spokes), col = i % spokes;
+        const depth = (row / layers + time / 28000) % 1;
+        const sweep = time / 15000;
+        const theta = -1.45 + col * .235 + sweep;
+        const radius = 18 + depth * 160;
+        const x = 30 + depth * 230 + Math.sin(theta) * radius;
+        const y = -12 - depth * 38 + Math.cos(theta) * radius * .38;
+        const z = -500 + depth * 710 + Math.cos(theta) * radius * .38;
+        const perspective = 460 / (460 - z);
+        const tint = (Math.sin(theta + depth * 5 - time / 2600) + 1) / 2;
+        const rgb = [12 + tint * 24, 25 + tint * 63, 43 + tint * 168].map(Math.round);
+        return { x: 38 + x * perspective, y: 178 + y * perspective,
+          depth, radius: 1.1 + perspective * 2.5, color: `rgb(${rgb.join(',')})`,
+          opacity: Math.min(1, depth * 9, (1 - depth) * 12) };
       });
-      root.querySelectorAll<SVGLineElement>('[data-edge]').forEach((line, i) => {
-        const [a, b] = edges[i];
-        line.setAttribute('x1', String(points[a].x)); line.setAttribute('y1', String(points[a].y));
-        line.setAttribute('x2', String(points[b].x)); line.setAttribute('y2', String(points[b].y));
+      edges.forEach(([a,b], i) => {
+        const p=points[a], q=points[b];
+        const show = Math.abs(p.depth-q.depth) < .2;
+        const opacity = show ? Math.min(p.opacity,q.opacity) : 0;
+        const line=lines[i];
+        line.setAttribute('x1',String(p.x)); line.setAttribute('y1',String(p.y));
+        line.setAttribute('x2',String(q.x)); line.setAttribute('y2',String(q.y));
+        line.setAttribute('opacity',String(opacity * (.18 + p.depth * .22)));
+        const facet=facets[i];
+        if(facet){
+          const c=points[Math.min(a+1,points.length-1)];
+          facet.setAttribute('d',`M${p.x},${p.y} L${q.x},${q.y} L${c.x},${c.y} Z`);
+          facet.setAttribute('opacity',String(opacity * .045));
+        }
       });
-      root.querySelectorAll<SVGCircleElement>('[data-node]').forEach((circle, i) => {
-        circle.setAttribute('cx', String(points[i].x)); circle.setAttribute('cy', String(points[i].y));
-        circle.setAttribute('r', String(2.5 + (points[i].z + 90) / 65));
+      circles.forEach((circle,i) => {
+        const p=points[i]; circle.setAttribute('cx',String(p.x));circle.setAttribute('cy',String(p.y));
+        circle.setAttribute('r',String(p.radius)); circle.setAttribute('fill',p.color);
+        circle.setAttribute('opacity',String(p.opacity));
       });
-      root.querySelectorAll<SVGCircleElement>('[data-signal]').forEach((circle, i) => {
-        const [a, b] = edges[(i * 19 + 3) % edges.length];
-        const t = (time / 3300 + i / 3) % 1;
-        circle.setAttribute('cx', String(points[a].x + (points[b].x - points[a].x) * t));
-        circle.setAttribute('cy', String(points[a].y + (points[b].y - points[a].y) * t));
+      signals.forEach((circle,i) => {
+        const [a,b]=edges[(i*37+8)%edges.length], p=points[a], q=points[b];
+        const t=(time/4200+i*.25)%1;
+        circle.setAttribute('cx',String(p.x+(q.x-p.x)*t));circle.setAttribute('cy',String(p.y+(q.y-p.y)*t));
+        circle.setAttribute('opacity',String(Math.abs(p.depth-q.depth)<.2 ? Math.min(p.opacity,q.opacity)*.8 : 0));
       });
     };
     paint(clock.current);
-    const tick = (now: number) => {
-      if (last && now - last < 40) { frame = requestAnimationFrame(tick); return; }
-      if (last) clock.current += Math.min(now - last, 80);
-      last = now; paint(clock.current); frame = requestAnimationFrame(tick);
+    const tick=(now:number) => {
+      if(last && now-last<40){frame=requestAnimationFrame(tick);return;}
+      if(last)clock.current+=Math.min(now-last,80);
+      last=now;paint(clock.current);frame=requestAnimationFrame(tick);
     };
-    const sync = () => {
-      cancelAnimationFrame(frame); last = 0;
-      if (!paused && !reduced && visible && !document.hidden) frame = requestAnimationFrame(tick);
-    };
-    const observer = new IntersectionObserver(([entry]) => { visible = entry.isIntersecting; sync(); });
-    observer.observe(root); document.addEventListener('visibilitychange', sync); sync();
-    return () => { cancelAnimationFrame(frame); observer.disconnect(); document.removeEventListener('visibilitychange', sync); };
-  }, [paused, reduced]);
+    const sync=()=>{cancelAnimationFrame(frame);last=0;if(!paused&&!reduced&&visible&&!document.hidden)frame=requestAnimationFrame(tick);};
+    const observer=new IntersectionObserver(([entry])=>{visible=entry.isIntersecting;sync();});
+    observer.observe(root);document.addEventListener('visibilitychange',sync);sync();
+    return()=>{cancelAnimationFrame(frame);observer.disconnect();document.removeEventListener('visibilitychange',sync);};
+  },[paused,reduced]);
   return <div className={styles.neural}>
-    <svg ref={svg} viewBox="0 0 320 230" aria-hidden="true" focusable="false">
-      <defs><radialGradient id="neural-node"><stop stopColor="#648de9"/><stop offset="1" stopColor="#183967"/></radialGradient></defs>
-      <g stroke="#2458d3" strokeOpacity=".24" strokeWidth=".8">{edges.map(([a,b],i) => <line key={i} data-edge="" x1={nodes[a].x+160} y1={nodes[a].y+115} x2={nodes[b].x+160} y2={nodes[b].y+115}/>)}</g>
-      <g fill="url(#neural-node)">{nodes.map((p,i) => <circle key={i} data-node="" cx={p.x+160} cy={p.y+115} r="4"/>)}</g>
-      <g fill="#2458d3" stroke="#fff" strokeWidth="1">{[0,1,2].map(i => <circle key={i} data-signal="" r="3"/>)}</g>
+    <svg ref={svg} viewBox="0 0 500 280" aria-hidden="true" focusable="false">
+      <defs>
+        <radialGradient id="neural-halo"><stop stopColor="#dce7ff" stopOpacity=".65"/><stop offset="1" stopColor="#f7f8fa" stopOpacity="0"/></radialGradient>
+      </defs>
+      <ellipse cx="325" cy="125" rx="235" ry="130" fill="url(#neural-halo)"/>
+      <g fill="#2458d3">{edges.map((_,i)=><path data-facet="" key={i} opacity="0"/>)}</g>
+      <g stroke="#2458d3" strokeWidth=".8">{edges.map((_,i)=><line data-edge="" key={i} opacity="0"/>)}</g>
+      <g>{indices.map(i=><circle data-node="" key={i} r="0"/>)}</g>
+      <g fill="#2458d3" stroke="#fff" strokeWidth=".6">{[0,1,2].map(i=><circle data-signal="" key={i} r="2.1" opacity="0"/>)}</g>
     </svg>
-    {!reduced && <button type="button" onClick={() => setPaused(p => !p)} aria-pressed={paused}>{paused ? 'Play animation' : 'Pause animation'}</button>}
+    {!reduced&&<button type="button" onClick={()=>setPaused(p=>!p)} aria-pressed={paused}>{paused?'Play animation':'Pause animation'}</button>}
   </div>;
 }
