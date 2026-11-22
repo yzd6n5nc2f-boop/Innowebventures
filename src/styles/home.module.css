@@ -891,3 +891,8 @@ textarea:focus-visible {
 /* Match the homepage's clear copy column beside the neural sphere. */
 .pageIntro[data-neural-intro="true"]{max-width:min(760px,calc(100vw - 550px));padding:0;border:0;border-radius:0;background:transparent;backdrop-filter:none}
 @media(max-width:760px){.pageIntro[data-neural-intro="true"]{max-width:100%}}
+
+/* Give the symbol more presence without changing the wordmark size. */
+.brand{gap:12px;align-items:center}
+.brandLogo{width:48px;height:48px;flex-shrink:0}
+@media(max-width:760px){.brandLogo{width:40px;height:40px}}
