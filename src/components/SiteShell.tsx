@@ -1,3 +1,4 @@
+import NeuralLattice from "./NeuralLattice";
 import type { ReactNode } from "react";
 import { useEffect, useRef, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
@@ -129,7 +130,10 @@ export default function SiteShell({ children }: SiteShellProps) {
         </div>
       )}
 
-      <main className={styles.mainContent}>{children}</main>
+      <main className={styles.mainContent} style={{ position: "relative" }}>
+        {["/ai-readiness-assessment", "/workflow-assessment"].includes(location.pathname) && <NeuralLattice />}
+        {children}
+      </main>
 
       <footer className={`${styles.footer} ${shellStyles.footer}`}>
         <div>InnoWeb Ventures Limited</div>
