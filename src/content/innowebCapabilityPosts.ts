@@ -7,7 +7,7 @@ export const innowebCapabilityPosts: BlogPost[] = [
     excerpt:
       "Useful AI does not need to begin with a large transformation programme. InnoWeb starts with one real workflow, understands where work slows down, and builds an intelligent system around that process.",
     category: "InnoWeb Method",
-    published: "10 September 2026",
+    published: "27 October 2026",
     readTime: "",
     sections: [
       {
@@ -106,7 +106,7 @@ export const innowebCapabilityPosts: BlogPost[] = [
     excerpt:
       "A bespoke AI workflow is not a generic chatbot. It is a practical system designed around a specific business process, helping prepare information, check details, coordinate tasks and support decisions.",
     category: "Bespoke AI Systems",
-    published: "17 September 2026",
+    published: "6 October 2026",
     readTime: "",
     sections: [
       {
@@ -151,7 +151,7 @@ export const innowebCapabilityPosts: BlogPost[] = [
     excerpt:
       "Agentic AI becomes useful when it is designed around real tasks: planning steps, using tools, checking information, routing work and bringing people in where control is needed.",
     category: "Agentic Systems",
-    published: "22 September 2026",
+    published: "8 October 2026",
     readTime: "",
     sections: [
       {
@@ -196,7 +196,7 @@ export const innowebCapabilityPosts: BlogPost[] = [
     excerpt:
       "Not every AI task needs the same architecture. InnoWeb looks at privacy, cost, latency, capability and control before deciding whether a workflow should use local, cloud or hybrid AI.",
     category: "AI Architecture",
-    published: "24 September 2026",
+    published: "13 October 2026",
     readTime: "",
     sections: [
       {

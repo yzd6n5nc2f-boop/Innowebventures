@@ -65,7 +65,7 @@ export const realWorldAutomationPosts: BlogPost[] = [
     excerpt:
       "The most important future for AI and robotics is not a world where humans disappear from work. It is a world where intelligent systems give people more leverage, better control and safer ways to operate.",
     category: "Human-Centred Automation",
-    published: "1 October 2026",
+    published: "20 October 2026",
     readTime: "",
     sections: [
       {
