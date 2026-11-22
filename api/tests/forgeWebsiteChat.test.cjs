@@ -5,7 +5,7 @@ const req=(messages=[{role:'user',content:'What services do you offer?'}],extra=
 test('adds server company brief, uses only the fixed Forge Brain route and returns text',async()=>{
  let call;const handler=createChatHandler({fetchImpl:async(url,options)=>{call={url,options};return {ok:true,json:async()=>({answer:'Workflow discovery and tailored software.'})};}});
  const response=await handler(req());assert.equal(response.status,200);assert.match(call.url,/^https:\/\/applications\.innowebventures\.com\/BrainForge\/api\/forgepilot\/chat$/);
- const sent=JSON.parse(call.options.body);assert.equal(sent.messages.length,1);assert.match(sent.messages[0].content,/No fixed prices/);assert.match(sent.messages[0].content,/What services do you offer/);assert.ok(call.options.signal);assert.equal(response.headers['Cache-Control'],'no-store');
+ const sent=JSON.parse(call.options.body);assert.equal(sent.messages.length,2);assert.match(sent.messages[0].content,/No fixed prices/);assert.equal(sent.messages.at(-1).content,'What services do you offer?');assert.equal(sent.max_tokens,256);assert.equal(sent.temperature,0.2);assert.ok(call.options.signal);assert.equal(response.headers['Cache-Control'],'no-store');
 });
 test('rejects uploads, URLs as endpoints, client system roles and extra payload fields before inference',async()=>{
  let calls=0;const h=createChatHandler({fetchImpl:async()=>{calls++;throw Error();}});
@@ -32,4 +32,14 @@ test('handles upstream failures without disclosing upstream error content',async
  for(const fetchImpl of [async()=>({ok:false,text:async()=>'secret'}),async()=>{throw Error('secret');},async()=>({ok:true,json:async()=>({})})]){
  const r=await createChatHandler({fetchImpl})(req());assert.equal(r.status,502);assert.doesNotMatch(JSON.stringify(r),/secret/);
  }
+});
+
+test('keeps visitor question last for Forge Brain research routing and bounds history',async()=>{
+ let sent;const h=createChatHandler({fetchImpl:async(u,o)=>{sent=JSON.parse(o.body);return {ok:true,json:async()=>({answer:'Hello'})};}});
+ const history=Array.from({length:7},(_,i)=>({role:i%2?'assistant':'user',content:i===6?'What is your free workflow assessment?':'Earlier turn '+i}));
+ assert.equal((await h(req(history))).status,200);
+ assert.equal(sent.messages.length,6);assert.deepEqual(sent.messages.slice(1),history.slice(-5));
+ assert.equal(sent.messages.at(-1).content,'What is your free workflow assessment?');
+ assert.doesNotMatch(sent.messages.at(-1).content,/https?:|\b(web|website|link|url)\b/i);
+ assert.match(sent.messages[0].content,/COMPANY BRIEF/);
 });

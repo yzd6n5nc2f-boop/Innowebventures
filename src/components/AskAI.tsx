@@ -4,7 +4,7 @@ import styles from '../styles/askAI.module.css';
 type Message={role:'user'|'assistant';content:string};
 const prompts=['What could you improve in my workflow?','How do you keep people in control?','When would private AI make sense?'];
 export default function AskAI(){
- const [open,setOpen]=useState(false),[messages,setMessages]=useState<Message[]>([]),[draft,setDraft]=useState(''),[busy,setBusy]=useState(false),[error,setError]=useState('');
+ const [open,setOpen]=useState(false),[messages,setMessages]=useState<Message[]>([]),[draft,setDraft]=useState(''),[busy,setBusy]=useState(false),[error,setError]=useState(''),[pending,setPending]=useState('');
  const input=useRef<HTMLTextAreaElement>(null),launcher=useRef<HTMLButtonElement>(null),end=useRef<HTMLDivElement>(null),controller=useRef<AbortController>();
  const close=()=>{setOpen(false);launcher.current?.focus();};
  useEffect(()=>{if(open)input.current?.focus();},[open]);
@@ -13,13 +13,13 @@ export default function AskAI(){
  async function send(text=draft){
   if(busy||!text.trim())return;
   const history=[...messages,{role:'user' as const,content:text.trim()}].slice(-7);
-  setBusy(true);setError('');setDraft('');controller.current=new AbortController();
+  setBusy(true);setPending(text.trim());setError('');setDraft('');controller.current=new AbortController();
   try{
    const response=await fetch('/api/forge-chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({messages:history}),signal:controller.current.signal});
    const data=await response.json();if(!response.ok)throw Error(data.error||'Please try again later.');
    setMessages([...history,{role:'assistant',content:data.answer}]);
   }catch(e){if(!(e instanceof Error&&e.name==='AbortError')){setError(e instanceof Error?e.message:'The chat is unavailable. Please try again.');setDraft(text);}}
-  finally{setBusy(false);input.current?.focus();}
+  finally{setBusy(false);setPending('');input.current?.focus();}
  }
  return <aside className={styles.widget} aria-label="Forge AI chat">
   {open&&<section className={styles.panel} role="dialog" aria-modal="false" aria-labelledby="forge-chat-title" onKeyDown={e=>{if(e.key==='Escape'){e.stopPropagation();close();}}}>
@@ -29,6 +29,7 @@ export default function AskAI(){
     <div className={styles.assistant}>Hello! Ask about our services, workflow approach or human controls. I use an approved company brief; if a policy or detail isn’t confirmed, I’ll say so.</div>
     {!messages.length&&<div className={styles.prompts}>{prompts.map(p=><button key={p} disabled={busy} onClick={()=>send(p)}>{p}</button>)}</div>}
     {messages.map((m,i)=><div key={i} className={m.role==='user'?styles.user:styles.assistant}><span className={styles.speaker}>{m.role==='user'?'You':'Forge AI'}</span>{m.content}</div>)}
+    {busy&&pending&&<div className={styles.user}><span className={styles.speaker}>You</span>{pending}</div>}
     {busy&&<p className={styles.status} role="status">Forge AI is thinking…</p>}<div ref={end}/>
    </div>
    {error&&<p className={styles.error} role="alert">{error}</p>}
