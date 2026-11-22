@@ -5,15 +5,13 @@ import { innowebCapabilityPosts } from "../content/innowebCapabilityPosts";
 import { realWorldAutomationPosts } from "../content/realWorldAutomationPosts";
 import { getPublishedPartnershipPosts } from "../content/novemberPartnershipPosts";
 import styles from "../styles/blog.module.css";
+import { getRenderTime } from "../content/renderTime";
 
-// Later articles remain available through their existing direct URLs.
-const listingCutoff = Date.UTC(2026, 9, 1);
 const publishedTime = (published: string) => Date.parse(`${published} 00:00:00 GMT`);
-const existingListedPosts = [...blogPosts, ...innowebCapabilityPosts, ...realWorldAutomationPosts]
-  .filter((post) => publishedTime(post.published) <= listingCutoff);
+const existingPosts = [...blogPosts, ...innowebCapabilityPosts, ...realWorldAutomationPosts];
 
 export default function Blog() {
-  const listedPosts = [...existingListedPosts, ...getPublishedPartnershipPosts()]
+  const listedPosts = [...existingPosts.filter((post) => publishedTime(post.published) <= getRenderTime()), ...getPublishedPartnershipPosts()]
     .sort((a, b) => publishedTime(b.published) - publishedTime(a.published));
   const [featured, ...rest] = listedPosts;
 

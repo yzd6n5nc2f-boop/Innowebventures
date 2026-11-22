@@ -15,7 +15,8 @@
     "test:assessment": "node --test api/tests/*.test.cjs",
     "test:llm-cost": "node --test scripts/llm-cost.test.mjs",
     "test:internal-links": "node --test scripts/internal-links.test.mjs",
-    "test:editorial": "node --test scripts/case-study-evidence.test.mjs scripts/article-evidence.test.mjs"
+    "test:editorial": "node --test scripts/case-study-evidence.test.mjs scripts/article-evidence.test.mjs",
+    "test:blog-listing": "node --test scripts/blog-listing.test.mjs"
   },
   "dependencies": {
     "react": "^18.3.1",
