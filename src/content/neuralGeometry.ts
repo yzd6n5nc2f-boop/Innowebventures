@@ -21,8 +21,8 @@ export function neuralFrame(time:number) {
     const tx=x*Math.cos(tilt)-y*Math.sin(tilt);
     const ty=x*Math.sin(tilt)+y*Math.cos(tilt);
     const perspective=490/(490-z);
-    const leftFade=.18+.82*Math.pow(Math.max(0,(tx/radius+1)/2),.7);
-    const bottomFade=.25+.75*Math.pow(Math.max(0,(1-ty/radius)/2),.7);
+    const leftFade=.2+.8*Math.min(1,Math.max(0,(tx/radius+1)*1.2));
+    const bottomFade=.2+.8*Math.min(1,Math.max(0,(1-ty/radius)*1.2));
     const depthFade=.18+.78*(z/radius+1)/2;
     return {x:310+tx*perspective,y:140+ty*perspective,
       radius:2.5*perspective,
