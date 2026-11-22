@@ -1,0 +1,17 @@
+{
+  "/case-studies/coffee-equipment-management": {
+    "status": "in-development",
+    "confirmedFacts": [
+      "An equipment business in Australia.",
+      "A management system in development for ordering, supply and monitoring of coffee machines."
+    ],
+    "servicePath": "/services/platform-discovery",
+    "appOverviewPath": "/work#coffee-equipment-management",
+    "publicAppUrl": null,
+    "approvedClientName": null,
+    "approvedClientQuote": null,
+    "verifiedOutcomeFigures": [],
+    "approvedScreenshotPaths": [],
+    "writtenPermissionEvidence": null
+  }
+}

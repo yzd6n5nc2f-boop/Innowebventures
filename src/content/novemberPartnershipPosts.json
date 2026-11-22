@@ -12,8 +12,8 @@
     "sections": [
       {
         "paragraphs": [
-          "A customer sends an enquiry. Someone reads it, copies the details into a spreadsheet and asks a colleague for advice. A document comes back with a missing measurement. Another email goes out. Eventually, someone has enough information to prepare a response.",
-          "This is an illustrative example, but it shows why understanding a workflow requires more than naming its steps. The work includes the waiting, the checking and the conversations that happen between them.",
+          "Workflow discovery should establish how information enters the process, how it moves between systems and where someone must check or approve the result.",
+          "Naming the steps is not enough. The review should also examine waiting, checking, corrections and responsibility.",
           "Before designing an AI system, we need to understand that work."
         ]
       },
@@ -30,7 +30,7 @@
         "heading": "Look at the handovers",
         "paragraphs": [
           "Time spent doing a task and time spent waiting for the next step are different things.",
-          "A team may prepare a document quickly, then wait several days for someone to review it. Automating the preparation helps with one part of that process. Making the review visible and giving it a clear owner addresses another.",
+          "Measure review delays separately from preparation effort. An improvement to one stage should not be presented as an improvement to the whole process without evidence.",
           "The audit needs evidence for both. Where possible, examine a sample of completed tasks and record the active work, the waiting and any correction needed. State the limits of that sample rather than turning a few observations into a confident prediction."
         ]
       },
@@ -77,7 +77,7 @@
         "paragraphs": [
           "For each task, record what starts it, who owns it, which information it needs and what it should produce.",
           "Then define what makes that output acceptable. A quotation may need to use the approved price source, include the required customer details and pass a specialist review.",
-          "“Prepare a quotation” leaves many questions open. A documented task with known inputs and acceptance conditions gives the development team something they can implement and check.",
+          "A short task label leaves important questions open. Documented inputs and acceptance conditions give the development team something they can implement and check.",
           "It also gives the client a useful way to review the design."
         ]
       },
@@ -126,7 +126,7 @@
       {
         "paragraphs": [
           "What would an AI operating layer look like inside an ordinary working business?",
-          "It could begin with a staff member opening a workspace and submitting a task. The system checks whether the necessary information is present, prepares the next stage of work and shows what needs attention. When a decision requires a person, the task reaches the appropriate reviewer.",
+          "Its proposed design would need a defined task, information requirements, statuses and human decision points. Those requirements should be agreed before any claimed feature is treated as available.",
           "This is the direction we are exploring with Forge OS.",
           "By an operating layer, we mean a business workspace that coordinates selected workflows and connects them to the tools the organisation already uses. It would work through explicitly scoped integrations, with responsibilities and permissions defined around the process."
         ]
@@ -135,8 +135,8 @@
         "heading": "Begin with one workflow",
         "paragraphs": [
           "A useful first implementation has a clear boundary.",
-          "For example, a customer enquiry might become a structured task. Missing details could be flagged before someone prepares a response. A draft could then reach a reviewer, along with the information used to produce it.",
-          "That is a proposed pilot, rather than a claim about a completed product. Its value would need to be demonstrated with real users and an agreed measure.",
+          "Define the inputs, permitted actions, expected output and review requirements for that workflow. Keep proposed capabilities separate from demonstrated ones.",
+          "That is a design requirement, rather than a claim about a completed product. Value would need to be demonstrated with real users and an agreed measure.",
           "Beginning with a defined workflow helps the team investigate the data, test the handovers and understand where the system needs improvement."
         ]
       },
@@ -251,7 +251,7 @@
           "A software subscription has a price. A development project has a budget. Training takes hours that appear in someone’s calendar.",
           "Doing nothing rarely arrives with an invoice.",
           "Instead, its cost is scattered across the working week.",
-          "Someone copies information between systems. A customer waits while a colleague searches for an answer. An owner spends Sunday evening assembling a report from several spreadsheets.",
+          "Look for repeated transfers of information, avoidable waiting and reporting effort in the actual process. Record what staff do rather than inventing a representative customer story.",
           "Each task feels manageable. Together, they consume capacity that could support better service, more customers or a less exhausting business.",
           "That is why the useful question about AI is specific:",
           "Could it help us change something that currently costs us time, money or opportunity?"
@@ -260,10 +260,10 @@
       {
         "heading": "Scepticism should lead to a test",
         "paragraphs": [
-          "Imagine a business receiving similar enquiries every day.",
-          "An experiment could connect approved product information to a system that prepares draft responses for staff to check. The business could then assess preparation time, accuracy, corrections and customer experience.",
-          "Perhaps it works well. Perhaps the information is too inconsistent. Perhaps a simpler automation solves the problem more reliably.",
-          "All three outcomes teach the business something.",
+          "Choose a real workflow that the business can examine and measure.",
+          "Define a bounded experiment using approved information, with staff review where needed. Assess quality, correction effort, operating cost and the experience of the people using the result.",
+          "The result may support the proposed approach, reveal a data problem or favour simpler software. That conclusion should follow the evidence.",
+          "Each finding can help the business decide what to do next.",
           "“It’s a fad” teaches it nothing.",
           "There is an important difference between examining a technology and dismissing it before examining a relevant use."
         ]
@@ -273,7 +273,7 @@
         "paragraphs": [
           "You need a problem worth investigating, a limited trial and a way to judge the result.",
           "That is how uncertainty becomes evidence.",
-          "At InnoWeb Ventures, this is the work that interests me: taking a business frustration and exploring whether AI, automation or better software can meaningfully improve it.",
+          "At InnoWeb Ventures, this is the work that interests us: taking a business frustration and exploring whether AI, automation or better software can meaningfully improve it.",
           "There is no value in forcing AI into a process that does not need it. There is also little value in defending a frustrating process simply because it is familiar.",
           "Some new tools will disappear. Others will become ordinary parts of working life.",
           "The question is whether your business has a way to tell the difference.",
@@ -328,9 +328,9 @@
           "Email became useful because people incorporated it into actual work. The same principle applies here.",
           "An AI subscription sitting beside an unchanged process may achieve very little. Someone has to connect the information, define the workflow, establish checks and make it useful for the people doing the job.",
           "That is where businesses can turn curiosity into practical progress.",
-          "At InnoWeb Ventures, I want to help businesses examine those possibilities and build around a clear operational need.",
+          "At InnoWeb Ventures, we aim to help businesses examine those possibilities and build around a clear operational need.",
           "We cannot know which tools will become indispensable. We can identify work that already deserves improvement.",
-          "Which part of your working day might people look back on and ask: “Why did you still do it that way?”"
+          "Which part of your working day might people look back on and question why a familiar method was kept"
         ]
       }
     ]
@@ -369,12 +369,12 @@
       {
         "heading": "The practical question is where support is useful",
         "paragraphs": [
-          "Consider a business owner preparing quotations.",
-          "The final price may depend on commercial judgement, capacity, customer history and risk. Yet assembling the quotation might also involve retrieving standard rates, copying customer details and formatting a document.",
+          "Separate the judgement required by a task from the preparation it requires.",
+          "Preparing operational information can involve retrieval, checking and formatting. Define those activities from the business’s real process.",
           "Those activities deserve separate consideration.",
-          "A reliable automation could handle structured steps. AI might help interpret an incoming request or prepare wording. The owner could review exceptions and approve the result.",
+          "Assign clear rules to structured steps and define when a person must approve the result. Test the whole workflow before relying on the output.",
           "Whether that arrangement is worthwhile can be tested.",
-          "We do not have to settle a debate about whether AI can “be” the business owner."
+          "We do not have to settle a debate about whether AI can replace the business owner."
         ]
       },
       {
@@ -382,7 +382,7 @@
         "paragraphs": [
           "People who understand the work can identify what a system must check, where ambiguity matters and which mistakes would be unacceptable.",
           "That knowledge is essential to useful development.",
-          "At InnoWeb Ventures, this is how I believe business automation should begin: examine the tasks, understand the consequences and build appropriate support around them.",
+          "At InnoWeb Ventures, this is how we believe business automation should begin: examine the tasks, understand the consequences and build appropriate support around them.",
           "A system should earn its place through reliable performance.",
           "But it cannot earn that place if the discussion ends with a job title.",
           "Which task regularly occupies your time without making full use of your expertise?"
@@ -411,8 +411,8 @@
         "heading": "Choose something ordinary enough to measure",
         "paragraphs": [
           "A first project does not need to transform the company.",
-          "Take a recurring operational update.",
-          "Perhaps someone gathers figures from several sources, checks for missing entries and produces a summary each week.",
+          "Choose a task that the business actually performs and can review with the people responsible.",
+          "Document its inputs, checks, outputs and handovers. Use observed work rather than an invented example to establish a baseline.",
           "Before building anything, examine how it works. Where does the information originate? Which version is authoritative? What requires interpretation? Who uses the result, and what decisions follow?",
           "That investigation may reveal an automation opportunity. It may also uncover inconsistent data or an unnecessary report.",
           "Both are useful findings."
@@ -423,7 +423,7 @@
         "paragraphs": [
           "An impressive demonstration often begins with clean information and ends with a polished answer.",
           "A working business system has to deal with the awkward middle.",
-          "An attachment is missing. A supplier changes its format. Two records disagree. A number looks plausible but is wrong.",
+          "Identify the exception types in the real process and establish who handles them. Do not assume a demonstration has covered the conditions staff encounter.",
           "Someone must decide how the system handles those situations.",
           "It might request missing information, flag an exception or stop for review. Staff need to understand what has happened and how to correct it.",
           "These details determine whether a tool becomes dependable enough to use."
@@ -472,10 +472,10 @@
       {
         "heading": "Familiarity can hide the effort",
         "paragraphs": [
-          "Consider a spreadsheet maintained by one experienced member of staff.",
-          "They know which entries need correcting, which supplier uses a different description and which figures require a separate check.",
-          "The process works because they make it work.",
-          "From outside, it may look straightforward. In reality, the business depends on knowledge that has never been made explicit.",
+          "Begin by asking the people doing the work what they check and what they know that is not written down.",
+          "Their explanation should establish the exceptions, dependencies and judgements that matter in the actual process.",
+          "A procedure should be reviewed alongside that practical knowledge.",
+          "The review should identify knowledge that has never been made explicit, rather than assume a particular staff member or spreadsheet exists.",
           "Introducing automation without understanding that knowledge would be a mistake.",
           "Refusing to examine the process would leave the dependency in place.",
           "The experienced person is therefore central to improving it."
@@ -505,7 +505,7 @@
         "paragraphs": [
           "The most useful contribution an experienced person can make may be explaining what a new system must get right.",
           "That requires curiosity from the professional and humility from the developer.",
-          "At InnoWeb Ventures, I believe useful automation should be built through that conversation. Business knowledge defines the problem, guides the checks and helps establish whether the result is good enough.",
+          "At InnoWeb Ventures, our view is that useful automation should be built through that conversation. Business knowledge defines the problem, guides the checks and helps establish whether the result is good enough.",
           "Years of experience give you a strong basis for shaping better ways of working.",
           "Where could your experience help build a better process—and which familiar method deserves another look?"
         ]

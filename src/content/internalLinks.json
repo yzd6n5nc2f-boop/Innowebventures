@@ -397,7 +397,7 @@
         {
           "section": "Build machines that help humans remain human",
           "paragraph": 0,
-          "anchor": "design AI systems",
+          "anchor": "a clearly stated purpose",
           "to": "/services/integration-rollout"
         },
         {
@@ -509,7 +509,7 @@
           "to": "/services/optimisation-governance-support"
         },
         {
-          "section": "Which 40% of your job would you give away?",
+          "section": "Which parts of your job would you give away?",
           "paragraph": 1,
           "anchor": "searching for information, transferring data",
           "to": "/services/integration-rollout"
@@ -687,7 +687,7 @@
       "extra": [],
       "related": [
         {
-          "title": "What we are learning from building specialist AI systems for real workflows",
+          "title": "What to consider when building specialist AI systems for real workflows",
           "to": "/blog/what-we-are-learning-from-specialist-ai-systems"
         },
         {
@@ -762,7 +762,7 @@
         {
           "section": "The practical question is where support is useful",
           "paragraph": 1,
-          "anchor": "assembling the quotation",
+          "anchor": "Preparing operational information",
           "to": "/sectors/equipment-suppliers-installers"
         },
         {
@@ -906,7 +906,7 @@
         "to": "/blog/human-in-the-loop-is-good-system-design"
       },
       {
-        "title": "What we are learning from building specialist AI systems for real workflows",
+        "title": "What to consider when building specialist AI systems for real workflows",
         "to": "/blog/what-we-are-learning-from-specialist-ai-systems"
       }
     ],

@@ -44,7 +44,7 @@ export const blogPosts: BlogPost[] = [
         heading: "Use different intelligence for different tasks",
         paragraphs: [
           "Not every stage needs the same model. A focused local language model may be entirely suitable for extraction, classification, formatting or a repeatable specialist task. A larger proprietary model can then be reserved for the reasoning steps where its additional capability creates genuine value.",
-          "That hybrid approach can improve privacy, reduce latency and control token spend without sacrificing capability where it is genuinely needed.",
+          "A hybrid design may offer useful trade-offs, but privacy, latency, cost and output quality need to be tested for the actual workload. Using more than one model does not guarantee an improvement.",
         ],
       },
       {
@@ -165,7 +165,7 @@ export const blogPosts: BlogPost[] = [
         heading: "Privacy is the first reason to consider local AI",
         paragraphs: [
           "Where a workflow touches confidential commercial information, client data, personal data or regulated material, organisations often become more cautious about where data travels.",
-          "Running a model locally, on an organisational server or dedicated AI PC, can reduce exposure and make the data boundary easier to explain. It does not remove the need for governance, but it can simplify part of the risk conversation.",
+          "Running a model locally can keep model inference within an organisational boundary when the surrounding system is configured accordingly. Local operation does not by itself establish security, lawful processing or the absence of external connections.",
         ],
       },
       {
@@ -202,7 +202,7 @@ export const blogPosts: BlogPost[] = [
       {
         heading: "Tokens are part of the operating model",
         paragraphs: [
-          "Every model call consumes input and output tokens. The cost of one call may look small, but business systems rarely run once. They run repeatedly, across users, documents, customers, records and exceptions.",
+          "Language-model APIs commonly measure usage in input and output tokens. Check the provider’s accounting and pricing rules, then measure the complete workflow rather than assuming that a single model response represents its cost.",
           "When the workflow grows, small inefficiencies can become meaningful. Sending unnecessary context, using a large model for a simple task or repeating calls because the process is poorly structured all add cost.",
         ],
       },
@@ -300,7 +300,7 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: "what-we-are-learning-from-specialist-ai-systems",
-    title: "What we are learning from building specialist AI systems for real workflows",
+    title: "What to consider when building specialist AI systems for real workflows",
     excerpt:
       "The most useful AI lessons come from building around real tasks. Specialist systems reveal what matters: workflow design, visibility, cost, integration and human control.",
     category: "InnoWeb Lab",
@@ -309,14 +309,14 @@ export const blogPosts: BlogPost[] = [
     sections: [
       {
         paragraphs: [
-          "Building specialist AI systems teaches different lessons from experimenting with general chat tools. The moment AI is placed inside a real workflow, the important questions change.",
+          "Designing a specialist AI workflow raises questions that a general chat demonstration may leave unanswered. This article sets out our design priorities rather than reporting results from a particular client project.",
           "It is no longer only about whether the model can produce a good answer. It is about whether the system helps people move work forward reliably, visibly and at a cost that makes sense.",
         ],
       },
       {
         heading: "The workflow defines the system",
         paragraphs: [
-          "The first lesson is that the workflow matters more than the model. A specialist system needs to understand the task sequence: what starts the work, what information is needed, what checks are required, where exceptions appear and who approves the outcome.",
+          "Our starting view is that the workflow matters more than the model. A specialist system needs a clear task sequence: what starts the work, what information is needed, what checks are required, where exceptions appear and who approves the outcome.",
           "Once that shape is clear, the AI components can be placed carefully. Without that shape, the system risks becoming another generic assistant.",
         ],
       },

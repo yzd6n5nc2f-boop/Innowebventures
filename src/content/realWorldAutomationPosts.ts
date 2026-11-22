@@ -5,7 +5,7 @@ export const realWorldAutomationPosts: BlogPost[] = [
     slug: "your-ai-is-not-your-friend-and-thats-okay",
     title: "Your AI Is Not Your Friend — And That's Okay",
     excerpt:
-      "AI can speak naturally, remember context and provide genuine comfort. But as machines become more human-like, maintaining the distinction between helpful technology and human relationship becomes increasingly important.",
+      "Conversational AI can sound sympathetic. This perspective considers the distinction between useful software and human relationships without promising a wellbeing benefit.",
     category: "Human-Centred AI",
     published: "29 September 2026",
     readTime: "6 min read",
@@ -13,16 +13,16 @@ export const realWorldAutomationPosts: BlogPost[] = [
       {
         paragraphs: [
           "For most of technological history, our tools did not ask how our day had been. A hammer did not remember our birthday. A calculator did not notice when we sounded worried. A computer did not appear interested in our lives.",
-          "Artificial intelligence changes that relationship. AI can now speak naturally, remember context, recognise emotion in language and respond in ways that can feel remarkably sympathetic. Put that intelligence inside a convincing voice, an expressive digital character or eventually a humanoid body, and the boundary between tool and companion becomes much harder to see.",
+          "Some AI interfaces generate conversational text or speech using the context they receive. A sympathetic response should not be mistaken for human understanding or reliable recognition of a person’s emotions.",
           "That raises an important question: what happens when machines behave human enough that we begin treating them as humans?",
         ],
       },
       {
         heading: "When the machine feels like a companion",
         paragraphs: [
-          "Imagine someone who lives alone coming home after a difficult day. Their AI remembers the meeting they were worried about yesterday. It asks how it went. It listens without interrupting, never becomes impatient and remembers the person's interests, routines and concerns.",
-          "That interaction may provide genuine comfort. For an elderly person, someone living alone or somebody temporarily isolated from friends and family, AI may become an extremely useful source of conversation, assistance and reassurance.",
-          "There is nothing inherently wrong with that. The important distinction is understanding what is happening. The human being is experiencing the interaction. The machine is generating the other side of it.",
+          "Conversational features can make a system feel personal. We should distinguish that impression from what the system actually knows or understands.",
+          "Effects depend on the person, the system and how it is used. This article makes no claim that a chatbot improves isolation or mental health.",
+          "Our view is that conversational tools need clear expectations and an appropriate route to human support. They should not be presented as a substitute for human care.",
         ],
       },
       {
@@ -36,7 +36,7 @@ export const realWorldAutomationPosts: BlogPost[] = [
       {
         heading: "Convenience should not become substitution",
         paragraphs: [
-          "AI companionship may become attractive precisely because it can be easier than human relationships. The machine can be available whenever we want it. It does not need sleep. It can adapt to our preferences. It may rarely challenge us unless it has been designed to do so.",
+          "A conversational interface may be convenient, but access, reliability and behaviour depend on the service and its safeguards. Convenience alone does not establish benefit.",
           "That convenience can be useful, but it can also create a temptation to substitute artificial interaction for the more demanding reality of human connection.",
           "The goal should not be to reject conversational AI. It should be to design and use it in ways that strengthen human life rather than gradually replacing the relationships that human beings need.",
         ],
@@ -46,13 +46,13 @@ export const realWorldAutomationPosts: BlogPost[] = [
         paragraphs: [
           "There is no need to make interacting with AI cold or mechanical. Saying please and thank you is natural. Enjoying a conversation with an AI is not inherently strange. Brainstorming with it, joking with it or using it as a sounding board can make the technology much more useful.",
           "But we should be able to interact naturally with AI without deceiving ourselves about what is on the other side of the conversation.",
-          "AI can provide companionship without becoming a human companion. It can support us without needing to become one of us.",
+          "An AI system can be a conversational tool without being a person. That distinction is the argument of this article.",
         ],
       },
       {
         heading: "Build machines that help humans remain human",
         paragraphs: [
-          "This distinction should influence how we design AI systems. In elderly care, AI could provide practical support, reminders and conversation while helping families stay connected rather than replacing them. In education, AI tutors could provide unlimited individual assistance while teachers retain the mentorship, judgement and human encouragement that education also requires. In healthcare, AI could reduce administrative work so clinicians have more time with patients.",
+          "Design should begin with a clearly stated purpose, realistic limitations and a route to human support. Natural conversation alone is not evidence that an intervention helps its users.",
           "That is a more human-centred vision of artificial intelligence. The machine performs machine tasks extraordinarily well while the human retains the uniquely human role.",
           "Perhaps the purpose of AI is not to become one of us. Perhaps its greatest contribution will be helping us become more capable versions of ourselves while giving us more time and opportunity to remain connected to one another.",
         ],
@@ -115,9 +115,9 @@ export const realWorldAutomationPosts: BlogPost[] = [
     sections: [
       {
         paragraphs: [
-          "An earthquake has brought down part of an apartment building. Somewhere beneath the concrete, a survivor is trapped. The structure is unstable. Gas may be leaking. Aftershocks are possible. Every person who enters the building is taking a serious risk.",
-          "Now imagine a humanoid rescue robot entering instead. It moves through the damaged structure, climbs across debris and reaches the survivor. Its systems calculate that continuing the rescue creates a high probability that the machine itself will be destroyed. It continues anyway.",
-          "The robot is not being brave. It is not making a heroic sacrifice. It is doing precisely what we built it to do. The machine is replaceable. The human being is not.",
+          "Our view is that the purpose of robotics in hazardous work should be to reduce avoidable risks to people. This is a design perspective, not a report of a rescue or an InnoWeb robotics deployment.",
+          "Whether a particular machine can perform a task safely requires evidence from that operating environment. Appearance or a compelling demonstration is not sufficient assurance.",
+          "Human safety should guide the priorities, permissions and limits set for the system.",
         ],
       },
       {
@@ -131,8 +131,8 @@ export const realWorldAutomationPosts: BlogPost[] = [
       {
         heading: "The machine should take the risk",
         paragraphs: [
-          "Collapsed buildings are only one example. Consider chemical accidents, major fires, nuclear facilities, deep mines, unstable tunnels, offshore environments and eventually other planets.",
-          "If a robot can enter a burning structure instead of a firefighter, send the machine. If a robotic system can inspect an unstable tunnel instead of an engineer, send the machine. If an autonomous machine can approach a dangerous chemical leak instead of a worker, send the machine.",
+          "Risk to people should be part of the design brief and safety assessment. A proposed machine capability needs task-specific testing before anyone relies on it.",
+          "Decisions about deployment should account for the limits of the equipment, the environment and the people who remain responsible. An ambition to protect people is not a demonstrated safety outcome.",
           "This is one of the clearest ways technology can serve humanity: transferring physical risk away from human beings and onto machines designed to withstand it.",
         ],
       },
@@ -140,7 +140,7 @@ export const realWorldAutomationPosts: BlogPost[] = [
         heading: "Human life remains the priority",
         paragraphs: [
           "There will inevitably be situations where a robot's preservation conflicts with the immediate goal of protecting a person. A human-centred system should be designed with a clear hierarchy: human life comes first.",
-          "That does not mean expensive machines should be used recklessly. A rescue robot worth millions may be capable of saving many people over its lifetime. Preserving it can therefore matter greatly. But that value is instrumental: we preserve the machine because of what it can do for people, not because the machine has automatically acquired the same moral status as a human being.",
+          "Equipment should not be used recklessly. Its value matters because of the work it may support, but that does not give it the same moral status as a human being; this is the ethical position argued here.",
           "If saving a human life requires the destruction of the robot, the purpose of the technology should make the priority clear.",
         ],
       },
@@ -232,9 +232,9 @@ export const realWorldAutomationPosts: BlogPost[] = [
     sections: [
       {
         paragraphs: [
-          "Imagine arriving at work tomorrow and discovering that your organisation has hired someone new. They have already read the project documents. They remember every decision. They can search thousands of files in seconds. They do not mind repetitive work, and they can continue working while you sleep.",
-          "Now imagine that they do not want your job. They want the parts of your job you probably never particularly enjoyed doing.",
-          "That may be a more useful way to think about the next generation of AI agents."
+          "AI agents can be designed to use tools within a defined workflow. They still need suitable information, explicit permissions, validation and a clear account of what happens when a task cannot be completed.",
+          "The useful question is which parts of the work deserve assistance, rather than whether an AI system resembles an employee.",
+          "Our view is that an agent should be assessed as a business system, with a bounded purpose and evidence of usefulness."
         ]
       },
       {
@@ -246,9 +246,9 @@ export const realWorldAutomationPosts: BlogPost[] = [
         ]
       },
       {
-        heading: "Which 40% of your job would you give away?",
+        heading: "Which parts of your job would you give away?",
         paragraphs: [
-          "Ask someone whether they want AI to do 40 percent of their job and the idea can sound threatening. Ask which 40 percent they would willingly stop doing and the answer may be very different.",
+          "Rather than assign an arbitrary proportion of a job to AI, identify the tasks that cause difficulty and test whether assistance is useful. No percentage of work saved or automated is claimed here.",
           "Professionals increasingly spend significant time searching for information, transferring data, preparing routine documents, organising meetings, updating systems and repeating administrative tasks.",
           "If intelligent systems absorb more of that work, the result does not have to be a diminished human role. It could create more time for judgement, relationships, creativity, leadership and the difficult decisions for which experience actually matters."
         ]
@@ -282,14 +282,14 @@ export const realWorldAutomationPosts: BlogPost[] = [
     slug: "ai-probably-wont-take-your-job-but-someone-using-ai-might-change-it",
     title: "AI Probably Won't Take Your Job. But Someone Using AI Might Change It.",
     excerpt:
-      "Some jobs will disappear and many will change. The more useful question is what remains when AI takes on the tasks machines can perform — and what new capabilities that gives people.",
+      "AI may change the tasks within jobs. This perspective considers human responsibility, professional skills and how to evaluate useful assistance without predicting job losses.",
     category: "AI & Employment",
     published: "10 November 2026",
     readTime: "7 min read",
     sections: [
       {
         paragraphs: [
-          "Some jobs will disappear because of artificial intelligence. Pretending otherwise does not help anyone.",
+          "AI may change the tasks employers need people to do. The effect on a particular job or organisation needs evidence rather than a confident prediction.",
           "But neither does imagining every occupation as a single task that can simply be handed from a person to a machine. Most jobs are collections of very different activities, and AI will not affect all of them equally.",
           "The more interesting question is what happens to a job when some of those activities become dramatically easier."
         ]
@@ -313,7 +313,7 @@ export const realWorldAutomationPosts: BlogPost[] = [
       {
         heading: "The uncomfortable transition",
         paragraphs: [
-          "There will still be disruption. Some organisations will need fewer people for particular processes. Some entry-level tasks may change substantially. Some skills that were once valuable may become less scarce.",
+          "Changes to tasks may create disruption, including changes to entry-level work and the skills an organisation needs. This article does not predict a number of jobs lost or created.",
           "That deserves serious attention because technological transitions are experienced by individuals, families and communities, not just productivity charts.",
           "The answer should not be to deny technological progress. It should be to help people build the skills required to direct, verify and work alongside increasingly capable systems."
         ]
@@ -348,14 +348,14 @@ export const realWorldAutomationPosts: BlogPost[] = [
       {
         paragraphs: [
           "The popular fear about autonomous AI is that one day an agent will ignore its instructions and go rogue. There is another possibility that may be much more relevant to businesses: the agent follows the instruction.",
-          "Imagine telling an AI agent: make sure every overdue customer pays us by Friday.",
-          "It sounds clear. But what exactly is the agent allowed to do to achieve it?"
+          "A business objective can leave the permitted actions, data access and approval requirements unspecified.",
+          "Before an agent acts, its delegated authority needs to be clear."
         ]
       },
       {
         heading: "An objective is not a permission",
         paragraphs: [
-          "Can the agent send emails? Offer discounts? Change payment terms? Access private customer records? Threaten legal proceedings? Contact third parties? Suspend an account?",
+          "Define the communications it may send, records it may access, changes it may make and actions it must refer to a person. An objective should not be treated as permission for every route to that objective.",
           "A human employee understands that an instruction exists inside a much larger environment of law, ethics, company policy, professional judgement and social expectations.",
           "An autonomous system needs those boundaries to be made explicit. Giving an agent an objective should never automatically give it unlimited authority to pursue that objective."
         ]

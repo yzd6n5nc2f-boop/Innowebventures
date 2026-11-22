@@ -84,7 +84,7 @@ export const innowebCapabilityPosts: BlogPost[] = [
           "The industrial revolutions of the past multiplied human capability. Steam multiplied physical power. Electricity transformed industry. Computers multiplied our ability to calculate and process information. The internet connected much of humanity's knowledge. AI may now multiply something different: our cognitive capability.",
           "AI agents add another dimension by turning intelligence into action. Robotics can connect that intelligence to the physical world. Together, AI, agents and robotics could become the workhorses of a new industrial era.",
           "The important word is workhorse. The technology exists to serve human purposes.",
-          "Imagine engineers supported by AI systems capable of analysing thousands of drawings, standards and previous projects before highlighting risks that might otherwise have been missed. Imagine doctors having access to AI capable of comparing a patient's condition with medical knowledge accumulated across the world. Imagine a small company having access to digital workers capable of performing tasks that previously required entire departments. Imagine scientists compressing years of research into months.",
+          "Those possibilities need evaluation in the setting where the system would be used. This article does not claim a demonstrated throughput, time saving, research acceleration or replacement of a professional team.",
           "That is an extraordinary future. And none of it requires us to diminish the value of being human.",
         ],
       },

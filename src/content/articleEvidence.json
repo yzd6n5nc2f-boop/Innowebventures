@@ -1,0 +1,648 @@
+{
+  "sources": {
+    "playbook": {
+      "title": "UK Government: Artificial Intelligence Playbook",
+      "url": "https://www.gov.uk/government/publications/ai-playbook-for-the-uk-government/artificial-intelligence-playbook-for-the-uk-government-html",
+      "checkedAt": "2026-11-22",
+      "supports": "Task selection, evaluation and oversight.",
+      "note": "Government guidance; not evidence of InnoWeb client outcomes."
+    },
+    "ncsc-design": {
+      "title": "NCSC: Secure AI system design",
+      "url": "https://www.ncsc.gov.uk/collection/guidelines-secure-ai-system-development/guidelines/secure-design",
+      "checkedAt": "2026-11-22",
+      "supports": "Security requirements and model trade-offs.",
+      "note": ""
+    },
+    "ncsc-operation": {
+      "title": "NCSC: Secure operation and maintenance",
+      "url": "https://www.ncsc.gov.uk/collection/guidelines-secure-ai-system-development/guidelines/secure-operation-maintenance",
+      "checkedAt": "2026-11-22",
+      "supports": "Logging, monitoring and controlled updates.",
+      "note": ""
+    },
+    "ico": {
+      "title": "ICO: Lawfulness in AI",
+      "url": "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/artificial-intelligence/guidance-on-ai-and-data-protection/how-do-we-ensure-lawfulness-in-ai/?search=precision",
+      "checkedAt": "2026-11-22",
+      "supports": "Lawful basis for personal-data processing.",
+      "note": "The ICO marks this guidance as under review. Check the linked page for updates."
+    },
+    "offline": {
+      "title": "Hugging Face: Transformers offline mode",
+      "url": "https://huggingface.co/docs/transformers/main/installation",
+      "checkedAt": "2026-11-22",
+      "supports": "Offline loading of locally available models.",
+      "note": "Offline model loading does not establish whole-system privacy or legal compliance."
+    },
+    "tokens": {
+      "title": "Anthropic: Token counting",
+      "url": "https://platform.claude.com/docs/en/build-with-claude/token-counting",
+      "checkedAt": "2026-11-22",
+      "supports": "Token measurement and usage planning.",
+      "note": "No vendor prices or savings figures are reproduced."
+    },
+    "nist": {
+      "title": "NIST: Human–AI interaction and risk management",
+      "url": "https://airc.nist.gov/airmf-resources/airmf/appendices/app-c-ai-risk-management-and-human-ai-interaction/",
+      "checkedAt": "2026-11-22",
+      "supports": "Human roles, responsibility and context.",
+      "note": ""
+    },
+    "psychosocial": {
+      "title": "Fang et al.: Psychosocial effects of extended chatbot use",
+      "url": "https://arxiv.org/html/2503.17473v2",
+      "checkedAt": "2026-11-22",
+      "supports": "Context-dependent effects and research limitations.",
+      "note": "The study does not establish a general wellbeing benefit or prove that observational associations are causal."
+    },
+    "adoption": {
+      "title": "DSIT: AI adoption survey 2026, executive summary",
+      "url": "https://www.gov.uk/government/publications/ai-adoption-survey-2026/ai-adoption-survey-report-2026-executive-summary",
+      "checkedAt": "2026-11-22",
+      "supports": "Skills and business-case barriers.",
+      "note": "Survey findings describe participating businesses; no figures are presented as InnoWeb outcomes."
+    }
+  },
+  "articles": {
+    "useful-ai-starts-with-the-workflow": {
+      "reviewedAt": "2026-11-22",
+      "reviewType": "Company perspective and guidance; no client outcomes claimed.",
+      "sourceIds": [
+        "playbook",
+        "ncsc-design"
+      ],
+      "faq": [
+        {
+          "question": "What should a first AI workflow pilot prove?",
+          "answer": "It should test an agreed operational need against the existing process. Assess output quality, review effort and the full operating cost before deciding whether to expand."
+        },
+        {
+          "question": "Where should people remain involved?",
+          "answer": "Define who owns the process and which decisions need review or approval. The appropriate controls depend on the task, its risks and the consequences of an error."
+        }
+      ],
+      "firstHandNotesStatus": "User-confirmed experience bullets required before any new first-hand claims are added."
+    },
+    "why-smaller-ai-models-may-matter-more-than-people-think": {
+      "reviewedAt": "2026-11-22",
+      "reviewType": "Company perspective and guidance; no client outcomes claimed.",
+      "sourceIds": [
+        "playbook",
+        "offline",
+        "ico"
+      ],
+      "faq": [
+        {
+          "question": "Does running AI locally guarantee privacy or lower costs?",
+          "answer": "No. Check the entire data flow, access controls, external connections, hardware and support requirements before comparing a local design with a cloud service."
+        },
+        {
+          "question": "How should a business choose between local and cloud AI?",
+          "answer": "Test the intended workload against its quality, privacy, performance and cost requirements. A deployment label alone does not show that a system is suitable or legally compliant."
+        }
+      ],
+      "firstHandNotesStatus": "User-confirmed experience bullets required before any new first-hand claims are added."
+    },
+    "agentic-ai-is-not-a-chatbot": {
+      "reviewedAt": "2026-11-22",
+      "reviewType": "Company perspective and guidance; no client outcomes claimed.",
+      "sourceIds": [
+        "playbook",
+        "ncsc-design"
+      ],
+      "faq": [
+        {
+          "question": "What should a first AI workflow pilot prove?",
+          "answer": "It should test an agreed operational need against the existing process. Assess output quality, review effort and the full operating cost before deciding whether to expand."
+        },
+        {
+          "question": "Where should people remain involved?",
+          "answer": "Define who owns the process and which decisions need review or approval. The appropriate controls depend on the task, its risks and the consequences of an error."
+        }
+      ],
+      "firstHandNotesStatus": "User-confirmed experience bullets required before any new first-hand claims are added."
+    },
+    "when-should-a-business-run-ai-locally": {
+      "reviewedAt": "2026-11-22",
+      "reviewType": "Company perspective and guidance; no client outcomes claimed.",
+      "sourceIds": [
+        "playbook",
+        "offline",
+        "ico"
+      ],
+      "faq": [
+        {
+          "question": "Does running AI locally guarantee privacy or lower costs?",
+          "answer": "No. Check the entire data flow, access controls, external connections, hardware and support requirements before comparing a local design with a cloud service."
+        },
+        {
+          "question": "How should a business choose between local and cloud AI?",
+          "answer": "Test the intended workload against its quality, privacy, performance and cost requirements. A deployment label alone does not show that a system is suitable or legally compliant."
+        }
+      ],
+      "firstHandNotesStatus": "User-confirmed experience bullets required before any new first-hand claims are added."
+    },
+    "the-hidden-cost-of-ai-token-usage": {
+      "reviewedAt": "2026-11-22",
+      "reviewType": "Company perspective and guidance; no client outcomes claimed.",
+      "sourceIds": [
+        "playbook",
+        "tokens"
+      ],
+      "faq": [
+        {
+          "question": "How should we measure the cost of an AI workflow?",
+          "answer": "Account for model calls, the context supplied and the output generated, using the provider’s actual billing rules. Include review, corrections, infrastructure and support when assessing the complete task."
+        },
+        {
+          "question": "Does using a smaller model guarantee savings?",
+          "answer": "No. Test its output and the work needed to correct or review it; a cheaper model call is not necessarily a cheaper completed task."
+        }
+      ],
+      "firstHandNotesStatus": "User-confirmed experience bullets required before any new first-hand claims are added."
+    },
+    "why-ai-projects-fail-when-they-start-with-technology": {
+      "reviewedAt": "2026-11-22",
+      "reviewType": "Company perspective and guidance; no client outcomes claimed.",
+      "sourceIds": [
+        "playbook",
+        "ncsc-design"
+      ],
+      "faq": [
+        {
+          "question": "What should a first AI workflow pilot prove?",
+          "answer": "It should test an agreed operational need against the existing process. Assess output quality, review effort and the full operating cost before deciding whether to expand."
+        },
+        {
+          "question": "Where should people remain involved?",
+          "answer": "Define who owns the process and which decisions need review or approval. The appropriate controls depend on the task, its risks and the consequences of an error."
+        }
+      ],
+      "firstHandNotesStatus": "User-confirmed experience bullets required before any new first-hand claims are added."
+    },
+    "human-in-the-loop-is-good-system-design": {
+      "reviewedAt": "2026-11-22",
+      "reviewType": "Company perspective and guidance; no client outcomes claimed.",
+      "sourceIds": [
+        "playbook",
+        "ncsc-design",
+        "ncsc-operation"
+      ],
+      "faq": [
+        {
+          "question": "What limits should an AI agent have?",
+          "answer": "Define the data, tools and actions it may use, along with approval and escalation requirements. A business objective should not grant unrestricted authority."
+        },
+        {
+          "question": "Why does an automated workflow need monitoring?",
+          "answer": "Inputs, models and operating conditions can change. Use appropriate records and review processes to identify failures and assess updates before relying on them."
+        }
+      ],
+      "firstHandNotesStatus": "User-confirmed experience bullets required before any new first-hand claims are added."
+    },
+    "what-we-are-learning-from-specialist-ai-systems": {
+      "reviewedAt": "2026-11-22",
+      "reviewType": "Company perspective and guidance; no client outcomes claimed.",
+      "sourceIds": [
+        "playbook",
+        "ncsc-design"
+      ],
+      "faq": [
+        {
+          "question": "What should a first AI workflow pilot prove?",
+          "answer": "It should test an agreed operational need against the existing process. Assess output quality, review effort and the full operating cost before deciding whether to expand."
+        },
+        {
+          "question": "Where should people remain involved?",
+          "answer": "Define who owns the process and which decisions need review or approval. The appropriate controls depend on the task, its risks and the consequences of an error."
+        }
+      ],
+      "firstHandNotesStatus": "User-confirmed experience bullets required before any new first-hand claims are added."
+    },
+    "how-innoweb-turns-one-workflow-into-an-intelligent-system": {
+      "reviewedAt": "2026-11-22",
+      "reviewType": "Company perspective and guidance; no client outcomes claimed.",
+      "sourceIds": [
+        "playbook",
+        "ncsc-design"
+      ],
+      "faq": [
+        {
+          "question": "What should a first AI workflow pilot prove?",
+          "answer": "It should test an agreed operational need against the existing process. Assess output quality, review effort and the full operating cost before deciding whether to expand."
+        },
+        {
+          "question": "Where should people remain involved?",
+          "answer": "Define who owns the process and which decisions need review or approval. The appropriate controls depend on the task, its risks and the consequences of an error."
+        }
+      ],
+      "firstHandNotesStatus": "User-confirmed experience bullets required before any new first-hand claims are added."
+    },
+    "ai-will-change-the-world-but-it-doesnt-need-to-replace-us": {
+      "reviewedAt": "2026-11-22",
+      "reviewType": "Company perspective and guidance; no client outcomes claimed.",
+      "sourceIds": [
+        "playbook",
+        "nist"
+      ],
+      "faq": [
+        {
+          "question": "Is this article evidence of a completed InnoWeb deployment?",
+          "answer": "No. It presents an InnoWeb Ventures perspective on the purpose and design of AI systems, rather than a client result or a verified capability demonstration."
+        },
+        {
+          "question": "What is the practical implication for a business?",
+          "answer": "Start with a defined task and a clear allocation of responsibility. Evaluate the proposed system and its limitations before relying on it."
+        }
+      ],
+      "firstHandNotesStatus": "User-confirmed experience bullets required before any new first-hand claims are added."
+    },
+    "what-a-bespoke-ai-workflow-can-do-for-a-business": {
+      "reviewedAt": "2026-11-22",
+      "reviewType": "Company perspective and guidance; no client outcomes claimed.",
+      "sourceIds": [
+        "playbook",
+        "ncsc-design"
+      ],
+      "faq": [
+        {
+          "question": "What should a first AI workflow pilot prove?",
+          "answer": "It should test an agreed operational need against the existing process. Assess output quality, review effort and the full operating cost before deciding whether to expand."
+        },
+        {
+          "question": "Where should people remain involved?",
+          "answer": "Define who owns the process and which decisions need review or approval. The appropriate controls depend on the task, its risks and the consequences of an error."
+        }
+      ],
+      "firstHandNotesStatus": "User-confirmed experience bullets required before any new first-hand claims are added."
+    },
+    "why-innoweb-uses-agentic-ai-for-real-operational-tasks": {
+      "reviewedAt": "2026-11-22",
+      "reviewType": "Company perspective and guidance; no client outcomes claimed.",
+      "sourceIds": [
+        "playbook",
+        "ncsc-design"
+      ],
+      "faq": [
+        {
+          "question": "What should a first AI workflow pilot prove?",
+          "answer": "It should test an agreed operational need against the existing process. Assess output quality, review effort and the full operating cost before deciding whether to expand."
+        },
+        {
+          "question": "Where should people remain involved?",
+          "answer": "Define who owns the process and which decisions need review or approval. The appropriate controls depend on the task, its risks and the consequences of an error."
+        }
+      ],
+      "firstHandNotesStatus": "User-confirmed experience bullets required before any new first-hand claims are added."
+    },
+    "how-innoweb-chooses-local-cloud-or-hybrid-ai": {
+      "reviewedAt": "2026-11-22",
+      "reviewType": "Company perspective and guidance; no client outcomes claimed.",
+      "sourceIds": [
+        "playbook",
+        "offline",
+        "ico"
+      ],
+      "faq": [
+        {
+          "question": "Does running AI locally guarantee privacy or lower costs?",
+          "answer": "No. Check the entire data flow, access controls, external connections, hardware and support requirements before comparing a local design with a cloud service."
+        },
+        {
+          "question": "How should a business choose between local and cloud AI?",
+          "answer": "Test the intended workload against its quality, privacy, performance and cost requirements. A deployment label alone does not show that a system is suitable or legally compliant."
+        }
+      ],
+      "firstHandNotesStatus": "User-confirmed experience bullets required before any new first-hand claims are added."
+    },
+    "why-innoweb-builds-ai-around-the-user": {
+      "reviewedAt": "2026-11-22",
+      "reviewType": "Company perspective and guidance; no client outcomes claimed.",
+      "sourceIds": [
+        "playbook",
+        "nist"
+      ],
+      "faq": [
+        {
+          "question": "What should users be able to see in an AI workflow?",
+          "answer": "Show the result, relevant supporting information and any decisions or exceptions needing attention. The interface should help people understand and review the work."
+        },
+        {
+          "question": "How do we check whether an interface is useful?",
+          "answer": "Test it with the people who will use the process. Review their ability to find information, check outputs and recover from errors rather than relying on a demonstration alone."
+        }
+      ],
+      "firstHandNotesStatus": "User-confirmed experience bullets required before any new first-hand claims are added."
+    },
+    "your-ai-is-not-your-friend-and-thats-okay": {
+      "reviewedAt": "2026-11-22",
+      "reviewType": "Company perspective and guidance; no client outcomes claimed.",
+      "sourceIds": [
+        "playbook",
+        "nist",
+        "psychosocial"
+      ],
+      "faq": [
+        {
+          "question": "Does a sympathetic AI response demonstrate human understanding?",
+          "answer": "No. This article argues for clear expectations about conversational software and the distinction between generated responses and human relationships."
+        },
+        {
+          "question": "Does the article claim a proven wellbeing benefit?",
+          "answer": "No. The cited research has limitations and does not justify a general promise that chatbot use improves wellbeing."
+        }
+      ],
+      "firstHandNotesStatus": "User-confirmed experience bullets required before any new first-hand claims are added."
+    },
+    "the-future-is-human-centred-automation": {
+      "reviewedAt": "2026-11-22",
+      "reviewType": "Company perspective and guidance; no client outcomes claimed.",
+      "sourceIds": [
+        "playbook",
+        "nist"
+      ],
+      "faq": [
+        {
+          "question": "Is this article evidence of a completed InnoWeb deployment?",
+          "answer": "No. It presents an InnoWeb Ventures perspective on the purpose and design of AI systems, rather than a client result or a verified capability demonstration."
+        },
+        {
+          "question": "What is the practical implication for a business?",
+          "answer": "Start with a defined task and a clear allocation of responsibility. Evaluate the proposed system and its limitations before relying on it."
+        }
+      ],
+      "firstHandNotesStatus": "User-confirmed experience bullets required before any new first-hand claims are added."
+    },
+    "the-machine-goes-in-first": {
+      "reviewedAt": "2026-11-22",
+      "reviewType": "Company perspective and guidance; no client outcomes claimed.",
+      "sourceIds": [
+        "playbook",
+        "nist"
+      ],
+      "faq": [
+        {
+          "question": "Is this article evidence of a completed InnoWeb deployment?",
+          "answer": "No. It presents an InnoWeb Ventures perspective on the purpose and design of AI systems, rather than a client result or a verified capability demonstration."
+        },
+        {
+          "question": "What is the practical implication for a business?",
+          "answer": "Start with a defined task and a clear allocation of responsibility. Evaluate the proposed system and its limitations before relying on it."
+        }
+      ],
+      "firstHandNotesStatus": "User-confirmed experience bullets required before any new first-hand claims are added."
+    },
+    "your-ai-agent-doesnt-need-freedom-it-needs-a-destination": {
+      "reviewedAt": "2026-11-22",
+      "reviewType": "Company perspective and guidance; no client outcomes claimed.",
+      "sourceIds": [
+        "playbook",
+        "ncsc-design",
+        "ncsc-operation"
+      ],
+      "faq": [
+        {
+          "question": "What limits should an AI agent have?",
+          "answer": "Define the data, tools and actions it may use, along with approval and escalation requirements. A business objective should not grant unrestricted authority."
+        },
+        {
+          "question": "Why does an automated workflow need monitoring?",
+          "answer": "Inputs, models and operating conditions can change. Use appropriate records and review processes to identify failures and assess updates before relying on them."
+        }
+      ],
+      "firstHandNotesStatus": "User-confirmed experience bullets required before any new first-hand claims are added."
+    },
+    "your-next-colleague-might-never-take-a-lunch-break": {
+      "reviewedAt": "2026-11-22",
+      "reviewType": "Company perspective and guidance; no client outcomes claimed.",
+      "sourceIds": [
+        "playbook",
+        "adoption"
+      ],
+      "faq": [
+        {
+          "question": "Does a business need to adopt every new AI tool?",
+          "answer": "No. Choose a real problem and compare a bounded trial with the existing process, including the option of simpler software."
+        },
+        {
+          "question": "How can we judge whether a change is worthwhile?",
+          "answer": "Agree the baseline and success measures with the people doing the work. Include quality, corrections, review and operating costs rather than treating novelty as evidence."
+        }
+      ],
+      "firstHandNotesStatus": "User-confirmed experience bullets required before any new first-hand claims are added."
+    },
+    "ai-probably-wont-take-your-job-but-someone-using-ai-might-change-it": {
+      "reviewedAt": "2026-11-22",
+      "reviewType": "Company perspective and guidance; no client outcomes claimed.",
+      "sourceIds": [
+        "playbook",
+        "nist",
+        "adoption"
+      ],
+      "faq": [
+        {
+          "question": "Does this article predict how many jobs AI will replace?",
+          "answer": "No. It discusses possible changes to tasks and responsibilities, without forecasting job losses or claiming employment outcomes."
+        },
+        {
+          "question": "How should staff contribute to automation decisions?",
+          "answer": "Involve the people who understand the process in defining its requirements and checking the results. Discuss responsibilities and intended changes rather than assuming that a technical demonstration establishes the effect on a job."
+        }
+      ],
+      "firstHandNotesStatus": "User-confirmed experience bullets required before any new first-hand claims are added."
+    },
+    "the-most-dangerous-ai-agent-may-be-the-one-doing-exactly-what-you-asked": {
+      "reviewedAt": "2026-11-22",
+      "reviewType": "Company perspective and guidance; no client outcomes claimed.",
+      "sourceIds": [
+        "playbook",
+        "ncsc-design",
+        "ncsc-operation"
+      ],
+      "faq": [
+        {
+          "question": "What limits should an AI agent have?",
+          "answer": "Define the data, tools and actions it may use, along with approval and escalation requirements. A business objective should not grant unrestricted authority."
+        },
+        {
+          "question": "Why does an automated workflow need monitoring?",
+          "answer": "Inputs, models and operating conditions can change. Use appropriate records and review processes to identify failures and assess updates before relying on them."
+        }
+      ],
+      "firstHandNotesStatus": "User-confirmed experience bullets required before any new first-hand claims are added."
+    },
+    "the-work-behind-the-workflow": {
+      "reviewedAt": "2026-11-22",
+      "reviewType": "Company perspective and guidance; no client outcomes claimed.",
+      "sourceIds": [
+        "playbook",
+        "ncsc-design"
+      ],
+      "faq": [
+        {
+          "question": "What should a first AI workflow pilot prove?",
+          "answer": "It should test an agreed operational need against the existing process. Assess output quality, review effort and the full operating cost before deciding whether to expand."
+        },
+        {
+          "question": "Where should people remain involved?",
+          "answer": "Define who owns the process and which decisions need review or approval. The appropriate controls depend on the task, its risks and the consequences of an error."
+        }
+      ],
+      "firstHandNotesStatus": "User-confirmed experience bullets required before any new first-hand claims are added."
+    },
+    "turning-a-workflow-audit-into-an-ai-system-blueprint": {
+      "reviewedAt": "2026-11-22",
+      "reviewType": "Company perspective and guidance; no client outcomes claimed.",
+      "sourceIds": [
+        "playbook",
+        "ncsc-design"
+      ],
+      "faq": [
+        {
+          "question": "What should a first AI workflow pilot prove?",
+          "answer": "It should test an agreed operational need against the existing process. Assess output quality, review effort and the full operating cost before deciding whether to expand."
+        },
+        {
+          "question": "Where should people remain involved?",
+          "answer": "Define who owns the process and which decisions need review or approval. The appropriate controls depend on the task, its risks and the consequences of an error."
+        }
+      ],
+      "firstHandNotesStatus": "User-confirmed experience bullets required before any new first-hand claims are added."
+    },
+    "forge-os-an-ai-operating-layer-shaped-around-your-business": {
+      "reviewedAt": "2026-11-22",
+      "reviewType": "Company perspective and guidance; no client outcomes claimed.",
+      "sourceIds": [
+        "playbook",
+        "ncsc-design"
+      ],
+      "faq": [
+        {
+          "question": "What should a first AI workflow pilot prove?",
+          "answer": "It should test an agreed operational need against the existing process. Assess output quality, review effort and the full operating cost before deciding whether to expand."
+        },
+        {
+          "question": "Where should people remain involved?",
+          "answer": "Define who owns the process and which decisions need review or approval. The appropriate controls depend on the task, its risks and the consequences of an error."
+        }
+      ],
+      "firstHandNotesStatus": "User-confirmed experience bullets required before any new first-hand claims are added."
+    },
+    "building-an-ai-system-is-the-beginning-of-the-partnership": {
+      "reviewedAt": "2026-11-22",
+      "reviewType": "Company perspective and guidance; no client outcomes claimed.",
+      "sourceIds": [
+        "playbook",
+        "ncsc-design",
+        "ncsc-operation"
+      ],
+      "faq": [
+        {
+          "question": "What limits should an AI agent have?",
+          "answer": "Define the data, tools and actions it may use, along with approval and escalation requirements. A business objective should not grant unrestricted authority."
+        },
+        {
+          "question": "Why does an automated workflow need monitoring?",
+          "answer": "Inputs, models and operating conditions can change. Use appropriate records and review processes to identify failures and assess updates before relying on them."
+        }
+      ],
+      "firstHandNotesStatus": "User-confirmed experience bullets required before any new first-hand claims are added."
+    },
+    "its-just-a-fad-what-if-youre-wrong": {
+      "reviewedAt": "2026-11-22",
+      "reviewType": "Company perspective and guidance; no client outcomes claimed.",
+      "sourceIds": [
+        "playbook",
+        "adoption"
+      ],
+      "faq": [
+        {
+          "question": "Does a business need to adopt every new AI tool?",
+          "answer": "No. Choose a real problem and compare a bounded trial with the existing process, including the option of simpler software."
+        },
+        {
+          "question": "How can we judge whether a change is worthwhile?",
+          "answer": "Agree the baseline and success measures with the people doing the work. Include quality, corrections, review and operating costs rather than treating novelty as evidence."
+        }
+      ],
+      "firstHandNotesStatus": "User-confirmed experience bullets required before any new first-hand claims are added."
+    },
+    "you-wouldnt-run-your-business-without-email": {
+      "reviewedAt": "2026-11-22",
+      "reviewType": "Company perspective and guidance; no client outcomes claimed.",
+      "sourceIds": [
+        "playbook",
+        "adoption"
+      ],
+      "faq": [
+        {
+          "question": "Does a business need to adopt every new AI tool?",
+          "answer": "No. Choose a real problem and compare a bounded trial with the existing process, including the option of simpler software."
+        },
+        {
+          "question": "How can we judge whether a change is worthwhile?",
+          "answer": "Agree the baseline and success measures with the people doing the work. Include quality, corrections, review and operating costs rather than treating novelty as evidence."
+        }
+      ],
+      "firstHandNotesStatus": "User-confirmed experience bullets required before any new first-hand claims are added."
+    },
+    "ai-cant-do-my-job-are-we-asking-the-wrong-question": {
+      "reviewedAt": "2026-11-22",
+      "reviewType": "Company perspective and guidance; no client outcomes claimed.",
+      "sourceIds": [
+        "playbook",
+        "adoption"
+      ],
+      "faq": [
+        {
+          "question": "Does a business need to adopt every new AI tool?",
+          "answer": "No. Choose a real problem and compare a bounded trial with the existing process, including the option of simpler software."
+        },
+        {
+          "question": "How can we judge whether a change is worthwhile?",
+          "answer": "Agree the baseline and success measures with the people doing the work. Include quality, corrections, review and operating costs rather than treating novelty as evidence."
+        }
+      ],
+      "firstHandNotesStatus": "User-confirmed experience bullets required before any new first-hand claims are added."
+    },
+    "watching-ai-develop-wont-change-your-business": {
+      "reviewedAt": "2026-11-22",
+      "reviewType": "Company perspective and guidance; no client outcomes claimed.",
+      "sourceIds": [
+        "playbook",
+        "adoption"
+      ],
+      "faq": [
+        {
+          "question": "Does a business need to adopt every new AI tool?",
+          "answer": "No. Choose a real problem and compare a bounded trial with the existing process, including the option of simpler software."
+        },
+        {
+          "question": "How can we judge whether a change is worthwhile?",
+          "answer": "Agree the baseline and success measures with the people doing the work. Include quality, corrections, review and operating costs rather than treating novelty as evidence."
+        }
+      ],
+      "firstHandNotesStatus": "User-confirmed experience bullets required before any new first-hand claims are added."
+    },
+    "when-experience-becomes-a-reason-to-resist-change": {
+      "reviewedAt": "2026-11-22",
+      "reviewType": "Company perspective and guidance; no client outcomes claimed.",
+      "sourceIds": [
+        "playbook",
+        "adoption"
+      ],
+      "faq": [
+        {
+          "question": "Does a business need to adopt every new AI tool?",
+          "answer": "No. Choose a real problem and compare a bounded trial with the existing process, including the option of simpler software."
+        },
+        {
+          "question": "How can we judge whether a change is worthwhile?",
+          "answer": "Agree the baseline and success measures with the people doing the work. Include quality, corrections, review and operating costs rather than treating novelty as evidence."
+        }
+      ],
+      "firstHandNotesStatus": "User-confirmed experience bullets required before any new first-hand claims are added."
+    }
+  }
+}

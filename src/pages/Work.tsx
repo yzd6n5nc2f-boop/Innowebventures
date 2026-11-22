@@ -68,6 +68,18 @@ export default function Work() {
           ))}
         </section>
 
+        <section id="coffee-equipment-management" aria-label="Application in development" style={{ scrollMarginTop: "100px" }}>
+          <article className={styles.card}>
+            <div className={styles.cardBody}>
+              <div className={styles.category}>In development · anonymised project</div>
+              <h2>Coffee equipment management</h2>
+              <p>A management system in development for ordering, supply and monitoring of coffee machines for an equipment business in Australia.</p>
+              <p>A public application link and client-approved screenshots have not been supplied for this overview.</p>
+              <a href="/case-studies/coffee-equipment-management" className={styles.launch}>Read the development case study →</a>
+            </div>
+          </article>
+        </section>
+
         <section className={styles.closing}>
           <div>
             <div className={styles.eyebrow}>Built to fit</div>
