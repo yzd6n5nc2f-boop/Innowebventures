@@ -39,10 +39,10 @@ export default function NeuralLattice() {
         const row = Math.floor(i / spokes), col = i % spokes;
         const depth = (row / layers + time / 28000) % 1;
         const sweep = time / 15000;
-        const theta = -1.45 + col * .235 + sweep;
+        const theta = -2.0 + col * .34 + sweep;
         const radius = 18 + depth * 160;
         const x = 30 + depth * 230 + Math.sin(theta) * radius;
-        const y = -12 - depth * 38 + Math.cos(theta) * radius * .38;
+        const y = -35 - depth * 75 + Math.cos(theta) * radius * .9;
         const z = -500 + depth * 710 + Math.cos(theta) * radius * .38;
         const perspective = 460 / (460 - z);
         const tint = (Math.sin(theta + depth * 5 - time / 2600) + 1) / 2;
