@@ -887,3 +887,7 @@ textarea:focus-visible {
 .pageSection{padding-top:64px;padding-bottom:72px}.pageIntro h1{letter-spacing:-.045em;line-height:1.1}.pageIntro p{max-width:760px;line-height:1.8;color:#526176}
 .infoCard,.summaryCard,.architectureCard,.miniCardLink{background:#fff;border:1px solid #e3e7ee;box-shadow:none;border-radius:12px}.infoCard p,.summaryCard p,.cleanList{color:#526176;line-height:1.8}.sectionKicker{color:#2458d3}
 .footer{background:#f7f8fa;color:#526176;border-top:1px solid #e3e7ee}.formInput{background:#fff;color:#152235;border:1px solid #c8d1df}.formInput::placeholder{color:#66758a}
+
+/* Match the homepage's clear copy column beside the neural sphere. */
+.pageIntro[data-neural-intro="true"]{max-width:min(760px,calc(100vw - 550px));padding:0;border:0;border-radius:0;background:transparent;backdrop-filter:none}
+@media(max-width:760px){.pageIntro[data-neural-intro="true"]{max-width:100%}}
