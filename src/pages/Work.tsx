@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import SiteShell from "../components/SiteShell";
 import styles from "../styles/applications.module.css";
 
@@ -33,13 +34,26 @@ export default function Work() {
     <SiteShell>
       <div className={styles.page}>
         <section className={styles.intro} data-neural-intro="true">
-          <div className={styles.eyebrow}>Applications</div>
+          <div className={styles.eyebrow}>Our Work</div>
           <h1>Practical systems built around real workflows.</h1>
           <p>
             These live applications demonstrate how InnoWeb Ventures combines clear business logic, targeted automation and
             AI assistance. Each system is designed around a specific workflow, with people retaining oversight of important
             actions and decisions.
           </p>
+        </section>
+
+        <section className={styles.grid} aria-label="Explore our work">
+          <article className={styles.card}><div className={styles.cardBody}>
+            <div className={styles.category}>Our framework</div><h2>The Forge Suite</h2>
+            <p>Our proprietary software framework supports tailored workflows, system connections and human control. Explore how it relates to the applications below.</p>
+            <Link className={styles.launch} to="/forge-suite">Explore the Forge Suite →</Link>
+          </div></article>
+          <article className={styles.card}><div className={styles.cardBody}>
+            <div className={styles.category}>Development case study</div><h2>Coffee equipment management</h2>
+            <p>An anonymised account of a management system in development for ordering, supply and monitoring of coffee machines. Completed outcomes are not claimed.</p>
+            <Link className={styles.launch} to="/case-studies/coffee-equipment-management">View the development case study →</Link>
+          </div></article>
         </section>
 
         <section className={styles.grid} aria-label="Live applications">

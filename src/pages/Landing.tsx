@@ -84,17 +84,17 @@ export default function Landing() {
               Intelligent workflows.<span>Human control.</span>
             </h1>
             <p className={styles.heroLead}>
-              We design agentic AI systems around the organisation, workflow and people using them. Planning, model routing
+              We help UK business owners and managers improve repetitive work with tailored software and agentic AI. Planning, model routing
               and automation sit behind a clear user interface, while progress, agent activity, approvals and token usage
               remain visible and measurable.
             </p>
             <div className={styles.heroActions}>
-              <a className={`${styles.primary} ${refinements.heroButton}`} href="#forge-suite">
-                <span>See how it works</span>
-                <strong aria-hidden>↘</strong>
-              </a>
-              <Link className={`${styles.secondary} ${refinements.heroButton}`} to="/blog">
-                <span>Read our insights</span>
+              <Link className={`${styles.primary} ${refinements.heroButton}`} to="/workflow-assessment">
+                <span>Free workflow assessment</span>
+                <strong aria-hidden>→</strong>
+              </Link>
+              <Link className={`${styles.secondary} ${refinements.heroButton}`} to="/services">
+                <span>Explore our services</span>
                 <strong aria-hidden>→</strong>
               </Link>
             </div>

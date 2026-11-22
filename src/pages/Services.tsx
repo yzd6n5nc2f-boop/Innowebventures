@@ -11,13 +11,20 @@ export default function Services() {
     <SiteShell>
       <section className={styles.pageSection}>
         <div className={styles.pageIntro} data-neural-intro="true">
-          <div className={styles.sectionKicker}>Deployment pathways</div>
+          <div className={styles.sectionKicker}>Services</div>
           <h1>Practical AI and automation services for your business.</h1>
           <p>
             Start with one workflow, agree a focused pilot and build around the people using it. Our services cover
             discovery, integration, private AI deployment and ongoing improvement, with clear scope and human controls.
           </p>
         </div>
+
+        <article className={styles.summaryCard}>
+          <h2>Find the right starting point</h2>
+          <p>Explore the services below, or see how workflow needs differ by sector. Start with a free workflow assessment if you would like us to understand one recurring task and identify possible improvements.</p>
+          <p><Link className={styles.inlineCta} to="/sectors">Explore sectors →</Link></p>
+          <p><Link className={styles.inlineCta} to="/workflow-assessment">Request a free workflow assessment →</Link></p>
+        </article>
 
         <div className={styles.cardGrid}>
           {services.map((service) => (
