@@ -1,0 +1,8 @@
+/* Decorative textures stay behind content and fade before the reading sections. */
+.main{isolation:isolate}
+.main[data-backdrop="code"]{--page-texture:url('/assets/backgrounds/code-neural-v1.webp')}
+.main[data-backdrop="workflow"]{--page-texture:url('/assets/backgrounds/workflow-v1.webp')}
+.main[data-backdrop="robotics"]{--page-texture:url('/assets/backgrounds/robotics-v1.webp')}
+.main::before{content:"";position:absolute;top:86px;left:0;right:0;height:clamp(760px,70vw,1100px);max-height:calc(100% - 86px);z-index:-1;pointer-events:none;background-image:var(--page-texture);background-position:center top;background-size:cover;background-repeat:no-repeat;opacity:.82;mask-image:linear-gradient(to bottom,#000 0%,#000 68%,transparent 100%)}
+@media(max-width:760px){.main::before{top:76px;height:760px;max-height:calc(100% - 76px);background-size:auto 760px;background-position:right top;opacity:.55}}
+@media print{.main::before{display:none}}

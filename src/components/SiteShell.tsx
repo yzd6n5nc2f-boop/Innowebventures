@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { SITE_URL } from "../content/runtimeConfig";
 import styles from "../styles/home.module.css";
+import backdropStyles from "../styles/siteBackdrop.module.css";
 import shellStyles from "../styles/shellPolish.module.css";
 
 type SiteShellProps = {
@@ -23,6 +24,9 @@ export default function SiteShell({ children }: SiteShellProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement | null>(null);
   const location = useLocation();
+  const backdrop = location.pathname === "/work" ? "robotics" :
+    ["/delivery-method", "/ai-readiness-assessment", "/workflow-assessment", "/contact", "/about"].includes(location.pathname) ||
+    location.pathname.startsWith("/sectors") || location.pathname.startsWith("/case-studies") ? "workflow" : "code";
   const neuralPage = ["/", "/about", "/work", "/delivery-method", "/blog", "/sectors", "/services", "/forge-suite", "/solutions", "/platform", "/contact", "/ai-readiness-assessment", "/workflow-assessment"].includes(location.pathname) || location.pathname.startsWith("/services/") || location.pathname.startsWith("/sectors/");
 
   useEffect(() => {
@@ -131,7 +135,7 @@ export default function SiteShell({ children }: SiteShellProps) {
         </div>
       )}
 
-      <main className={styles.mainContent} style={{ position: "relative" }} data-neural-page={neuralPage ? "true" : undefined}>
+      <main className={`${styles.mainContent} ${backdropStyles.main}`} data-site-main="true" data-heading-style="assessment" data-backdrop={backdrop} style={{ position: "relative" }} data-neural-page={neuralPage ? "true" : undefined}>
         {neuralPage && <NeuralLattice />}
         {children}
       </main>
