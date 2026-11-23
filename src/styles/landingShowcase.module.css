@@ -389,8 +389,10 @@
 /* Let the shared texture continue between the white content cards. */
 .lightSection,.darkSection{background:transparent}
 
-/* Muted coral section accents; primary actions retain the brand blue. */
-.landing .sectionEyebrow,.landing .flowNumber{color:#a4493d}.landing .flowNumber{border-color:#ead3cd;background:#faefec}.landing .sectionEyebrow::before{content:"";display:inline-block;width:28px;height:1px;background:#b95e52;vertical-align:middle;margin-right:12px}
+/* Section accents; primary actions retain the brand blue. */
+.landing .sectionEyebrow{color:#117c80}.landing .flowNumber{color:#946019;border-color:#eadcc6;background:#faf3e8}.landing .sectionEyebrow::before{content:"";display:inline-block;width:28px;height:1px;background:currentColor;vertical-align:middle;margin-right:12px}
 
 .landing .hero{min-height:0;padding-top:78px;padding-bottom:54px}
 @media(max-width:720px){.landing .hero{padding-top:50px;padding-bottom:34px}}
+
+.landing .darkSection .sectionEyebrow{color:#946019}.landing :global(#applications) .sectionEyebrow{color:#7656a5}
