@@ -1,0 +1,15 @@
+.pathways{width:min(1240px,calc(100% - 48px));margin:0 auto 68px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;position:relative}
+.card{border:1px solid #dce2ec;border-radius:15px;background:#fff;padding:24px;box-shadow:none;transition:border-color .2s ease}
+.card:hover{border-color:#d6b2aa}
+.number{display:flex;align-items:center;gap:14px;color:#a4493d;font-size:.85rem;font-weight:700;margin-bottom:22px;font-variant-numeric:tabular-nums}
+.number>span{width:34px;height:1px;background:#b95e52}
+.cardContent{display:flex;align-items:flex-start;gap:20px}
+.symbol{flex:none;display:inline-flex;width:54px;height:54px;align-items:center;justify-content:center;border-radius:50%;background:#faefec;color:#ad5044;vertical-align:middle}
+.symbol svg{width:31px;height:31px}
+.copy{min-width:0}.copy h2{font-size:1.5rem!important;line-height:1.2!important;font-weight:650!important;letter-spacing:-.035em;color:#152235;margin:0 0 12px!important}.copy p{font-size:.92rem;line-height:1.75;color:#526176;margin:0 0 22px}.copy a{display:inline-flex;gap:18px;align-items:center;color:#2458d3;font-size:.88rem;font-weight:650;text-decoration:none}.copy a:hover{text-decoration:underline}.copy a:focus-visible{outline:3px solid #2458d3;outline-offset:5px;border-radius:3px}
+@media(max-width:1050px){.card{padding:20px}.cardContent{gap:14px;flex-direction:column}.pathways{gap:16px}}
+@media(max-width:720px){.pathways{grid-template-columns:1fr;width:calc(100% - 32px);margin-bottom:44px}.cardContent{flex-direction:row;gap:18px}.number{margin-bottom:16px}.copy h2{font-size:1.35rem!important}.symbol{width:48px;height:48px}.symbol svg{width:28px;height:28px}}
+@media(prefers-reduced-motion:reduce){.card{transition:none}}
+@media print{.card{break-inside:avoid}}
+
+.symbol{margin-bottom:14px}.pathways .symbol{margin-bottom:0}

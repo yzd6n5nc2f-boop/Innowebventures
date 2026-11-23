@@ -1,3 +1,4 @@
+import SectionSymbol from "../components/SectionSymbol";
 import RelatedArticles from "../components/RelatedArticles";
 import { pageLinks } from "../content/internalLinks";
 import { Link } from "react-router-dom";
@@ -11,6 +12,7 @@ export default function Services() {
     <SiteShell>
       <section className={styles.pageSection}>
         <div className={styles.pageIntro} data-neural-intro="true">
+          <SectionSymbol kind="services" />
           <div className={styles.sectionKicker}>Services</div>
           <h1>Practical AI and automation services for your business.</h1>
           <p>

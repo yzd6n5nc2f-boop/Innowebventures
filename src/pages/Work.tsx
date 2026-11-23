@@ -1,3 +1,4 @@
+import SectionSymbol from "../components/SectionSymbol";
 import { Link } from "react-router-dom";
 import SiteShell from "../components/SiteShell";
 import styles from "../styles/applications.module.css";
@@ -34,6 +35,7 @@ export default function Work() {
     <SiteShell>
       <div className={styles.page}>
         <section className={styles.intro} data-neural-intro="true">
+          <SectionSymbol kind="work" />
           <div className={styles.eyebrow}>Our Work</div>
           <h1>Practical systems built around real workflows.</h1>
           <p>

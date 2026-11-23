@@ -1,3 +1,4 @@
+import SectionSymbol from "../components/SectionSymbol";
 import NextSteps from "../components/NextSteps";
 import SiteShell from "../components/SiteShell";
 import { deliveryPhases, howWeBuildPillars, platformLayers } from "../content/siteContent";
@@ -41,6 +42,7 @@ export default function HowWeBuild() {
     <SiteShell>
       <section className={styles.pageSection}>
         <div className={styles.pageIntro} data-neural-intro="true">
+          <SectionSymbol kind="method" />
           <div className={styles.sectionKicker}>Development Stack</div>
           <h1>Agentic systems built for useful output, controlled operation and measurable cost.</h1>
           <p>

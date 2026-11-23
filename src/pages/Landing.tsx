@@ -1,3 +1,4 @@
+import ExplorePathways from "../components/ExplorePathways";
 import { Link } from "react-router-dom";
 import SiteShell from "../components/SiteShell";
 import styles from "../styles/landingShowcase.module.css";
@@ -30,13 +31,7 @@ const applicationExamples = [
   },
 ];
 
-const trustItems = [
-  ["Tailored workflows", "Agentic systems configured around the organisation, task and people using them."],
-  ["Clear user experience", "Complex orchestration presented through simple, practical interfaces."],
-  ["Visible agent activity", "Users can monitor task plans, agent actions, progress and approvals."],
-  ["Measured AI cost", "Token usage and model spend tracked against the value of each outcome."],
-  ["Private deployment", "Local server or AI PC deployment where privacy, GDPR or security requires it."],
-];
+
 
 const stackHighlights = [
   [
@@ -98,22 +93,11 @@ export default function Landing() {
                 <strong aria-hidden>→</strong>
               </Link>
             </div>
-            <div className={styles.heroProof}>
-              <div>Designed around the workflow rather than a generic AI product.</div>
-              <div>Clear visibility into plans, agent actions, progress and approvals.</div>
-              <div>Local and proprietary models balanced for quality, privacy and cost.</div>
-            </div>
+
           </div>
         </section>
 
-        <section className={`${styles.trustBar} ${refinements.networkPanel}`} aria-label="Agentic AI system benefits">
-          {trustItems.map(([title, description]) => (
-            <div key={title} className={styles.trustItem}>
-              <strong>{title}</strong>
-              <span>{description}</span>
-            </div>
-          ))}
-        </section>
+        <ExplorePathways />
 
         <section className={`${styles.lightSection} ${refinements.networkSection}`} id="forge-suite">
           <div className={styles.sectionInner}>
