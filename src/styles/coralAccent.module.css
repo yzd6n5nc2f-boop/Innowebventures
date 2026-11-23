@@ -17,3 +17,11 @@
 .card[data-kind="services"],.symbol[data-kind="services"]{--accent:#117c80;--tint:#edf7f6}
 .card[data-kind="work"],.symbol[data-kind="work"]{--accent:#7656a5;--tint:#f3eff8}
 .card[data-kind="method"],.symbol[data-kind="method"]{--accent:#946019;--tint:#faf3e8}
+
+/* Shared section details on Insights and About. */
+.accentPage[data-kind="insights"],.symbol[data-kind="insights"]{--accent:#7656a5;--tint:#f3eff8}
+.accentPage[data-kind="about"],.symbol[data-kind="about"]{--accent:#117c80;--tint:#edf7f6}
+.accentPage [data-section-label]{color:var(--accent);display:flex;align-items:center;gap:12px}
+.accentPage [data-section-label]::before{content:"";width:26px;height:1px;background:currentColor;flex:none}
+.accentPage .accentCard{border-top:3px solid var(--accent)}
+.accentCard[data-kind="method"]{--accent:#946019}.accentCard[data-kind="services"],.accentCard[data-kind="about"]{--accent:#117c80}.accentCard[data-kind="work"]{--accent:#7656a5}

@@ -1,3 +1,5 @@
+import SectionSymbol from "../components/SectionSymbol";
+import accents from "../styles/coralAccent.module.css";
 import { Link } from "react-router-dom";
 import SiteShell from "../components/SiteShell";
 import { blogPosts } from "../content/blogPosts";
@@ -17,9 +19,10 @@ export default function Blog() {
 
   return (
     <SiteShell>
-      <div className={styles.page}>
+      <div className={`${styles.page} ${accents.accentPage}`} data-kind="insights">
         <section className={styles.intro} data-neural-intro="true">
-          <div className={styles.eyebrow}>Ideas & Insights</div>
+          <SectionSymbol kind="insights" />
+          <div className={styles.eyebrow} data-section-label="true">Ideas & Insights</div>
           <h1>Practical thinking on agentic AI, automation and intelligent workflows.</h1>
           <p>
             Notes from the InnoWeb Ventures team on building useful AI systems: workflow design, model choice, cost,
@@ -28,7 +31,7 @@ export default function Blog() {
         </section>
 
         {featured && (
-          <Link className={styles.featured} to={`/blog/${featured.slug}`}>
+          <Link className={`${styles.featured} ${accents.accentCard}`} to={`/blog/${featured.slug}`}>
             <div className={styles.featuredMeta}>
               <span>{featured.category}</span>
               <span>{featured.published}</span>
@@ -42,7 +45,7 @@ export default function Blog() {
         {rest.length > 0 && (
           <section className={styles.grid} aria-label="More articles">
             {rest.map((post) => (
-              <Link key={post.slug} className={styles.card} to={`/blog/${post.slug}`}>
+              <Link key={post.slug} className={`${styles.card} ${accents.accentCard}`} to={`/blog/${post.slug}`}>
                 <div className={styles.cardMeta}>
                   <span>{post.category}</span>
                   <span>{post.published}</span>
@@ -57,7 +60,7 @@ export default function Blog() {
 
         <section className={styles.closing}>
           <div>
-            <div className={styles.eyebrow}>Built from practice</div>
+            <div className={styles.eyebrow} data-section-label="true">Built from practice</div>
             <h2>Useful ideas, grounded in real systems.</h2>
           </div>
           <p>
